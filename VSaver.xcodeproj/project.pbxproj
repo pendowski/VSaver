@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AAE6683A1CAE835800141027 /* VSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE668391CAE835800141027 /* VSaverView.swift */; };
+		AAE668531CAE85D000141027 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE668521CAE85D000141027 /* AppDelegate.swift */; };
+		AAE668551CAE85D000141027 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE668541CAE85D000141027 /* Assets.xcassets */; };
+		AAE668581CAE85D000141027 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAE668561CAE85D000141027 /* MainMenu.xib */; };
+		AAE6685F1CAE864A00141027 /* VSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE668391CAE835800141027 /* VSaverView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AAE668291CAE7ADD00141027 /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAE668301CAE7ADD00141027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../VSaver/Info.plist; sourceTree = "<group>"; };
+		AAE668381CAE835700141027 /* VSaver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VSaver-Bridging-Header.h"; path = "../VSaver/VSaver-Bridging-Header.h"; sourceTree = "<group>"; };
+		AAE668391CAE835800141027 /* VSaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VSaverView.swift; path = ../VSaver/VSaverView.swift; sourceTree = "<group>"; };
+		AAE668501CAE85D000141027 /* VSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAE668521CAE85D000141027 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../VSaverTester/AppDelegate.swift; sourceTree = "<group>"; };
+		AAE668541CAE85D000141027 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../VSaverTester/Assets.xcassets; sourceTree = "<group>"; };
+		AAE668571CAE85D000141027 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		AAE668591CAE85D000141027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../VSaverTester/Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAE668251CAE7ADD00141027 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAE6684D1CAE85D000141027 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAE6681F1CAE7ADD00141027 = {
+			isa = PBXGroup;
+			children = (
+				AAE6682B1CAE7ADD00141027 /* VSaver */,
+				AAE668511CAE85D000141027 /* VSaver */,
+				AAE6682A1CAE7ADD00141027 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAE6682A1CAE7ADD00141027 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAE668291CAE7ADD00141027 /* VSaver.saver */,
+				AAE668501CAE85D000141027 /* VSaver.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAE6682B1CAE7ADD00141027 /* VSaver */ = {
+			isa = PBXGroup;
+			children = (
+				AAE668301CAE7ADD00141027 /* Info.plist */,
+				AAE668391CAE835800141027 /* VSaverView.swift */,
+				AAE668381CAE835700141027 /* VSaver-Bridging-Header.h */,
+			);
+			name = VSaver;
+			path = BoardSaver;
+			sourceTree = "<group>";
+		};
+		AAE668511CAE85D000141027 /* VSaver */ = {
+			isa = PBXGroup;
+			children = (
+				AAE668521CAE85D000141027 /* AppDelegate.swift */,
+				AAE668541CAE85D000141027 /* Assets.xcassets */,
+				AAE668561CAE85D000141027 /* MainMenu.xib */,
+				AAE668591CAE85D000141027 /* Info.plist */,
+			);
+			name = VSaver;
+			path = BoardSaverTester;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AAE668261CAE7ADD00141027 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AAE668281CAE7ADD00141027 /* VSaver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAE668331CAE7ADD00141027 /* Build configuration list for PBXNativeTarget "VSaver" */;
+			buildPhases = (
+				AAE668241CAE7ADD00141027 /* Sources */,
+				AAE668251CAE7ADD00141027 /* Frameworks */,
+				AAE668261CAE7ADD00141027 /* Headers */,
+				AAE668271CAE7ADD00141027 /* Resources */,
+				AAE668361CAE7B5D00141027 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VSaver;
+			productName = BoardSaver;
+			productReference = AAE668291CAE7ADD00141027 /* VSaver.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+		AAE6684F1CAE85D000141027 /* VSaverTester */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAE6685C1CAE85D000141027 /* Build configuration list for PBXNativeTarget "VSaverTester" */;
+			buildPhases = (
+				AAE6684C1CAE85D000141027 /* Sources */,
+				AAE6684D1CAE85D000141027 /* Frameworks */,
+				AAE6684E1CAE85D000141027 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VSaverTester;
+			productName = BoardSaverTester;
+			productReference = AAE668501CAE85D000141027 /* VSaver.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAE668201CAE7ADD00141027 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Jaroslaw Pendowski";
+				TargetAttributes = {
+					AAE668281CAE7ADD00141027 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					AAE6684F1CAE85D000141027 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = AAE668231CAE7ADD00141027 /* Build configuration list for PBXProject "VSaver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAE6681F1CAE7ADD00141027;
+			productRefGroup = AAE6682A1CAE7ADD00141027 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAE668281CAE7ADD00141027 /* VSaver */,
+				AAE6684F1CAE85D000141027 /* VSaverTester */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAE668271CAE7ADD00141027 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAE6684E1CAE85D000141027 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE668551CAE85D000141027 /* Assets.xcassets in Resources */,
+				AAE668581CAE85D000141027 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AAE668361CAE7B5D00141027 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Preparing Screen Saver install script\"\nprintf \"#!/bin/sh\\nopen \\\"$CONFIGURATION_BUILD_DIR/$WRAPPER_NAME\\\"\" > \"$SRCROOT/InstallSaver.sh\"\nchmod +x \"$SRCROOT/InstallSaver.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAE668241CAE7ADD00141027 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE6683A1CAE835800141027 /* VSaverView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAE6684C1CAE85D000141027 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE668531CAE85D000141027 /* AppDelegate.swift in Sources */,
+				AAE6685F1CAE864A00141027 /* VSaverView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AAE668561CAE85D000141027 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAE668571CAE85D000141027 /* Base */,
+			);
+			name = MainMenu.xib;
+			path = ../VSaverTester;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AAE668311CAE7ADD00141027 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AAE668321CAE7ADD00141027 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AAE668341CAE7ADD00141027 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = VSaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaver;
+				PRODUCT_NAME = VSaver;
+				SWIFT_OBJC_BRIDGING_HEADER = "VSaver/VSaver-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		AAE668351CAE7ADD00141027 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = VSaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaver;
+				PRODUCT_NAME = VSaver;
+				SWIFT_OBJC_BRIDGING_HEADER = "VSaver/VSaver-Bridging-Header.h";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		AAE6685A1CAE85D000141027 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = VSaverTester/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverTester;
+				PRODUCT_NAME = VSaver;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AAE6685B1CAE85D000141027 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = VSaverTester/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverTester;
+				PRODUCT_NAME = VSaver;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAE668231CAE7ADD00141027 /* Build configuration list for PBXProject "VSaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE668311CAE7ADD00141027 /* Debug */,
+				AAE668321CAE7ADD00141027 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAE668331CAE7ADD00141027 /* Build configuration list for PBXNativeTarget "VSaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE668341CAE7ADD00141027 /* Debug */,
+				AAE668351CAE7ADD00141027 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAE6685C1CAE85D000141027 /* Build configuration list for PBXNativeTarget "VSaverTester" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE6685A1CAE85D000141027 /* Debug */,
+				AAE6685B1CAE85D000141027 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAE668201CAE7ADD00141027 /* Project object */;
+}
