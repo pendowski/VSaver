@@ -22,9 +22,14 @@ final class YouTubeProvider: Provider {
     func getVideoURL(url: NSURL, completion: (url: NSURL?) -> Void) {
         let failed = { completion(url: nil) }
 
-        let task = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://www.youtube.com/get_video_info?video_id=iJQ36SF8BUs")!) { (data, response, error) in
+        guard let id = self.idFromURL(url), videoInfoURL = NSURL(string: "http://www.youtube.com/get_video_info?video_id=\(id)")  else {
+            return failed()
+        }
+
+        let task = NSURLSession.sharedSession().dataTaskWithURL(videoInfoURL) { (data, response, error) in
+
             guard let data = data, string = String(data: data, encoding: NSUTF8StringEncoding)?.stringByRemovingPercentEncoding else {
-                return
+                return failed()
             }
 
             var urls: [String : String] = [ : ]
@@ -51,12 +56,24 @@ final class YouTubeProvider: Provider {
                 }
             })
 
-            print(urls)
+            guard let videoUrl = urls["hd1080"] ?? urls["hd720"] ?? urls.first?.1 else {
+                return failed()
+            }
+
+            completion(url: NSURL(string: videoUrl))
         }
 
         task.resume()
     }
 
-    private func
+    private func idFromURL(url: NSURL) -> String? {
+        let components = NSURLComponents(string: url.absoluteString)
+
+        if let component = components?.queryItems?.filter({ $0.name == "v" }).first {
+            return component.value
+        }
+
+        return url.path
+    }
 
 }
