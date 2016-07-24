@@ -7,33 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA640A701D4241C50038E9EC /* YouTubeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA640A6F1D4241C50038E9EC /* YouTubeProvider.swift */; };
-		AA640A721D4241CE0038E9EC /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA640A711D4241CE0038E9EC /* Provider.swift */; };
-		AA640A731D42555C0038E9EC /* YouTubeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA640A6F1D4241C50038E9EC /* YouTubeProvider.swift */; };
-		AA640A741D42557D0038E9EC /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA640A711D4241CE0038E9EC /* Provider.swift */; };
 		AA640A761D427DD30038E9EC /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A751D427DD30038E9EC /* AVKit.framework */; };
 		AA640A781D427DD60038E9EC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A771D427DD60038E9EC /* AVFoundation.framework */; };
-		AAE6683A1CAE835800141027 /* VSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE668391CAE835800141027 /* VSaverView.swift */; };
-		AAE668531CAE85D000141027 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE668521CAE85D000141027 /* AppDelegate.swift */; };
-		AAE668551CAE85D000141027 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE668541CAE85D000141027 /* Assets.xcassets */; };
-		AAE668581CAE85D000141027 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAE668561CAE85D000141027 /* MainMenu.xib */; };
-		AAE6685F1CAE864A00141027 /* VSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE668391CAE835800141027 /* VSaverView.swift */; };
+		AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852881D44E48B0044EC3A /* Provider.swift */; };
+		AAF8528C1D44E48B0044EC3A /* VSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852891D44E48B0044EC3A /* VSaverView.swift */; };
+		AAF8528D1D44E48B0044EC3A /* YouTubeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */; };
+		AAF852901D44E4C90044EC3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8528E1D44E4B60044EC3A /* AppDelegate.swift */; };
+		AAF852911D44E4D50044EC3A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852881D44E48B0044EC3A /* Provider.swift */; };
+		AAF852921D44E4D50044EC3A /* VSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852891D44E48B0044EC3A /* VSaverView.swift */; };
+		AAF852931D44E4D50044EC3A /* YouTubeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */; };
+		AAF852951D44E4F60044EC3A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAE668561CAE85D000141027 /* MainMenu.xib */; };
+		AAF852971D44E5880044EC3A /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852961D44E5880044EC3A /* VideoPlayer.swift */; };
+		AAF852981D44E9170044EC3A /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852961D44E5880044EC3A /* VideoPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA640A6F1D4241C50038E9EC /* YouTubeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouTubeProvider.swift; path = VSaverTester/YouTubeProvider.swift; sourceTree = SOURCE_ROOT; };
-		AA640A711D4241CE0038E9EC /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Provider.swift; path = VSaverTester/Provider.swift; sourceTree = SOURCE_ROOT; };
 		AA640A751D427DD30038E9EC /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		AA640A771D427DD60038E9EC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AAE668291CAE7ADD00141027 /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAE668301CAE7ADD00141027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../VSaver/Info.plist; sourceTree = "<group>"; };
-		AAE668381CAE835700141027 /* VSaver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VSaver-Bridging-Header.h"; path = "../VSaver/VSaver-Bridging-Header.h"; sourceTree = "<group>"; };
-		AAE668391CAE835800141027 /* VSaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VSaverView.swift; path = ../VSaver/VSaverView.swift; sourceTree = "<group>"; };
+		AAE668301CAE7ADD00141027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = VSaver/Info.plist; sourceTree = "<group>"; };
+		AAE668381CAE835700141027 /* VSaver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VSaver-Bridging-Header.h"; path = "VSaver/VSaver-Bridging-Header.h"; sourceTree = "<group>"; };
 		AAE668501CAE85D000141027 /* VSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAE668521CAE85D000141027 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../VSaverTester/AppDelegate.swift; sourceTree = "<group>"; };
-		AAE668541CAE85D000141027 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../VSaverTester/Assets.xcassets; sourceTree = "<group>"; };
+		AAE668541CAE85D000141027 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = VSaverTester/Assets.xcassets; sourceTree = "<group>"; };
 		AAE668571CAE85D000141027 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		AAE668591CAE85D000141027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../VSaverTester/Info.plist; sourceTree = "<group>"; };
+		AAE668591CAE85D000141027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = VSaverTester/Info.plist; sourceTree = "<group>"; };
+		AAF852881D44E48B0044EC3A /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Provider.swift; path = VSaver/Provider.swift; sourceTree = SOURCE_ROOT; };
+		AAF852891D44E48B0044EC3A /* VSaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VSaverView.swift; path = VSaver/VSaverView.swift; sourceTree = SOURCE_ROOT; };
+		AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouTubeProvider.swift; path = VSaver/YouTubeProvider.swift; sourceTree = SOURCE_ROOT; };
+		AAF8528E1D44E4B60044EC3A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = VSaverTester/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		AAF852961D44E5880044EC3A /* VideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlayer.swift; path = VSaverTester/VideoPlayer.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,7 @@
 				AA640A771D427DD60038E9EC /* AVFoundation.framework */,
 				AA640A751D427DD30038E9EC /* AVKit.framework */,
 				AAE6682B1CAE7ADD00141027 /* VSaver */,
-				AAE668511CAE85D000141027 /* VSaver */,
+				AAE668511CAE85D000141027 /* VSaverTester */,
 				AAE6682A1CAE7ADD00141027 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,25 +81,26 @@
 		AAE6682B1CAE7ADD00141027 /* VSaver */ = {
 			isa = PBXGroup;
 			children = (
+				AAF852881D44E48B0044EC3A /* Provider.swift */,
+				AAF852891D44E48B0044EC3A /* VSaverView.swift */,
+				AAF852961D44E5880044EC3A /* VideoPlayer.swift */,
+				AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */,
 				AAE668301CAE7ADD00141027 /* Info.plist */,
-				AAE668391CAE835800141027 /* VSaverView.swift */,
-				AA640A711D4241CE0038E9EC /* Provider.swift */,
-				AA640A6F1D4241C50038E9EC /* YouTubeProvider.swift */,
 				AAE668381CAE835700141027 /* VSaver-Bridging-Header.h */,
 			);
 			name = VSaver;
 			path = BoardSaver;
 			sourceTree = "<group>";
 		};
-		AAE668511CAE85D000141027 /* VSaver */ = {
+		AAE668511CAE85D000141027 /* VSaverTester */ = {
 			isa = PBXGroup;
 			children = (
-				AAE668521CAE85D000141027 /* AppDelegate.swift */,
+				AAF8528E1D44E4B60044EC3A /* AppDelegate.swift */,
 				AAE668541CAE85D000141027 /* Assets.xcassets */,
 				AAE668561CAE85D000141027 /* MainMenu.xib */,
 				AAE668591CAE85D000141027 /* Info.plist */,
 			);
-			name = VSaver;
+			name = VSaverTester;
 			path = BoardSaverTester;
 			sourceTree = "<group>";
 		};
@@ -199,8 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAE668551CAE85D000141027 /* Assets.xcassets in Resources */,
-				AAE668581CAE85D000141027 /* MainMenu.xib in Resources */,
+				AAF852951D44E4F60044EC3A /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,9 +229,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA640A701D4241C50038E9EC /* YouTubeProvider.swift in Sources */,
-				AA640A721D4241CE0038E9EC /* Provider.swift in Sources */,
-				AAE6683A1CAE835800141027 /* VSaverView.swift in Sources */,
+				AAF852971D44E5880044EC3A /* VideoPlayer.swift in Sources */,
+				AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */,
+				AAF8528D1D44E48B0044EC3A /* YouTubeProvider.swift in Sources */,
+				AAF8528C1D44E48B0044EC3A /* VSaverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,10 +240,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA640A741D42557D0038E9EC /* Provider.swift in Sources */,
-				AAE668531CAE85D000141027 /* AppDelegate.swift in Sources */,
-				AA640A731D42555C0038E9EC /* YouTubeProvider.swift in Sources */,
-				AAE6685F1CAE864A00141027 /* VSaverView.swift in Sources */,
+				AAF852911D44E4D50044EC3A /* Provider.swift in Sources */,
+				AAF852981D44E9170044EC3A /* VideoPlayer.swift in Sources */,
+				AAF852921D44E4D50044EC3A /* VSaverView.swift in Sources */,
+				AAF852931D44E4D50044EC3A /* YouTubeProvider.swift in Sources */,
+				AAF852901D44E4C90044EC3A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +378,6 @@
 		AAE6685A1CAE85D000141027 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = VSaverTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -387,7 +390,6 @@
 		AAE6685B1CAE85D000141027 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = VSaverTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
