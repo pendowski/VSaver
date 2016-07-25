@@ -39,7 +39,7 @@ final class VideoPlayer {
     
     init(player: AVPlayer) {
         self.player = player
-        self.providers = [ YouTubeProvider() ]
+        self.providers = [ YouTubeProvider(), VimeoProvider() ]
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.videoDidEnd(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.videoDidFail(_:)), name: AVPlayerItemFailedToPlayToEndTimeNotification, object: nil)

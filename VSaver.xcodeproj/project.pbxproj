@@ -17,6 +17,8 @@
 		AA2569761D46301800E3BBC5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA2569731D46301800E3BBC5 /* MainMenu.xib */; };
 		AA25697A1D46374700E3BBC5 /* VSaverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2569791D46374700E3BBC5 /* VSaverSettings.swift */; };
 		AA25697B1D46374700E3BBC5 /* VSaverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2569791D46374700E3BBC5 /* VSaverSettings.swift */; };
+		AA25697F1D466B3200E3BBC5 /* VimeoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25697E1D466B3200E3BBC5 /* VimeoProvider.swift */; };
+		AA2569801D466B3500E3BBC5 /* VimeoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25697E1D466B3200E3BBC5 /* VimeoProvider.swift */; };
 		AA640A761D427DD30038E9EC /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A751D427DD30038E9EC /* AVKit.framework */; };
 		AA640A781D427DD60038E9EC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A771D427DD60038E9EC /* AVFoundation.framework */; };
 		AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852881D44E48B0044EC3A /* Provider.swift */; };
@@ -36,6 +38,7 @@
 		AA25696E1D4620FB00E3BBC5 /* VSaverSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VSaverSettingsController.xib; path = VSaver/VSaverSettingsController.xib; sourceTree = SOURCE_ROOT; };
 		AA2569741D46301800E3BBC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = VSaverTester/Base.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		AA2569791D46374700E3BBC5 /* VSaverSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VSaverSettings.swift; path = VSaver/VSaverSettings.swift; sourceTree = SOURCE_ROOT; };
+		AA25697E1D466B3200E3BBC5 /* VimeoProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VimeoProvider.swift; path = VSaver/VimeoProvider.swift; sourceTree = SOURCE_ROOT; };
 		AA640A751D427DD30038E9EC /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		AA640A771D427DD60038E9EC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AAE668291CAE7ADD00141027 /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +74,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA25697C1D466B1100E3BBC5 /* YouTube */ = {
+			isa = PBXGroup;
+			children = (
+				AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */,
+				AA25696A1D460F9300E3BBC5 /* youtube.js */,
+			);
+			name = YouTube;
+			sourceTree = "<group>";
+		};
+		AA25697D1D466B1700E3BBC5 /* Vimeo */ = {
+			isa = PBXGroup;
+			children = (
+				AA25697E1D466B3200E3BBC5 /* VimeoProvider.swift */,
+			);
+			name = Vimeo;
+			sourceTree = "<group>";
+		};
 		AAE6681F1CAE7ADD00141027 = {
 			isa = PBXGroup;
 			children = (
@@ -100,9 +120,9 @@
 				AA25696D1D4620FB00E3BBC5 /* VSaverSettingsController.swift */,
 				AA25696E1D4620FB00E3BBC5 /* VSaverSettingsController.xib */,
 				AAF852961D44E5880044EC3A /* VideoPlayer.swift */,
-				AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */,
+				AA25697D1D466B1700E3BBC5 /* Vimeo */,
+				AA25697C1D466B1100E3BBC5 /* YouTube */,
 				AAE668301CAE7ADD00141027 /* Info.plist */,
-				AA25696A1D460F9300E3BBC5 /* youtube.js */,
 				AAE668381CAE835700141027 /* VSaver-Bridging-Header.h */,
 			);
 			name = VSaver;
@@ -253,6 +273,7 @@
 			files = (
 				AAF852971D44E5880044EC3A /* VideoPlayer.swift in Sources */,
 				AA25696F1D4620FB00E3BBC5 /* VSaverSettingsController.swift in Sources */,
+				AA25697F1D466B3200E3BBC5 /* VimeoProvider.swift in Sources */,
 				AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */,
 				AAF8528D1D44E48B0044EC3A /* YouTubeProvider.swift in Sources */,
 				AAF8528C1D44E48B0044EC3A /* VSaverView.swift in Sources */,
@@ -265,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAF852911D44E4D50044EC3A /* Provider.swift in Sources */,
+				AA2569801D466B3500E3BBC5 /* VimeoProvider.swift in Sources */,
 				AAF852981D44E9170044EC3A /* VideoPlayer.swift in Sources */,
 				AA25697B1D46374700E3BBC5 /* VSaverSettings.swift in Sources */,
 				AAF852921D44E4D50044EC3A /* VSaverView.swift in Sources */,
