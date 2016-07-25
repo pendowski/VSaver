@@ -10,11 +10,14 @@ ytplayer.config.args.url_encoded_fmt_stream_map.split(',').forEach(function (ite
                                                                    videoUrls[obj.itag] = obj;
                                                                    });
 var valid_itags = ["95", "299", "266", "137", "22", "136", "135", "134", "18", "133", "160"]
+
 var url = ""
-valid_itags.forEach(function(itag) {
-                    if (videoUrls[itag] != null) {
-                    url = videoUrls[itag].url
-                    return
-                    }
-                    })
+for (var i in valid_itags) {
+    var itag = valid_itags[i]
+    if (videoUrls[itag] != null) {
+        url = videoUrls[itag].url
+        break
+    }
+}
+
 url // return value

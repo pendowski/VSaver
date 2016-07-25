@@ -65,10 +65,9 @@ import AVKit
         let videoPlayer = VideoPlayer(player: player)
         videoPlayer.delegate = self
         
-        if let urls = self.settings.getURLs() {
-            videoPlayer.setQueue(urls)
-        }
         self.videoPlayer = videoPlayer
+        
+        self.reloadAndPlay()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.settingsDidClose(_:)), name: NSWindowDidResignKeyNotification, object: nil)
     }
@@ -108,10 +107,7 @@ import AVKit
             return
         }
         
-        if let urls = self.settings.getURLs() {
-            self.videoPlayer?.setQueue(urls)
-            self.videoPlayer?.volume = (self.settings.muteVideos ? 0 : 0.5)
-        }
+        self.reloadAndPlay()
     }
     
     // MARK: - Video Player delegate
@@ -124,4 +120,12 @@ import AVKit
         self.loadingIndicator?.stopAnimation(nil)
     }
 
+    // MARK: - Private methods
+    
+    private func reloadAndPlay() {
+        if let urls = self.settings.getURLs() {
+            self.videoPlayer?.setQueue(urls)
+            self.videoPlayer?.volume = (self.settings.muteVideos ? 0 : 0.5)
+        }
+    }
 }
