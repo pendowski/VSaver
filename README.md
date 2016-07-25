@@ -1,8 +1,8 @@
 # VSaver
 
-VSaver is an OS X (macOS) screen saver which allows you to play YouTube videos as your screen savers.
+VSaver is an OS X (macOS) screen saver which allows you to play YouTube and Vimeo videos.
 
-It was inspired by [Todd Thomas' tweet](https://twitter.com/toddthomas/status/756352957738725376) and hacked together in few hours.
+It was inspired by [Todd Thomas' tweet](https://twitter.com/toddthomas/status/756352957738725376) and I hacked it together in few hours.
 
 ![Screen Saver settings](https://cloud.githubusercontent.com/assets/2470861/17103626/8fa827c8-527f-11e6-9fc9-09c45e144c83.png)
 
