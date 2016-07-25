@@ -19,6 +19,21 @@
 		AA25697B1D46374700E3BBC5 /* VSaverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2569791D46374700E3BBC5 /* VSaverSettings.swift */; };
 		AA25697F1D466B3200E3BBC5 /* VimeoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25697E1D466B3200E3BBC5 /* VimeoProvider.swift */; };
 		AA2569801D466B3500E3BBC5 /* VimeoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25697E1D466B3200E3BBC5 /* VimeoProvider.swift */; };
+		AA2569881D467C6B00E3BBC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2569871D467C6B00E3BBC5 /* AppDelegate.swift */; };
+		AA25698A1D467C6B00E3BBC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA2569891D467C6B00E3BBC5 /* Assets.xcassets */; };
+		AA25698D1D467C6B00E3BBC5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA25698B1D467C6B00E3BBC5 /* MainMenu.xib */; };
+		AA2569921D467D1800E3BBC5 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852881D44E48B0044EC3A /* Provider.swift */; };
+		AA2569931D467D1800E3BBC5 /* VSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852891D44E48B0044EC3A /* VSaverView.swift */; };
+		AA2569941D467D1800E3BBC5 /* VSaverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2569791D46374700E3BBC5 /* VSaverSettings.swift */; };
+		AA2569951D467D1800E3BBC5 /* VSaverSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25696D1D4620FB00E3BBC5 /* VSaverSettingsController.swift */; };
+		AA2569961D467D1800E3BBC5 /* VSaverSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA25696E1D4620FB00E3BBC5 /* VSaverSettingsController.xib */; };
+		AA2569971D467D1800E3BBC5 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852961D44E5880044EC3A /* VideoPlayer.swift */; };
+		AA2569981D467D2300E3BBC5 /* VimeoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25697E1D466B3200E3BBC5 /* VimeoProvider.swift */; };
+		AA2569991D467D2300E3BBC5 /* YouTubeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */; };
+		AA25699A1D467D2300E3BBC5 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA25696A1D460F9300E3BBC5 /* youtube.js */; };
+		AA25699C1D4683EB00E3BBC5 /* SaverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25699B1D4683EB00E3BBC5 /* SaverWindow.swift */; };
+		AA25699F1D46866B00E3BBC5 /* SaverWallpaperSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25699D1D46866B00E3BBC5 /* SaverWallpaperSettings.swift */; };
+		AA2569A01D46866B00E3BBC5 /* SaverWallpaperSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA25699E1D46866B00E3BBC5 /* SaverWallpaperSettings.xib */; };
 		AA640A761D427DD30038E9EC /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A751D427DD30038E9EC /* AVKit.framework */; };
 		AA640A781D427DD60038E9EC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A771D427DD60038E9EC /* AVFoundation.framework */; };
 		AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852881D44E48B0044EC3A /* Provider.swift */; };
@@ -39,6 +54,14 @@
 		AA2569741D46301800E3BBC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = VSaverTester/Base.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		AA2569791D46374700E3BBC5 /* VSaverSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VSaverSettings.swift; path = VSaver/VSaverSettings.swift; sourceTree = SOURCE_ROOT; };
 		AA25697E1D466B3200E3BBC5 /* VimeoProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VimeoProvider.swift; path = VSaver/VimeoProvider.swift; sourceTree = SOURCE_ROOT; };
+		AA2569851D467C6B00E3BBC5 /* VSaverWallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSaverWallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2569871D467C6B00E3BBC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AA2569891D467C6B00E3BBC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA25698C1D467C6B00E3BBC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		AA25698E1D467C6B00E3BBC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA25699B1D4683EB00E3BBC5 /* SaverWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaverWindow.swift; sourceTree = "<group>"; };
+		AA25699D1D46866B00E3BBC5 /* SaverWallpaperSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaverWallpaperSettings.swift; sourceTree = "<group>"; };
+		AA25699E1D46866B00E3BBC5 /* SaverWallpaperSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaverWallpaperSettings.xib; sourceTree = "<group>"; };
 		AA640A751D427DD30038E9EC /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		AA640A771D427DD60038E9EC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AAE668291CAE7ADD00141027 /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +78,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AA2569821D467C6B00E3BBC5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAE668251CAE7ADD00141027 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,6 +121,20 @@
 			name = Vimeo;
 			sourceTree = "<group>";
 		};
+		AA2569861D467C6B00E3BBC5 /* VSaverWallpaper */ = {
+			isa = PBXGroup;
+			children = (
+				AA2569871D467C6B00E3BBC5 /* AppDelegate.swift */,
+				AA25699B1D4683EB00E3BBC5 /* SaverWindow.swift */,
+				AA2569891D467C6B00E3BBC5 /* Assets.xcassets */,
+				AA25698B1D467C6B00E3BBC5 /* MainMenu.xib */,
+				AA25699D1D46866B00E3BBC5 /* SaverWallpaperSettings.swift */,
+				AA25699E1D46866B00E3BBC5 /* SaverWallpaperSettings.xib */,
+				AA25698E1D467C6B00E3BBC5 /* Info.plist */,
+			);
+			path = VSaverWallpaper;
+			sourceTree = "<group>";
+		};
 		AAE6681F1CAE7ADD00141027 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +142,7 @@
 				AA640A751D427DD30038E9EC /* AVKit.framework */,
 				AAE6682B1CAE7ADD00141027 /* VSaver */,
 				AAE668511CAE85D000141027 /* VSaverTester */,
+				AA2569861D467C6B00E3BBC5 /* VSaverWallpaper */,
 				AAE6682A1CAE7ADD00141027 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,6 +152,7 @@
 			children = (
 				AAE668291CAE7ADD00141027 /* VSaver.saver */,
 				AAE668501CAE85D000141027 /* VSaver.app */,
+				AA2569851D467C6B00E3BBC5 /* VSaverWallpaper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,6 +200,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		AA2569841D467C6B00E3BBC5 /* VSaverWallpaper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA2569911D467C6B00E3BBC5 /* Build configuration list for PBXNativeTarget "VSaverWallpaper" */;
+			buildPhases = (
+				AA2569811D467C6B00E3BBC5 /* Sources */,
+				AA2569821D467C6B00E3BBC5 /* Frameworks */,
+				AA2569831D467C6B00E3BBC5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VSaverWallpaper;
+			productName = VSaverWallpaper;
+			productReference = AA2569851D467C6B00E3BBC5 /* VSaverWallpaper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		AAE668281CAE7ADD00141027 /* VSaver */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAE668331CAE7ADD00141027 /* Build configuration list for PBXNativeTarget "VSaver" */;
@@ -196,10 +259,13 @@
 		AAE668201CAE7ADD00141027 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Jaroslaw Pendowski";
 				TargetAttributes = {
+					AA2569841D467C6B00E3BBC5 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					AAE668281CAE7ADD00141027 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -223,11 +289,24 @@
 			targets = (
 				AAE668281CAE7ADD00141027 /* VSaver */,
 				AAE6684F1CAE85D000141027 /* VSaverTester */,
+				AA2569841D467C6B00E3BBC5 /* VSaverWallpaper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AA2569831D467C6B00E3BBC5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA2569961D467D1800E3BBC5 /* VSaverSettingsController.xib in Resources */,
+				AA25698A1D467C6B00E3BBC5 /* Assets.xcassets in Resources */,
+				AA2569A01D46866B00E3BBC5 /* SaverWallpaperSettings.xib in Resources */,
+				AA25699A1D467D2300E3BBC5 /* youtube.js in Resources */,
+				AA25698D1D467C6B00E3BBC5 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAE668271CAE7ADD00141027 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -267,6 +346,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AA2569811D467C6B00E3BBC5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA2569991D467D2300E3BBC5 /* YouTubeProvider.swift in Sources */,
+				AA2569951D467D1800E3BBC5 /* VSaverSettingsController.swift in Sources */,
+				AA2569931D467D1800E3BBC5 /* VSaverView.swift in Sources */,
+				AA2569981D467D2300E3BBC5 /* VimeoProvider.swift in Sources */,
+				AA2569971D467D1800E3BBC5 /* VideoPlayer.swift in Sources */,
+				AA2569921D467D1800E3BBC5 /* Provider.swift in Sources */,
+				AA25699C1D4683EB00E3BBC5 /* SaverWindow.swift in Sources */,
+				AA2569881D467C6B00E3BBC5 /* AppDelegate.swift in Sources */,
+				AA2569941D467D1800E3BBC5 /* VSaverSettings.swift in Sources */,
+				AA25699F1D46866B00E3BBC5 /* SaverWallpaperSettings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAE668241CAE7ADD00141027 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,9 +403,44 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
+		AA25698B1D467C6B00E3BBC5 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA25698C1D467C6B00E3BBC5 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AA25698F1D467C6B00E3BBC5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = VSaverWallpaper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA2569901D467C6B00E3BBC5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = VSaverWallpaper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		AAE668311CAE7ADD00141027 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -448,6 +579,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AA2569911D467C6B00E3BBC5 /* Build configuration list for PBXNativeTarget "VSaverWallpaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA25698F1D467C6B00E3BBC5 /* Debug */,
+				AA2569901D467C6B00E3BBC5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		AAE668231CAE7ADD00141027 /* Build configuration list for PBXProject "VSaver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
