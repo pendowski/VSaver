@@ -28,6 +28,7 @@ final class VideoPlayer {
         self.providers = [ YouTubeProvider() ]
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.videoDidEnd(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.videoDidFail(_:)), name: AVPlayerItemFailedToPlayToEndTimeNotification, object: nil)
         
     }
     
@@ -46,16 +47,17 @@ final class VideoPlayer {
             return
         }
         
-        var index: Int = self.urlIndex
+        var index = self.urlIndex
         let total = self.urls.count
+        let random = Int(arc4random())
         
         switch mode {
         case .Loop:
             if index < 0 {
-                index = random() % total
+                index = random % total
             }
         case .Random:
-            index = random() % total
+            index = random % total
         case .Sequence:
             index = (index + 1) % total
         }
@@ -89,6 +91,12 @@ final class VideoPlayer {
     }
     
     @objc func videoDidEnd(notification: NSNotification) {
+        if let item = notification.object as? AVPlayerItem where self.player.currentItem == item {
+            self.playNext()
+        }
+    }
+    
+    @objc func videoDidFail(notification: NSNotification) {
         if let item = notification.object as? AVPlayerItem where self.player.currentItem == item {
             self.playNext()
         }

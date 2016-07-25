@@ -7,10 +7,27 @@
 //
 
 import Foundation
+import WebKit
 
+final class YouTubeProvider: NSObject, Provider, WebFrameLoadDelegate {
+    private let webView: WebView
+    private var script: String? = nil
+    
+    private var loadingUrl: NSURL?
+    private var completion: ((NSURL?) -> Void)?
+    
+    override init() {
+        self.webView = WebView()
+        
+        let bundle = NSBundle(forClass: YouTubeProvider.self)
+        if let path = bundle.pathForResource("youtube", ofType: "js"), script = try? String(contentsOfFile: path) {
+            self.script = script
+        }
 
-final class YouTubeProvider: Provider {
-    private let compatibleItags = ["95", "299", "266", "137", "22", "136", "135", "134", "18", "133", "160"]
+        super.init()
+        
+        self.webView.frameLoadDelegate = self
+    }
 
     func isValidURL(url: NSURL) -> Bool {
         guard let host = url.host else {
@@ -21,63 +38,13 @@ final class YouTubeProvider: Provider {
     }
     
     func getVideoURL(url: NSURL, completion: (url: NSURL?) -> Void) {
-        let failed = { completion(url: nil) }
         
-        guard let id = self.idFromURL(url), videoInfoURL = NSURL(string: "http://www.youtube.com/get_video_info?video_id=\(id)")  else {
-            return failed()
-        }
+        self.webView.mainFrame.stopLoading()
         
-        let task = NSURLSession.sharedSession().dataTaskWithURL(videoInfoURL) { (data, response, error) in
-            
-            guard let data = data, string = String(data: data, encoding: NSUTF8StringEncoding)?.stringByRemovingPercentEncoding else {
-                return failed()
-            }
-            
-            var urls: [String : String] = [ : ]
-            
-            var itag: String?
-            var url: String?
-            
-            string.componentsSeparatedByString("&").forEach({ line in
-                let components = line.componentsSeparatedByString("=")
-                
-                let key = components[0]
-                if key != "itag" && key != "url" {
-                    return
-                }
-                
-                guard let value = components[1].stringByRemovingPercentEncoding else {
-                    return
-                }
-                
-                if key == "itag" {
-                    itag = value
-                }
-                if key == "url" {
-                    url = value
-                }
-                
-                if let tag = itag, videoUrl = url {
-                    urls[tag] = videoUrl
-                    
-                    itag = nil
-                    url = nil
-                }
-                
-            })
-            
-            guard let videoUrl = self.compatibleItags.flatMap({
-                return urls[$0]
-            }).first else {
-                return failed()
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                completion(url: NSURL(string: videoUrl))
-            })
-        }
+        self.completion = completion
+        self.loadingUrl = url
+        self.webView.mainFrame.loadRequest(NSURLRequest(URL: url))
         
-        task.resume()
     }
 
     private func idFromURL(url: NSURL) -> String? {
@@ -90,4 +57,30 @@ final class YouTubeProvider: Provider {
         return url.path
     }
 
+    // Web Frame Load delegate
+    
+    func webView(sender: WebView!, didFinishLoadForFrame frame: WebFrame!) {
+        if frame == sender.mainFrame && self.loadingUrl != nil {
+            guard let script = self.script else {
+                self.completion?(nil)
+                return
+            }
+            
+            let value = frame.javaScriptContext.evaluateScript(script)
+            guard value.isString, let url = NSURL(string: value.toString()) else {
+                self.completion?(nil)
+                return
+            }
+            
+            self.completion?(url)
+        }
+    }
+    
+    func webView(sender: WebView!, didFailLoadWithError error: NSError!, forFrame frame: WebFrame!) {
+        if self.loadingUrl != nil {
+            self.completion?(nil)
+        }
+        
+        self.loadingUrl = nil
+    }
 }
