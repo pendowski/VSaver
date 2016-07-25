@@ -51,15 +51,17 @@ class VSaverSettingsController: NSWindowController, NSWindowDelegate, NSTableVie
         }
     }
     
-    // MARK: - Actions
-    
-    @IBAction func closeWindow(sender: NSButton) {
-        
+    func windowDidResignKey(notification: NSNotification) {
         // force commiting changes if some row is in the middle of editing
         self.tableView.editColumn(-1, row: -1, withEvent: nil, select: false)
         
         self.settings?.urls = self.urls
         self.settings?.muteVideos = (self.muteCheckbox.state == NSOnState)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func closeWindow(sender: NSButton) {
         
         if let window = self.window {
             NSApp.mainWindow?.endSheet(window)
