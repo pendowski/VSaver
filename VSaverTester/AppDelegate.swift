@@ -7,12 +7,15 @@
 //
 
 import Cocoa
+import ScreenSaver
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     lazy var screenSaverView = VSaverView(frame: NSZeroRect, isPreview: false)
+    var settingsController: VSaverSettings?
+    var userDefaults = ScreenSaverDefaults(forModuleWithName: "com.pendowski.VSaver")
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         if let screenSaverView = screenSaverView,
@@ -27,5 +30,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(aNotification: NSNotification) {
     }
 
-
+    @IBAction func openPreferences(sender: NSMenuItem) {
+        if let settingsWindow = self.screenSaverView?.configureSheet() {
+            self.window.beginSheet(settingsWindow, completionHandler: nil)
+        }
+    }
 }

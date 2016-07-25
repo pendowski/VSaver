@@ -16,9 +16,15 @@ import AVKit
 
     private var videoPlayer: VideoPlayer?
     private var loadingIndicator: NSProgressIndicator?
+    private let defaults = ScreenSaverDefaults(forModuleWithName: "com.pendowski.VSaver")
+    private var settingsController: NSWindowController?
 
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
+        
+        let settingsController = VSaverSettings(windowNibName: "VSaverSettings")
+        settingsController.userDefaults = self.defaults
+        self.settingsController = settingsController
 
         self.wantsLayer = true
 
@@ -58,10 +64,12 @@ import AVKit
         let videoPlayer = VideoPlayer(player: player)
         videoPlayer.delegate = self
         
-        let urls = ["https://www.youtube.com/watch?v=5NgZr8-lh8s", "https://www.youtube.com/watch?v=0-7F_fqTT-s"].flatMap { NSURL(string: $0) }
-        
-        videoPlayer.setQueue(urls)
+        if let urls = self.defaults?.stringArrayForKey("urls")?.flatMap({ NSURL(string: $0) }) {
+            videoPlayer.setQueue(urls)
+        }
         self.videoPlayer = videoPlayer
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.settingsDidClose(_:)), name: NSWindowDidResignKeyNotification, object: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -85,14 +93,26 @@ import AVKit
     }
 
     override func hasConfigureSheet() -> Bool {
-        return false
+        return self.settingsController != nil
     }
 
     override func configureSheet() -> NSWindow? {
-        return nil
+        return self.settingsController?.window
     }
     
-    // Video Player delegate
+    // MARK: - Notificatons
+    
+    @objc func settingsDidClose(notification: NSNotification) {
+        guard let notificationWindow = notification.object as? NSWindow where notificationWindow == self.settingsController?.window else {
+            return
+        }
+        
+        if let urls = self.defaults?.stringArrayForKey("urls")?.flatMap({ NSURL(string: $0) }) {
+            self.videoPlayer?.setQueue(urls)
+        }
+    }
+    
+    // MARK: - Video Player delegate
     
     func videoPlayer(player: VideoPlayer, willLoadVideo: NSURL) {
         self.loadingIndicator?.startAnimation(nil)
