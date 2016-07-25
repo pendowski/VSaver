@@ -12,9 +12,10 @@ import AVFoundation
 import AVKit
 
 
-class VSaverView: ScreenSaverView {
+@objc (VSaverView) class VSaverView: ScreenSaverView, VideoPlayerDelegate {
 
-    var videoPlayer: VideoPlayer?
+    private var videoPlayer: VideoPlayer?
+    private var loadingIndicator: NSProgressIndicator?
 
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
@@ -35,7 +36,27 @@ class VSaverView: ScreenSaverView {
         
         layer.addSublayer(playerLayer)
         
+        let activityIndicator = NSProgressIndicator(frame: NSRect(x: 0, y: 0, width: 64, height: 64))
+        activityIndicator.displayedWhenStopped = false
+        activityIndicator.style = .SpinningStyle
+        activityIndicator.controlSize = .RegularControlSize
+        activityIndicator.sizeToFit()
+        
+        if let brightFilter = CIFilter(name: "CIColorControls") {
+            brightFilter.setDefaults()
+            brightFilter.setValue(1, forKey: "inputBrightness")
+            
+            activityIndicator.contentFilters = [ brightFilter ]
+        }
+        activityIndicator.frame.origin.x = frame.size.width / 2 - activityIndicator.frame.size.width / 2
+        activityIndicator.frame.origin.y = frame.size.height / 2 - activityIndicator.frame.size.height / 2
+        activityIndicator.autoresizingMask = [ .ViewMaxXMargin, .ViewMaxYMargin, .ViewMinXMargin, .ViewMinYMargin ]
+        
+        self.addSubview(activityIndicator)
+        self.loadingIndicator = activityIndicator
+        
         let videoPlayer = VideoPlayer(player: player)
+        videoPlayer.delegate = self
         
         let urls = ["https://www.youtube.com/watch?v=5NgZr8-lh8s", "https://www.youtube.com/watch?v=0-7F_fqTT-s"].flatMap { NSURL(string: $0) }
         
@@ -69,6 +90,16 @@ class VSaverView: ScreenSaverView {
 
     override func configureSheet() -> NSWindow? {
         return nil
+    }
+    
+    // Video Player delegate
+    
+    func videoPlayer(player: VideoPlayer, willLoadVideo: NSURL) {
+        self.loadingIndicator?.startAnimation(nil)
+    }
+    
+    func videoPlayer(player: VideoPlayer, didLoadVideo: NSURL?) {
+        self.loadingIndicator?.stopAnimation(nil)
     }
 
 }

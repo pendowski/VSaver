@@ -15,6 +15,11 @@ enum PlayerMode {
     case Sequence
 }
 
+protocol VideoPlayerDelegate: class {
+    func videoPlayer(player: VideoPlayer, willLoadVideo: NSURL)
+    func videoPlayer(player: VideoPlayer, didLoadVideo: NSURL?)
+}
+
 final class VideoPlayer {
     private let player: AVPlayer
     private let providers: [Provider]
@@ -22,6 +27,7 @@ final class VideoPlayer {
     private var urlIndex: Int = -1
     
     var mode: PlayerMode = .Random
+    weak var delegate: VideoPlayerDelegate?
     
     init(player: AVPlayer) {
         self.player = player
@@ -72,21 +78,24 @@ final class VideoPlayer {
         
         self.urlIndex = index
         
-        provider.getVideoURL(url) { videoUrl in
+        self.delegate?.videoPlayer(self, willLoadVideo: url)
+        
+        provider.getVideoURL(url) { [weak self] videoUrl in
+            
+            if let `self` = self {
+                self.delegate?.videoPlayer(self, didLoadVideo: videoUrl)
+            }
             
             guard let videoUrl = videoUrl else {
                 return
             }
             
-            print("Playing: ", videoUrl)
             let playerItem = AVPlayerItem(URL: videoUrl)
-            self.player.replaceCurrentItemWithPlayerItem(playerItem)
-            self.player.volume = 0
-            self.player.actionAtItemEnd = .None
+            self?.player.replaceCurrentItemWithPlayerItem(playerItem)
+            self?.player.volume = 0
+            self?.player.actionAtItemEnd = .None
             
-            dispatch_async(dispatch_get_main_queue(), { 
-                self.player.play()
-            })
+            self?.player.play()
         }
     }
     
