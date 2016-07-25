@@ -10,7 +10,9 @@ import Cocoa
 
 class SaverWallpaperSettings: NSViewController {
     
-    var beginSheet: ((window: NSWindow) -> Void)?
+    var showSettingsHandler: ((window: NSWindow) -> Void)?
+    
+    var reloadHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +21,16 @@ class SaverWallpaperSettings: NSViewController {
     
     // MARK: - Action
     
+    @IBAction func reload(sender: NSButton) {
+        self.reloadHandler?()
+    }
+    
     @IBAction func openSettings(sender: NSButton) {
         guard let window = self.view.window else {
             return
         }
         
-        self.beginSheet?(window: window)
+        self.showSettingsHandler?(window: window)
     }
     
     @IBAction func close(sender: NSButton) {

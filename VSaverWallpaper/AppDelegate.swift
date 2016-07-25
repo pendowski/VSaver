@@ -22,7 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let popover = NSPopover()
         let settingsController = SaverWallpaperSettings(nibName: "SaverWallpaperSettings", bundle: nil)
-        settingsController?.beginSheet = self.showSettings
+        settingsController?.showSettingsHandler = self.showSettings
+        settingsController?.reloadHandler = self.recreateWindows
         popover.contentViewController = settingsController
         self.popover = popover
         
@@ -64,7 +65,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func setupStatusBar() {
         let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
-        statusItem.title = "Hello"
+        let icon = NSImage(named: "icon_16x16")
+        icon?.template = true
+        statusItem.button?.image = icon
         statusItem.highlightMode = true
         statusItem.target = self
         statusItem.action = #selector(self.toggleWindow(_:))

@@ -63,8 +63,9 @@ class VSaverSettingsController: NSWindowController, NSWindowDelegate, NSTableVie
     
     @IBAction func closeWindow(sender: NSButton) {
         
-        if let window = self.window {
-            NSApp.mainWindow?.endSheet(window)
+        if let window = self.window,
+            parentWindow = NSApp.windows.filter({ $0.sheets.contains(window) }).first {
+            parentWindow.endSheet(window)
         }
     }
     
