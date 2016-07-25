@@ -39,6 +39,7 @@ import AVKit
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.autoresizingMask = [ .LayerWidthSizable, .LayerHeightSizable ]
         playerLayer.frame = self.bounds
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         
         layer.addSublayer(playerLayer)
         
