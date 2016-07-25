@@ -5,8 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="VSaverSettings" customModule="VSaver" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="VSaverSettingsController" customModule="VSaver" customModuleProvider="target">
             <connections>
+                <outlet property="muteCheckbox" destination="ucI-Ww-W5i" id="7UP-54-O8y"/>
                 <outlet property="tableView" destination="6gn-aP-hoq" id="4sE-fT-GaE"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -35,17 +36,17 @@
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcd-j1-S8U">
                         <rect key="frame" x="20" y="74" width="440" height="176"/>
                         <clipView key="contentView" ambiguous="YES" id="gik-L8-fak">
-                            <rect key="frame" x="1" y="23" width="438" height="152"/>
+                            <rect key="frame" x="1" y="1" width="438" height="174"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="rwQ-bE-Apf" id="6gn-aP-hoq">
-                                    <rect key="frame" x="0.0" y="0.0" width="438" height="152"/>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" id="6gn-aP-hoq">
+                                    <rect key="frame" x="0.0" y="0.0" width="438" height="174"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="333" minWidth="40" maxWidth="1000" id="llK-Nk-J72">
+                                        <tableColumn width="434" minWidth="40" maxWidth="1000" id="llK-Nk-J72">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -67,18 +68,24 @@
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="MgP-5h-VMy">
-                            <rect key="frame" x="1" y="119" width="223" height="15"/>
+                            <rect key="frame" x="1" y="159" width="438" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="JEr-Uc-Ejm">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="JEr-Uc-Ejm">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <tableHeaderView key="headerView" id="rwQ-bE-Apf">
-                            <rect key="frame" x="0.0" y="0.0" width="438" height="23"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </tableHeaderView>
                     </scrollView>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h4W-1X-Au2">
+                        <rect key="frame" x="413" y="54" width="24" height="21"/>
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="myd-6K-5M2">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addItem:" target="-2" id="UM8-kX-GVN"/>
+                        </connections>
+                    </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TNQ-T1-rYk">
                         <rect key="frame" x="436" y="54" width="24" height="21"/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NS7-H2-xXb">
@@ -89,15 +96,12 @@
                             <action selector="removeItem:" target="-2" id="JpN-6E-3aK"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h4W-1X-Au2">
-                        <rect key="frame" x="413" y="54" width="24" height="21"/>
-                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="myd-6K-5M2">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ucI-Ww-W5i">
+                        <rect key="frame" x="18" y="55" width="253" height="18"/>
+                        <buttonCell key="cell" type="check" title="Mute videos" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Tz2-2R-3MW">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
-                        <connections>
-                            <action selector="addItem:" target="-2" id="UM8-kX-GVN"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>

@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		AA25696B1D460F9300E3BBC5 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA25696A1D460F9300E3BBC5 /* youtube.js */; };
 		AA25696C1D460F9300E3BBC5 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA25696A1D460F9300E3BBC5 /* youtube.js */; };
-		AA25696F1D4620FB00E3BBC5 /* VSaverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25696D1D4620FB00E3BBC5 /* VSaverSettings.swift */; };
-		AA2569701D4620FB00E3BBC5 /* VSaverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25696D1D4620FB00E3BBC5 /* VSaverSettings.swift */; };
-		AA2569711D4620FB00E3BBC5 /* VSaverSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA25696E1D4620FB00E3BBC5 /* VSaverSettings.xib */; };
-		AA2569721D4620FB00E3BBC5 /* VSaverSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA25696E1D4620FB00E3BBC5 /* VSaverSettings.xib */; };
+		AA25696F1D4620FB00E3BBC5 /* VSaverSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25696D1D4620FB00E3BBC5 /* VSaverSettingsController.swift */; };
+		AA2569701D4620FB00E3BBC5 /* VSaverSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25696D1D4620FB00E3BBC5 /* VSaverSettingsController.swift */; };
+		AA2569711D4620FB00E3BBC5 /* VSaverSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA25696E1D4620FB00E3BBC5 /* VSaverSettingsController.xib */; };
+		AA2569721D4620FB00E3BBC5 /* VSaverSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA25696E1D4620FB00E3BBC5 /* VSaverSettingsController.xib */; };
 		AA2569751D46301800E3BBC5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA2569731D46301800E3BBC5 /* MainMenu.xib */; };
 		AA2569761D46301800E3BBC5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA2569731D46301800E3BBC5 /* MainMenu.xib */; };
+		AA25697A1D46374700E3BBC5 /* VSaverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2569791D46374700E3BBC5 /* VSaverSettings.swift */; };
+		AA25697B1D46374700E3BBC5 /* VSaverSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2569791D46374700E3BBC5 /* VSaverSettings.swift */; };
 		AA640A761D427DD30038E9EC /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A751D427DD30038E9EC /* AVKit.framework */; };
 		AA640A781D427DD60038E9EC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A771D427DD60038E9EC /* AVFoundation.framework */; };
 		AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852881D44E48B0044EC3A /* Provider.swift */; };
@@ -30,9 +32,10 @@
 
 /* Begin PBXFileReference section */
 		AA25696A1D460F9300E3BBC5 /* youtube.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = youtube.js; path = VSaver/youtube.js; sourceTree = SOURCE_ROOT; };
-		AA25696D1D4620FB00E3BBC5 /* VSaverSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VSaverSettings.swift; path = VSaver/VSaverSettings.swift; sourceTree = SOURCE_ROOT; };
-		AA25696E1D4620FB00E3BBC5 /* VSaverSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VSaverSettings.xib; path = VSaver/VSaverSettings.xib; sourceTree = SOURCE_ROOT; };
+		AA25696D1D4620FB00E3BBC5 /* VSaverSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VSaverSettingsController.swift; path = VSaver/VSaverSettingsController.swift; sourceTree = SOURCE_ROOT; };
+		AA25696E1D4620FB00E3BBC5 /* VSaverSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VSaverSettingsController.xib; path = VSaver/VSaverSettingsController.xib; sourceTree = SOURCE_ROOT; };
 		AA2569741D46301800E3BBC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = VSaverTester/Base.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
+		AA2569791D46374700E3BBC5 /* VSaverSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VSaverSettings.swift; path = VSaver/VSaverSettings.swift; sourceTree = SOURCE_ROOT; };
 		AA640A751D427DD30038E9EC /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		AA640A771D427DD60038E9EC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AAE668291CAE7ADD00141027 /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,8 +96,9 @@
 			children = (
 				AAF852881D44E48B0044EC3A /* Provider.swift */,
 				AAF852891D44E48B0044EC3A /* VSaverView.swift */,
-				AA25696D1D4620FB00E3BBC5 /* VSaverSettings.swift */,
-				AA25696E1D4620FB00E3BBC5 /* VSaverSettings.xib */,
+				AA2569791D46374700E3BBC5 /* VSaverSettings.swift */,
+				AA25696D1D4620FB00E3BBC5 /* VSaverSettingsController.swift */,
+				AA25696E1D4620FB00E3BBC5 /* VSaverSettingsController.xib */,
 				AAF852961D44E5880044EC3A /* VideoPlayer.swift */,
 				AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */,
 				AAE668301CAE7ADD00141027 /* Info.plist */,
@@ -209,7 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA25696B1D460F9300E3BBC5 /* youtube.js in Resources */,
-				AA2569711D4620FB00E3BBC5 /* VSaverSettings.xib in Resources */,
+				AA2569711D4620FB00E3BBC5 /* VSaverSettingsController.xib in Resources */,
 				AA2569751D46301800E3BBC5 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,7 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA2569721D4620FB00E3BBC5 /* VSaverSettings.xib in Resources */,
+				AA2569721D4620FB00E3BBC5 /* VSaverSettingsController.xib in Resources */,
 				AA25696C1D460F9300E3BBC5 /* youtube.js in Resources */,
 				AA2569761D46301800E3BBC5 /* MainMenu.xib in Resources */,
 			);
@@ -248,10 +252,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAF852971D44E5880044EC3A /* VideoPlayer.swift in Sources */,
-				AA25696F1D4620FB00E3BBC5 /* VSaverSettings.swift in Sources */,
+				AA25696F1D4620FB00E3BBC5 /* VSaverSettingsController.swift in Sources */,
 				AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */,
 				AAF8528D1D44E48B0044EC3A /* YouTubeProvider.swift in Sources */,
 				AAF8528C1D44E48B0044EC3A /* VSaverView.swift in Sources */,
+				AA25697A1D46374700E3BBC5 /* VSaverSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +266,11 @@
 			files = (
 				AAF852911D44E4D50044EC3A /* Provider.swift in Sources */,
 				AAF852981D44E9170044EC3A /* VideoPlayer.swift in Sources */,
+				AA25697B1D46374700E3BBC5 /* VSaverSettings.swift in Sources */,
 				AAF852921D44E4D50044EC3A /* VSaverView.swift in Sources */,
 				AAF852931D44E4D50044EC3A /* YouTubeProvider.swift in Sources */,
 				AAF852901D44E4C90044EC3A /* AppDelegate.swift in Sources */,
-				AA2569701D4620FB00E3BBC5 /* VSaverSettings.swift in Sources */,
+				AA2569701D4620FB00E3BBC5 /* VSaverSettingsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

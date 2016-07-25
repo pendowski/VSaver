@@ -16,14 +16,14 @@ import AVKit
 
     private var videoPlayer: VideoPlayer?
     private var loadingIndicator: NSProgressIndicator?
-    private let defaults = ScreenSaverDefaults(forModuleWithName: "com.pendowski.VSaver")
+    private let settings = VSaverSettings()
     private var settingsController: NSWindowController?
 
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
         
-        let settingsController = VSaverSettings(windowNibName: "VSaverSettings")
-        settingsController.userDefaults = self.defaults
+        let settingsController = VSaverSettingsController(windowNibName: "VSaverSettingsController")
+        settingsController.settings = self.settings
         self.settingsController = settingsController
 
         self.wantsLayer = true
@@ -64,7 +64,7 @@ import AVKit
         let videoPlayer = VideoPlayer(player: player)
         videoPlayer.delegate = self
         
-        if let urls = self.defaults?.stringArrayForKey("urls")?.flatMap({ NSURL(string: $0) }) {
+        if let urls = self.settings.getURLs() {
             videoPlayer.setQueue(urls)
         }
         self.videoPlayer = videoPlayer
@@ -107,8 +107,9 @@ import AVKit
             return
         }
         
-        if let urls = self.defaults?.stringArrayForKey("urls")?.flatMap({ NSURL(string: $0) }) {
+        if let urls = self.settings.getURLs() {
             self.videoPlayer?.setQueue(urls)
+            self.videoPlayer?.volume = (self.settings.muteVideos ? 0 : 0.5)
         }
     }
     

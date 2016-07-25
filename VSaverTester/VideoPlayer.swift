@@ -27,6 +27,14 @@ final class VideoPlayer {
     private var urlIndex: Int = -1
     
     var mode: PlayerMode = .Random
+    var volume: Float {
+        get {
+            return self.player.volume
+        }
+        set {
+            self.player.volume = newValue
+        }
+    }
     weak var delegate: VideoPlayerDelegate?
     
     init(player: AVPlayer) {
@@ -92,7 +100,6 @@ final class VideoPlayer {
             
             let playerItem = AVPlayerItem(URL: videoUrl)
             self?.player.replaceCurrentItemWithPlayerItem(playerItem)
-            self?.player.volume = 0
             self?.player.actionAtItemEnd = .None
             
             self?.player.play()
