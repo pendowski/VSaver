@@ -8,12 +8,19 @@ It was inspired by [Todd Thomas' tweet](https://twitter.com/toddthomas/status/75
 
 ## Structure
 
-The project have two targets: 
+The project have three targets: 
 
-* VSaver for the actual screen saver
-* VSaverTester for an application that acts as a standalone test application for the screen saver
+* **VSaver** the actual screen saver
+* **VSaverTester** standalone application for testing the screensaver view
+* **VSaverWallpaper** application which plays videos as a desktop wallpaper
 
-VSaver scheme uses Automator application and shell script to automatically install screen saver from Xcode.
+*VSaver* scheme uses Automator application and shell script to automatically install screen saver from Xcode.
+
+## VSaverWallpaper
+
+The original tweet talked about wallpaper, so after making screen saver (which I see much more often than my actual wallpaper) I managed to make *VSaverWallpaper* which displays videos at the level of wallpaper.
+
+![wallpaper video](https://cloud.githubusercontent.com/assets/2470861/17130381/84304abc-5318-11e6-873d-583e25c9c139.gif)
 
 ## Known issues
 

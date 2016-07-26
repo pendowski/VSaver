@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SaverWallpaperSettings" customModule="VSaverWallpaper" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="61"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HBA-Xf-PBE">
+                    <rect key="frame" x="311" y="13" width="155" height="32"/>
+                    <buttonCell key="cell" type="push" title="Close App" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yAo-Lj-NMj">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="close:" target="-2" id="eHE-OJ-NoC"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jlb-Qy-WU6">
+                    <rect key="frame" x="14" y="13" width="155" height="32"/>
+                    <buttonCell key="cell" type="push" title="Wallpaper Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jj4-Ih-d6P">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="openSettings:" target="-2" id="lEP-Rw-5fp"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wfy-Sb-x9g">
+                    <rect key="frame" x="163" y="13" width="155" height="32"/>
+                    <buttonCell key="cell" type="push" title="Reload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WNE-Jk-xim">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="reload:" target="-2" id="hqb-vb-gXm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="wfy-Sb-x9g" firstAttribute="width" secondItem="jlb-Qy-WU6" secondAttribute="width" id="Hpx-bF-Bdj"/>
+                <constraint firstItem="wfy-Sb-x9g" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="KLP-h6-b5t"/>
+                <constraint firstItem="wfy-Sb-x9g" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="XDN-0x-fZF"/>
+                <constraint firstItem="jlb-Qy-WU6" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="aPB-DR-4kO"/>
+                <constraint firstItem="HBA-Xf-PBE" firstAttribute="width" secondItem="jlb-Qy-WU6" secondAttribute="width" id="avN-I1-uQ6"/>
+                <constraint firstItem="HBA-Xf-PBE" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="eQj-NG-zMk"/>
+                <constraint firstItem="jlb-Qy-WU6" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="jfX-dz-ra8"/>
+                <constraint firstAttribute="trailing" secondItem="HBA-Xf-PBE" secondAttribute="trailing" constant="20" id="oQ2-xt-MO3"/>
+            </constraints>
+            <point key="canvasLocation" x="463" y="282"/>
+        </customView>
+    </objects>
+</document>
