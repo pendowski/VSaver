@@ -34,6 +34,8 @@
 		AA25699C1D4683EB00E3BBC5 /* SaverWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25699B1D4683EB00E3BBC5 /* SaverWindow.swift */; };
 		AA25699F1D46866B00E3BBC5 /* SaverWallpaperSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA25699D1D46866B00E3BBC5 /* SaverWallpaperSettings.swift */; };
 		AA2569A01D46866B00E3BBC5 /* SaverWallpaperSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA25699E1D46866B00E3BBC5 /* SaverWallpaperSettings.xib */; };
+		AA2569A31D47573F00E3BBC5 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2569A11D47573F00E3BBC5 /* thumbnail.png */; };
+		AA2569A41D47573F00E3BBC5 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2569A21D47573F00E3BBC5 /* thumbnail@2x.png */; };
 		AA640A761D427DD30038E9EC /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A751D427DD30038E9EC /* AVKit.framework */; };
 		AA640A781D427DD60038E9EC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A771D427DD60038E9EC /* AVFoundation.framework */; };
 		AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852881D44E48B0044EC3A /* Provider.swift */; };
@@ -62,6 +64,8 @@
 		AA25699B1D4683EB00E3BBC5 /* SaverWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaverWindow.swift; sourceTree = "<group>"; };
 		AA25699D1D46866B00E3BBC5 /* SaverWallpaperSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaverWallpaperSettings.swift; sourceTree = "<group>"; };
 		AA25699E1D46866B00E3BBC5 /* SaverWallpaperSettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaverWallpaperSettings.xib; sourceTree = "<group>"; };
+		AA2569A11D47573F00E3BBC5 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbnail.png; path = VSaver/thumbnail.png; sourceTree = SOURCE_ROOT; };
+		AA2569A21D47573F00E3BBC5 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "thumbnail@2x.png"; path = "VSaver/thumbnail@2x.png"; sourceTree = SOURCE_ROOT; };
 		AA640A751D427DD30038E9EC /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		AA640A771D427DD60038E9EC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AAE668291CAE7ADD00141027 /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +139,15 @@
 			path = VSaverWallpaper;
 			sourceTree = "<group>";
 		};
+		AA2569A51D47598D00E3BBC5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA2569A11D47573F00E3BBC5 /* thumbnail.png */,
+				AA2569A21D47573F00E3BBC5 /* thumbnail@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		AAE6681F1CAE7ADD00141027 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +181,7 @@
 				AAF852961D44E5880044EC3A /* VideoPlayer.swift */,
 				AA25697D1D466B1700E3BBC5 /* Vimeo */,
 				AA25697C1D466B1100E3BBC5 /* YouTube */,
+				AA2569A51D47598D00E3BBC5 /* Resources */,
 				AAE668301CAE7ADD00141027 /* Info.plist */,
 				AAE668381CAE835700141027 /* VSaver-Bridging-Header.h */,
 			);
@@ -311,8 +325,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA2569A31D47573F00E3BBC5 /* thumbnail.png in Resources */,
 				AA25696B1D460F9300E3BBC5 /* youtube.js in Resources */,
 				AA2569711D4620FB00E3BBC5 /* VSaverSettingsController.xib in Resources */,
+				AA2569A41D47573F00E3BBC5 /* thumbnail@2x.png in Resources */,
 				AA2569751D46301800E3BBC5 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,6 +602,7 @@
 				AA2569901D467C6B00E3BBC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AAE668231CAE7ADD00141027 /* Build configuration list for PBXProject "VSaver" */ = {
 			isa = XCConfigurationList;
