@@ -11,6 +11,8 @@ ytplayer.config.args.url_encoded_fmt_stream_map.split(',').forEach(function (ite
                                                                    });
 var valid_itags = ["95", "299", "266", "137", "22", "136", "135", "134", "18", "133", "160"]
 
+console.log(videoUrls)
+
 var url = ""
 for (var i in valid_itags) {
     var itag = valid_itags[i]

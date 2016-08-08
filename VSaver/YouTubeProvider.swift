@@ -66,10 +66,7 @@ final class YouTubeProvider: NSObject, Provider, WebFrameLoadDelegate {
                 return
             }
             
-            let console: @convention(block) (NSString!) -> Void = { message in
-                print(message)
-            }
-            frame.javaScriptContext.setObject(unsafeBitCast(console, AnyObject.self), forKeyedSubscript: "print")
+            JSConsole.installInContext(frame.javaScriptContext)
             
             let value = frame.javaScriptContext.evaluateScript(script)
             guard value.isString, let url = NSURL(string: value.toString()) else {

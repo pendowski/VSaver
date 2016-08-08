@@ -38,6 +38,9 @@
 		AA2569A41D47573F00E3BBC5 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA2569A21D47573F00E3BBC5 /* thumbnail@2x.png */; };
 		AA640A761D427DD30038E9EC /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A751D427DD30038E9EC /* AVKit.framework */; };
 		AA640A781D427DD60038E9EC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA640A771D427DD60038E9EC /* AVFoundation.framework */; };
+		AAF7B2991D58B47A002C86ED /* JSConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7B2981D58B47A002C86ED /* JSConsole.swift */; };
+		AAF7B29A1D58B47A002C86ED /* JSConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7B2981D58B47A002C86ED /* JSConsole.swift */; };
+		AAF7B29B1D58B47A002C86ED /* JSConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF7B2981D58B47A002C86ED /* JSConsole.swift */; };
 		AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852881D44E48B0044EC3A /* Provider.swift */; };
 		AAF8528C1D44E48B0044EC3A /* VSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852891D44E48B0044EC3A /* VSaverView.swift */; };
 		AAF8528D1D44E48B0044EC3A /* YouTubeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */; };
@@ -74,6 +77,7 @@
 		AAE668501CAE85D000141027 /* VSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE668541CAE85D000141027 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = VSaverTester/Assets.xcassets; sourceTree = "<group>"; };
 		AAE668591CAE85D000141027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = VSaverTester/Info.plist; sourceTree = "<group>"; };
+		AAF7B2981D58B47A002C86ED /* JSConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSConsole.swift; sourceTree = SOURCE_ROOT; };
 		AAF852881D44E48B0044EC3A /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Provider.swift; path = VSaver/Provider.swift; sourceTree = SOURCE_ROOT; };
 		AAF852891D44E48B0044EC3A /* VSaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VSaverView.swift; path = VSaver/VSaverView.swift; sourceTree = SOURCE_ROOT; };
 		AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouTubeProvider.swift; path = VSaver/YouTubeProvider.swift; sourceTree = SOURCE_ROOT; };
@@ -179,6 +183,7 @@
 				AA25696D1D4620FB00E3BBC5 /* VSaverSettingsController.swift */,
 				AA25696E1D4620FB00E3BBC5 /* VSaverSettingsController.xib */,
 				AAF852961D44E5880044EC3A /* VideoPlayer.swift */,
+				AAF7B2971D58B46A002C86ED /* Helpers */,
 				AA25697D1D466B1700E3BBC5 /* Vimeo */,
 				AA25697C1D466B1100E3BBC5 /* YouTube */,
 				AA2569A51D47598D00E3BBC5 /* Resources */,
@@ -199,6 +204,14 @@
 			);
 			name = VSaverTester;
 			path = BoardSaverTester;
+			sourceTree = "<group>";
+		};
+		AAF7B2971D58B46A002C86ED /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AAF7B2981D58B47A002C86ED /* JSConsole.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +383,7 @@
 				AA2569991D467D2300E3BBC5 /* YouTubeProvider.swift in Sources */,
 				AA2569951D467D1800E3BBC5 /* VSaverSettingsController.swift in Sources */,
 				AA2569931D467D1800E3BBC5 /* VSaverView.swift in Sources */,
+				AAF7B29B1D58B47A002C86ED /* JSConsole.swift in Sources */,
 				AA2569981D467D2300E3BBC5 /* VimeoProvider.swift in Sources */,
 				AA2569971D467D1800E3BBC5 /* VideoPlayer.swift in Sources */,
 				AA2569921D467D1800E3BBC5 /* Provider.swift in Sources */,
@@ -386,6 +400,7 @@
 			files = (
 				AAF852971D44E5880044EC3A /* VideoPlayer.swift in Sources */,
 				AA25696F1D4620FB00E3BBC5 /* VSaverSettingsController.swift in Sources */,
+				AAF7B2991D58B47A002C86ED /* JSConsole.swift in Sources */,
 				AA25697F1D466B3200E3BBC5 /* VimeoProvider.swift in Sources */,
 				AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */,
 				AAF8528D1D44E48B0044EC3A /* YouTubeProvider.swift in Sources */,
@@ -400,6 +415,7 @@
 			files = (
 				AAF852911D44E4D50044EC3A /* Provider.swift in Sources */,
 				AA2569801D466B3500E3BBC5 /* VimeoProvider.swift in Sources */,
+				AAF7B29A1D58B47A002C86ED /* JSConsole.swift in Sources */,
 				AAF852981D44E9170044EC3A /* VideoPlayer.swift in Sources */,
 				AA25697B1D46374700E3BBC5 /* VSaverSettings.swift in Sources */,
 				AAF852921D44E4D50044EC3A /* VSaverView.swift in Sources */,
