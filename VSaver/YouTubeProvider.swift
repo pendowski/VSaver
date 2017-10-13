@@ -10,17 +10,17 @@ import Foundation
 import WebKit
 
 final class YouTubeProvider: NSObject, Provider, WebFrameLoadDelegate {
-    private let webView: WebView
-    private var script: String? = nil
+    fileprivate let webView: WebView
+    fileprivate var script: String? = nil
     
-    private var loadingUrl: NSURL?
-    private var completion: ((NSURL?) -> Void)?
+    fileprivate var loadingUrl: URL?
+    fileprivate var completion: ((URL?) -> Void)?
     
     override init() {
         self.webView = WebView()
         
-        let bundle = NSBundle(forClass: YouTubeProvider.self)
-        if let path = bundle.pathForResource("youtube", ofType: "js"), script = try? String(contentsOfFile: path) {
+        let bundle = Bundle(for: YouTubeProvider.self)
+        if let path = bundle.path(forResource: "youtube", ofType: "js"), let script = try? String(contentsOfFile: path) {
             self.script = script
         }
 
@@ -29,26 +29,26 @@ final class YouTubeProvider: NSObject, Provider, WebFrameLoadDelegate {
         self.webView.frameLoadDelegate = self
     }
 
-    func isValidURL(url: NSURL) -> Bool {
+    func isValidURL(_ url: URL) -> Bool {
         guard let host = url.host else {
             return false
         }
 
-        return host.containsString("youtube.com") || host.containsString("youtu.be")
+        return host.contains("youtube.com") || host.contains("youtu.be")
     }
     
-    func getVideoURL(url: NSURL, completion: (url: NSURL?) -> Void) {
+    func getVideoURL(_ url: URL, completion: @escaping (_ url: URL?) -> Void) {
         
         self.webView.mainFrame.stopLoading()
         
         self.completion = completion
         self.loadingUrl = url
-        self.webView.mainFrame.loadRequest(NSURLRequest(URL: url))
+        self.webView.mainFrame.load(URLRequest(url: url))
         
     }
 
-    private func idFromURL(url: NSURL) -> String? {
-        let components = NSURLComponents(string: url.absoluteString)
+    fileprivate func idFromURL(_ url: URL) -> String? {
+        let components = URLComponents(string: url.absoluteString)
 
         if let component = components?.queryItems?.filter({ $0.name == "v" }).first {
             return component.value
@@ -59,7 +59,7 @@ final class YouTubeProvider: NSObject, Provider, WebFrameLoadDelegate {
 
     // Web Frame Load delegate
     
-    func webView(sender: WebView!, didFinishLoadForFrame frame: WebFrame!) {
+    func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
         if frame == sender.mainFrame && self.loadingUrl != nil {
             guard let script = self.script else {
                 self.completion?(nil)
@@ -69,10 +69,10 @@ final class YouTubeProvider: NSObject, Provider, WebFrameLoadDelegate {
             let console: @convention(block) (NSString!) -> Void = { message in
                 print(message)
             }
-            frame.javaScriptContext.setObject(unsafeBitCast(console, AnyObject.self), forKeyedSubscript: "print")
+            frame.javaScriptContext.setObject(unsafeBitCast(console, to: AnyObject.self), forKeyedSubscript: "print" as NSCopying & NSObjectProtocol)
             
             let value = frame.javaScriptContext.evaluateScript(script)
-            guard value.isString, let url = NSURL(string: value.toString()) else {
+            guard (value?.isString)!, let url = URL(string: (value?.toString())!) else {
                 self.completion?(nil)
                 return
             }
@@ -81,7 +81,7 @@ final class YouTubeProvider: NSObject, Provider, WebFrameLoadDelegate {
         }
     }
     
-    func webView(sender: WebView!, didFailLoadWithError error: NSError!, forFrame frame: WebFrame!) {
+    func webView(_ sender: WebView!, didFailLoadWithError error: Error!, for frame: WebFrame!) {
         if self.loadingUrl != nil {
             self.completion?(nil)
         }

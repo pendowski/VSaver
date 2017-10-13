@@ -9,6 +9,6 @@
 import Foundation
 
 protocol Provider {
-    func isValidURL(url: NSURL) -> Bool
-    func getVideoURL(url: NSURL, completion: (url: NSURL?) -> Void)
+    func isValidURL(_ url: URL) -> Bool
+    func getVideoURL(_ url: URL, completion: @escaping (_ url: URL?) -> Void)
 }

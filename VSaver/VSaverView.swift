@@ -12,41 +12,42 @@ import AVFoundation
 import AVKit
 
 
-@objc (VSaverView) class VSaverView: ScreenSaverView, VideoPlayerDelegate {
+@objc (VSaverView)
+class VSaverView: ScreenSaverView, VideoPlayerControllerDelegate {
 
-    private var videoPlayer: VideoPlayer?
-    private var loadingIndicator: NSProgressIndicator?
-    private let settings = VSaverSettings()
-    private var settingsController: NSWindowController?
+    fileprivate var videoController: VideoPlayerController?
+    fileprivate var loadingIndicator: NSProgressIndicator?
+    fileprivate let settings = VSaverSettings()
+    fileprivate var settingsController: NSWindowController?
 
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
         
         let settingsController = VSaverSettingsController(windowNibName: "VSaverSettingsController")
-        settingsController.settings = self.settings
+        settingsController.settings = settings
         self.settingsController = settingsController
 
-        self.wantsLayer = true
+        wantsLayer = true
 
         guard let layer = self.layer else {
             return
         }
 
-        layer.backgroundColor = NSColor.blackColor().CGColor
+        layer.backgroundColor = NSColor.black.cgColor
         layer.frame = self.bounds
 
         let player = AVPlayer()
         let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.autoresizingMask = [ .LayerWidthSizable, .LayerHeightSizable ]
+        playerLayer.autoresizingMask = [ .layerWidthSizable, .layerHeightSizable ]
         playerLayer.frame = self.bounds
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         
         layer.addSublayer(playerLayer)
         
         let activityIndicator = NSProgressIndicator(frame: NSRect(x: 0, y: 0, width: 64, height: 64))
-        activityIndicator.displayedWhenStopped = false
-        activityIndicator.style = .SpinningStyle
-        activityIndicator.controlSize = .RegularControlSize
+        activityIndicator.isDisplayedWhenStopped = false
+        activityIndicator.style = .spinningStyle
+        activityIndicator.controlSize = .regular
         activityIndicator.sizeToFit()
         
         if let brightFilter = CIFilter(name: "CIColorControls") {
@@ -57,19 +58,24 @@ import AVKit
         }
         activityIndicator.frame.origin.x = frame.size.width / 2 - activityIndicator.frame.size.width / 2
         activityIndicator.frame.origin.y = frame.size.height / 2 - activityIndicator.frame.size.height / 2
-        activityIndicator.autoresizingMask = [ .ViewMaxXMargin, .ViewMaxYMargin, .ViewMinXMargin, .ViewMinYMargin ]
+        activityIndicator.autoresizingMask = [ .viewMaxXMargin, .viewMaxYMargin, .viewMinXMargin, .viewMinYMargin ]
         
-        self.addSubview(activityIndicator)
-        self.loadingIndicator = activityIndicator
+        addSubview(activityIndicator)
+        loadingIndicator = activityIndicator
         
-        let videoPlayer = VideoPlayer(player: player)
-        videoPlayer.delegate = self
+        let videoController: VideoPlayerController
+        if settings.sameOnAllScreens {
+            videoController = VideoPlayerController.shared
+        } else {
+            videoController = VideoPlayerController()
+        }
+        videoController.addPlayer(player)
+        videoController.addDelegate(self)
+        self.videoController = videoController
         
-        self.videoPlayer = videoPlayer
+        reloadAndPlay()
         
-        self.reloadAndPlay()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.settingsDidClose(_:)), name: NSWindowDidResignKeyNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidClose(_:)), name: NSNotification.Name.NSWindowDidResignKey, object: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -84,8 +90,8 @@ import AVKit
         super.stopAnimation()
     }
 
-    override func drawRect(rect: NSRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: NSRect) {
+        super.draw(rect)
     }
 
     override func animateOneFrame() {
@@ -93,17 +99,17 @@ import AVKit
     }
 
     override func hasConfigureSheet() -> Bool {
-        return self.settingsController != nil
+        return settingsController != nil
     }
 
     override func configureSheet() -> NSWindow? {
-        return self.settingsController?.window
+        return settingsController?.window
     }
     
     // MARK: - Notificatons
     
-    @objc func settingsDidClose(notification: NSNotification) {
-        guard let notificationWindow = notification.object as? NSWindow where notificationWindow == self.settingsController?.window else {
+    @objc func settingsDidClose(_ notification: Notification) {
+        guard let notificationWindow = notification.object as? NSWindow, notificationWindow == settingsController?.window else {
             return
         }
         
@@ -112,20 +118,25 @@ import AVKit
     
     // MARK: - Video Player delegate
     
-    func videoPlayer(player: VideoPlayer, willLoadVideo: NSURL) {
-        self.loadingIndicator?.startAnimation(nil)
+    func videoPlayerController(_ controller: VideoPlayerController, willLoadVideo: URL) {
+        DispatchQueue.main.async {
+            self.loadingIndicator?.isHidden = false
+            self.loadingIndicator?.startAnimation(nil)
+        }
     }
     
-    func videoPlayer(player: VideoPlayer, didLoadVideo: NSURL?) {
-        self.loadingIndicator?.stopAnimation(nil)
+    func videoPlayerController(_ controller: VideoPlayerController, didLoadVideo: URL?) {
+        DispatchQueue.main.async {
+            self.loadingIndicator?.stopAnimation(nil)
+            self.loadingIndicator?.isHidden = true
+        }
     }
 
     // MARK: - Private methods
     
-    private func reloadAndPlay() {
-        if let urls = self.settings.getURLs() {
-            self.videoPlayer?.setQueue(urls)
-            self.videoPlayer?.volume = (self.settings.muteVideos ? 0 : 0.5)
-        }
+    fileprivate func reloadAndPlay() {
+        guard let urls = settings.getURLs() else { return }
+        videoController?.setQueue(withURLs: urls)
+        videoController?.setVolume(settings.muteVideos ? 0 : 0.5)
     }
 }

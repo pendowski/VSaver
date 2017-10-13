@@ -10,43 +10,40 @@ import Foundation
 
 final class VimeoProvider: Provider {
     
-    func isValidURL(url: NSURL) -> Bool {
-        return url.host?.containsString("vimeo.com") ?? false
+    func isValidURL(_ url: URL) -> Bool {
+        return url.host?.contains("vimeo.com") ?? false
     }
     
-    func getVideoURL(url: NSURL, completion: (url: NSURL?) -> Void) {
+    func getVideoURL(_ url: URL, completion: @escaping (_ url: URL?) -> Void) {
         let failed: () -> Void = {
-            dispatch_async(dispatch_get_main_queue(), { 
-                completion(url: nil)
-            })
-        }
-        let success: (NSURL?) -> Void = { url in
-            dispatch_async(dispatch_get_main_queue(), {
-                completion(url: url)
+            DispatchQueue.main.async(execute: { 
+                completion(nil)
             })
         }
         
-        guard let videoID = url.path?.componentsSeparatedByString("/").last else {
+        let success: (URL?) -> Void = { url in
+            DispatchQueue.main.async(execute: {
+                completion(url)
+            })
+        }
+        
+        guard let videoID = url.path.components(separatedBy: "/").last,
+            case let vimeoJsonUrl = "https://player.vimeo.com/video/\(videoID)/config",
+            let url = URL(string: vimeoJsonUrl) else {
             return failed()
         }
         
-        let vimeoJsonUrl = "https://player.vimeo.com/video/\(videoID)/config"
-        
-        guard let url = NSURL(string: vimeoJsonUrl) else {
-            return failed()
-        }
-        
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             guard let data = data,
-                optJson = try? NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject],
-                json = optJson,
-                request = json["request"] as? [String: AnyObject],
-                files = request["files"] as? [String: AnyObject] else {
+                let optJson = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject],
+                let json = optJson,
+                let request = json["request"] as? [String: AnyObject],
+                let files = request["files"] as? [String: AnyObject] else {
                 return failed()
             }
             
             if let streams = files["progressive"] as? [ [String: AnyObject] ] {
-                let urls = streams.flatMap({ VimeoProgressiveStream.fromJson($0) }).sort({ left, right in
+                let urls = streams.flatMap({ VimeoProgressiveStream.fromJson($0) }).sorted(by: { left, right in
                     left.width > right.width
                 })
                 
@@ -57,18 +54,18 @@ final class VimeoProvider: Provider {
             
             if let streams = files["hls"] as? [String: AnyObject ] {
                 if let url = streams["url"] as? String {
-                    return success(NSURL(string: url))
+                    return success(URL(string: url))
                 }
             }
             
             failed()
-        }
+        }) 
         task.resume()
     }
 }
 
 protocol VimeoURL {
-    var videoURL: NSURL? { get }
+    var videoURL: URL? { get }
 }
 
 struct VimeoProgressiveStream: VimeoURL {
@@ -76,14 +73,14 @@ struct VimeoProgressiveStream: VimeoURL {
     let quality: String
     let width: Int
     
-    var videoURL: NSURL? {
-        return NSURL(string: self.url)
+    var videoURL: URL? {
+        return URL(string: self.url)
     }
     
-    static func fromJson(json: [String: AnyObject]) -> VimeoProgressiveStream? {
+    static func fromJson(_ json: [String: AnyObject]) -> VimeoProgressiveStream? {
         guard let url = json["url"] as? String,
-            quality = json["quality"] as? String,
-            width = json["width"] as? Int else {
+            let quality = json["quality"] as? String,
+            let width = json["width"] as? Int else {
                 return nil
         }
         

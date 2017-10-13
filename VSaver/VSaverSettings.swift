@@ -10,31 +10,57 @@ import Foundation
 import ScreenSaver
 
 final class VSaverSettings {
-    private let URLsKey = "urls"
-    private let MUTEKey = "mute"
+    private enum Keys: String {
+        case URLs = "urls"
+        case MuteVideo = "mute"
+        case PlaySameOnAllScreens = "sameOnScreens"
+        case PlayMode = "playMode"
+    }
+    
     private let userDefaults = ScreenSaverDefaults(forModuleWithName: "com.pendowski.VSaver")
     
     var muteVideos: Bool {
         get {
-            return (self.userDefaults?.boolForKey(MUTEKey)) ?? true
+            return userDefaults?.bool(forKey: Keys.MuteVideo.rawValue) ?? true
         }
         set {
-            self.userDefaults?.setBool(newValue, forKey: MUTEKey)
-            self.userDefaults?.synchronize()
+            userDefaults?.set(newValue, forKey: Keys.MuteVideo.rawValue)
+            userDefaults?.synchronize()
         }
     }
     
     var urls: [String]? {
         get {
-            return self.userDefaults?.stringArrayForKey(URLsKey)
+            return userDefaults?.stringArray(forKey: Keys.URLs.rawValue)
         }
         set {
-            self.userDefaults?.setObject(newValue, forKey: URLsKey)
-            self.userDefaults?.synchronize()
+            userDefaults?.set(newValue, forKey: Keys.URLs.rawValue)
+            userDefaults?.synchronize()
         }
     }
     
-    func getURLs() -> [NSURL]? {
-        return self.urls?.flatMap({ NSURL(string: $0) })
+    var sameOnAllScreens: Bool {
+        get {
+            return userDefaults?.bool(forKey: Keys.PlaySameOnAllScreens.rawValue) ?? true
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.PlaySameOnAllScreens.rawValue)
+            userDefaults?.synchronize()
+        }
+    }
+    
+    var playMode: VideoPlayerController.Mode {
+        get {
+            let mode = userDefaults?.integer(forKey: Keys.PlayMode.rawValue) ?? -1
+            return VideoPlayerController.Mode(rawValue: mode) ?? .sequence
+        }
+        set {
+            userDefaults?.set(newValue.rawValue, forKey: Keys.PlayMode.rawValue)
+            userDefaults?.synchronize()
+        }
+    }
+    
+    func getURLs() -> [URL]? {
+        return urls?.flatMap({ URL(string: $0) })
     }
 }
