@@ -1,4 +1,4 @@
-# VSaver
+# VSaver 1.1
 
 VSaver is an OS X (macOS) screen saver which allows you to play YouTube and Vimeo videos.
 

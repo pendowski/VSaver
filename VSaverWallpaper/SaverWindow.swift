@@ -13,7 +13,7 @@ final class SaverWindow: NSWindow {
         didSet {
             oldValue?.removeFromSuperview()
             
-            guard let view = self.contentView, newValue = screenSaver else {
+            guard let view = self.contentView, let newValue = screenSaver else {
                 return
             }
             
