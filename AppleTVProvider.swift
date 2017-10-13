@@ -10,20 +10,26 @@ import Foundation
 
 final class AppleTVProvider: Provider {
     
+    struct Item {
+        let index: Int
+        let label: String
+        let url: URL
+    }
+    
     private let jsonURL = URL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json")!
-    private var cache: [URL] = []
+    private var cache: [Item] = []
     
     func isValidURL(_ url: URL) -> Bool {
         return url.host?.contains("apple.com") ?? false || url.scheme == "appletv"
     }
     
-    func getVideoURL(_ url: URL, completion: @escaping (_ url: URL?) -> Void) {
+    func getVideoURL(_ url: URL, completion: @escaping (_ url: URLItem?) -> Void) {
         if url.scheme == "appletv" {
             
-            func getRandomFromCache() -> URL {
+            func getRandomFromCache() -> URLItem {
                 let random = Int(arc4random()) % (cache.count - 1)
-                let screensaverURL = cache[random]
-                return screensaverURL
+                let screensaverItem = cache[random]
+                return URLItem(title: "AppleTV: #\(screensaverItem.index) \(screensaverItem.label)", url: screensaverItem.url)
             }
             
             if cache.count > 0 {
@@ -45,7 +51,10 @@ final class AppleTVProvider: Provider {
                                 continue
                             }
                             
-                            self.cache.append(url)
+                            let label = obj["accessibilityLabel"] ?? ""
+                            let index = self.cache.count + 1
+                            
+                            self.cache.append(Item(index: index, label: label, url: url))
                         }
                 }
                 
@@ -53,7 +62,7 @@ final class AppleTVProvider: Provider {
                 
             }).resume()
         } else {
-            completion(url)
+            completion(URLItem(title: url.absoluteString, url: url))
         }
     }
 }

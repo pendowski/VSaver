@@ -8,7 +8,12 @@
 
 import Foundation
 
+struct URLItem {
+    let title: String
+    let url: URL
+}
+
 protocol Provider {
     func isValidURL(_ url: URL) -> Bool
-    func getVideoURL(_ url: URL, completion: @escaping (_ url: URL?) -> Void)
+    func getVideoURL(_ url: URL, completion: @escaping (_ url: URLItem?) -> Void)
 }

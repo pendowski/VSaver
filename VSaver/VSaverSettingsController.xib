@@ -11,6 +11,7 @@
                 <outlet property="allScreensCheckbox" destination="PBg-qN-YiN" id="Fdf-Vd-3CP"/>
                 <outlet property="muteCheckbox" destination="UEy-Rc-fp6" id="mnI-Oe-Rcq"/>
                 <outlet property="playMode" destination="0WP-Fk-38R" id="SsV-Ao-8mG"/>
+                <outlet property="showSourceCheckbox" destination="KgZ-ub-H4E" id="wzb-tD-6Z1"/>
                 <outlet property="tableView" destination="6gn-aP-hoq" id="4sE-fT-GaE"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -133,6 +134,14 @@
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="PBg-qN-YiN">
                                 <rect key="frame" x="-2" y="18" width="207" height="18"/>
                                 <buttonCell key="cell" type="check" title="Play same video on all screens" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hJO-Os-ONL">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KgZ-ub-H4E">
+                                <rect key="frame" x="-2" y="-2" width="133" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show source label" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wp2-3V-0nS">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>

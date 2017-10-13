@@ -12,19 +12,20 @@ import ScreenSaver
 final class VSaverSettings {
     private enum Keys: String {
         case URLs = "urls"
-        case MuteVideo = "mute"
-        case PlaySameOnAllScreens = "sameOnScreens"
-        case PlayMode = "playMode"
+        case muteVideo = "mute"
+        case playSameOnAllScreens = "sameOnScreens"
+        case playMode = "playMode"
+        case showSource = "showSource"
     }
     
     private let userDefaults = ScreenSaverDefaults(forModuleWithName: "com.pendowski.VSaver")
     
     var muteVideos: Bool {
         get {
-            return userDefaults?.bool(forKey: Keys.MuteVideo.rawValue) ?? true
+            return userDefaults?.bool(forKey: Keys.muteVideo.rawValue) ?? true
         }
         set {
-            userDefaults?.set(newValue, forKey: Keys.MuteVideo.rawValue)
+            userDefaults?.set(newValue, forKey: Keys.muteVideo.rawValue)
             userDefaults?.synchronize()
         }
     }
@@ -41,21 +42,31 @@ final class VSaverSettings {
     
     var sameOnAllScreens: Bool {
         get {
-            return userDefaults?.bool(forKey: Keys.PlaySameOnAllScreens.rawValue) ?? true
+            return userDefaults?.bool(forKey: Keys.playSameOnAllScreens.rawValue) ?? true
         }
         set {
-            userDefaults?.set(newValue, forKey: Keys.PlaySameOnAllScreens.rawValue)
+            userDefaults?.set(newValue, forKey: Keys.playSameOnAllScreens.rawValue)
             userDefaults?.synchronize()
         }
     }
     
     var playMode: VideoPlayerController.Mode {
         get {
-            let mode = userDefaults?.integer(forKey: Keys.PlayMode.rawValue) ?? -1
+            let mode = userDefaults?.integer(forKey: Keys.playMode.rawValue) ?? -1
             return VideoPlayerController.Mode(rawValue: mode) ?? .sequence
         }
         set {
-            userDefaults?.set(newValue.rawValue, forKey: Keys.PlayMode.rawValue)
+            userDefaults?.set(newValue.rawValue, forKey: Keys.playMode.rawValue)
+            userDefaults?.synchronize()
+        }
+    }
+    
+    var showSourceLabel: Bool {
+        get {
+            return userDefaults?.bool(forKey: Keys.showSource.rawValue) ?? false
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.showSource.rawValue)
             userDefaults?.synchronize()
         }
     }

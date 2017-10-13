@@ -14,6 +14,7 @@ class VSaverSettingsController: NSWindowController, NSWindowDelegate, NSTableVie
     @IBOutlet private var muteCheckbox: NSButton!
     @IBOutlet private var allScreensCheckbox: NSButton!
     @IBOutlet private var playMode: NSSegmentedControl!
+    @IBOutlet private var showSourceCheckbox: NSButton!
     
     var settings: VSaverSettings?
     var urls: [String] = []
@@ -50,6 +51,7 @@ class VSaverSettingsController: NSWindowController, NSWindowDelegate, NSTableVie
             
         muteCheckbox.state = (settings.muteVideos ? NSOnState : NSOffState)
         allScreensCheckbox.state = (settings.sameOnAllScreens ? NSOnState : NSOffState)
+        showSourceCheckbox.state = (settings.showSourceLabel ? NSOnState : NSOffState)
         
         switch settings.playMode {
         case .random:
@@ -66,8 +68,9 @@ class VSaverSettingsController: NSWindowController, NSWindowDelegate, NSTableVie
         tableView.editColumn(-1, row: -1, with: nil, select: false)
         
         settings?.urls = urls
-        settings?.muteVideos = (muteCheckbox.state == NSOnState)
-        settings?.sameOnAllScreens = (allScreensCheckbox.state == NSOnState)
+        settings?.muteVideos = muteCheckbox.state == NSOnState
+        settings?.sameOnAllScreens = allScreensCheckbox.state == NSOnState
+        settings?.showSourceLabel = showSourceCheckbox.state == NSOnState
         
         switch playMode.selectedSegment {
         case 0:

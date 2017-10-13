@@ -10,8 +10,8 @@ import Foundation
 import AVFoundation
 
 protocol VideoPlayerControllerDelegate: class {
-    func videoPlayerController(_ controller: VideoPlayerController, willLoadVideo: URL)
-    func videoPlayerController(_ controller: VideoPlayerController, didLoadVideo: URL?)
+    func videoPlayerController(_ controller: VideoPlayerController, willLoadVideo url: URL)
+    func videoPlayerController(_ controller: VideoPlayerController, didLoadVideo item: URLItem?)
 }
 
 final class VideoPlayerController {
@@ -115,7 +115,7 @@ final class VideoPlayerController {
             }
             
             strongSelf.players.forEach {
-                let playerItem = AVPlayerItem(url: videoUrl)
+                let playerItem = AVPlayerItem(url: videoUrl.url)
                 
                 $0.replaceCurrentItem(with: playerItem)
                 $0.actionAtItemEnd = .none

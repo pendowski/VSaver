@@ -15,10 +15,11 @@ import AVKit
 @objc (VSaverView)
 class VSaverView: ScreenSaverView, VideoPlayerControllerDelegate {
 
-    fileprivate var videoController: VideoPlayerController?
-    fileprivate var loadingIndicator: NSProgressIndicator?
-    fileprivate let settings = VSaverSettings()
-    fileprivate var settingsController: NSWindowController?
+    private var videoController: VideoPlayerController?
+    private var loadingIndicator: NSProgressIndicator?
+    private var sourceLabel: NSTextField?
+    private let settings = VSaverSettings()
+    private var settingsController: NSWindowController?
 
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
@@ -29,17 +30,17 @@ class VSaverView: ScreenSaverView, VideoPlayerControllerDelegate {
 
         wantsLayer = true
 
-        guard let layer = self.layer else {
+        guard let layer = layer else {
             return
         }
 
         layer.backgroundColor = NSColor.black.cgColor
-        layer.frame = self.bounds
+        layer.frame = bounds
 
         let player = AVPlayer()
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.autoresizingMask = [ .layerWidthSizable, .layerHeightSizable ]
-        playerLayer.frame = self.bounds
+        playerLayer.frame = bounds
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         
         layer.addSublayer(playerLayer)
@@ -62,6 +63,22 @@ class VSaverView: ScreenSaverView, VideoPlayerControllerDelegate {
         
         addSubview(activityIndicator)
         loadingIndicator = activityIndicator
+        
+        let label = NSTextField(labelWithString: "VSaver")
+        label.textColor = NSColor.white
+        label.alphaValue = 0.3
+        label.sizeToFit()
+        let labelMargin: CGFloat = 20
+        let labelHeight = label.bounds.height
+        label.frame = CGRect(x: labelMargin, y: bounds.height - labelMargin - labelHeight, width: bounds.width - labelMargin * 2, height: labelHeight)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(label)
+        let layoutViews = [ "label" : label ]
+        var labelConstraints = [NSLayoutConstraint]()
+        labelConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-\(labelMargin)-[label]-\(labelMargin)-|", options: [], metrics: nil, views: layoutViews)
+        labelConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-(>=\(labelMargin))-[label(\(labelHeight))]-\(labelMargin)-|", options: [], metrics: nil, views: layoutViews)
+        NSLayoutConstraint.activate(labelConstraints)
+        sourceLabel = label
         
         let videoController: VideoPlayerController
         if settings.sameOnAllScreens {
@@ -118,24 +135,28 @@ class VSaverView: ScreenSaverView, VideoPlayerControllerDelegate {
     
     // MARK: - Video Player delegate
     
-    func videoPlayerController(_ controller: VideoPlayerController, willLoadVideo: URL) {
+    func videoPlayerController(_ controller: VideoPlayerController, willLoadVideo url: URL) {
         DispatchQueue.main.async {
             self.loadingIndicator?.isHidden = false
             self.loadingIndicator?.startAnimation(nil)
         }
     }
     
-    func videoPlayerController(_ controller: VideoPlayerController, didLoadVideo: URL?) {
+    func videoPlayerController(_ controller: VideoPlayerController, didLoadVideo item: URLItem?) {
         DispatchQueue.main.async {
             self.loadingIndicator?.stopAnimation(nil)
             self.loadingIndicator?.isHidden = true
+            self.sourceLabel?.stringValue = item?.title ?? ""
         }
     }
 
     // MARK: - Private methods
     
-    fileprivate func reloadAndPlay() {
+    private func reloadAndPlay() {
         guard let urls = settings.getURLs() else { return }
+
+        sourceLabel?.isHidden = !settings.showSourceLabel
+        
         videoController?.setQueue(withURLs: urls)
         videoController?.setVolume(settings.muteVideos ? 0 : 0.5)
     }

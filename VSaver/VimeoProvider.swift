@@ -14,14 +14,14 @@ final class VimeoProvider: Provider {
         return url.host?.contains("vimeo.com") ?? false
     }
     
-    func getVideoURL(_ url: URL, completion: @escaping (_ url: URL?) -> Void) {
+    func getVideoURL(_ url: URL, completion: @escaping (_ url: URLItem?) -> Void) {
         let failed: () -> Void = {
             DispatchQueue.main.async(execute: { 
                 completion(nil)
             })
         }
         
-        let success: (URL?) -> Void = { url in
+        let success: (URLItem?) -> Void = { url in
             DispatchQueue.main.async(execute: {
                 completion(url)
             })
@@ -29,17 +29,25 @@ final class VimeoProvider: Provider {
         
         guard let videoID = url.path.components(separatedBy: "/").last,
             case let vimeoJsonUrl = "https://player.vimeo.com/video/\(videoID)/config",
-            let url = URL(string: vimeoJsonUrl) else {
+            let jsonURL = URL(string: vimeoJsonUrl) else {
             return failed()
         }
         
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: jsonURL, completionHandler: { (data, response, error) in
             guard let data = data,
                 let optJson = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject],
                 let json = optJson,
                 let request = json["request"] as? [String: AnyObject],
-                let files = request["files"] as? [String: AnyObject] else {
+                let files = request["files"] as? [String: AnyObject]
+                 else {
                 return failed()
+            }
+            
+            let title: String
+            if let video = json["video"] as? [String: AnyObject], let videoTitle = video["title"] as? String {
+                title = "\(videoTitle) 📽\(url)"
+            } else {
+                title = url.absoluteString
             }
             
             if let streams = files["progressive"] as? [ [String: AnyObject] ] {
@@ -47,14 +55,14 @@ final class VimeoProvider: Provider {
                     left.width > right.width
                 })
                 
-                if let videoUrl = urls.first?.videoURL {
-                    return success(videoUrl)
+                if let videoURL = urls.first?.videoURL {
+                    return success(URLItem(title: "Vimeo: \(title)", url: videoURL))
                 }
             }
             
             if let streams = files["hls"] as? [String: AnyObject ] {
-                if let url = streams["url"] as? String {
-                    return success(URL(string: url))
+                if let urlString = streams["url"] as? String, let videoURL = URL(string: urlString) {
+                    return success(URLItem(title: "Vimeo: \(title)", url: videoURL))
                 }
             }
             
