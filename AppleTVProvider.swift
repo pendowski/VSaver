@@ -16,6 +16,11 @@ final class AppleTVProvider: Provider {
         let url: URL
     }
     
+    enum Index {
+        case random
+        case index(Int)
+    }
+    
     private let jsonURL = URL(string: "http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json")!
     private var cache: [Item] = []
     
@@ -26,18 +31,20 @@ final class AppleTVProvider: Provider {
     func getVideoURL(_ url: URL, completion: @escaping (_ url: URLItem?) -> Void) {
         if url.scheme == "appletv" {
             
-            func getRandomFromCache() -> URLItem {
-                let random = Int(arc4random()) % (cache.count - 1)
-                let screensaverItem = cache[random]
-                return URLItem(title: "AppleTV: #\(screensaverItem.index) \(screensaverItem.label)", url: screensaverItem.url)
+            let playIndex: Index
+            if let indexString = url.host ?? url.fragment, let index = Int(indexString), index > 0 {
+                playIndex = .index(index - 1) // - 1 because we present human indexes
+            } else {
+                playIndex = .random
             }
             
             if cache.count > 0 {
-                return completion(getRandomFromCache())
+                return completion(getItemFromCache(at: playIndex))
             }
             
-            URLSession.shared.dataTask(with: jsonURL, completionHandler: { (data, response, error) in
-                guard let data = data,
+            URLSession.shared.dataTask(with: jsonURL, completionHandler: { [weak self] (data, response, error) in
+                guard let strongSelf = self,
+                    let data = data,
                     let json = try? JSONSerialization.jsonObject(with: data, options: []),
                     let jsonDictionary = json as? [NSDictionary]else {
                     return completion(nil)
@@ -52,17 +59,40 @@ final class AppleTVProvider: Provider {
                             }
                             
                             let label = obj["accessibilityLabel"] ?? ""
-                            let index = self.cache.count + 1
+                            let index = strongSelf.cache.count + 1
                             
-                            self.cache.append(Item(index: index, label: label, url: url))
+                            strongSelf.cache.append(Item(index: index, label: label, url: url))
                         }
                 }
                 
-                completion(getRandomFromCache())
+                completion(strongSelf.getItemFromCache(at: playIndex))
                 
             }).resume()
         } else {
             completion(URLItem(title: url.absoluteString, url: url))
         }
+    }
+    
+    // MARK: - Private
+    
+    private func getItemFromCache(at playIndex: Index) -> URLItem {
+        switch playIndex {
+        case .random:
+            return getRandomFromCache()
+        case .index(let index):
+            if index < cache.count {
+                let screensaverItem = cache[index]
+                return URLItem(title: "AppleTV: #\(screensaverItem.index) \(screensaverItem.label)", url: screensaverItem.url)
+            } else {
+                return getRandomFromCache()
+            }
+        }
+        
+    }
+    
+    private func getRandomFromCache() -> URLItem {
+        let random = Int(arc4random()) % (cache.count - 1)
+        let screensaverItem = cache[random]
+        return URLItem(title: "AppleTV: #\(screensaverItem.index) \(screensaverItem.label)", url: screensaverItem.url)
     }
 }
