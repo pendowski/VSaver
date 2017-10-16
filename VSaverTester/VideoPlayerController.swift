@@ -35,7 +35,7 @@ final class VideoPlayerController {
     
     var mode: Mode = .random
     
-    init(withProviders providers: [Provider] = [ YouTubeProvider(), VimeoProvider(), AppleTVProvider() ]) {
+    init(withProviders providers: [Provider] = [ YouTubeProvider(), VimeoProvider(), AppleTVProvider(), WistiaProvider() ]) {
         self.providers = providers
         
         NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)

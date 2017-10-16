@@ -47,7 +47,7 @@
       <PathRunnable
          runnableDebuggingMode = "0"
          BundleIdentifier = "com.apple.automator.InstallSaver"
-         FilePath = "InstallSaver.app">
+         FilePath = "/Volumes/MacintoshHD/Users/pendowski/Work/pendowski/VSaver/InstallSaver.app">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
