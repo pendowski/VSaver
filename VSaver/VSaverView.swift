@@ -77,6 +77,8 @@ class VSaverView: ScreenSaverView, VideoPlayerControllerDelegate {
         var labelConstraints = [NSLayoutConstraint]()
         labelConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-\(labelMargin)-[label]-\(labelMargin)-|", options: [], metrics: nil, views: layoutViews)
         labelConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-(>=\(labelMargin))-[label(\(labelHeight))]-\(labelMargin)-|", options: [], metrics: nil, views: layoutViews)
+        label.lineBreakMode = .byTruncatingTail
+        label.setContentCompressionResistancePriority(NSLayoutPriorityDefaultLow, for: .horizontal)
         NSLayoutConstraint.activate(labelConstraints)
         sourceLabel = label
         
