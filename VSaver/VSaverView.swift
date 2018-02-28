@@ -18,7 +18,7 @@ class VSaverView: ScreenSaverView, VideoPlayerControllerDelegate {
     private var videoController: VideoPlayerController?
     private var loadingIndicator: NSProgressIndicator?
     private var sourceLabel: NSTextField?
-    private let settings = VSaverSettings()
+    private let settings = VSaverSettings.shared
     private var settingsController: NSWindowController?
 
     override init?(frame: NSRect, isPreview: Bool) {
@@ -155,11 +155,25 @@ class VSaverView: ScreenSaverView, VideoPlayerControllerDelegate {
     // MARK: - Private methods
     
     private func reloadAndPlay() {
+        if settings.showOnSingleScreen && !shouldPlayOnThisScreen() {
+            return
+        }
+        
         guard let urls = settings.getURLs() else { return }
 
         sourceLabel?.isHidden = !settings.showSourceLabel
         
         videoController?.setQueue(withURLs: urls)
         videoController?.setVolume(settings.muteVideos ? 0 : 0.5)
+    }
+    
+    private func shouldPlayOnThisScreen() -> Bool {
+        guard let currentScreen = window?.screen,
+            let displayID = ObjCHelper.displayID(from: currentScreen),
+            let display = settings.displays.first(where: { $0.displayID == displayID && $0.shouldDisplay }) else {
+                return true
+        }
+        
+        return display.shouldDisplay
     }
 }

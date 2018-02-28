@@ -52,6 +52,20 @@
 		AABF5F0E1F9502B800ADEB19 /* wistia.js in Resources */ = {isa = PBXBuildFile; fileRef = AABF5F0D1F9502B800ADEB19 /* wistia.js */; };
 		AABF5F0F1F9502B800ADEB19 /* wistia.js in Resources */ = {isa = PBXBuildFile; fileRef = AABF5F0D1F9502B800ADEB19 /* wistia.js */; };
 		AABF5F101F9502B800ADEB19 /* wistia.js in Resources */ = {isa = PBXBuildFile; fileRef = AABF5F0D1F9502B800ADEB19 /* wistia.js */; };
+		AABF5F131F951DE700ADEB19 /* ScreenSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF5F111F951DE700ADEB19 /* ScreenSelectionViewController.swift */; };
+		AABF5F141F951DE700ADEB19 /* ScreenSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF5F111F951DE700ADEB19 /* ScreenSelectionViewController.swift */; };
+		AABF5F151F951DE700ADEB19 /* ScreenSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF5F111F951DE700ADEB19 /* ScreenSelectionViewController.swift */; };
+		AABF5F161F951DE700ADEB19 /* ScreenSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF5F121F951DE700ADEB19 /* ScreenSelectionViewController.xib */; };
+		AABF5F171F951DE700ADEB19 /* ScreenSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF5F121F951DE700ADEB19 /* ScreenSelectionViewController.xib */; };
+		AABF5F181F951DE700ADEB19 /* ScreenSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABF5F121F951DE700ADEB19 /* ScreenSelectionViewController.xib */; };
+		AABF5F1D1F95247400ADEB19 /* ObjCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF5F1B1F95247400ADEB19 /* ObjCHelper.h */; };
+		AABF5F1E1F95247400ADEB19 /* ObjCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF5F1C1F95247400ADEB19 /* ObjCHelper.m */; };
+		AABF5F1F1F95247400ADEB19 /* ObjCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF5F1C1F95247400ADEB19 /* ObjCHelper.m */; };
+		AABF5F201F95247400ADEB19 /* ObjCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF5F1C1F95247400ADEB19 /* ObjCHelper.m */; };
+		AABF5F221F95358F00ADEB19 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF5F211F95358F00ADEB19 /* Display.swift */; };
+		AABF5F231F95358F00ADEB19 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF5F211F95358F00ADEB19 /* Display.swift */; };
+		AABF5F241F95358F00ADEB19 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF5F211F95358F00ADEB19 /* Display.swift */; };
+		AABF5F261F95706800ADEB19 /* VSaver-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = AABF5F251F95706800ADEB19 /* VSaver-Bridging-Header.h */; };
 		AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852881D44E48B0044EC3A /* Provider.swift */; };
 		AAF8528C1D44E48B0044EC3A /* VSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852891D44E48B0044EC3A /* VSaverView.swift */; };
 		AAF8528D1D44E48B0044EC3A /* YouTubeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */; };
@@ -86,9 +100,16 @@
 		AA8873991F914711006FC239 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AABF5F091F95028100ADEB19 /* WistiaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WistiaProvider.swift; path = VSaver/WistiaProvider.swift; sourceTree = SOURCE_ROOT; };
 		AABF5F0D1F9502B800ADEB19 /* wistia.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = wistia.js; path = VSaver/wistia.js; sourceTree = SOURCE_ROOT; };
+		AABF5F111F951DE700ADEB19 /* ScreenSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScreenSelectionViewController.swift; path = VSaver/ScreenSelectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		AABF5F121F951DE700ADEB19 /* ScreenSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ScreenSelectionViewController.xib; path = VSaver/ScreenSelectionViewController.xib; sourceTree = SOURCE_ROOT; };
+		AABF5F191F95247300ADEB19 /* VSaverTester-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VSaverTester-Bridging-Header.h"; sourceTree = "<group>"; };
+		AABF5F1A1F95247300ADEB19 /* VSaverWallpaper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VSaverWallpaper-Bridging-Header.h"; sourceTree = "<group>"; };
+		AABF5F1B1F95247400ADEB19 /* ObjCHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObjCHelper.h; path = VSaver/ObjCHelper.h; sourceTree = SOURCE_ROOT; };
+		AABF5F1C1F95247400ADEB19 /* ObjCHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ObjCHelper.m; path = VSaver/ObjCHelper.m; sourceTree = SOURCE_ROOT; };
+		AABF5F211F95358F00ADEB19 /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Display.swift; path = VSaver/Display.swift; sourceTree = SOURCE_ROOT; };
+		AABF5F251F95706800ADEB19 /* VSaver-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VSaver-Bridging-Header.h"; sourceTree = "<group>"; };
 		AAE668291CAE7ADD00141027 /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE668301CAE7ADD00141027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = VSaver/Info.plist; sourceTree = "<group>"; };
-		AAE668381CAE835700141027 /* VSaver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VSaver-Bridging-Header.h"; path = "VSaver/VSaver-Bridging-Header.h"; sourceTree = "<group>"; };
 		AAE668501CAE85D000141027 /* VSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE668541CAE85D000141027 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = VSaverTester/Assets.xcassets; sourceTree = "<group>"; };
 		AAE668591CAE85D000141027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = VSaverTester/Info.plist; sourceTree = "<group>"; };
@@ -233,14 +254,21 @@
 			isa = PBXGroup;
 			children = (
 				AAF852891D44E48B0044EC3A /* VSaverView.swift */,
+				AABF5F211F95358F00ADEB19 /* Display.swift */,
 				AA2569791D46374700E3BBC5 /* VSaverSettings.swift */,
 				AA25696D1D4620FB00E3BBC5 /* VSaverSettingsController.swift */,
 				AA25696E1D4620FB00E3BBC5 /* VSaverSettingsController.xib */,
 				AAF852961D44E5880044EC3A /* VideoPlayerController.swift */,
+				AABF5F111F951DE700ADEB19 /* ScreenSelectionViewController.swift */,
+				AABF5F121F951DE700ADEB19 /* ScreenSelectionViewController.xib */,
+				AABF5F1B1F95247400ADEB19 /* ObjCHelper.h */,
+				AABF5F1C1F95247400ADEB19 /* ObjCHelper.m */,
 				AA8873921F912A55006FC239 /* Providers */,
 				AA2569A51D47598D00E3BBC5 /* Resources */,
 				AAE668301CAE7ADD00141027 /* Info.plist */,
-				AAE668381CAE835700141027 /* VSaver-Bridging-Header.h */,
+				AABF5F251F95706800ADEB19 /* VSaver-Bridging-Header.h */,
+				AABF5F191F95247300ADEB19 /* VSaverTester-Bridging-Header.h */,
+				AABF5F1A1F95247300ADEB19 /* VSaverWallpaper-Bridging-Header.h */,
 			);
 			name = VSaver;
 			path = BoardSaver;
@@ -266,6 +294,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABF5F261F95706800ADEB19 /* VSaver-Bridging-Header.h in Headers */,
+				AABF5F1D1F95247400ADEB19 /* ObjCHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +368,7 @@
 					AA2569841D467C6B00E3BBC5 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 883TJ9L9GP;
+						LastSwiftMigration = 0900;
 					};
 					AAE668281CAE7ADD00141027 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -345,6 +376,7 @@
 					};
 					AAE6684F1CAE85D000141027 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -379,6 +411,7 @@
 				AA2569A01D46866B00E3BBC5 /* SaverWallpaperSettings.xib in Resources */,
 				AA25699A1D467D2300E3BBC5 /* youtube.js in Resources */,
 				AA25698D1D467C6B00E3BBC5 /* MainMenu.xib in Resources */,
+				AABF5F181F951DE700ADEB19 /* ScreenSelectionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +425,7 @@
 				AA2569711D4620FB00E3BBC5 /* VSaverSettingsController.xib in Resources */,
 				AA2569A41D47573F00E3BBC5 /* thumbnail@2x.png in Resources */,
 				AA2569751D46301800E3BBC5 /* MainMenu.xib in Resources */,
+				AABF5F161F951DE700ADEB19 /* ScreenSelectionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +437,7 @@
 				AABF5F0F1F9502B800ADEB19 /* wistia.js in Resources */,
 				AA25696C1D460F9300E3BBC5 /* youtube.js in Resources */,
 				AA2569761D46301800E3BBC5 /* MainMenu.xib in Resources */,
+				AABF5F171F951DE700ADEB19 /* ScreenSelectionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,11 +467,14 @@
 				AA2569991D467D2300E3BBC5 /* YouTubeProvider.swift in Sources */,
 				AA2569951D467D1800E3BBC5 /* VSaverSettingsController.swift in Sources */,
 				AA2569931D467D1800E3BBC5 /* VSaverView.swift in Sources */,
+				AABF5F201F95247400ADEB19 /* ObjCHelper.m in Sources */,
 				AABF5F0C1F95028100ADEB19 /* WistiaProvider.swift in Sources */,
 				AA2569981D467D2300E3BBC5 /* VimeoProvider.swift in Sources */,
 				AA2569971D467D1800E3BBC5 /* VideoPlayerController.swift in Sources */,
 				AA2569921D467D1800E3BBC5 /* Provider.swift in Sources */,
 				AA5DC8651F8FA3DB001E3CE4 /* AppleTVProvider.swift in Sources */,
+				AABF5F151F951DE700ADEB19 /* ScreenSelectionViewController.swift in Sources */,
+				AABF5F241F95358F00ADEB19 /* Display.swift in Sources */,
 				AA25699C1D4683EB00E3BBC5 /* SaverWindow.swift in Sources */,
 				AA2569881D467C6B00E3BBC5 /* AppDelegate.swift in Sources */,
 				AA2569941D467D1800E3BBC5 /* VSaverSettings.swift in Sources */,
@@ -449,6 +487,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAF852971D44E5880044EC3A /* VideoPlayerController.swift in Sources */,
+				AABF5F131F951DE700ADEB19 /* ScreenSelectionViewController.swift in Sources */,
+				AABF5F1E1F95247400ADEB19 /* ObjCHelper.m in Sources */,
 				AA25696F1D4620FB00E3BBC5 /* VSaverSettingsController.swift in Sources */,
 				AA25697F1D466B3200E3BBC5 /* VimeoProvider.swift in Sources */,
 				AABF5F0A1F95028100ADEB19 /* WistiaProvider.swift in Sources */,
@@ -456,6 +496,7 @@
 				AAF8528D1D44E48B0044EC3A /* YouTubeProvider.swift in Sources */,
 				AAF8528C1D44E48B0044EC3A /* VSaverView.swift in Sources */,
 				AA25697A1D46374700E3BBC5 /* VSaverSettings.swift in Sources */,
+				AABF5F221F95358F00ADEB19 /* Display.swift in Sources */,
 				AA5DC8631F8FA379001E3CE4 /* AppleTVProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,8 +507,10 @@
 			files = (
 				AAF852911D44E4D50044EC3A /* Provider.swift in Sources */,
 				AA2569801D466B3500E3BBC5 /* VimeoProvider.swift in Sources */,
+				AABF5F231F95358F00ADEB19 /* Display.swift in Sources */,
 				AA8873951F9145D5006FC239 /* Cocoa+Extended.swift in Sources */,
 				AAF852981D44E9170044EC3A /* VideoPlayerController.swift in Sources */,
+				AABF5F1F1F95247400ADEB19 /* ObjCHelper.m in Sources */,
 				AABF5F0B1F95028100ADEB19 /* WistiaProvider.swift in Sources */,
 				AA25697B1D46374700E3BBC5 /* VSaverSettings.swift in Sources */,
 				AAF852921D44E4D50044EC3A /* VSaverView.swift in Sources */,
@@ -475,6 +518,7 @@
 				AAF852901D44E4C90044EC3A /* AppDelegate.swift in Sources */,
 				AA5DC8641F8FA3DB001E3CE4 /* AppleTVProvider.swift in Sources */,
 				AA2569701D4620FB00E3BBC5 /* VSaverSettingsController.swift in Sources */,
+				AABF5F141F951DE700ADEB19 /* ScreenSelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +549,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -513,6 +558,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "BoardSaver/VSaverWallpaper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -523,6 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -531,6 +578,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "BoardSaver/VSaverWallpaper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -625,7 +673,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaver;
 				PRODUCT_NAME = VSaver;
-				SWIFT_OBJC_BRIDGING_HEADER = "VSaver/VSaver-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "BoardSaver/VSaver-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = saver;
@@ -643,7 +691,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaver;
 				PRODUCT_NAME = VSaver;
-				SWIFT_OBJC_BRIDGING_HEADER = "VSaver/VSaver-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "BoardSaver/VSaver-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = saver;
 			};
@@ -652,11 +700,13 @@
 		AAE6685A1CAE85D000141027 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = VSaverTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverTester;
 				PRODUCT_NAME = VSaver;
+				SWIFT_OBJC_BRIDGING_HEADER = "BoardSaver/VSaverTester-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -665,11 +715,13 @@
 		AAE6685B1CAE85D000141027 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = VSaverTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverTester;
 				PRODUCT_NAME = VSaver;
+				SWIFT_OBJC_BRIDGING_HEADER = "BoardSaver/VSaverTester-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

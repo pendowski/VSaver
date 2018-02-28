@@ -16,9 +16,31 @@ final class VSaverSettings {
         case playSameOnAllScreens = "sameOnScreens"
         case playMode = "playMode"
         case showSource = "showSource"
+        case displays = "displays"
+        case showOnSingleScreen = "showOnSingleScreen"
     }
     
+    static let shared = VSaverSettings()
+    
     private let userDefaults = ScreenSaverDefaults(forModuleWithName: "com.pendowski.VSaver")
+    
+    init() {
+        if let displaysData = userDefaults?.data(forKey: Keys.displays.rawValue),
+            let displaysObject = try? JSONSerialization.jsonObject(with: displaysData, options: []),
+            let displayJSON = displaysObject as? [[String: Any]]
+            {
+            displays = displayJSON.flatMap({ Display(fromJSON: $0) })
+        } else {
+            displays = []
+        }
+    }
+    
+    deinit {
+        let allDisplays = displays.flatMap { $0.toJSON() }
+        if let displaysJSON = try? JSONSerialization.data(withJSONObject: allDisplays, options: []) {
+            userDefaults?.set(displaysJSON, forKey: Keys.displays.rawValue)
+        }
+    }
     
     var muteVideos: Bool {
         get {
@@ -71,7 +93,20 @@ final class VSaverSettings {
         }
     }
     
+    var showOnSingleScreen: Bool {
+        get {
+            return userDefaults?.bool(forKey: Keys.showOnSingleScreen.rawValue) ?? false
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.showOnSingleScreen.rawValue)
+            userDefaults?.synchronize()
+        }
+    }
+    
+    var displays: [Display]
+    
     func getURLs() -> [URL]? {
         return urls?.flatMap({ URL(string: $0) })
     }
+    
 }

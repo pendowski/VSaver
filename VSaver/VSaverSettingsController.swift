@@ -15,9 +15,12 @@ class VSaverSettingsController: NSWindowController, NSWindowDelegate, NSTableVie
     @IBOutlet private var allScreensCheckbox: NSButton!
     @IBOutlet private var playMode: NSSegmentedControl!
     @IBOutlet private var showSourceCheckbox: NSButton!
+    @IBOutlet private var screensButton: NSButton!
     
-    var settings: VSaverSettings?
+    var settings: VSaverSettings!
     var urls: [String] = []
+    
+    var screensPopover: NSPopover?
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -120,5 +123,15 @@ class VSaverSettingsController: NSWindowController, NSWindowDelegate, NSTableVie
         tableView.endUpdates()
         
         tableView.editColumn(0, row: index, with: nil, select: true)
+    }
+    
+    @IBAction func openScreensSelector(_ sender: NSButton) {
+        let popover = NSPopover()
+        popover.behavior = .transient
+        let screenSettingsViewController = ScreenSelectionViewController(nibName: nil, bundle: nil)
+        screenSettingsViewController?.settings = settings
+        popover.contentViewController = screenSettingsViewController
+        popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .maxX)
+        screensPopover = popover
     }
 }
