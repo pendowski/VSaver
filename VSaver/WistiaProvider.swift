@@ -50,7 +50,7 @@ final class WistiaProvider: NSObject, Provider, WebFrameLoadDelegate {
     
     fileprivate func idFromURL(_ url: URL) -> String? {
         let components = URLComponents(string: url.absoluteString)
-        guard let pathComponents = components?.path.lowercased().split(separator: "/"),
+        guard let pathComponents = components?.path.lowercased().components(separatedBy: "/"),
             let mediasIndex = pathComponents.index(where: { $0 == "medias" }) else {
             return nil
         }
@@ -75,7 +75,7 @@ final class WistiaProvider: NSObject, Provider, WebFrameLoadDelegate {
                     for j in 0 ..< node.attributes.length {
                         guard let attribute = node.attributes.item(j) else { continue }
                         if attribute.nodeName == "src" && attribute.nodeValue.contains(videoID) && attribute.nodeValue.contains(".json"), let src = attribute.nodeValue {
-                            return src.starts(with: "//") ? loadingURL.scheme! + "://" + src.substring(from: src.index(src.startIndex, offsetBy: 2)) : src
+                            return src.hasPrefix("//") ? loadingURL.scheme! + "://" + src.substring(from: src.index(src.startIndex, offsetBy: 2)) : src
                         }
                     }
                 }
