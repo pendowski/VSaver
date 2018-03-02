@@ -1,5 +1,7 @@
 # Generated install script - will change a lot so shouldn't be in the repo
 InstallSaver.sh
+Artwork/*
+Builds/*
 
 # Created by https://www.gitignore.io/api/xcode,swift
 
