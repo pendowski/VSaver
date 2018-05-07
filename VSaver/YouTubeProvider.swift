@@ -18,6 +18,7 @@ final class YouTubeProvider: NSObject, Provider, WebFrameLoadDelegate {
     
     override init() {
         webView = WebView()
+        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.2 Safari/605.1.15"
         
         let bundle = Bundle(for: YouTubeProvider.self)
         if let path = bundle.path(forResource: "youtube", ofType: "js"), let script = try? String(contentsOfFile: path) {

@@ -17,7 +17,14 @@ final class VSaverSettings {
         case playMode = "playMode"
         case showSource = "showSource"
         case displays = "displays"
-        case showOnSingleScreen = "showOnSingleScreen"
+        case displayMode = "displayMode"
+        case selectedDisplays = "selectedDisplays"
+    }
+    
+    enum DisplayMode: Int {
+        case allScreens = 0
+        case selectedScreens = 1
+        case firstAvailable = 2
     }
     
     static let shared = VSaverSettings()
@@ -93,12 +100,22 @@ final class VSaverSettings {
         }
     }
     
-    var showOnSingleScreen: Bool {
+    var displayMode: DisplayMode {
         get {
-            return userDefaults?.bool(forKey: Keys.showOnSingleScreen.rawValue) ?? false
+            return DisplayMode(rawValue: userDefaults?.integer(forKey: Keys.displayMode.rawValue) ?? 0) ?? .allScreens
         }
         set {
-            userDefaults?.set(newValue, forKey: Keys.showOnSingleScreen.rawValue)
+            userDefaults?.set(newValue.rawValue, forKey: Keys.displayMode.rawValue)
+            userDefaults?.synchronize()
+        }
+    }
+    
+    var selectedDisplayIDs: [String] {
+        get {
+            return userDefaults?.stringArray(forKey: Keys.selectedDisplays.rawValue) ?? []
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.selectedDisplays.rawValue)
             userDefaults?.synchronize()
         }
     }

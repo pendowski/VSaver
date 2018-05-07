@@ -155,11 +155,20 @@ class VSaverView: ScreenSaverView, VideoPlayerControllerDelegate {
     // MARK: - Private methods
     
     private func reloadAndPlay() {
-        if settings.showOnSingleScreen && !shouldPlayOnThisScreen() {
-            return
+        let shouldPlay: Bool
+        switch settings.displayMode {
+        case .allScreens:
+            shouldPlay = true
+        case .firstAvailable:
+            shouldPlay = true
+        case .selectedScreens:
+            shouldPlay = true
         }
         
-        guard let urls = settings.getURLs() else { return }
+        guard shouldPlay,
+            let urls = settings.getURLs() else {
+                return
+        }
 
         sourceLabel?.isHidden = !settings.showSourceLabel
         

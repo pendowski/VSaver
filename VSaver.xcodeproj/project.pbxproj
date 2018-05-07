@@ -75,6 +75,15 @@
 		AAF852931D44E4D50044EC3A /* YouTubeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */; };
 		AAF852971D44E5880044EC3A /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852961D44E5880044EC3A /* VideoPlayerController.swift */; };
 		AAF852981D44E9170044EC3A /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF852961D44E5880044EC3A /* VideoPlayerController.swift */; };
+		AAFD9C602049DCDA001534E8 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9C5F2049DCDA001534E8 /* ScreenView.swift */; };
+		AAFD9C612049DCE0001534E8 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9C5F2049DCDA001534E8 /* ScreenView.swift */; };
+		AAFD9C622049DCE0001534E8 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9C5F2049DCDA001534E8 /* ScreenView.swift */; };
+		AAFD9C642049E0E5001534E8 /* NSRect+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9C632049E0E5001534E8 /* NSRect+Extended.swift */; };
+		AAFD9C662049E144001534E8 /* NSRect+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9C632049E0E5001534E8 /* NSRect+Extended.swift */; };
+		AAFD9C672049E144001534E8 /* NSRect+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9C632049E0E5001534E8 /* NSRect+Extended.swift */; };
+		AAFD9C692049E911001534E8 /* Collections+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9C682049E911001534E8 /* Collections+Extended.swift */; };
+		AAFD9C6A2049E9F4001534E8 /* Collections+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9C682049E911001534E8 /* Collections+Extended.swift */; };
+		AAFD9C6B2049E9F5001534E8 /* Collections+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFD9C682049E911001534E8 /* Collections+Extended.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +127,9 @@
 		AAF8528A1D44E48B0044EC3A /* YouTubeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouTubeProvider.swift; path = VSaver/YouTubeProvider.swift; sourceTree = SOURCE_ROOT; };
 		AAF8528E1D44E4B60044EC3A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = VSaverTester/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		AAF852961D44E5880044EC3A /* VideoPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlayerController.swift; path = VSaverTester/VideoPlayerController.swift; sourceTree = SOURCE_ROOT; };
+		AAFD9C5F2049DCDA001534E8 /* ScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
+		AAFD9C632049E0E5001534E8 /* NSRect+Extended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRect+Extended.swift"; sourceTree = "<group>"; };
+		AAFD9C682049E911001534E8 /* Collections+Extended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collections+Extended.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,8 +273,10 @@
 				AAF852961D44E5880044EC3A /* VideoPlayerController.swift */,
 				AABF5F111F951DE700ADEB19 /* ScreenSelectionViewController.swift */,
 				AABF5F121F951DE700ADEB19 /* ScreenSelectionViewController.xib */,
+				AAFD9C5F2049DCDA001534E8 /* ScreenView.swift */,
 				AABF5F1B1F95247400ADEB19 /* ObjCHelper.h */,
 				AABF5F1C1F95247400ADEB19 /* ObjCHelper.m */,
+				AAFD9C652049E0E8001534E8 /* Extensions */,
 				AA8873921F912A55006FC239 /* Providers */,
 				AA2569A51D47598D00E3BBC5 /* Resources */,
 				AAE668301CAE7ADD00141027 /* Info.plist */,
@@ -285,6 +299,15 @@
 			);
 			name = VSaverTester;
 			path = BoardSaverTester;
+			sourceTree = "<group>";
+		};
+		AAFD9C652049E0E8001534E8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AAFD9C632049E0E5001534E8 /* NSRect+Extended.swift */,
+				AAFD9C682049E911001534E8 /* Collections+Extended.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,13 +493,16 @@
 				AABF5F201F95247400ADEB19 /* ObjCHelper.m in Sources */,
 				AABF5F0C1F95028100ADEB19 /* WistiaProvider.swift in Sources */,
 				AA2569981D467D2300E3BBC5 /* VimeoProvider.swift in Sources */,
+				AAFD9C622049DCE0001534E8 /* ScreenView.swift in Sources */,
 				AA2569971D467D1800E3BBC5 /* VideoPlayerController.swift in Sources */,
 				AA2569921D467D1800E3BBC5 /* Provider.swift in Sources */,
 				AA5DC8651F8FA3DB001E3CE4 /* AppleTVProvider.swift in Sources */,
 				AABF5F151F951DE700ADEB19 /* ScreenSelectionViewController.swift in Sources */,
 				AABF5F241F95358F00ADEB19 /* Display.swift in Sources */,
+				AAFD9C6B2049E9F5001534E8 /* Collections+Extended.swift in Sources */,
 				AA25699C1D4683EB00E3BBC5 /* SaverWindow.swift in Sources */,
 				AA2569881D467C6B00E3BBC5 /* AppDelegate.swift in Sources */,
+				AAFD9C672049E144001534E8 /* NSRect+Extended.swift in Sources */,
 				AA2569941D467D1800E3BBC5 /* VSaverSettings.swift in Sources */,
 				AA25699F1D46866B00E3BBC5 /* SaverWallpaperSettings.swift in Sources */,
 			);
@@ -491,12 +517,15 @@
 				AABF5F1E1F95247400ADEB19 /* ObjCHelper.m in Sources */,
 				AA25696F1D4620FB00E3BBC5 /* VSaverSettingsController.swift in Sources */,
 				AA25697F1D466B3200E3BBC5 /* VimeoProvider.swift in Sources */,
+				AAFD9C642049E0E5001534E8 /* NSRect+Extended.swift in Sources */,
 				AABF5F0A1F95028100ADEB19 /* WistiaProvider.swift in Sources */,
 				AAF8528B1D44E48B0044EC3A /* Provider.swift in Sources */,
 				AAF8528D1D44E48B0044EC3A /* YouTubeProvider.swift in Sources */,
 				AAF8528C1D44E48B0044EC3A /* VSaverView.swift in Sources */,
 				AA25697A1D46374700E3BBC5 /* VSaverSettings.swift in Sources */,
 				AABF5F221F95358F00ADEB19 /* Display.swift in Sources */,
+				AAFD9C692049E911001534E8 /* Collections+Extended.swift in Sources */,
+				AAFD9C602049DCDA001534E8 /* ScreenView.swift in Sources */,
 				AA5DC8631F8FA379001E3CE4 /* AppleTVProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,9 +543,12 @@
 				AABF5F0B1F95028100ADEB19 /* WistiaProvider.swift in Sources */,
 				AA25697B1D46374700E3BBC5 /* VSaverSettings.swift in Sources */,
 				AAF852921D44E4D50044EC3A /* VSaverView.swift in Sources */,
+				AAFD9C612049DCE0001534E8 /* ScreenView.swift in Sources */,
 				AAF852931D44E4D50044EC3A /* YouTubeProvider.swift in Sources */,
+				AAFD9C662049E144001534E8 /* NSRect+Extended.swift in Sources */,
 				AAF852901D44E4C90044EC3A /* AppDelegate.swift in Sources */,
 				AA5DC8641F8FA3DB001E3CE4 /* AppleTVProvider.swift in Sources */,
+				AAFD9C6A2049E9F4001534E8 /* Collections+Extended.swift in Sources */,
 				AA2569701D4620FB00E3BBC5 /* VSaverSettingsController.swift in Sources */,
 				AABF5F141F951DE700ADEB19 /* ScreenSelectionViewController.swift in Sources */,
 			);

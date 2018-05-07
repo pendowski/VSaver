@@ -1,5 +1,9 @@
 function vsaverGetURL() {
     let videoUrls = {};
+    
+    if (ytplayer.config.args.hlsvp != undefined) {
+        return ytplayer.config.args.hlsvp
+    }
     ytplayer.config.args.url_encoded_fmt_stream_map.split(',').forEach(function (item) {
                                                                        let obj = {};
                                                                        
@@ -7,8 +11,8 @@ function vsaverGetURL() {
                                                                                                param = param.split('=');
                                                                                                obj[param[0]] = decodeURIComponent(param[1]);
                                                                                                });
-                                                                       
                                                                        videoUrls[obj.itag] = obj;
+                                                                       
                                                                        });
     let valid_itags = ["95", "299", "266", "137", "22", "136", "135", "134", "18", "133", "160"]
 

@@ -8,112 +8,79 @@
 
 import Cocoa
 
-class ScreenSelectionViewController: NSViewController, NSTableViewDataSource {
+class ScreenSelectionViewController: NSViewController {
     
-    @IBOutlet private var tableView: NSTableView!
-    @IBOutlet private var singleScreenCheckbox: NSButton!
-    
+    @IBOutlet private var screenPreview: NSView!
+    @IBOutlet private var modeSelector: NSSegmentedControl!
+
     private var displays: [Display] = []
     private var disabledScreens: Set<Display> {
         return Set(displays.filter { !$0.shouldDisplay })
     }
-    private let draggableType = "private.table-row"
     
     var settings: VSaverSettings!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        singleScreenCheckbox.state = settings.showOnSingleScreen ? NSOnState : NSOffState
+        modeSelector.selectedSegment = settings.displayMode.rawValue
         
-        tableView.register(forDraggedTypes: [draggableType])
-        
-        var allDisplays: [Display] = []
-        allDisplays.append(contentsOf: settings.displays)
-        
-        let displayIDs: Set<String> = Set(allDisplays.map { $0.displayID })
-        
-        NSScreen.screens()?.forEach {
-            guard let id = ObjCHelper.displayID(from: $0), let name = ObjCHelper.displayName(from: $0) else {
-                return
-            }
-            
-            // Only add displays that we don't have settings for
-            // In case of a new display - add it on top and set displaying to true
-            if !displayIDs.contains(id) {
-                let display = Display(displayID: id, name: name, shouldDisplay: true)
-                if allDisplays.count > 0 {
-                    allDisplays.insert(display, at: 0)
-                } else {
-                    allDisplays.append(display)
-                }
-            }
-        }
-        
-        displays = allDisplays
-        tableView.reloadData()
+        updateScreenViews()
     }
     
     // MARK: - Actions
     
-    @IBAction func singleScreenModeChanged(_ sender: NSButton) {
-        settings.showOnSingleScreen = sender.state == NSOnState
+    @IBAction func modeChanged(_ sender: NSSegmentedControl) {
+        guard let displayMode = VSaverSettings.DisplayMode(rawValue: sender.selectedSegment) else {
+            return assertionFailure()
+        }
+        settings.displayMode = displayMode
     }
     
-    // MARK: - Table View data source
+    // MARK: - Private
     
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return displays.count
-    }
-    
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        if tableColumn?.identifier == "show" {
-            return !disabledScreens.contains(displays[row])
-        } else if tableColumn?.identifier == "name" {
-            return displays[row].name
+    private func updateScreenViews() {
+        screenPreview.subviews.forEach { $0.removeFromSuperview() }
+        
+        guard let screens = NSScreen.screens() else {
+            return
         }
         
-        return nil
-    }
-    
-    func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
-        if tableColumn?.identifier == "show" {
-            if let show = object as? Bool {
-                let display = displays[row]
-                display.shouldDisplay = show
+        let savedDisplays: [String: Display] = settings.displays.dictionaryMap { ($0.displayID, $0) }
+        var displays: [Display] = []
+
+        var totalFrame = NSRect()
+        screens.forEach {
+            guard let id = ObjCHelper.displayID(from: $0),
+                let name = ObjCHelper.displayName(from: $0) else {
+                    return
             }
-        }
-    }
-    
-    func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
-        let item = NSPasteboardItem()
-        item.setString(String(row), forType: draggableType)
-        return item
-    }
-    
-    func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation {
-        if dropOperation == .above {
-            return .move
-        }
-        return []
-    }
-    
-    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableViewDropOperation) -> Bool {
-        
-        guard let oldRowString = info.draggingPasteboard().string(forType: draggableType), let oldRow = Int(oldRowString) else {
-            return false
-        }
-        
-        tableView.beginUpdates()
-        let display = displays.remove(at: oldRow)
-        if row < displays.count {
-            displays.insert(display, at: row)
-        } else {
+            
+            totalFrame = totalFrame.union($0.frame)
+            
+            let savedDisplay = savedDisplays[id]
+            let display = Display(displayID: id,
+                                  name: name,
+                                  shouldDisplay: savedDisplay?.shouldDisplay ?? true,
+                                  order: 0,
+                                  frame: $0.frame)
             displays.append(display)
         }
-        tableView.moveRow(at: oldRow, to: row)
-        tableView.endUpdates()
         
-        return true
+        let scale = min(screenPreview.bounds.width / totalFrame.width, screenPreview.bounds.height / totalFrame.height)
+        let offset = totalFrame.origin.multipled(scale * -1)
+        
+        displays.forEachIndexed { display, index in
+            let frame = display.frame.multipied(scale).offsetBy(dx: offset.x, dy: offset.y)
+            let view = ScreenView(frame: frame)
+            view.isMainScreen = index == 0
+            view.label.textColor = .white
+            view.label.stringValue = display.name
+            
+            screenPreview.addSubview(view)
+        }
+        
+        self.displays = displays
     }
+    
 }
