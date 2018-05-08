@@ -36,6 +36,7 @@
 
 - (void)setMuteVideos:(BOOL)muteVideos {
     [self.defaults setBool:muteVideos forKey:MuteKey];
+    [self.defaults synchronize];
 }
 
 - (BOOL)showLabel {
@@ -44,6 +45,7 @@
 
 - (void)setShowLabel:(BOOL)showLabel {
     [self.defaults setBool:showLabel forKey:ShowLabelKey];
+    [self.defaults synchronize];
 }
 
 - (VSSPlayMode)playMode {
@@ -52,14 +54,16 @@
 
 - (void)setPlayMode:(VSSPlayMode)playMode {
     [self.defaults setInteger:playMode forKey:PlayModeKey];
+    [self.defaults synchronize];
 }
 
 - (NSArray<NSString *> *)urls {
-    return [self.defaults stringArrayForKey:URLsKey] ?: @[];
+    return [self.defaults objectForKey:URLsKey] ?: @[];
 }
 
 - (void)setUrls:(NSArray<NSString *> *)urls {
-    
+    [self.defaults setObject:urls forKey:URLsKey];
+    [self.defaults synchronize];
 }
 
 @end

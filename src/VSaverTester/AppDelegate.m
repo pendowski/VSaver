@@ -10,6 +10,7 @@
 #import "VSaverView.h"
 #import "VSSScreenSaverWindow.h"
 #import "NSObject+Extended.h"
+#import "NSArray+Extended.h"
 
 @interface AppDelegate () <NSWindowDelegate>
 
@@ -40,7 +41,9 @@
     NSWindow *settingsWindow = window.screenSaverView.configureSheet;
     if (settingsWindow) {
         [window beginSheet:settingsWindow completionHandler:^(NSModalResponse returnCode) {
-            NSLog(@"Response");
+            [self.windows vss_forEach:^(VSSScreenSaverWindow * _Nonnull window) {
+                [window reloadScreenSaver];
+            }];
         }];
     }
 }

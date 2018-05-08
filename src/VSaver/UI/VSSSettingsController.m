@@ -55,7 +55,10 @@
     // force commiting changes if some row is in the middle of editing
     [self.tableView editColumn:-1 row:-1 withEvent:nil select:NO];
     
-    self.settings.urls = self.urls;
+    self.settings.urls = [self.urls vss_map:^id(NSString * _Nonnull url) {
+        NSString *cleanUrl = [url stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        return cleanUrl.length > 0 ? cleanUrl : nil;
+    }];
     self.settings.muteVideos = self.muteCheckbox.state == NSOnState;
     self.settings.showLabel = self.sourceCheckbox.state == NSOnState;
     

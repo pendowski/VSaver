@@ -13,6 +13,8 @@
 #import "VSSSettings.h"
 #import "VSSSettingsController.h"
 #import "VSSUserDefaultsSettings.h"
+#import "NSArray+Extended.h"
+
 
 @interface VSaverView () <VSSVideoPlayerControllerDelegate>
     @property (nonnull, nonatomic, strong) VSSVideoPlayerController *videoController;
@@ -155,9 +157,10 @@
 #pragma mark - Private
     
 - (void)reloadAndPlay {
-    [self.videoController setQueue:@[
-                                     [NSURL URLWithString:@"appletv://"]
-                                     ]];
+    NSArray<NSURL *> *urls = [self.settings.urls vss_map:^id _Nullable(NSString * _Nonnull url) {
+        return [NSURL URLWithString:url];
+    }];
+    [self.videoController setQueue:urls];
 }
 
 @end

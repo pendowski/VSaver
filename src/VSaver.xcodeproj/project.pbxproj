@@ -18,6 +18,11 @@
 		AA04F10B20A2060B0062AA05 /* VSSUserDefaultsSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F10920A2060B0062AA05 /* VSSUserDefaultsSettings.h */; };
 		AA04F10C20A2060B0062AA05 /* VSSUserDefaultsSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F10A20A2060B0062AA05 /* VSSUserDefaultsSettings.m */; };
 		AA04F10E20A206B90062AA05 /* VSSUserDefaultsSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F10A20A2060B0062AA05 /* VSSUserDefaultsSettings.m */; };
+		AA04F11120A213D10062AA05 /* VSSYouTubeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F10F20A213D10062AA05 /* VSSYouTubeProvider.h */; };
+		AA04F11220A213D10062AA05 /* VSSYouTubeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F11020A213D10062AA05 /* VSSYouTubeProvider.m */; };
+		AA04F11320A213D10062AA05 /* VSSYouTubeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F11020A213D10062AA05 /* VSSYouTubeProvider.m */; };
+		AA04F11520A2187F0062AA05 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11420A2187E0062AA05 /* youtube.js */; };
+		AA04F11620A2187F0062AA05 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11420A2187E0062AA05 /* youtube.js */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
 		AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
 		AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */; };
@@ -53,6 +58,9 @@
 		AA04F10120A1FC910062AA05 /* VSSSettingsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VSSSettingsController.xib; sourceTree = "<group>"; };
 		AA04F10920A2060B0062AA05 /* VSSUserDefaultsSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSUserDefaultsSettings.h; sourceTree = "<group>"; };
 		AA04F10A20A2060B0062AA05 /* VSSUserDefaultsSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSUserDefaultsSettings.m; sourceTree = "<group>"; };
+		AA04F10F20A213D10062AA05 /* VSSYouTubeProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSYouTubeProvider.h; sourceTree = "<group>"; };
+		AA04F11020A213D10062AA05 /* VSSYouTubeProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSYouTubeProvider.m; sourceTree = "<group>"; };
+		AA04F11420A2187E0062AA05 /* youtube.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = youtube.js; path = "../../../../../../Downloads/VSaver-dead-last-swift/VSaver/youtube.js"; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDF4E220A0B47900789BEB /* VSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSaverView.h; sourceTree = "<group>"; };
 		AABDF4E420A0B47900789BEB /* VSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSaverView.m; sourceTree = "<group>"; };
@@ -177,6 +185,9 @@
 				AABDF50120A0D12900789BEB /* VSSAppleTVProvider.m */,
 				AA04F0FB20A1F6530062AA05 /* VSSVimeoProvider.h */,
 				AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */,
+				AA04F10F20A213D10062AA05 /* VSSYouTubeProvider.h */,
+				AA04F11020A213D10062AA05 /* VSSYouTubeProvider.m */,
+				AA04F11420A2187E0062AA05 /* youtube.js */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -223,6 +234,7 @@
 				AA04F10B20A2060B0062AA05 /* VSSUserDefaultsSettings.h in Headers */,
 				AABDF50220A0D12900789BEB /* VSSAppleTVProvider.h in Headers */,
 				AA04F10220A1FC910062AA05 /* VSSSettingsController.h in Headers */,
+				AA04F11120A213D10062AA05 /* VSSYouTubeProvider.h in Headers */,
 				AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA04F11520A2187F0062AA05 /* youtube.js in Resources */,
 				AA04F10420A1FC910062AA05 /* VSSSettingsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +337,7 @@
 			files = (
 				AABDF51220A1868E00789BEB /* Assets.xcassets in Resources */,
 				AABDF51520A1868E00789BEB /* MainMenu.xib in Resources */,
+				AA04F11620A2187F0062AA05 /* youtube.js in Resources */,
 				AA04F10820A1FCAB0062AA05 /* VSSSettingsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +352,7 @@
 				AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */,
 				AABDF4F420A0B5FB00789BEB /* VSSVideoPlayerController.m in Sources */,
 				AA04F10C20A2060B0062AA05 /* VSSUserDefaultsSettings.m in Sources */,
+				AA04F11220A213D10062AA05 /* VSSYouTubeProvider.m in Sources */,
 				AABDF4F820A0B66B00789BEB /* VSSURLItem.m in Sources */,
 				AA04F10320A1FC910062AA05 /* VSSSettingsController.m in Sources */,
 				AABDF50320A0D12900789BEB /* VSSAppleTVProvider.m in Sources */,
@@ -362,6 +377,7 @@
 				AA04F10E20A206B90062AA05 /* VSSUserDefaultsSettings.m in Sources */,
 				AABDF52220A1878C00789BEB /* VSSURLItem.m in Sources */,
 				AA04F10620A1FCA10062AA05 /* VSSVimeoProvider.m in Sources */,
+				AA04F11320A213D10062AA05 /* VSSYouTubeProvider.m in Sources */,
 				AABDF52820A1889800789BEB /* VSSScreenSaverWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
