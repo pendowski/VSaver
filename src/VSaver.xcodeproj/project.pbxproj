@@ -1,0 +1,523 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
+		AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
+		AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */; };
+		AABDF4F020A0B4E200789BEB /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4EF20A0B4E200789BEB /* AVKit.framework */; };
+		AABDF4F320A0B5FB00789BEB /* VSSVideoPlayerController.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4F120A0B5FB00789BEB /* VSSVideoPlayerController.h */; };
+		AABDF4F420A0B5FB00789BEB /* VSSVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4F220A0B5FB00789BEB /* VSSVideoPlayerController.m */; };
+		AABDF4F720A0B66B00789BEB /* VSSURLItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4F520A0B66B00789BEB /* VSSURLItem.h */; };
+		AABDF4F820A0B66B00789BEB /* VSSURLItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4F620A0B66B00789BEB /* VSSURLItem.m */; };
+		AABDF4FD20A0C01800789BEB /* NSArray+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4FB20A0C01800789BEB /* NSArray+Extended.h */; };
+		AABDF4FE20A0C01800789BEB /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */; };
+		AABDF50220A0D12900789BEB /* VSSAppleTVProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF50020A0D12900789BEB /* VSSAppleTVProvider.h */; };
+		AABDF50320A0D12900789BEB /* VSSAppleTVProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF50120A0D12900789BEB /* VSSAppleTVProvider.m */; };
+		AABDF50620A17EDF00789BEB /* NSObject+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF50420A17EDF00789BEB /* NSObject+Extended.h */; };
+		AABDF50720A17EDF00789BEB /* NSObject+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF50520A17EDF00789BEB /* NSObject+Extended.m */; };
+		AABDF51020A1868E00789BEB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF50F20A1868E00789BEB /* AppDelegate.m */; };
+		AABDF51220A1868E00789BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AABDF51120A1868E00789BEB /* Assets.xcassets */; };
+		AABDF51520A1868E00789BEB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABDF51320A1868E00789BEB /* MainMenu.xib */; };
+		AABDF51820A1868E00789BEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF51720A1868E00789BEB /* main.m */; };
+		AABDF52020A1878C00789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
+		AABDF52120A1878C00789BEB /* VSSVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4F220A0B5FB00789BEB /* VSSVideoPlayerController.m */; };
+		AABDF52220A1878C00789BEB /* VSSURLItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4F620A0B66B00789BEB /* VSSURLItem.m */; };
+		AABDF52320A1879100789BEB /* VSSAppleTVProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF50120A0D12900789BEB /* VSSAppleTVProvider.m */; };
+		AABDF52420A1879700789BEB /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */; };
+		AABDF52520A1879700789BEB /* NSObject+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF50520A17EDF00789BEB /* NSObject+Extended.m */; };
+		AABDF52820A1889800789BEB /* VSSScreenSaverWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF52720A1889800789BEB /* VSSScreenSaverWindow.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		AABDF4E220A0B47900789BEB /* VSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSaverView.h; sourceTree = "<group>"; };
+		AABDF4E420A0B47900789BEB /* VSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSaverView.m; sourceTree = "<group>"; };
+		AABDF4E620A0B47900789BEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AABDF4EF20A0B4E200789BEB /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		AABDF4F120A0B5FB00789BEB /* VSSVideoPlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSVideoPlayerController.h; sourceTree = "<group>"; };
+		AABDF4F220A0B5FB00789BEB /* VSSVideoPlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSVideoPlayerController.m; sourceTree = "<group>"; };
+		AABDF4F520A0B66B00789BEB /* VSSURLItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSURLItem.h; sourceTree = "<group>"; };
+		AABDF4F620A0B66B00789BEB /* VSSURLItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSURLItem.m; sourceTree = "<group>"; };
+		AABDF4F920A0B77A00789BEB /* VSSSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSSettings.h; sourceTree = "<group>"; };
+		AABDF4FA20A0B89A00789BEB /* VSSProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSProvider.h; sourceTree = "<group>"; };
+		AABDF4FB20A0C01800789BEB /* NSArray+Extended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extended.h"; sourceTree = "<group>"; };
+		AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extended.m"; sourceTree = "<group>"; };
+		AABDF50020A0D12900789BEB /* VSSAppleTVProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSAppleTVProvider.h; sourceTree = "<group>"; };
+		AABDF50120A0D12900789BEB /* VSSAppleTVProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSAppleTVProvider.m; sourceTree = "<group>"; };
+		AABDF50420A17EDF00789BEB /* NSObject+Extended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Extended.h"; sourceTree = "<group>"; };
+		AABDF50520A17EDF00789BEB /* NSObject+Extended.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Extended.m"; sourceTree = "<group>"; };
+		AABDF50C20A1868E00789BEB /* VSaverTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSaverTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AABDF50E20A1868E00789BEB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AABDF50F20A1868E00789BEB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AABDF51120A1868E00789BEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AABDF51420A1868E00789BEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		AABDF51620A1868E00789BEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AABDF51720A1868E00789BEB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AABDF51920A1868E00789BEB /* VSaverTester.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VSaverTester.entitlements; sourceTree = "<group>"; };
+		AABDF52620A1889800789BEB /* VSSScreenSaverWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSScreenSaverWindow.h; sourceTree = "<group>"; };
+		AABDF52720A1889800789BEB /* VSSScreenSaverWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSScreenSaverWindow.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AABDF4DB20A0B47900789BEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AABDF4F020A0B4E200789BEB /* AVKit.framework in Frameworks */,
+				AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AABDF50920A1868E00789BEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AABDF4D520A0B47900789BEB = {
+			isa = PBXGroup;
+			children = (
+				AABDF4E120A0B47900789BEB /* VSaver */,
+				AABDF50D20A1868E00789BEB /* VSaverTester */,
+				AABDF4E020A0B47900789BEB /* Products */,
+				AABDF4EC20A0B4D100789BEB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AABDF4E020A0B47900789BEB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AABDF4DF20A0B47900789BEB /* VSaver.saver */,
+				AABDF50C20A1868E00789BEB /* VSaverTester.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AABDF4E120A0B47900789BEB /* VSaver */ = {
+			isa = PBXGroup;
+			children = (
+				AABDF4E220A0B47900789BEB /* VSaverView.h */,
+				AABDF4E420A0B47900789BEB /* VSaverView.m */,
+				AABDF4F120A0B5FB00789BEB /* VSSVideoPlayerController.h */,
+				AABDF4F220A0B5FB00789BEB /* VSSVideoPlayerController.m */,
+				AABDF4F520A0B66B00789BEB /* VSSURLItem.h */,
+				AABDF4F620A0B66B00789BEB /* VSSURLItem.m */,
+				AABDF4F920A0B77A00789BEB /* VSSSettings.h */,
+				AABDF4FF20A0D10A00789BEB /* Providers */,
+				AABDF51D20A186A000789BEB /* Extensions */,
+				AABDF4E620A0B47900789BEB /* Info.plist */,
+			);
+			path = VSaver;
+			sourceTree = "<group>";
+		};
+		AABDF4EC20A0B4D100789BEB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AABDF4EF20A0B4E200789BEB /* AVKit.framework */,
+				AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AABDF4FF20A0D10A00789BEB /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				AABDF4FA20A0B89A00789BEB /* VSSProvider.h */,
+				AABDF50020A0D12900789BEB /* VSSAppleTVProvider.h */,
+				AABDF50120A0D12900789BEB /* VSSAppleTVProvider.m */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		AABDF50D20A1868E00789BEB /* VSaverTester */ = {
+			isa = PBXGroup;
+			children = (
+				AABDF50E20A1868E00789BEB /* AppDelegate.h */,
+				AABDF50F20A1868E00789BEB /* AppDelegate.m */,
+				AABDF52620A1889800789BEB /* VSSScreenSaverWindow.h */,
+				AABDF52720A1889800789BEB /* VSSScreenSaverWindow.m */,
+				AABDF51120A1868E00789BEB /* Assets.xcassets */,
+				AABDF51320A1868E00789BEB /* MainMenu.xib */,
+				AABDF51620A1868E00789BEB /* Info.plist */,
+				AABDF51720A1868E00789BEB /* main.m */,
+				AABDF51920A1868E00789BEB /* VSaverTester.entitlements */,
+			);
+			path = VSaverTester;
+			sourceTree = "<group>";
+		};
+		AABDF51D20A186A000789BEB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AABDF4FB20A0C01800789BEB /* NSArray+Extended.h */,
+				AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */,
+				AABDF50420A17EDF00789BEB /* NSObject+Extended.h */,
+				AABDF50520A17EDF00789BEB /* NSObject+Extended.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AABDF4DC20A0B47900789BEB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AABDF4F320A0B5FB00789BEB /* VSSVideoPlayerController.h in Headers */,
+				AABDF50620A17EDF00789BEB /* NSObject+Extended.h in Headers */,
+				AABDF4F720A0B66B00789BEB /* VSSURLItem.h in Headers */,
+				AABDF4FD20A0C01800789BEB /* NSArray+Extended.h in Headers */,
+				AABDF50220A0D12900789BEB /* VSSAppleTVProvider.h in Headers */,
+				AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AABDF4DE20A0B47900789BEB /* VSaver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AABDF4E920A0B47900789BEB /* Build configuration list for PBXNativeTarget "VSaver" */;
+			buildPhases = (
+				AABDF4DA20A0B47900789BEB /* Sources */,
+				AABDF4DB20A0B47900789BEB /* Frameworks */,
+				AABDF4DC20A0B47900789BEB /* Headers */,
+				AABDF4DD20A0B47900789BEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VSaver;
+			productName = VSaver;
+			productReference = AABDF4DF20A0B47900789BEB /* VSaver.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+		AABDF50B20A1868E00789BEB /* VSaverTester */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AABDF51A20A1868E00789BEB /* Build configuration list for PBXNativeTarget "VSaverTester" */;
+			buildPhases = (
+				AABDF50820A1868E00789BEB /* Sources */,
+				AABDF50920A1868E00789BEB /* Frameworks */,
+				AABDF50A20A1868E00789BEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VSaverTester;
+			productName = VSaverTester;
+			productReference = AABDF50C20A1868E00789BEB /* VSaverTester.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AABDF4D620A0B47900789BEB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = VSS;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Jarek Pendowski";
+				TargetAttributes = {
+					AABDF4DE20A0B47900789BEB = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					AABDF50B20A1868E00789BEB = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = AABDF4D920A0B47900789BEB /* Build configuration list for PBXProject "VSaver" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AABDF4D520A0B47900789BEB;
+			productRefGroup = AABDF4E020A0B47900789BEB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AABDF4DE20A0B47900789BEB /* VSaver */,
+				AABDF50B20A1868E00789BEB /* VSaverTester */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AABDF4DD20A0B47900789BEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AABDF50A20A1868E00789BEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AABDF51220A1868E00789BEB /* Assets.xcassets in Resources */,
+				AABDF51520A1868E00789BEB /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AABDF4DA20A0B47900789BEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */,
+				AABDF4F420A0B5FB00789BEB /* VSSVideoPlayerController.m in Sources */,
+				AABDF4F820A0B66B00789BEB /* VSSURLItem.m in Sources */,
+				AABDF50320A0D12900789BEB /* VSSAppleTVProvider.m in Sources */,
+				AABDF50720A17EDF00789BEB /* NSObject+Extended.m in Sources */,
+				AABDF4FE20A0C01800789BEB /* NSArray+Extended.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AABDF50820A1868E00789BEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AABDF52420A1879700789BEB /* NSArray+Extended.m in Sources */,
+				AABDF51820A1868E00789BEB /* main.m in Sources */,
+				AABDF52520A1879700789BEB /* NSObject+Extended.m in Sources */,
+				AABDF52120A1878C00789BEB /* VSSVideoPlayerController.m in Sources */,
+				AABDF51020A1868E00789BEB /* AppDelegate.m in Sources */,
+				AABDF52020A1878C00789BEB /* VSaverView.m in Sources */,
+				AABDF52320A1879100789BEB /* VSSAppleTVProvider.m in Sources */,
+				AABDF52220A1878C00789BEB /* VSSURLItem.m in Sources */,
+				AABDF52820A1889800789BEB /* VSSScreenSaverWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AABDF51320A1868E00789BEB /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AABDF51420A1868E00789BEB /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AABDF4E720A0B47900789BEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AABDF4E820A0B47900789BEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AABDF4EA20A0B47900789BEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 883TJ9L9GP;
+				INFOPLIST_FILE = VSaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		AABDF4EB20A0B47900789BEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 883TJ9L9GP;
+				INFOPLIST_FILE = VSaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		AABDF51B20A1868E00789BEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 883TJ9L9GP;
+				INFOPLIST_FILE = VSaverTester/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverTester;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AABDF51C20A1868E00789BEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 883TJ9L9GP;
+				INFOPLIST_FILE = VSaverTester/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverTester;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AABDF4D920A0B47900789BEB /* Build configuration list for PBXProject "VSaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AABDF4E720A0B47900789BEB /* Debug */,
+				AABDF4E820A0B47900789BEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AABDF4E920A0B47900789BEB /* Build configuration list for PBXNativeTarget "VSaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AABDF4EA20A0B47900789BEB /* Debug */,
+				AABDF4EB20A0B47900789BEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AABDF51A20A1868E00789BEB /* Build configuration list for PBXNativeTarget "VSaverTester" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AABDF51B20A1868E00789BEB /* Debug */,
+				AABDF51C20A1868E00789BEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AABDF4D620A0B47900789BEB /* Project object */;
+}
