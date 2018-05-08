@@ -7,7 +7,6 @@
 //
 
 #import "VSSAppleTVProvider.h"
-#import "VSSURLItem.h"
 #import "NSObject+Extended.h"
 #import "NSArray+Extended.h"
 

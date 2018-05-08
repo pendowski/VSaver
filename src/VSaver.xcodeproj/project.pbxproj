@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA04F0FD20A1F6530062AA05 /* VSSVimeoProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F0FB20A1F6530062AA05 /* VSSVimeoProvider.h */; };
+		AA04F0FE20A1F6530062AA05 /* VSSVimeoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
 		AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
 		AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA04F0FB20A1F6530062AA05 /* VSSVimeoProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSVimeoProvider.h; sourceTree = "<group>"; };
+		AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSVimeoProvider.m; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDF4E220A0B47900789BEB /* VSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSaverView.h; sourceTree = "<group>"; };
 		AABDF4E420A0B47900789BEB /* VSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSaverView.m; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				AABDF4FA20A0B89A00789BEB /* VSSProvider.h */,
 				AABDF50020A0D12900789BEB /* VSSAppleTVProvider.h */,
 				AABDF50120A0D12900789BEB /* VSSAppleTVProvider.m */,
+				AA04F0FB20A1F6530062AA05 /* VSSVimeoProvider.h */,
+				AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -175,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AABDF4F320A0B5FB00789BEB /* VSSVideoPlayerController.h in Headers */,
+				AA04F0FD20A1F6530062AA05 /* VSSVimeoProvider.h in Headers */,
 				AABDF50620A17EDF00789BEB /* NSObject+Extended.h in Headers */,
 				AABDF4F720A0B66B00789BEB /* VSSURLItem.h in Headers */,
 				AABDF4FD20A0C01800789BEB /* NSArray+Extended.h in Headers */,
@@ -293,6 +300,7 @@
 				AABDF4F420A0B5FB00789BEB /* VSSVideoPlayerController.m in Sources */,
 				AABDF4F820A0B66B00789BEB /* VSSURLItem.m in Sources */,
 				AABDF50320A0D12900789BEB /* VSSAppleTVProvider.m in Sources */,
+				AA04F0FE20A1F6530062AA05 /* VSSVimeoProvider.m in Sources */,
 				AABDF50720A17EDF00789BEB /* NSObject+Extended.m in Sources */,
 				AABDF4FE20A0C01800789BEB /* NSArray+Extended.m in Sources */,
 			);
