@@ -11,6 +11,7 @@
 #import "VSSAppleTVProvider.h"
 #import "VSSVimeoProvider.h"
 #import "VSSYouTubeProvider.h"
+#import "VSSWistiaProvider.h"
 
 @interface VSSVideoPlayerController ()
     @property (nonnull, nonatomic, strong) NSArray<id<VSSProvider>> *providers;
@@ -50,7 +51,8 @@
             shareObject = [[self alloc] initWithProviders:@[
                                                             [[VSSAppleTVProvider alloc] init],
                                                             [[VSSYouTubeProvider alloc] init],
-                                                            [[VSSVimeoProvider alloc] init]
+                                                            [[VSSVimeoProvider alloc] init],
+                                                            [[VSSWistiaProvider alloc] init]
                                                             ]];
         });
         return shareObject;

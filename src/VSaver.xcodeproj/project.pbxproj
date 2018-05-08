@@ -21,8 +21,18 @@
 		AA04F11120A213D10062AA05 /* VSSYouTubeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F10F20A213D10062AA05 /* VSSYouTubeProvider.h */; };
 		AA04F11220A213D10062AA05 /* VSSYouTubeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F11020A213D10062AA05 /* VSSYouTubeProvider.m */; };
 		AA04F11320A213D10062AA05 /* VSSYouTubeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F11020A213D10062AA05 /* VSSYouTubeProvider.m */; };
-		AA04F11520A2187F0062AA05 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11420A2187E0062AA05 /* youtube.js */; };
-		AA04F11620A2187F0062AA05 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11420A2187E0062AA05 /* youtube.js */; };
+		AA04F11920A21E7A0062AA05 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11720A21E7A0062AA05 /* thumbnail.png */; };
+		AA04F11A20A21E7B0062AA05 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11820A21E7A0062AA05 /* thumbnail@2x.png */; };
+		AA04F11C20A21E910062AA05 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11B20A21E910062AA05 /* youtube.js */; };
+		AA04F11D20A21E910062AA05 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11B20A21E910062AA05 /* youtube.js */; };
+		AA04F12020A22F680062AA05 /* VSSWistiaProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F11E20A22F680062AA05 /* VSSWistiaProvider.h */; };
+		AA04F12120A22F680062AA05 /* VSSWistiaProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F11F20A22F680062AA05 /* VSSWistiaProvider.m */; };
+		AA04F12220A22F680062AA05 /* VSSWistiaProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F11F20A22F680062AA05 /* VSSWistiaProvider.m */; };
+		AA04F12520A22FE90062AA05 /* VSSWebViewProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F12320A22FE90062AA05 /* VSSWebViewProvider.h */; };
+		AA04F12620A22FE90062AA05 /* VSSWebViewProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F12420A22FE90062AA05 /* VSSWebViewProvider.m */; };
+		AA04F12720A22FE90062AA05 /* VSSWebViewProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F12420A22FE90062AA05 /* VSSWebViewProvider.m */; };
+		AA04F12920A2357F0062AA05 /* wistia.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F12820A2357F0062AA05 /* wistia.js */; };
+		AA04F12A20A2357F0062AA05 /* wistia.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F12820A2357F0062AA05 /* wistia.js */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
 		AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
 		AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */; };
@@ -60,7 +70,14 @@
 		AA04F10A20A2060B0062AA05 /* VSSUserDefaultsSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSUserDefaultsSettings.m; sourceTree = "<group>"; };
 		AA04F10F20A213D10062AA05 /* VSSYouTubeProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSYouTubeProvider.h; sourceTree = "<group>"; };
 		AA04F11020A213D10062AA05 /* VSSYouTubeProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSYouTubeProvider.m; sourceTree = "<group>"; };
-		AA04F11420A2187E0062AA05 /* youtube.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = youtube.js; path = "../../../../../../Downloads/VSaver-dead-last-swift/VSaver/youtube.js"; sourceTree = "<group>"; };
+		AA04F11720A21E7A0062AA05 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
+		AA04F11820A21E7A0062AA05 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
+		AA04F11B20A21E910062AA05 /* youtube.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = youtube.js; sourceTree = "<group>"; };
+		AA04F11E20A22F680062AA05 /* VSSWistiaProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSWistiaProvider.h; sourceTree = "<group>"; };
+		AA04F11F20A22F680062AA05 /* VSSWistiaProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSWistiaProvider.m; sourceTree = "<group>"; };
+		AA04F12320A22FE90062AA05 /* VSSWebViewProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSWebViewProvider.h; sourceTree = "<group>"; };
+		AA04F12420A22FE90062AA05 /* VSSWebViewProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSWebViewProvider.m; sourceTree = "<group>"; };
+		AA04F12820A2357F0062AA05 /* wistia.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = wistia.js; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDF4E220A0B47900789BEB /* VSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSaverView.h; sourceTree = "<group>"; };
 		AABDF4E420A0B47900789BEB /* VSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSaverView.m; sourceTree = "<group>"; };
@@ -164,6 +181,8 @@
 				AABDF4FF20A0D10A00789BEB /* Providers */,
 				AABDF51D20A186A000789BEB /* Extensions */,
 				AABDF4E620A0B47900789BEB /* Info.plist */,
+				AA04F11720A21E7A0062AA05 /* thumbnail.png */,
+				AA04F11820A21E7A0062AA05 /* thumbnail@2x.png */,
 			);
 			path = VSaver;
 			sourceTree = "<group>";
@@ -185,9 +204,14 @@
 				AABDF50120A0D12900789BEB /* VSSAppleTVProvider.m */,
 				AA04F0FB20A1F6530062AA05 /* VSSVimeoProvider.h */,
 				AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */,
+				AA04F12320A22FE90062AA05 /* VSSWebViewProvider.h */,
+				AA04F12420A22FE90062AA05 /* VSSWebViewProvider.m */,
 				AA04F10F20A213D10062AA05 /* VSSYouTubeProvider.h */,
 				AA04F11020A213D10062AA05 /* VSSYouTubeProvider.m */,
-				AA04F11420A2187E0062AA05 /* youtube.js */,
+				AA04F11B20A21E910062AA05 /* youtube.js */,
+				AA04F11E20A22F680062AA05 /* VSSWistiaProvider.h */,
+				AA04F11F20A22F680062AA05 /* VSSWistiaProvider.m */,
+				AA04F12820A2357F0062AA05 /* wistia.js */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -232,7 +256,9 @@
 				AABDF4F720A0B66B00789BEB /* VSSURLItem.h in Headers */,
 				AABDF4FD20A0C01800789BEB /* NSArray+Extended.h in Headers */,
 				AA04F10B20A2060B0062AA05 /* VSSUserDefaultsSettings.h in Headers */,
+				AA04F12520A22FE90062AA05 /* VSSWebViewProvider.h in Headers */,
 				AABDF50220A0D12900789BEB /* VSSAppleTVProvider.h in Headers */,
+				AA04F12020A22F680062AA05 /* VSSWistiaProvider.h in Headers */,
 				AA04F10220A1FC910062AA05 /* VSSSettingsController.h in Headers */,
 				AA04F11120A213D10062AA05 /* VSSYouTubeProvider.h in Headers */,
 				AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */,
@@ -326,8 +352,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA04F11520A2187F0062AA05 /* youtube.js in Resources */,
+				AA04F12920A2357F0062AA05 /* wistia.js in Resources */,
+				AA04F11A20A21E7B0062AA05 /* thumbnail@2x.png in Resources */,
 				AA04F10420A1FC910062AA05 /* VSSSettingsController.xib in Resources */,
+				AA04F11C20A21E910062AA05 /* youtube.js in Resources */,
+				AA04F11920A21E7A0062AA05 /* thumbnail.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,9 +364,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA04F12A20A2357F0062AA05 /* wistia.js in Resources */,
 				AABDF51220A1868E00789BEB /* Assets.xcassets in Resources */,
 				AABDF51520A1868E00789BEB /* MainMenu.xib in Resources */,
-				AA04F11620A2187F0062AA05 /* youtube.js in Resources */,
+				AA04F11D20A21E910062AA05 /* youtube.js in Resources */,
 				AA04F10820A1FCAB0062AA05 /* VSSSettingsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,8 +386,10 @@
 				AABDF4F820A0B66B00789BEB /* VSSURLItem.m in Sources */,
 				AA04F10320A1FC910062AA05 /* VSSSettingsController.m in Sources */,
 				AABDF50320A0D12900789BEB /* VSSAppleTVProvider.m in Sources */,
+				AA04F12620A22FE90062AA05 /* VSSWebViewProvider.m in Sources */,
 				AA04F0FE20A1F6530062AA05 /* VSSVimeoProvider.m in Sources */,
 				AABDF50720A17EDF00789BEB /* NSObject+Extended.m in Sources */,
+				AA04F12120A22F680062AA05 /* VSSWistiaProvider.m in Sources */,
 				AABDF4FE20A0C01800789BEB /* NSArray+Extended.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +400,7 @@
 			files = (
 				AABDF52420A1879700789BEB /* NSArray+Extended.m in Sources */,
 				AABDF51820A1868E00789BEB /* main.m in Sources */,
+				AA04F12220A22F680062AA05 /* VSSWistiaProvider.m in Sources */,
 				AABDF52520A1879700789BEB /* NSObject+Extended.m in Sources */,
 				AABDF52120A1878C00789BEB /* VSSVideoPlayerController.m in Sources */,
 				AABDF51020A1868E00789BEB /* AppDelegate.m in Sources */,
@@ -375,6 +408,7 @@
 				AABDF52320A1879100789BEB /* VSSAppleTVProvider.m in Sources */,
 				AA04F10720A1FCA60062AA05 /* VSSSettingsController.m in Sources */,
 				AA04F10E20A206B90062AA05 /* VSSUserDefaultsSettings.m in Sources */,
+				AA04F12720A22FE90062AA05 /* VSSWebViewProvider.m in Sources */,
 				AABDF52220A1878C00789BEB /* VSSURLItem.m in Sources */,
 				AA04F10620A1FCA10062AA05 /* VSSVimeoProvider.m in Sources */,
 				AA04F11320A213D10062AA05 /* VSSYouTubeProvider.m in Sources */,

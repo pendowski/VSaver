@@ -1,5 +1,5 @@
 //
-//  VSSYouTubeProvider.h
+//  VSSWistiaProvider.h
 //  VSaver
 //
 //  Created by Jarek Pendowski on 08/05/2018.
@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "VSSWebViewProvider.h"
 
-@interface VSSYouTubeProvider : VSSWebViewProvider
+@interface VSSWistiaProvider : VSSWebViewProvider
 
 @end
