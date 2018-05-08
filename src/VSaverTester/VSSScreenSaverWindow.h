@@ -10,7 +10,7 @@
 @import ScreenSaver;
 
 @interface VSSScreenSaverWindow : NSWindow
-@property (nonatomic, weak) ScreenSaverView *screenSaverView;
+@property (nullable, nonatomic, weak) ScreenSaverView *screenSaverView;
 
-- (instancetype)initWithScreenSaverView: (ScreenSaverView *)view;
+- (void)reloadScreenSaver;
 @end

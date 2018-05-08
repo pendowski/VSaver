@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		AA04F0FD20A1F6530062AA05 /* VSSVimeoProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F0FB20A1F6530062AA05 /* VSSVimeoProvider.h */; };
 		AA04F0FE20A1F6530062AA05 /* VSSVimeoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */; };
+		AA04F10220A1FC910062AA05 /* VSSSettingsController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F0FF20A1FC910062AA05 /* VSSSettingsController.h */; };
+		AA04F10320A1FC910062AA05 /* VSSSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F10020A1FC910062AA05 /* VSSSettingsController.m */; };
+		AA04F10420A1FC910062AA05 /* VSSSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA04F10120A1FC910062AA05 /* VSSSettingsController.xib */; };
+		AA04F10620A1FCA10062AA05 /* VSSVimeoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */; };
+		AA04F10720A1FCA60062AA05 /* VSSSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F10020A1FC910062AA05 /* VSSSettingsController.m */; };
+		AA04F10820A1FCAB0062AA05 /* VSSSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA04F10120A1FC910062AA05 /* VSSSettingsController.xib */; };
+		AA04F10B20A2060B0062AA05 /* VSSUserDefaultsSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F10920A2060B0062AA05 /* VSSUserDefaultsSettings.h */; };
+		AA04F10C20A2060B0062AA05 /* VSSUserDefaultsSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F10A20A2060B0062AA05 /* VSSUserDefaultsSettings.m */; };
+		AA04F10E20A206B90062AA05 /* VSSUserDefaultsSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F10A20A2060B0062AA05 /* VSSUserDefaultsSettings.m */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
 		AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
 		AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */; };
@@ -39,6 +48,11 @@
 /* Begin PBXFileReference section */
 		AA04F0FB20A1F6530062AA05 /* VSSVimeoProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSVimeoProvider.h; sourceTree = "<group>"; };
 		AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSVimeoProvider.m; sourceTree = "<group>"; };
+		AA04F0FF20A1FC910062AA05 /* VSSSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSSettingsController.h; sourceTree = "<group>"; };
+		AA04F10020A1FC910062AA05 /* VSSSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSSettingsController.m; sourceTree = "<group>"; };
+		AA04F10120A1FC910062AA05 /* VSSSettingsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VSSSettingsController.xib; sourceTree = "<group>"; };
+		AA04F10920A2060B0062AA05 /* VSSUserDefaultsSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSUserDefaultsSettings.h; sourceTree = "<group>"; };
+		AA04F10A20A2060B0062AA05 /* VSSUserDefaultsSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSUserDefaultsSettings.m; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDF4E220A0B47900789BEB /* VSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSaverView.h; sourceTree = "<group>"; };
 		AABDF4E420A0B47900789BEB /* VSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSaverView.m; sourceTree = "<group>"; };
@@ -89,6 +103,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA04F10520A1FC960062AA05 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AA04F0FF20A1FC910062AA05 /* VSSSettingsController.h */,
+				AA04F10020A1FC910062AA05 /* VSSSettingsController.m */,
+				AA04F10120A1FC910062AA05 /* VSSSettingsController.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AA04F10D20A206100062AA05 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AABDF4F920A0B77A00789BEB /* VSSSettings.h */,
+				AA04F10920A2060B0062AA05 /* VSSUserDefaultsSettings.h */,
+				AA04F10A20A2060B0062AA05 /* VSSUserDefaultsSettings.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		AABDF4D520A0B47900789BEB = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +151,8 @@
 				AABDF4F220A0B5FB00789BEB /* VSSVideoPlayerController.m */,
 				AABDF4F520A0B66B00789BEB /* VSSURLItem.h */,
 				AABDF4F620A0B66B00789BEB /* VSSURLItem.m */,
-				AABDF4F920A0B77A00789BEB /* VSSSettings.h */,
+				AA04F10D20A206100062AA05 /* Settings */,
+				AA04F10520A1FC960062AA05 /* UI */,
 				AABDF4FF20A0D10A00789BEB /* Providers */,
 				AABDF51D20A186A000789BEB /* Extensions */,
 				AABDF4E620A0B47900789BEB /* Info.plist */,
@@ -185,7 +220,9 @@
 				AABDF50620A17EDF00789BEB /* NSObject+Extended.h in Headers */,
 				AABDF4F720A0B66B00789BEB /* VSSURLItem.h in Headers */,
 				AABDF4FD20A0C01800789BEB /* NSArray+Extended.h in Headers */,
+				AA04F10B20A2060B0062AA05 /* VSSUserDefaultsSettings.h in Headers */,
 				AABDF50220A0D12900789BEB /* VSSAppleTVProvider.h in Headers */,
+				AA04F10220A1FC910062AA05 /* VSSSettingsController.h in Headers */,
 				AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA04F10420A1FC910062AA05 /* VSSSettingsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +324,7 @@
 			files = (
 				AABDF51220A1868E00789BEB /* Assets.xcassets in Resources */,
 				AABDF51520A1868E00789BEB /* MainMenu.xib in Resources */,
+				AA04F10820A1FCAB0062AA05 /* VSSSettingsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +337,9 @@
 			files = (
 				AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */,
 				AABDF4F420A0B5FB00789BEB /* VSSVideoPlayerController.m in Sources */,
+				AA04F10C20A2060B0062AA05 /* VSSUserDefaultsSettings.m in Sources */,
 				AABDF4F820A0B66B00789BEB /* VSSURLItem.m in Sources */,
+				AA04F10320A1FC910062AA05 /* VSSSettingsController.m in Sources */,
 				AABDF50320A0D12900789BEB /* VSSAppleTVProvider.m in Sources */,
 				AA04F0FE20A1F6530062AA05 /* VSSVimeoProvider.m in Sources */,
 				AABDF50720A17EDF00789BEB /* NSObject+Extended.m in Sources */,
@@ -317,7 +358,10 @@
 				AABDF51020A1868E00789BEB /* AppDelegate.m in Sources */,
 				AABDF52020A1878C00789BEB /* VSaverView.m in Sources */,
 				AABDF52320A1879100789BEB /* VSSAppleTVProvider.m in Sources */,
+				AA04F10720A1FCA60062AA05 /* VSSSettingsController.m in Sources */,
+				AA04F10E20A206B90062AA05 /* VSSUserDefaultsSettings.m in Sources */,
 				AABDF52220A1878C00789BEB /* VSSURLItem.m in Sources */,
+				AA04F10620A1FCA10062AA05 /* VSSVimeoProvider.m in Sources */,
 				AABDF52820A1889800789BEB /* VSSScreenSaverWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

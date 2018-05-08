@@ -7,23 +7,33 @@
 //
 
 #import "VSSScreenSaverWindow.h"
+#import "VSaverView.h"
 
 @implementation VSSScreenSaverWindow
     
-    - (instancetype)initWithScreenSaverView:(ScreenSaverView *)view {
-        CGRect mainFrame = [[NSScreen mainScreen] visibleFrame];
-        self = [super initWithContentRect:mainFrame styleMask:(NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskClosable) backing:NSBackingStoreBuffered defer:YES];
-        if (self) {
-            self.hidesOnDeactivate = NO;
-            [self setReleasedWhenClosed:NO];
-            
-            view.frame = self.contentView.bounds;
-            view.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
-            [self.contentView addSubview:view];
-            
-            self.screenSaverView = view;
-        }
-        return self;
+- (instancetype)init {
+    CGRect mainFrame = [[NSScreen mainScreen] visibleFrame];
+    self = [super initWithContentRect:mainFrame styleMask:(NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskClosable) backing:NSBackingStoreBuffered defer:YES];
+    if (self) {
+        self.hidesOnDeactivate = NO;
+        [self setReleasedWhenClosed:NO];
+        
+        [self reloadScreenSaver];
     }
+    return self;
+}
+
+#pragma mark - Private
+
+- (void)reloadScreenSaver {
+    [self.screenSaverView removeFromSuperview];
+    
+    VSaverView *saverView = [[VSaverView alloc] initWithFrame:CGRectZero isPreview:NO];
+    saverView.frame = self.contentView.bounds;
+    saverView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+    [self.contentView addSubview:saverView];
+    
+    self.screenSaverView = saverView;
+}
 
 @end

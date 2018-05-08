@@ -11,6 +11,8 @@
 @import AVFoundation;
 #import "VSSVideoPlayerController.h"
 #import "VSSSettings.h"
+#import "VSSSettingsController.h"
+#import "VSSUserDefaultsSettings.h"
 
 @interface VSaverView () <VSSVideoPlayerControllerDelegate>
     @property (nonnull, nonatomic, strong) VSSVideoPlayerController *videoController;
@@ -18,7 +20,7 @@
     @property (nullable, nonatomic, weak) NSTextField *sourceLabel;
     
     @property (nonnull, nonatomic, strong) id<VSSSettings> settings;
-    @property (nonnull, nonatomic, strong) NSWindowController *settingsController;
+    @property (nullable, nonatomic, strong) NSWindowController *settingsController;
 @end
 
 @implementation VSaverView
@@ -29,6 +31,8 @@
     if (self) {
         [self setAnimationTimeInterval:1/30.0];
         self.wantsLayer = YES;
+        
+        self.settings = [[VSSUserDefaultsSettings alloc] init];
         
         self.layer.backgroundColor = [NSColor blackColor].CGColor;
         self.layer.frame = self.bounds;
@@ -89,6 +93,10 @@
         [videoController addPlayer:player];
         [videoController addDelegate:self];
         
+        VSSSettingsController *settingsController = [[VSSSettingsController alloc] initWithWindowNibName:@"VSSSettingsController"];
+        settingsController.settings = self.settings;
+        self.settingsController = settingsController;
+        
         self.videoController = videoController;
         
         [self reloadAndPlay];
@@ -118,12 +126,12 @@
 
 - (BOOL)hasConfigureSheet
 {
-    return NO;
+    return self.settingsController != nil;
 }
 
 - (NSWindow*)configureSheet
 {
-    return nil;
+    return self.settingsController.window;
 }
     
 #pragma mark - VSSVideoPlayerControllerDelegate

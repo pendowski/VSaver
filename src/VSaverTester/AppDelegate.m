@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "VSaverView.h"
 #import "VSSScreenSaverWindow.h"
+#import "NSObject+Extended.h"
 
 @interface AppDelegate () <NSWindowDelegate>
 
@@ -33,6 +34,16 @@
 }
     
 #pragma mark - Actions
+
+- (IBAction)openPreferencesSelected: (NSMenuItem *)sender {
+    VSSScreenSaverWindow *window = VSSAS([NSApp keyWindow], VSSScreenSaverWindow);
+    NSWindow *settingsWindow = window.screenSaverView.configureSheet;
+    if (settingsWindow) {
+        [window beginSheet:settingsWindow completionHandler:^(NSModalResponse returnCode) {
+            NSLog(@"Response");
+        }];
+    }
+}
     
 - (IBAction)newFile:(id)sender {
     [self createNewWindow];
@@ -48,8 +59,7 @@
 #pragma mark - Private
     
 - (void)createNewWindow {
-    VSaverView *saverView = [[VSaverView alloc] initWithFrame:CGRectZero isPreview:NO];
-    VSSScreenSaverWindow *window = [[VSSScreenSaverWindow alloc] initWithScreenSaverView:saverView];
+    VSSScreenSaverWindow *window = [[VSSScreenSaverWindow alloc] init];
     [window center];
     [window makeKeyAndOrderFront:window];
     

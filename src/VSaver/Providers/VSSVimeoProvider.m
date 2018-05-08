@@ -31,7 +31,7 @@
 @implementation VSSVimeoProvider
 
 - (NSString *)name {
-  return @"Vimeo"
+    return @"Vimeo";
 }
 
 - (BOOL)isValidURL:(NSURL *)url {
@@ -48,7 +48,6 @@
     
     NSURL *configURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://player.vimeo.com/video/%@/config", videoID]];
     
-    __weak typeof(self) weakSelf = self;
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     [[session dataTaskWithURL:configURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -77,9 +76,9 @@
                 return [left.width compare:right.width];
             }];
             
-            VSSVimeoStream *video = urls.firstObject.url;
+            NSString *video = urls.firstObject.url;
             if (video) {
-                completion([[VSSURLItem alloc] initWithTitle:title url:video]);
+                completion([[VSSURLItem alloc] initWithTitle:title url:[NSURL URLWithString:video]]);
                 return;
             }
         }
