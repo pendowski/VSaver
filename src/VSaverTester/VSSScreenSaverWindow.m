@@ -14,10 +14,15 @@
 @end
 
 @implementation VSSScreenSaverWindow
-    
+
 - (instancetype)initWithScreenSaverViewFactory:(VSSScreenSaverFactory)factory {
-    CGRect mainFrame = [[NSScreen mainScreen] visibleFrame];
-    self = [super initWithContentRect:mainFrame styleMask:(NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskClosable) backing:NSBackingStoreBuffered defer:YES];
+    return [self initWithScreenSaverViewFactory:factory styleMask:(NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskClosable) screen:[NSScreen mainScreen] coverFullScreen:NO];
+}
+    
+- (instancetype)initWithScreenSaverViewFactory:(VSSScreenSaverFactory)factory styleMask:(NSWindowStyleMask)styleMask screen:(NSScreen *)screen coverFullScreen:(BOOL)fullScreen {
+    CGSize screenSize = fullScreen ? [screen frame].size : [screen visibleFrame].size;
+    CGRect frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
+    self = [super initWithContentRect:frame styleMask:styleMask backing:NSBackingStoreBuffered defer:YES screen:screen];
     if (self) {
         self.hidesOnDeactivate = NO;
         [self setReleasedWhenClosed:NO];

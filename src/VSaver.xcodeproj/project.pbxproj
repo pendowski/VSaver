@@ -25,6 +25,15 @@
 		AA04F12620A22FE90062AA05 /* VSSWebViewProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F12420A22FE90062AA05 /* VSSWebViewProvider.m */; };
 		AA04F12920A2357F0062AA05 /* wistia.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F12820A2357F0062AA05 /* wistia.js */; };
 		AA04F12D20A2D7000062AA05 /* VSaver.saver in Resources */ = {isa = PBXBuildFile; fileRef = AABDF4DF20A0B47900789BEB /* VSaver.saver */; };
+		AA5795DF20A366730003616F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5795DE20A366730003616F /* AppDelegate.m */; };
+		AA5795E120A366750003616F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5795E020A366750003616F /* Assets.xcassets */; };
+		AA5795E420A366750003616F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5795E220A366750003616F /* MainMenu.xib */; };
+		AA5795E720A366750003616F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5795E620A366750003616F /* main.m */; };
+		AA5795EF20A367050003616F /* VSSWallpaperOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5795ED20A367050003616F /* VSSWallpaperOptionsController.m */; };
+		AA5795F020A367050003616F /* VSSWallpaperOptionsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5795EE20A367050003616F /* VSSWallpaperOptionsController.xib */; };
+		AA5795F320A369740003616F /* VSaver.saver in Resources */ = {isa = PBXBuildFile; fileRef = AABDF4DF20A0B47900789BEB /* VSaver.saver */; };
+		AA5795F420A369DC0003616F /* VSSScreenSaverWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF52720A1889800789BEB /* VSSScreenSaverWindow.m */; };
+		AA5795F520A36BFC0003616F /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
 		AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
 		AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */; };
@@ -56,6 +65,13 @@
 			remoteGlobalIDString = AABDF4DE20A0B47900789BEB;
 			remoteInfo = VSaver;
 		};
+		AA5795F120A369690003616F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AABDF4D620A0B47900789BEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AABDF4DE20A0B47900789BEB;
+			remoteInfo = VSaver;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +93,17 @@
 		AA04F12420A22FE90062AA05 /* VSSWebViewProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSWebViewProvider.m; sourceTree = "<group>"; };
 		AA04F12820A2357F0062AA05 /* wistia.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = wistia.js; sourceTree = "<group>"; };
 		AA04F12E20A2D8610062AA05 /* VSSScreenSaver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSScreenSaver.h; sourceTree = "<group>"; };
+		AA5795DB20A366730003616F /* VSaverWallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSaverWallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA5795DD20A366730003616F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AA5795DE20A366730003616F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AA5795E020A366750003616F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA5795E320A366750003616F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		AA5795E520A366750003616F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA5795E620A366750003616F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AA5795E820A366750003616F /* VSaverWallpaper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VSaverWallpaper.entitlements; sourceTree = "<group>"; };
+		AA5795EC20A367050003616F /* VSSWallpaperOptionsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSWallpaperOptionsController.h; sourceTree = "<group>"; };
+		AA5795ED20A367050003616F /* VSSWallpaperOptionsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSWallpaperOptionsController.m; sourceTree = "<group>"; };
+		AA5795EE20A367050003616F /* VSSWallpaperOptionsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VSSWallpaperOptionsController.xib; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDF4E220A0B47900789BEB /* VSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSaverView.h; sourceTree = "<group>"; };
 		AABDF4E420A0B47900789BEB /* VSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSaverView.m; sourceTree = "<group>"; };
@@ -108,6 +135,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AA5795D820A366730003616F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AABDF4DB20A0B47900789BEB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,11 +181,29 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		AA5795DC20A366730003616F /* VSaverWallpaper */ = {
+			isa = PBXGroup;
+			children = (
+				AA5795DD20A366730003616F /* AppDelegate.h */,
+				AA5795DE20A366730003616F /* AppDelegate.m */,
+				AA5795EC20A367050003616F /* VSSWallpaperOptionsController.h */,
+				AA5795ED20A367050003616F /* VSSWallpaperOptionsController.m */,
+				AA5795EE20A367050003616F /* VSSWallpaperOptionsController.xib */,
+				AA5795E020A366750003616F /* Assets.xcassets */,
+				AA5795E220A366750003616F /* MainMenu.xib */,
+				AA5795E520A366750003616F /* Info.plist */,
+				AA5795E620A366750003616F /* main.m */,
+				AA5795E820A366750003616F /* VSaverWallpaper.entitlements */,
+			);
+			path = VSaverWallpaper;
+			sourceTree = "<group>";
+		};
 		AABDF4D520A0B47900789BEB = {
 			isa = PBXGroup;
 			children = (
 				AABDF4E120A0B47900789BEB /* VSaver */,
 				AABDF50D20A1868E00789BEB /* VSaverTester */,
+				AA5795DC20A366730003616F /* VSaverWallpaper */,
 				AABDF4E020A0B47900789BEB /* Products */,
 				AABDF4EC20A0B4D100789BEB /* Frameworks */,
 			);
@@ -162,6 +214,7 @@
 			children = (
 				AABDF4DF20A0B47900789BEB /* VSaver.saver */,
 				AABDF50C20A1868E00789BEB /* VSaverTester.app */,
+				AA5795DB20A366730003616F /* VSaverWallpaper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -268,6 +321,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		AA5795DA20A366730003616F /* VSaverWallpaper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA5795EB20A366750003616F /* Build configuration list for PBXNativeTarget "VSaverWallpaper" */;
+			buildPhases = (
+				AA5795D720A366730003616F /* Sources */,
+				AA5795D820A366730003616F /* Frameworks */,
+				AA5795D920A366730003616F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA5795F220A369690003616F /* PBXTargetDependency */,
+			);
+			name = VSaverWallpaper;
+			productName = VSaverWallpaper;
+			productReference = AA5795DB20A366730003616F /* VSaverWallpaper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		AABDF4DE20A0B47900789BEB /* VSaver */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AABDF4E920A0B47900789BEB /* Build configuration list for PBXNativeTarget "VSaver" */;
@@ -314,6 +385,15 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Jarek Pendowski";
 				TargetAttributes = {
+					AA5795DA20A366730003616F = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
 					AABDF4DE20A0B47900789BEB = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -344,11 +424,23 @@
 			targets = (
 				AABDF4DE20A0B47900789BEB /* VSaver */,
 				AABDF50B20A1868E00789BEB /* VSaverTester */,
+				AA5795DA20A366730003616F /* VSaverWallpaper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AA5795D920A366730003616F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA5795F320A369740003616F /* VSaver.saver in Resources */,
+				AA5795E120A366750003616F /* Assets.xcassets in Resources */,
+				AA5795F020A367050003616F /* VSSWallpaperOptionsController.xib in Resources */,
+				AA5795E420A366750003616F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AABDF4DD20A0B47900789BEB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,6 +466,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AA5795D720A366730003616F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA5795E720A366750003616F /* main.m in Sources */,
+				AA5795EF20A367050003616F /* VSSWallpaperOptionsController.m in Sources */,
+				AA5795F420A369DC0003616F /* VSSScreenSaverWindow.m in Sources */,
+				AA5795DF20A366730003616F /* AppDelegate.m in Sources */,
+				AA5795F520A36BFC0003616F /* NSArray+Extended.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AABDF4DA20A0B47900789BEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -413,9 +517,22 @@
 			target = AABDF4DE20A0B47900789BEB /* VSaver */;
 			targetProxy = AA04F12B20A2D6EC0062AA05 /* PBXContainerItemProxy */;
 		};
+		AA5795F220A369690003616F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AABDF4DE20A0B47900789BEB /* VSaver */;
+			targetProxy = AA5795F120A369690003616F /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AA5795E220A366750003616F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA5795E320A366750003616F /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		AABDF51320A1868E00789BEB /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -427,6 +544,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AA5795E920A366750003616F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 883TJ9L9GP;
+				INFOPLIST_FILE = VSaverWallpaper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AA5795EA20A366750003616F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 883TJ9L9GP;
+				INFOPLIST_FILE = VSaverWallpaper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		AABDF4E720A0B47900789BEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -589,6 +740,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AA5795EB20A366750003616F /* Build configuration list for PBXNativeTarget "VSaverWallpaper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA5795E920A366750003616F /* Debug */,
+				AA5795EA20A366750003616F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AABDF4D920A0B47900789BEB /* Build configuration list for PBXProject "VSaver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

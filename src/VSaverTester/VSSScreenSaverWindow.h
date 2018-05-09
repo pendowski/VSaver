@@ -15,6 +15,7 @@ typedef NSView<VSSScreenSaver> *(^VSSScreenSaverFactory)(CGRect frame);
 @property (nullable, nonatomic, weak) NSView<VSSScreenSaver> *screenSaverView;
 
 - (instancetype)initWithScreenSaverViewFactory:(VSSScreenSaverFactory)factory;
+- (instancetype)initWithScreenSaverViewFactory:(VSSScreenSaverFactory)factory styleMask:(NSWindowStyleMask)styleMask screen:(NSScreen *)screen coverFullScreen:(BOOL)fullScreen;
 
 - (void)reloadScreenSaver;
 @end
