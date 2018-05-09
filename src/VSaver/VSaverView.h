@@ -7,7 +7,8 @@
 //
 
 #import <ScreenSaver/ScreenSaver.h>
+#import "VSSScreenSaver.h"
 
-@interface VSaverView : ScreenSaverView
+@interface VSaverView : ScreenSaverView <VSSScreenSaver>
 
 @end

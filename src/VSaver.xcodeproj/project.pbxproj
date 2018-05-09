@@ -12,27 +12,19 @@
 		AA04F10220A1FC910062AA05 /* VSSSettingsController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F0FF20A1FC910062AA05 /* VSSSettingsController.h */; };
 		AA04F10320A1FC910062AA05 /* VSSSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F10020A1FC910062AA05 /* VSSSettingsController.m */; };
 		AA04F10420A1FC910062AA05 /* VSSSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA04F10120A1FC910062AA05 /* VSSSettingsController.xib */; };
-		AA04F10620A1FCA10062AA05 /* VSSVimeoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */; };
-		AA04F10720A1FCA60062AA05 /* VSSSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F10020A1FC910062AA05 /* VSSSettingsController.m */; };
-		AA04F10820A1FCAB0062AA05 /* VSSSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA04F10120A1FC910062AA05 /* VSSSettingsController.xib */; };
 		AA04F10B20A2060B0062AA05 /* VSSUserDefaultsSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F10920A2060B0062AA05 /* VSSUserDefaultsSettings.h */; };
 		AA04F10C20A2060B0062AA05 /* VSSUserDefaultsSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F10A20A2060B0062AA05 /* VSSUserDefaultsSettings.m */; };
-		AA04F10E20A206B90062AA05 /* VSSUserDefaultsSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F10A20A2060B0062AA05 /* VSSUserDefaultsSettings.m */; };
 		AA04F11120A213D10062AA05 /* VSSYouTubeProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F10F20A213D10062AA05 /* VSSYouTubeProvider.h */; };
 		AA04F11220A213D10062AA05 /* VSSYouTubeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F11020A213D10062AA05 /* VSSYouTubeProvider.m */; };
-		AA04F11320A213D10062AA05 /* VSSYouTubeProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F11020A213D10062AA05 /* VSSYouTubeProvider.m */; };
 		AA04F11920A21E7A0062AA05 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11720A21E7A0062AA05 /* thumbnail.png */; };
 		AA04F11A20A21E7B0062AA05 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11820A21E7A0062AA05 /* thumbnail@2x.png */; };
 		AA04F11C20A21E910062AA05 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11B20A21E910062AA05 /* youtube.js */; };
-		AA04F11D20A21E910062AA05 /* youtube.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F11B20A21E910062AA05 /* youtube.js */; };
 		AA04F12020A22F680062AA05 /* VSSWistiaProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F11E20A22F680062AA05 /* VSSWistiaProvider.h */; };
 		AA04F12120A22F680062AA05 /* VSSWistiaProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F11F20A22F680062AA05 /* VSSWistiaProvider.m */; };
-		AA04F12220A22F680062AA05 /* VSSWistiaProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F11F20A22F680062AA05 /* VSSWistiaProvider.m */; };
 		AA04F12520A22FE90062AA05 /* VSSWebViewProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA04F12320A22FE90062AA05 /* VSSWebViewProvider.h */; };
 		AA04F12620A22FE90062AA05 /* VSSWebViewProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F12420A22FE90062AA05 /* VSSWebViewProvider.m */; };
-		AA04F12720A22FE90062AA05 /* VSSWebViewProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA04F12420A22FE90062AA05 /* VSSWebViewProvider.m */; };
 		AA04F12920A2357F0062AA05 /* wistia.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F12820A2357F0062AA05 /* wistia.js */; };
-		AA04F12A20A2357F0062AA05 /* wistia.js in Resources */ = {isa = PBXBuildFile; fileRef = AA04F12820A2357F0062AA05 /* wistia.js */; };
+		AA04F12D20A2D7000062AA05 /* VSaver.saver in Resources */ = {isa = PBXBuildFile; fileRef = AABDF4DF20A0B47900789BEB /* VSaver.saver */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
 		AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
 		AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */; };
@@ -51,14 +43,20 @@
 		AABDF51220A1868E00789BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AABDF51120A1868E00789BEB /* Assets.xcassets */; };
 		AABDF51520A1868E00789BEB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AABDF51320A1868E00789BEB /* MainMenu.xib */; };
 		AABDF51820A1868E00789BEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF51720A1868E00789BEB /* main.m */; };
-		AABDF52020A1878C00789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
-		AABDF52120A1878C00789BEB /* VSSVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4F220A0B5FB00789BEB /* VSSVideoPlayerController.m */; };
-		AABDF52220A1878C00789BEB /* VSSURLItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4F620A0B66B00789BEB /* VSSURLItem.m */; };
-		AABDF52320A1879100789BEB /* VSSAppleTVProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF50120A0D12900789BEB /* VSSAppleTVProvider.m */; };
 		AABDF52420A1879700789BEB /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */; };
 		AABDF52520A1879700789BEB /* NSObject+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF50520A17EDF00789BEB /* NSObject+Extended.m */; };
 		AABDF52820A1889800789BEB /* VSSScreenSaverWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF52720A1889800789BEB /* VSSScreenSaverWindow.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA04F12B20A2D6EC0062AA05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AABDF4D620A0B47900789BEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AABDF4DE20A0B47900789BEB;
+			remoteInfo = VSaver;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AA04F0FB20A1F6530062AA05 /* VSSVimeoProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSVimeoProvider.h; sourceTree = "<group>"; };
@@ -78,6 +76,7 @@
 		AA04F12320A22FE90062AA05 /* VSSWebViewProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSWebViewProvider.h; sourceTree = "<group>"; };
 		AA04F12420A22FE90062AA05 /* VSSWebViewProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSWebViewProvider.m; sourceTree = "<group>"; };
 		AA04F12820A2357F0062AA05 /* wistia.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = wistia.js; sourceTree = "<group>"; };
+		AA04F12E20A2D8610062AA05 /* VSSScreenSaver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSScreenSaver.h; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDF4E220A0B47900789BEB /* VSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSaverView.h; sourceTree = "<group>"; };
 		AABDF4E420A0B47900789BEB /* VSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSaverView.m; sourceTree = "<group>"; };
@@ -170,6 +169,7 @@
 		AABDF4E120A0B47900789BEB /* VSaver */ = {
 			isa = PBXGroup;
 			children = (
+				AA04F12E20A2D8610062AA05 /* VSSScreenSaver.h */,
 				AABDF4E220A0B47900789BEB /* VSaverView.h */,
 				AABDF4E420A0B47900789BEB /* VSaverView.m */,
 				AABDF4F120A0B5FB00789BEB /* VSSVideoPlayerController.h */,
@@ -297,6 +297,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AA04F12C20A2D6EC0062AA05 /* PBXTargetDependency */,
 			);
 			name = VSaverTester;
 			productName = VSaverTester;
@@ -364,11 +365,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA04F12A20A2357F0062AA05 /* wistia.js in Resources */,
+				AA04F12D20A2D7000062AA05 /* VSaver.saver in Resources */,
 				AABDF51220A1868E00789BEB /* Assets.xcassets in Resources */,
 				AABDF51520A1868E00789BEB /* MainMenu.xib in Resources */,
-				AA04F11D20A21E910062AA05 /* youtube.js in Resources */,
-				AA04F10820A1FCAB0062AA05 /* VSSSettingsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,23 +399,21 @@
 			files = (
 				AABDF52420A1879700789BEB /* NSArray+Extended.m in Sources */,
 				AABDF51820A1868E00789BEB /* main.m in Sources */,
-				AA04F12220A22F680062AA05 /* VSSWistiaProvider.m in Sources */,
 				AABDF52520A1879700789BEB /* NSObject+Extended.m in Sources */,
-				AABDF52120A1878C00789BEB /* VSSVideoPlayerController.m in Sources */,
 				AABDF51020A1868E00789BEB /* AppDelegate.m in Sources */,
-				AABDF52020A1878C00789BEB /* VSaverView.m in Sources */,
-				AABDF52320A1879100789BEB /* VSSAppleTVProvider.m in Sources */,
-				AA04F10720A1FCA60062AA05 /* VSSSettingsController.m in Sources */,
-				AA04F10E20A206B90062AA05 /* VSSUserDefaultsSettings.m in Sources */,
-				AA04F12720A22FE90062AA05 /* VSSWebViewProvider.m in Sources */,
-				AABDF52220A1878C00789BEB /* VSSURLItem.m in Sources */,
-				AA04F10620A1FCA10062AA05 /* VSSVimeoProvider.m in Sources */,
-				AA04F11320A213D10062AA05 /* VSSYouTubeProvider.m in Sources */,
 				AABDF52820A1889800789BEB /* VSSScreenSaverWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA04F12C20A2D6EC0062AA05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AABDF4DE20A0B47900789BEB /* VSaver */;
+			targetProxy = AA04F12B20A2D6EC0062AA05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AABDF51320A1868E00789BEB /* MainMenu.xib */ = {

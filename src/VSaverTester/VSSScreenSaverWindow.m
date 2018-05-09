@@ -7,16 +7,21 @@
 //
 
 #import "VSSScreenSaverWindow.h"
-#import "VSaverView.h"
+#import "VSSScreenSaver.h"
+
+@interface VSSScreenSaverWindow ()
+@property (nonnull, nonatomic, copy) VSSScreenSaverFactory screenSaverfactory;
+@end
 
 @implementation VSSScreenSaverWindow
     
-- (instancetype)init {
+- (instancetype)initWithScreenSaverViewFactory:(VSSScreenSaverFactory)factory {
     CGRect mainFrame = [[NSScreen mainScreen] visibleFrame];
     self = [super initWithContentRect:mainFrame styleMask:(NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskClosable) backing:NSBackingStoreBuffered defer:YES];
     if (self) {
         self.hidesOnDeactivate = NO;
         [self setReleasedWhenClosed:NO];
+        self.screenSaverfactory = factory;
         
         [self reloadScreenSaver];
     }
@@ -28,8 +33,7 @@
 - (void)reloadScreenSaver {
     [self.screenSaverView removeFromSuperview];
     
-    VSaverView *saverView = [[VSaverView alloc] initWithFrame:CGRectZero isPreview:NO];
-    saverView.frame = self.contentView.bounds;
+    NSView<VSSScreenSaver> *saverView = self.screenSaverfactory(self.contentView.bounds);
     saverView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
     [self.contentView addSubview:saverView];
     

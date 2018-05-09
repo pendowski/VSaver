@@ -9,7 +9,7 @@
 #import "VSSURLItem.h"
 
 @implementation VSSURLItem
-    
+
 - (instancetype)initWithTitle: (NSString *)title url: (NSURL *)url {
     self = [super init];
     if (self) {
@@ -18,5 +18,5 @@
     }
     return self;
 }
-    
-    @end
+
+@end

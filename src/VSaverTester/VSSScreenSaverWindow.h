@@ -7,10 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@import ScreenSaver;
+#import "VSSScreenSaver.h"
+
+typedef NSView<VSSScreenSaver> *(^VSSScreenSaverFactory)(CGRect frame);
 
 @interface VSSScreenSaverWindow : NSWindow
-@property (nullable, nonatomic, weak) ScreenSaverView *screenSaverView;
+@property (nullable, nonatomic, weak) NSView<VSSScreenSaver> *screenSaverView;
+
+- (instancetype)initWithScreenSaverViewFactory:(VSSScreenSaverFactory)factory;
 
 - (void)reloadScreenSaver;
 @end
