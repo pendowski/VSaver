@@ -34,6 +34,8 @@
 		AA5795F320A369740003616F /* VSaver.saver in Resources */ = {isa = PBXBuildFile; fileRef = AABDF4DF20A0B47900789BEB /* VSaver.saver */; };
 		AA5795F420A369DC0003616F /* VSSScreenSaverWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF52720A1889800789BEB /* VSSScreenSaverWindow.m */; };
 		AA5795F520A36BFC0003616F /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */; };
+		AA5795FD20A375130003616F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5795FC20A375130003616F /* main.m */; };
+		AA57960120A3761E0003616F /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
 		AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
 		AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */; };
@@ -74,6 +76,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AA5795F820A375130003616F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		AA04F0FB20A1F6530062AA05 /* VSSVimeoProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSVimeoProvider.h; sourceTree = "<group>"; };
 		AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSVimeoProvider.m; sourceTree = "<group>"; };
@@ -104,6 +118,8 @@
 		AA5795EC20A367050003616F /* VSSWallpaperOptionsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSWallpaperOptionsController.h; sourceTree = "<group>"; };
 		AA5795ED20A367050003616F /* VSSWallpaperOptionsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSWallpaperOptionsController.m; sourceTree = "<group>"; };
 		AA5795EE20A367050003616F /* VSSWallpaperOptionsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VSSWallpaperOptionsController.xib; sourceTree = "<group>"; };
+		AA5795FA20A375130003616F /* SaverInstaller */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SaverInstaller; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA5795FC20A375130003616F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDF4E220A0B47900789BEB /* VSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSaverView.h; sourceTree = "<group>"; };
 		AABDF4E420A0B47900789BEB /* VSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSaverView.m; sourceTree = "<group>"; };
@@ -136,6 +152,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		AA5795D820A366730003616F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA5795F720A375130003616F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -198,12 +221,21 @@
 			path = VSaverWallpaper;
 			sourceTree = "<group>";
 		};
+		AA5795FB20A375130003616F /* SaverInstaller */ = {
+			isa = PBXGroup;
+			children = (
+				AA5795FC20A375130003616F /* main.m */,
+			);
+			path = SaverInstaller;
+			sourceTree = "<group>";
+		};
 		AABDF4D520A0B47900789BEB = {
 			isa = PBXGroup;
 			children = (
 				AABDF4E120A0B47900789BEB /* VSaver */,
 				AABDF50D20A1868E00789BEB /* VSaverTester */,
 				AA5795DC20A366730003616F /* VSaverWallpaper */,
+				AA5795FB20A375130003616F /* SaverInstaller */,
 				AABDF4E020A0B47900789BEB /* Products */,
 				AABDF4EC20A0B4D100789BEB /* Frameworks */,
 			);
@@ -215,6 +247,7 @@
 				AABDF4DF20A0B47900789BEB /* VSaver.saver */,
 				AABDF50C20A1868E00789BEB /* VSaverTester.app */,
 				AA5795DB20A366730003616F /* VSaverWallpaper.app */,
+				AA5795FA20A375130003616F /* SaverInstaller */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -339,6 +372,23 @@
 			productReference = AA5795DB20A366730003616F /* VSaverWallpaper.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AA5795F920A375130003616F /* SaverInstaller */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA57960020A375130003616F /* Build configuration list for PBXNativeTarget "SaverInstaller" */;
+			buildPhases = (
+				AA5795F620A375130003616F /* Sources */,
+				AA5795F720A375130003616F /* Frameworks */,
+				AA5795F820A375130003616F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SaverInstaller;
+			productName = SaverInstaller;
+			productReference = AA5795FA20A375130003616F /* SaverInstaller */;
+			productType = "com.apple.product-type.tool";
+		};
 		AABDF4DE20A0B47900789BEB /* VSaver */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AABDF4E920A0B47900789BEB /* Build configuration list for PBXNativeTarget "VSaver" */;
@@ -394,6 +444,10 @@
 							};
 						};
 					};
+					AA5795F920A375130003616F = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 					AABDF4DE20A0B47900789BEB = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -425,6 +479,7 @@
 				AABDF4DE20A0B47900789BEB /* VSaver */,
 				AABDF50B20A1868E00789BEB /* VSaverTester */,
 				AA5795DA20A366730003616F /* VSaverWallpaper */,
+				AA5795F920A375130003616F /* SaverInstaller */,
 			);
 		};
 /* End PBXProject section */
@@ -475,6 +530,15 @@
 				AA5795F420A369DC0003616F /* VSSScreenSaverWindow.m in Sources */,
 				AA5795DF20A366730003616F /* AppDelegate.m in Sources */,
 				AA5795F520A36BFC0003616F /* NSArray+Extended.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA5795F620A375130003616F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA5795FD20A375130003616F /* main.m in Sources */,
+				AA57960120A3761E0003616F /* NSArray+Extended.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +638,30 @@
 				INFOPLIST_FILE = VSaverWallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AA5795FE20A375130003616F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 883TJ9L9GP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AA5795FF20A375130003616F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -745,6 +833,15 @@
 			buildConfigurations = (
 				AA5795E920A366750003616F /* Debug */,
 				AA5795EA20A366750003616F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA57960020A375130003616F /* Build configuration list for PBXNativeTarget "SaverInstaller" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA5795FE20A375130003616F /* Debug */,
+				AA5795FF20A375130003616F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
