@@ -9,6 +9,7 @@
 #import "VSSVimeoProvider.h"
 #import "NSObject+Extended.h"
 #import "NSArray+Extended.h"
+#import "NSURLSession+VSSExtended.h"
 
 @interface VSSVimeoStream: NSObject
 @property (nonnull, nonatomic, copy) NSString *url;
@@ -50,7 +51,7 @@
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    [[session dataTaskWithURL:configURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[session dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error || !data) {
             completion(nil);
             return;

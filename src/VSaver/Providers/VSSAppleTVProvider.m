@@ -9,6 +9,7 @@
 #import "VSSAppleTVProvider.h"
 #import "NSObject+Extended.h"
 #import "NSArray+Extended.h"
+#import "NSURLSession+VSSExtended.h"
 
 #define JSONURL [NSURL URLWithString: @"http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json"]
 
@@ -64,7 +65,7 @@
     __weak typeof(self) weakSelf = self;
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    [[session dataTaskWithURL:JSONURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[session dataTaskWithURL:JSONURL mainQueueCompletionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (!data || error) {
             completion(nil);

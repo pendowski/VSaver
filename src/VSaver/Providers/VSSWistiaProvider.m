@@ -7,6 +7,7 @@
 //
 
 #import "VSSWistiaProvider.h"
+#import "NSURLSession+VSSExtended.h"
 @import JavaScriptCore;
 
 @interface VSSWistiaProvider ()
@@ -51,7 +52,7 @@
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    [[session dataTaskWithURL:configURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[session dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error || !data) {
             [self callCompletion:nil];
             return;
