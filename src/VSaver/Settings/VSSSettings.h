@@ -16,4 +16,5 @@ typedef NS_ENUM(NSInteger, VSSPlayMode) {
 @property (nonatomic) BOOL muteVideos;
 @property (nonatomic) BOOL showLabel;
 @property (nonatomic) VSSPlayMode playMode;
+@property (nonatomic) BOOL sameOnAllScreens;
 @end

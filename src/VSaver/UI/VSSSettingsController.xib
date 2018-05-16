@@ -3,12 +3,14 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="VSSSettingsController">
             <connections>
                 <outlet property="muteCheckbox" destination="60t-A4-8Fy" id="Jir-8J-Ka3"/>
                 <outlet property="playModeSelector" destination="6hs-aG-xRi" id="q6r-HQ-yaV"/>
+                <outlet property="sameVideoCheckbox" destination="Jd6-v0-iEa" id="HD6-GG-f7d"/>
                 <outlet property="sourceCheckbox" destination="llH-mf-aXd" id="hun-9Z-lrB"/>
                 <outlet property="tableView" destination="OtA-QO-naS" id="6As-8o-rMS"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -19,20 +21,20 @@
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="550" height="355"/>
+            <rect key="contentRect" x="196" y="240" width="550" height="392"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="550" height="355"/>
+                <rect key="frame" x="0.0" y="0.0" width="550" height="392"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9P0-h5-cJy">
-                        <rect key="frame" x="20" y="120" width="510" height="215"/>
+                        <rect key="frame" x="20" y="152" width="510" height="220"/>
                         <clipView key="contentView" id="TBK-KF-cIZ">
-                            <rect key="frame" x="1" y="1" width="508" height="213"/>
+                            <rect key="frame" x="1" y="1" width="508" height="218"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" id="OtA-QO-naS">
-                                    <rect key="frame" x="0.0" y="0.0" width="508" height="213"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="508" height="218"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -65,10 +67,10 @@
                         </scroller>
                     </scrollView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ch9-6T-SYM">
-                        <rect key="frame" x="20" y="61" width="510" height="59"/>
+                        <rect key="frame" x="20" y="61" width="510" height="91"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ChT-hM-tFR">
-                                <rect key="frame" x="461" y="34" width="24" height="26"/>
+                                <rect key="frame" x="461" y="66" width="24" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="1CI-sN-3NC"/>
                                     <constraint firstAttribute="height" constant="24" id="rhF-Ud-tPR"/>
@@ -82,7 +84,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0o2-P8-LbF">
-                                <rect key="frame" x="486" y="34" width="24" height="26"/>
+                                <rect key="frame" x="486" y="66" width="24" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="2KL-fS-swb"/>
                                     <constraint firstAttribute="height" constant="24" id="ffh-0v-fI0"/>
@@ -95,15 +97,44 @@
                                     <action selector="removeItemClicked:" target="-2" id="ir6-bm-8jU"/>
                                 </connections>
                             </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="60t-A4-8Fy">
-                                <rect key="frame" x="-2" y="18" width="96" height="18"/>
-                                <buttonCell key="cell" type="check" title="Mute videos" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HQL-G1-Kjf">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yr6-nK-fNM">
+                                <rect key="frame" x="0.0" y="8" width="176" height="58"/>
+                                <subviews>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="60t-A4-8Fy">
+                                        <rect key="frame" x="-2" y="42" width="96" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Mute videos" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HQL-G1-Kjf">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="llH-mf-aXd">
+                                        <rect key="frame" x="-2" y="20" width="133" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Show source label" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HwX-wt-D15">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Jd6-v0-iEa">
+                                        <rect key="frame" x="-2" y="-2" width="180" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Same video on all screens" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rh3-62-fKk">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6hs-aG-xRi">
-                                <rect key="frame" x="153" y="40" width="204" height="20"/>
+                                <rect key="frame" x="153" y="72" width="204" height="20"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="324-u8-uuu">
                                     <font key="font" metaFont="cellTitle"/>
                                     <segments>
@@ -113,35 +144,25 @@
                                 </segmentedCell>
                             </segmentedControl>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dV2-Vk-jE0">
-                                <rect key="frame" x="-2" y="42" width="111" height="17"/>
+                                <rect key="frame" x="-2" y="74" width="111" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Play videos mode" id="9jb-uA-VXw">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="llH-mf-aXd">
-                                <rect key="frame" x="-2" y="-2" width="133" height="18"/>
-                                <buttonCell key="cell" type="check" title="Show source label" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HwX-wt-D15">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Yr6-nK-fNM" firstAttribute="top" secondItem="dV2-Vk-jE0" secondAttribute="bottom" constant="8" id="23N-gI-Nbc"/>
                             <constraint firstItem="ChT-hM-tFR" firstAttribute="top" secondItem="Ch9-6T-SYM" secondAttribute="top" id="2d0-fy-lNV"/>
+                            <constraint firstAttribute="bottom" secondItem="Yr6-nK-fNM" secondAttribute="bottom" constant="8" id="9zz-ER-DBE"/>
                             <constraint firstAttribute="trailing" secondItem="0o2-P8-LbF" secondAttribute="trailing" id="FBd-Uf-OPF"/>
-                            <constraint firstItem="60t-A4-8Fy" firstAttribute="top" secondItem="dV2-Vk-jE0" secondAttribute="bottom" constant="8" id="Ilc-JA-eJ4"/>
                             <constraint firstItem="dV2-Vk-jE0" firstAttribute="leading" secondItem="Ch9-6T-SYM" secondAttribute="leading" id="Lma-Gd-rCY"/>
                             <constraint firstItem="dV2-Vk-jE0" firstAttribute="centerY" secondItem="6hs-aG-xRi" secondAttribute="centerY" id="NRi-Q0-GN7"/>
                             <constraint firstItem="0o2-P8-LbF" firstAttribute="leading" secondItem="ChT-hM-tFR" secondAttribute="trailing" constant="1" id="SiN-MR-FrM"/>
                             <constraint firstItem="0o2-P8-LbF" firstAttribute="top" secondItem="Ch9-6T-SYM" secondAttribute="top" id="Tda-N5-SFf"/>
-                            <constraint firstItem="llH-mf-aXd" firstAttribute="top" secondItem="60t-A4-8Fy" secondAttribute="bottom" constant="6" id="bF7-h2-uvQ"/>
-                            <constraint firstAttribute="bottom" secondItem="llH-mf-aXd" secondAttribute="bottom" id="dVE-Uv-eYt"/>
+                            <constraint firstItem="Yr6-nK-fNM" firstAttribute="leading" secondItem="Ch9-6T-SYM" secondAttribute="leading" id="aVO-fC-Z5e"/>
                             <constraint firstItem="6hs-aG-xRi" firstAttribute="centerX" secondItem="Ch9-6T-SYM" secondAttribute="centerX" id="kCO-Be-t2d"/>
-                            <constraint firstItem="llH-mf-aXd" firstAttribute="top" secondItem="60t-A4-8Fy" secondAttribute="bottom" constant="6" id="oDO-XB-r8T"/>
-                            <constraint firstItem="llH-mf-aXd" firstAttribute="leading" secondItem="Ch9-6T-SYM" secondAttribute="leading" id="qNX-WW-CIg"/>
-                            <constraint firstItem="60t-A4-8Fy" firstAttribute="leading" secondItem="Ch9-6T-SYM" secondAttribute="leading" id="saF-tY-itF"/>
                             <constraint firstItem="dV2-Vk-jE0" firstAttribute="top" secondItem="Ch9-6T-SYM" secondAttribute="top" id="yAw-ei-bzr"/>
                         </constraints>
                     </customView>
@@ -173,7 +194,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="167" y="203.5"/>
+            <point key="canvasLocation" x="167" y="185"/>
         </window>
     </objects>
     <resources>

@@ -91,7 +91,12 @@
         
         self.sourceLabel = label;
         
-        VSSVideoPlayerController *videoController = [VSSVideoPlayerController sharedPlayerController];
+        VSSVideoPlayerController *videoController;
+        if (self.settings.sameOnAllScreens) {
+            videoController = [VSSVideoPlayerController sharedPlayerController];
+        } else {
+            videoController = [[VSSVideoPlayerController alloc] initWithCommonProviders];
+        }
         [videoController addPlayer:player];
         [videoController addDelegate:self];
         

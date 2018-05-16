@@ -18,20 +18,21 @@ typedef NS_ENUM(NSInteger, VSSMode) {
 @class VSSVideoPlayerController;
 
 @protocol VSSVideoPlayerControllerDelegate <NSObject>
-    - (void)videoPlayerController: (VSSVideoPlayerController *)controller willLoadVideoWithURL: (NSURL *)url;
-    - (void)videoPlayerController: (VSSVideoPlayerController *)controller didLoadVideoItem: (VSSURLItem *)url;
+- (void)videoPlayerController: (VSSVideoPlayerController *)controller willLoadVideoWithURL: (NSURL *)url;
+- (void)videoPlayerController: (VSSVideoPlayerController *)controller didLoadVideoItem: (VSSURLItem *)url;
 @end
 
 @interface VSSVideoPlayerController : NSObject
-    @property (nonatomic) VSSMode mode;
-    
-    + (instancetype)sharedPlayerController;
+@property (nonatomic) VSSMode mode;
 
-    - (instancetype)initWithProviders: (NSArray<id<VSSProvider>> *)providers;
-    
-    - (void)setQueue: (NSArray<NSURL *> *)urls;
-    - (void)addPlayer: (AVPlayer *)player;
-    - (void)addDelegate: (id<VSSVideoPlayerControllerDelegate>)delegate;
-    - (void)setVolume: (CGFloat)volume;
-    
++ (instancetype)sharedPlayerController;
+
+- (instancetype)initWithProviders: (NSArray<id<VSSProvider>> *)providers;
+- (instancetype)initWithCommonProviders;
+
+- (void)setQueue: (NSArray<NSURL *> *)urls;
+- (void)addPlayer: (AVPlayer *)player;
+- (void)addDelegate: (id<VSSVideoPlayerControllerDelegate>)delegate;
+- (void)setVolume: (CGFloat)volume;
+
 @end

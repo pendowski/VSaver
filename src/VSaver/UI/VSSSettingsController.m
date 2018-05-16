@@ -14,6 +14,7 @@
 @property (nonnull, nonatomic, strong) IBOutlet NSTableView *tableView;
 @property (nonnull, nonatomic, strong) IBOutlet NSButton *muteCheckbox;
 @property (nonnull, nonatomic, strong) IBOutlet NSButton *sourceCheckbox;
+@property (nonnull, nonatomic, strong) IBOutlet NSButton *sameVideoCheckbox;
 @property (nonnull, nonatomic, strong) IBOutlet NSSegmentedControl *playModeSelector;
 @property (nonnull, nonatomic, strong) NSMutableArray<NSString *> *urls;
 @end
@@ -38,6 +39,7 @@
     
     self.muteCheckbox.state = self.settings.muteVideos ? NSOnState : NSOffState;
     self.sourceCheckbox.state = self.settings.showLabel ? NSOnState : NSOffState;
+    self.sameVideoCheckbox.state = self.settings.sameOnAllScreens ? NSOnState : NSOffState;
     
     switch (self.settings.playMode) {
         case VSSPlayModeRandom:
@@ -61,6 +63,7 @@
     }];
     self.settings.muteVideos = self.muteCheckbox.state == NSOnState;
     self.settings.showLabel = self.sourceCheckbox.state == NSOnState;
+    self.settings.sameOnAllScreens = self.sameVideoCheckbox.state == NSOnState;
     
     switch (self.playModeSelector.selectedSegment) {
         case 0:

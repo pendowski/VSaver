@@ -13,6 +13,7 @@
 #define URLsKey @"urls"
 #define PlayModeKey @"playMode"
 #define ShowLabelKey @"showSource"
+#define SameOnAllScreensKey @"sameOnAllScreens"
 
 @interface VSSUserDefaultsSettings ()
 @property (nonnull, nonatomic, strong) NSUserDefaults *defaults;
@@ -63,6 +64,15 @@
 
 - (void)setUrls:(NSArray<NSString *> *)urls {
     [self.defaults setObject:urls forKey:URLsKey];
+    [self.defaults synchronize];
+}
+
+- (BOOL)sameOnAllScreens {
+    return [self.defaults objectForKey:SameOnAllScreensKey] ? [self.defaults boolForKey:SameOnAllScreensKey] : YES;
+}
+
+- (void)setSameOnAllScreens:(BOOL)sameOnAllScreens {
+    [self.defaults setBool:sameOnAllScreens forKey:SameOnAllScreensKey];
     [self.defaults synchronize];
 }
 
