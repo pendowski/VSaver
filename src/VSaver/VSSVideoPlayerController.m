@@ -91,18 +91,6 @@
     }];
 }
 
-#pragma mark - Notifications
-
-- (void)videoDidEnd: (NSNotification *)notifications {
-    [self playNext];
-}
-
-- (void)videoDidFail: (NSNotification *)notifications {
-    [self playNext];
-}
-
-#pragma mark - Private
-
 - (void)playNext {
     if (self.urls.count == 0) {
         return;
@@ -153,6 +141,16 @@
             [player play];
         }
     }];
+}
+
+#pragma mark - Notifications
+
+- (void)videoDidEnd: (NSNotification *)notifications {
+    [self playNext];
+}
+
+- (void)videoDidFail: (NSNotification *)notifications {
+    [self playNext];
 }
 
 @end

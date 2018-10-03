@@ -8,7 +8,8 @@
 
 #import <ScreenSaver/ScreenSaver.h>
 #import "VSSScreenSaver.h"
+#import "VSSVideoPlayerController.h"
 
 @interface VSaverView : ScreenSaverView <VSSScreenSaver>
-
+@property (nonnull, nonatomic, strong) VSSVideoPlayerController *videoController;
 @end

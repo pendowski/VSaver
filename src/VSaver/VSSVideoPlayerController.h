@@ -9,6 +9,7 @@
 @import AVFoundation;
 #import <Foundation/Foundation.h>
 #import "VSSProvider.h"
+#import "VSSScreenSaver.h"
 
 typedef NS_ENUM(NSInteger, VSSMode) {
     VSSModeRandom,
@@ -22,7 +23,7 @@ typedef NS_ENUM(NSInteger, VSSMode) {
 - (void)videoPlayerController: (VSSVideoPlayerController *)controller didLoadVideoItem: (VSSURLItem *)url;
 @end
 
-@interface VSSVideoPlayerController : NSObject
+@interface VSSVideoPlayerController : NSObject <VSScreenVideoController>
 @property (nonatomic) VSSMode mode;
 
 + (instancetype)sharedPlayerController;
@@ -34,5 +35,6 @@ typedef NS_ENUM(NSInteger, VSSMode) {
 - (void)addPlayer: (AVPlayer *)player;
 - (void)addDelegate: (id<VSSVideoPlayerControllerDelegate>)delegate;
 - (void)setVolume: (CGFloat)volume;
+- (void)playNext;
 
 @end

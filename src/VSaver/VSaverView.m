@@ -9,20 +9,21 @@
 #import "VSaverView.h"
 @import AVKit;
 @import AVFoundation;
+@import QuartzCore;
 #import "VSSVideoPlayerController.h"
 #import "VSSSettings.h"
 #import "VSSSettingsController.h"
 #import "VSSUserDefaultsSettings.h"
 #import "NSArray+Extended.h"
-
+#import "NSObject+Extended.h"
 
 @interface VSaverView () <VSSVideoPlayerControllerDelegate>
-    @property (nonnull, nonatomic, strong) VSSVideoPlayerController *videoController;
-    @property (nullable, nonatomic, weak) NSProgressIndicator *loadingIndicator;
-    @property (nullable, nonatomic, weak) NSTextField *sourceLabel;
-    
-    @property (nonnull, nonatomic, strong) id<VSSSettings> settings;
-    @property (nullable, nonatomic, strong) NSWindowController *settingsController;
+@property (nullable, nonatomic, weak) NSProgressIndicator *loadingIndicator;
+@property (nullable, nonatomic, weak) NSTextField *sourceLabel;
+@property (nullable, nonatomic, weak) AVPlayerLayer *playerLayer;
+
+@property (nonnull, nonatomic, strong) id<VSSSettings> settings;
+@property (nullable, nonatomic, strong) NSWindowController *settingsController;
 @end
 
 @implementation VSaverView
@@ -44,6 +45,7 @@
         playerLayer.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         playerLayer.frame = self.bounds;
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        self.playerLayer = playerLayer;
         
         [self.layer addSublayer:playerLayer];
         
@@ -140,7 +142,7 @@
 {
     return self.settingsController.window;
 }
-    
+
 #pragma mark - VSSVideoPlayerControllerDelegate
 
 - (void)videoPlayerController: (VSSVideoPlayerController *)controller willLoadVideoWithURL: (NSURL *)url {
@@ -158,9 +160,9 @@
         self.sourceLabel.stringValue = url.title != nil ? url.title : @"";
     });
 }
-    
+
 #pragma mark - Private
-    
+
 - (void)reloadAndPlay {
     NSArray<NSURL *> *urls = [self.settings.urls vss_map:^id _Nullable(NSString * _Nonnull url) {
         return [NSURL URLWithString:url];

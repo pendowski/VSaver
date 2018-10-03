@@ -33,6 +33,21 @@
     return self;
 }
 
+- (BOOL)canBecomeKeyWindow {
+    return YES;
+}
+
+- (void)keyDown:(NSEvent *)event {
+    const unsigned short spaceKey = 49;
+    const unsigned short rightKey = 124;
+    
+    if (event.keyCode == spaceKey || event.keyCode == rightKey) {
+        [self.screenSaverView.videoController playNext];
+    } else {
+        [super keyDown:event];
+    }
+}
+
 #pragma mark - Private
 
 - (void)reloadScreenSaver {

@@ -75,7 +75,7 @@
         NSError *jsonError;
         NSArray<NSDictionary *> *jsonDictionaries = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
         NSArray<NSDictionary *> *assets = [jsonDictionaries vss_flatMap:^id _Nullable(NSDictionary * _Nonnull obj) {
-            return VSSAS(obj[@"assets"], NSArray);;
+            return VSSAS(obj[@"assets"], NSArray);
         }];
         
         if (!assets || jsonError) {
@@ -83,10 +83,12 @@
             return;
         }
         
+        [strongSelf.cache removeAllObjects];
+        
         for (NSDictionary *dic in assets) {
             NSString *urlString = dic[@"url"];
-            if (urlString) {
-                NSURL *url = [NSURL URLWithString:urlString];
+            NSURL *url = [NSURL URLWithString:urlString];
+            if (url) {
                 NSString *label = dic[@"accessibilityLabel"] ?: @"";
                 NSInteger index = strongSelf.cache.count + 1;
                 
