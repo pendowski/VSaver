@@ -12,7 +12,6 @@
 #import "VSSVimeoProvider.h"
 #import "VSSYouTubeProvider.h"
 #import "VSSWistiaProvider.h"
-#import "VSSAppleTV12Provider.h"
 
 @interface VSSVideoPlayerController ()
 @property (nonnull, nonatomic, strong) NSArray<id<VSSProvider>> *providers;
@@ -46,7 +45,6 @@
 - (instancetype)initWithCommonProviders {
     return [self initWithProviders:@[
                                      [[VSSAppleTVProvider alloc] init],
-                                     [[VSSAppleTV12Provider alloc] init],
                                      [[VSSYouTubeProvider alloc] init],
                                      [[VSSVimeoProvider alloc] init],
                                      [[VSSWistiaProvider alloc] init]

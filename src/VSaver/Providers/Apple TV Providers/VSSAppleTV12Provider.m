@@ -8,7 +8,6 @@
 
 #import "VSSAppleTV12Provider.h"
 #import "VSSAppleItem.h"
-#import "NSURLComponents+Extended.h"
 #import "NSObject+Extended.h"
 #import "NSArray+Extended.h"
 
@@ -35,17 +34,13 @@
 #pragma mark - VSSProvider
 
 - (BOOL)isValidURL: (NSURL *_Nonnull)url {
-    return [url.scheme isEqualToString:@"atv"];
+    return [url.scheme isEqualToString:@"appletv"];
 }
 
-- (void)getVideoFromURL: (NSURL *_Nonnull)url completion: (void (^_Nonnull)(VSSURLItem * _Nullable))completion {
-    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
-    VSSAppleQuality quality = [self qualityFromString:[urlComponents queryValueWithKey:@"q"] defaultQuality:VSSAppleQuality1080SDR];
+- (void)getVideoAtIndex:(VSSAppleIndex)index quality:(VSSAppleQuality)quality completion:(nonnull void (^)(VSSURLItem * _Nullable))completion {
     
-    NSString *urlIndexString = url.host ?: url.fragment;
-    NSInteger urlIndex = urlIndexString.length > 0 ? [urlIndexString integerValue] : -1;
-    if (urlIndexString.length > 0 && self.cache.count > 0) {
-        completion([self getItemAtIndex:urlIndex quality:quality]);
+    if (self.cache.count > 0) {
+        completion([self getItemAtIndex:index quality:quality]);
         return;
     }
     NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"appletv12"];
@@ -55,7 +50,7 @@
     NSDate *modifiedDate = attributes[NSFileModificationDate];
     
     if (modifiedDate && NSDate.timeIntervalSinceReferenceDate - modifiedDate.timeIntervalSince1970 > 60 * 60 * 24) {
-        return [self getVideoFromURL:url fromCache:cacheDestination urlIndex:urlIndex quality:quality completion:completion];
+        return [self getVideoFromCache:cacheDestination urlIndex:index quality:quality completion:completion];
     }
     
     __weak typeof(self) weakSelf = self;
@@ -65,7 +60,7 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (!location || error) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [strongSelf getVideoFromURL:url fromCache:cacheDestination urlIndex:urlIndex quality:quality completion:completion];
+                [strongSelf getVideoFromCache:cacheDestination urlIndex:index quality:quality completion:completion];
             });
             return;
         }
@@ -76,28 +71,13 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [strongSelf getVideoFromURL:url fromCache:cacheDestination urlIndex:urlIndex quality:quality completion:completion];
+            [strongSelf getVideoFromCache:cacheDestination urlIndex:index quality:quality completion:completion];
         });
         
     }] resume];
 }
 
 #pragma mark - Private
-
-- (VSSAppleQuality)qualityFromString:(NSString * _Nullable)string defaultQuality:(VSSAppleQuality)defaultValue {
-    NSDictionary<NSString *, NSNumber *> *map = @{
-                                                  @"1080": @(VSSAppleQuality1080H264),
-                                                  @"1080sdr": @(VSSAppleQuality1080SDR),
-                                                  @"1080hdr": @(VSSAppleQuality1080HDR),
-                                                  @"4ksdr": @(VSSAppleQuality4KSDR),
-                                                  @"4khdr": @(VSSAppleQuality4KHDR),
-                                                 };
-    NSNumber *result = map[[string.lowercaseString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
-    if (result) {
-        return result.unsignedIntegerValue;
-    }
-    return defaultValue;
-}
 
 - (VSSURLItem *)getItemAtIndex:(NSInteger)index quality:(VSSAppleQuality)quality {
     NSInteger cacheIndex = index;
@@ -124,7 +104,7 @@
     return task.terminationReason == NSTaskTerminationReasonExit;
 }
 
-- (void)getVideoFromURL:(NSURL *)url fromCache:(NSURL *)cacheURL urlIndex:(NSInteger)urlIndex quality:(VSSAppleQuality)quality completion:(void (^)(VSSURLItem * _Nullable))completion {
+- (void)getVideoFromCache:(NSURL *)cacheURL urlIndex:(NSInteger)urlIndex quality:(VSSAppleQuality)quality completion:(void (^)(VSSURLItem * _Nullable))completion {
     NSData *data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[cacheURL.path stringByAppendingPathComponent:@"entries.json"]]];
     if (!data) {
         return completion(nil);

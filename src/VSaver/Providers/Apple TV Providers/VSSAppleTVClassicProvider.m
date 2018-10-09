@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jarek Pendowski. All rights reserved.
 //
 
-#import "VSSAppleTVProvider.h"
+#import "VSSAppleTVClassicProvider.h"
 #import "NSObject+Extended.h"
 #import "NSArray+Extended.h"
 #import "NSURLSession+VSSExtended.h"
@@ -14,11 +14,11 @@
 
 #define JSONURL [NSURL URLWithString: @"http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json"]
 
-@interface VSSAppleTVProvider ()
+@interface VSSAppleTVClassicProvider ()
     @property (nonnull, nonatomic, strong) NSMutableArray<VSSAppleItem *> *cache;
 @end
 
-@implementation VSSAppleTVProvider
+@implementation VSSAppleTVClassicProvider
     
 - (instancetype)init {
     self = [super init];
@@ -32,16 +32,9 @@
     return @"AppleTV Classic";
 }
 
-- (void)getVideoFromURL:(NSURL * _Nonnull)url completion:(void (^ _Nonnull)(VSSURLItem * _Nullable))completion {
-    if (![url.scheme isEqualToString: @"appletv"]) {
-        completion([[VSSURLItem alloc] initWithTitle:url.absoluteString url:url]);
-        return;
-    }
-    
-    NSString *urlIndexString = url.host ?: url.fragment;
-    NSInteger urlIndex = urlIndexString.length > 0 ? [urlIndexString integerValue] : -1;
-    if (urlIndexString.length > 0 && self.cache.count > 0) {
-        completion([self getItemAtIndex:urlIndex]);
+- (void)getVideoAtIndex:(VSSAppleIndex)index completion:(void (^)(VSSURLItem * _Nullable))completion {
+    if (self.cache.count > 0) {
+        completion([self getItemAtIndex:index]);
         return;
     }
     
@@ -86,12 +79,8 @@
             return;
         }
         
-        completion([strongSelf getItemAtIndex:urlIndex]);
+        completion([strongSelf getItemAtIndex:index]);
     }] resume];
-}
-    
-- (BOOL)isValidURL:(NSURL * _Nonnull)url {
-    return  [url.host containsString:@"apple.com"] || [url.scheme isEqualToString:@"appletv"];
 }
     
 #pragma mark - Private
