@@ -58,7 +58,7 @@
         CIFilter *brightFilter = [CIFilter filterWithName:@"CIColorControls"];
         [brightFilter setDefaults];
         [brightFilter setValue:@1 forKey:@"inputBrightness"];
-        
+
         if (brightFilter) {
             activityIndicator.contentFilters = @[brightFilter];
         }
@@ -147,7 +147,8 @@
 
 - (void)videoPlayerController: (VSSVideoPlayerController *)controller willLoadVideoWithURL: (NSURL *)url {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.loadingIndicator setHidden:NO];
+//        [self.loadingIndicator setHidden:NO];
+        [self addSubview:self.loadingIndicator];
         [self.loadingIndicator startAnimation:nil];
     });
 }
@@ -155,7 +156,8 @@
 - (void)videoPlayerController: (VSSVideoPlayerController *)controller didLoadVideoItem: (VSSURLItem *)url {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.loadingIndicator stopAnimation:nil];
-        [self.loadingIndicator setHidden:YES];
+//        [self.loadingIndicator setHidden:YES];
+        [self.loadingIndicator removeFromSuperview];
         
         self.sourceLabel.stringValue = url.title != nil ? url.title : @"";
     });

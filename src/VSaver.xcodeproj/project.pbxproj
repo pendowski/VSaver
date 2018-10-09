@@ -36,6 +36,14 @@
 		AA5795F520A36BFC0003616F /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */; };
 		AA5795FD20A375130003616F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5795FC20A375130003616F /* main.m */; };
 		AA57960120A3761E0003616F /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */; };
+		AA60B5BF21653EB0002F5EE3 /* VSSAppleTV12Provider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA60B5BD21653EB0002F5EE3 /* VSSAppleTV12Provider.h */; };
+		AA60B5C021653EB0002F5EE3 /* VSSAppleTV12Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60B5BE21653EB0002F5EE3 /* VSSAppleTV12Provider.m */; };
+		AA60B5C321654B4A002F5EE3 /* VSSAppleItem.h in Headers */ = {isa = PBXBuildFile; fileRef = AA60B5C121654B4A002F5EE3 /* VSSAppleItem.h */; };
+		AA60B5C421654B4A002F5EE3 /* VSSAppleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60B5C221654B4A002F5EE3 /* VSSAppleItem.m */; };
+		AA60B5C7216553CC002F5EE3 /* NSURLComponents+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = AA60B5C5216553CC002F5EE3 /* NSURLComponents+Extended.h */; };
+		AA60B5C8216553CC002F5EE3 /* NSURLComponents+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60B5C6216553CC002F5EE3 /* NSURLComponents+Extended.m */; };
+		AA60B5E721666393002F5EE3 /* VSSAppleURL.h in Headers */ = {isa = PBXBuildFile; fileRef = AA60B5E521666393002F5EE3 /* VSSAppleURL.h */; };
+		AA60B5E821666393002F5EE3 /* VSSAppleURL.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60B5E621666393002F5EE3 /* VSSAppleURL.m */; };
 		AA7E2A6020AB0B0700013B17 /* NSURLSession+VSSExtended.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7E2A5E20AB0B0700013B17 /* NSURLSession+VSSExtended.h */; };
 		AA7E2A6120AB0B0700013B17 /* NSURLSession+VSSExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2A5F20AB0B0700013B17 /* NSURLSession+VSSExtended.m */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
@@ -122,6 +130,14 @@
 		AA5795EE20A367050003616F /* VSSWallpaperOptionsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VSSWallpaperOptionsController.xib; sourceTree = "<group>"; };
 		AA5795FA20A375130003616F /* SaverInstaller */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SaverInstaller; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5795FC20A375130003616F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AA60B5BD21653EB0002F5EE3 /* VSSAppleTV12Provider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSAppleTV12Provider.h; sourceTree = "<group>"; };
+		AA60B5BE21653EB0002F5EE3 /* VSSAppleTV12Provider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSAppleTV12Provider.m; sourceTree = "<group>"; };
+		AA60B5C121654B4A002F5EE3 /* VSSAppleItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSAppleItem.h; sourceTree = "<group>"; };
+		AA60B5C221654B4A002F5EE3 /* VSSAppleItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSAppleItem.m; sourceTree = "<group>"; };
+		AA60B5C5216553CC002F5EE3 /* NSURLComponents+Extended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLComponents+Extended.h"; sourceTree = "<group>"; };
+		AA60B5C6216553CC002F5EE3 /* NSURLComponents+Extended.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLComponents+Extended.m"; sourceTree = "<group>"; };
+		AA60B5E521666393002F5EE3 /* VSSAppleURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSAppleURL.h; sourceTree = "<group>"; };
+		AA60B5E621666393002F5EE3 /* VSSAppleURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSAppleURL.m; sourceTree = "<group>"; };
 		AA7E2A5E20AB0B0700013B17 /* NSURLSession+VSSExtended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+VSSExtended.h"; sourceTree = "<group>"; };
 		AA7E2A5F20AB0B0700013B17 /* NSURLSession+VSSExtended.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+VSSExtended.m"; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,8 +306,14 @@
 			isa = PBXGroup;
 			children = (
 				AABDF4FA20A0B89A00789BEB /* VSSProvider.h */,
+				AA60B5C121654B4A002F5EE3 /* VSSAppleItem.h */,
+				AA60B5C221654B4A002F5EE3 /* VSSAppleItem.m */,
+				AA60B5E521666393002F5EE3 /* VSSAppleURL.h */,
+				AA60B5E621666393002F5EE3 /* VSSAppleURL.m */,
 				AABDF50020A0D12900789BEB /* VSSAppleTVProvider.h */,
 				AABDF50120A0D12900789BEB /* VSSAppleTVProvider.m */,
+				AA60B5BD21653EB0002F5EE3 /* VSSAppleTV12Provider.h */,
+				AA60B5BE21653EB0002F5EE3 /* VSSAppleTV12Provider.m */,
 				AA04F0FB20A1F6530062AA05 /* VSSVimeoProvider.h */,
 				AA04F0FC20A1F6530062AA05 /* VSSVimeoProvider.m */,
 				AA04F12320A22FE90062AA05 /* VSSWebViewProvider.h */,
@@ -331,6 +353,8 @@
 				AABDF50520A17EDF00789BEB /* NSObject+Extended.m */,
 				AA7E2A5E20AB0B0700013B17 /* NSURLSession+VSSExtended.h */,
 				AA7E2A5F20AB0B0700013B17 /* NSURLSession+VSSExtended.m */,
+				AA60B5C5216553CC002F5EE3 /* NSURLComponents+Extended.h */,
+				AA60B5C6216553CC002F5EE3 /* NSURLComponents+Extended.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -348,9 +372,13 @@
 				AABDF4F720A0B66B00789BEB /* VSSURLItem.h in Headers */,
 				AA7E2A6020AB0B0700013B17 /* NSURLSession+VSSExtended.h in Headers */,
 				AABDF4FD20A0C01800789BEB /* NSArray+Extended.h in Headers */,
+				AA60B5C7216553CC002F5EE3 /* NSURLComponents+Extended.h in Headers */,
+				AA60B5E721666393002F5EE3 /* VSSAppleURL.h in Headers */,
+				AA60B5BF21653EB0002F5EE3 /* VSSAppleTV12Provider.h in Headers */,
 				AA04F10B20A2060B0062AA05 /* VSSUserDefaultsSettings.h in Headers */,
 				AA04F12520A22FE90062AA05 /* VSSWebViewProvider.h in Headers */,
 				AABDF50220A0D12900789BEB /* VSSAppleTVProvider.h in Headers */,
+				AA60B5C321654B4A002F5EE3 /* VSSAppleItem.h in Headers */,
 				AA04F12020A22F680062AA05 /* VSSWistiaProvider.h in Headers */,
 				AA04F10220A1FC910062AA05 /* VSSSettingsController.h in Headers */,
 				AA04F11120A213D10062AA05 /* VSSYouTubeProvider.h in Headers */,
@@ -555,13 +583,17 @@
 			files = (
 				AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */,
 				AABDF4F420A0B5FB00789BEB /* VSSVideoPlayerController.m in Sources */,
+				AA60B5E821666393002F5EE3 /* VSSAppleURL.m in Sources */,
 				AA04F10C20A2060B0062AA05 /* VSSUserDefaultsSettings.m in Sources */,
 				AA7E2A6120AB0B0700013B17 /* NSURLSession+VSSExtended.m in Sources */,
 				AA04F11220A213D10062AA05 /* VSSYouTubeProvider.m in Sources */,
+				AA60B5C421654B4A002F5EE3 /* VSSAppleItem.m in Sources */,
 				AABDF4F820A0B66B00789BEB /* VSSURLItem.m in Sources */,
 				AA04F10320A1FC910062AA05 /* VSSSettingsController.m in Sources */,
+				AA60B5C021653EB0002F5EE3 /* VSSAppleTV12Provider.m in Sources */,
 				AABDF50320A0D12900789BEB /* VSSAppleTVProvider.m in Sources */,
 				AA04F12620A22FE90062AA05 /* VSSWebViewProvider.m in Sources */,
+				AA60B5C8216553CC002F5EE3 /* NSURLComponents+Extended.m in Sources */,
 				AA04F0FE20A1F6530062AA05 /* VSSVimeoProvider.m in Sources */,
 				AABDF50720A17EDF00789BEB /* NSObject+Extended.m in Sources */,
 				AA04F12120A22F680062AA05 /* VSSWistiaProvider.m in Sources */,

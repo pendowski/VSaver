@@ -10,26 +10,9 @@
 #import "NSObject+Extended.h"
 #import "NSArray+Extended.h"
 #import "NSURLSession+VSSExtended.h"
+#import "VSSAppleItem.h"
 
 #define JSONURL [NSURL URLWithString: @"http://a1.phobos.apple.com/us/r1000/000/Features/atv/AutumnResources/videos/entries.json"]
-
-@interface VSSAppleItem: NSObject
-    @property (nonatomic) NSInteger index;
-    @property (nonnull, nonatomic, copy) NSString *label;
-    @property (nonnull, nonatomic, strong) NSURL *url;
-@end
-
-@implementation VSSAppleItem
-    - (instancetype) initWithIndex:(NSInteger)index label:(NSString *)label url:(NSURL *)url {
-        self = [super init];
-        if (self) {
-            self.index = index;
-            self.label = label;
-            self.url = url;
-        }
-        return self;
-    }
-@end
 
 @interface VSSAppleTVProvider ()
     @property (nonnull, nonatomic, strong) NSMutableArray<VSSAppleItem *> *cache;
@@ -46,7 +29,7 @@
 }
     
 - (NSString *)name {
-    return @"AppleTV";
+    return @"AppleTV Classic";
 }
 
 - (void)getVideoFromURL:(NSURL * _Nonnull)url completion:(void (^ _Nonnull)(VSSURLItem * _Nullable))completion {
@@ -92,7 +75,9 @@
                 NSString *label = dic[@"accessibilityLabel"] ?: @"";
                 NSInteger index = strongSelf.cache.count + 1;
                 
-                [strongSelf.cache addObject:[[VSSAppleItem alloc] initWithIndex:index label:label url:url]];
+                VSSAppleItem *item = [[VSSAppleItem alloc] initWithIndex:index label:label];
+                [item setURL:url forQuality:VSSAppleQuality1080H264];
+                [strongSelf.cache addObject:item];
             }
         }
         
@@ -117,7 +102,8 @@
         cacheIndex = arc4random() % (self.cache.count - 1);
     }
     VSSAppleItem *item = self.cache[cacheIndex];
-    return [[VSSURLItem alloc] initWithTitle:[NSString stringWithFormat:@"#%ld %@", item.index, item.label] url:item.url];
+    VSSAppleURL *url = [item urlForQuality:VSSAppleQuality1080H264];
+    return [[VSSURLItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ #%ld %@", self.name, item.index, item.label] url:url.url];
 }
     
 @end
