@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "VSSProvider.h"
+#import "VSSAppleURL.h"
 
 typedef NSInteger VSSAppleIndex;
 extern VSSAppleIndex VSSAppleIndexRandom;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VSSAppleTVProvider : NSObject <VSSProvider>
-
+@interface VSSAppleTVProvider : NSObject <VSSProvider, VSSSupports4KQuality>
+@property (nonatomic) BOOL shouldUse4K;
 @end
 
 NS_ASSUME_NONNULL_END

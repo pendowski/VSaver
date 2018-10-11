@@ -14,6 +14,7 @@
 #define PlayModeKey @"playMode"
 #define ShowLabelKey @"showSource"
 #define SameOnAllScreensKey @"sameOnAllScreens"
+#define QualityPreference @"qualityPreference"
 
 @interface VSSUserDefaultsSettings ()
 @property (nonnull, nonatomic, strong) NSUserDefaults *defaults;
@@ -73,6 +74,15 @@
 
 - (void)setSameOnAllScreens:(BOOL)sameOnAllScreens {
     [self.defaults setBool:sameOnAllScreens forKey:SameOnAllScreensKey];
+    [self.defaults synchronize];
+}
+
+- (VSSQualityPreference)qualityPreference {
+    return [self.defaults integerForKey:QualityPreference];
+}
+
+- (void)setQualityPreference:(VSSQualityPreference)qualityPreference {
+    [self.defaults setInteger:qualityPreference forKey:QualityPreference];
     [self.defaults synchronize];
 }
 

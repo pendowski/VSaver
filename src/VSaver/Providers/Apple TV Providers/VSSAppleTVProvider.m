@@ -43,9 +43,10 @@ VSSAppleIndex VSSAppleIndexRandom = -1;
     }
     VSSAppleIndex index = [self indexFromURL:url];
     
-    if ([url.host rangeOfString:@"os12"].location == 0 || [url.host rangeOfString:@"tvos12"].location == 0) {
+    if (url.host && ([url.host rangeOfString:@"os12"].location == 0 || [url.host rangeOfString:@"tvos12"].location == 0)) {
         NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
-        VSSAppleQuality quality = [self qualityFromString:[urlComponents queryValueWithKey:@"q"] defaultQuality:VSSAppleQuality1080SDR];
+        VSSAppleQuality defaultQuality = self.shouldUse4K ? VSSAppleQuality4KSDR : VSSAppleQuality1080SDR;
+        VSSAppleQuality quality = [self qualityFromString:[urlComponents queryValueWithKey:@"q"] defaultQuality:defaultQuality];
         [self.appleTV12 getVideoAtIndex:index quality:quality completion:completion];
     } else {
         [self.appleClassic getVideoAtIndex:index completion:completion];

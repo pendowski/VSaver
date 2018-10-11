@@ -35,6 +35,8 @@
         self.delegates = [NSHashTable hashTableWithOptions:NSHashTableWeakMemory];
         self.urlIndex = -1;
         
+        [self setup4KProvidersProviders];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDidFail:) name:AVPlayerItemFailedToPlayToEndTimeNotification object:nil];
     }
@@ -43,6 +45,8 @@
 }
 
 - (instancetype)initWithCommonProviders {
+    self.use4KVideoIfAvailable = NO;
+    
     return [self initWithProviders:@[
                                      [[VSSAppleTVProvider alloc] init],
                                      [[VSSYouTubeProvider alloc] init],
@@ -60,6 +64,14 @@
         shareObject = [[self alloc] initWithCommonProviders];
     });
     return shareObject;
+}
+
+#pragma mark - Properties
+
+- (void)setUse4KVideoIfAvailable:(BOOL)isOnSup1080Screen {
+    _use4KVideoIfAvailable = isOnSup1080Screen;
+    
+    [self setup4KProvidersProviders];
 }
 
 #pragma mark - Public
@@ -151,6 +163,16 @@
 
 - (void)videoDidFail: (NSNotification *)notifications {
     [self playNext];
+}
+
+#pragma mark - Private
+
+- (void)setup4KProvidersProviders {
+    [[self.providers vss_filter:^BOOL(id _Nonnull obj) {
+        return [obj conformsToProtocol:@protocol(VSSSupports4KQuality)];
+    }] vss_forEach:^(id<VSSSupports4KQuality> _Nonnull obj) {
+        obj.shouldUse4K = self.use4KVideoIfAvailable;
+    }];
 }
 
 @end

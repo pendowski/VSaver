@@ -11,10 +11,17 @@ typedef NS_ENUM(NSInteger, VSSPlayMode) {
     VSSPlayModeRandom = 1
 };
 
+typedef NS_ENUM(NSInteger, VSSQualityPreference) {
+    VSSQualityPreferenceAdjust = 0,
+    VSSQualityPreference1080p = 1,
+    VSSQualityPreference4K = 2
+};
+
 @protocol VSSSettings <NSObject>
 @property (nonnull, nonatomic, strong) NSArray<NSString *> *urls;
 @property (nonatomic) BOOL muteVideos;
 @property (nonatomic) BOOL showLabel;
 @property (nonatomic) VSSPlayMode playMode;
 @property (nonatomic) BOOL sameOnAllScreens;
+@property (nonatomic) VSSQualityPreference qualityPreference;
 @end

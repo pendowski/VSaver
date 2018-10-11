@@ -28,6 +28,8 @@
         [self setReleasedWhenClosed:NO];
         self.screenSaverfactory = factory;
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeScreen:) name:NSWindowDidChangeScreenNotification object:self];
+        
         [self reloadScreenSaver];
     }
     return self;
@@ -46,6 +48,12 @@
     } else {
         [super keyDown:event];
     }
+}
+
+#pragma mark - Notifications
+
+- (void)didChangeScreen:(NSNotification *)notification {
+    [self reloadScreenSaver];
 }
 
 #pragma mark - Private

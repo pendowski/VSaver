@@ -46,6 +46,11 @@
 		AA60B5E821666393002F5EE3 /* VSSAppleURL.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60B5E621666393002F5EE3 /* VSSAppleURL.m */; };
 		AA60B688216D1C7B002F5EE3 /* VSSAppleTVProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = AA60B686216D1C7B002F5EE3 /* VSSAppleTVProvider.h */; };
 		AA60B689216D1C7B002F5EE3 /* VSSAppleTVProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60B687216D1C7B002F5EE3 /* VSSAppleTVProvider.m */; };
+		AA60B68D216FAA75002F5EE3 /* VSSHelpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AA60B68A216FAA75002F5EE3 /* VSSHelpViewController.h */; };
+		AA60B68E216FAA75002F5EE3 /* VSSHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60B68B216FAA75002F5EE3 /* VSSHelpViewController.m */; };
+		AA60B68F216FAA75002F5EE3 /* VSSHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA60B68C216FAA75002F5EE3 /* VSSHelpViewController.xib */; };
+		AA60B692216FADF3002F5EE3 /* NSString+Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = AA60B690216FADF3002F5EE3 /* NSString+Extended.h */; };
+		AA60B693216FADF3002F5EE3 /* NSString+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AA60B691216FADF3002F5EE3 /* NSString+Extended.m */; };
 		AA7E2A6020AB0B0700013B17 /* NSURLSession+VSSExtended.h in Headers */ = {isa = PBXBuildFile; fileRef = AA7E2A5E20AB0B0700013B17 /* NSURLSession+VSSExtended.h */; };
 		AA7E2A6120AB0B0700013B17 /* NSURLSession+VSSExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7E2A5F20AB0B0700013B17 /* NSURLSession+VSSExtended.m */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
@@ -142,6 +147,11 @@
 		AA60B5E621666393002F5EE3 /* VSSAppleURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSAppleURL.m; sourceTree = "<group>"; };
 		AA60B686216D1C7B002F5EE3 /* VSSAppleTVProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSAppleTVProvider.h; sourceTree = "<group>"; };
 		AA60B687216D1C7B002F5EE3 /* VSSAppleTVProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSAppleTVProvider.m; sourceTree = "<group>"; };
+		AA60B68A216FAA75002F5EE3 /* VSSHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSHelpViewController.h; sourceTree = "<group>"; };
+		AA60B68B216FAA75002F5EE3 /* VSSHelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSHelpViewController.m; sourceTree = "<group>"; };
+		AA60B68C216FAA75002F5EE3 /* VSSHelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VSSHelpViewController.xib; sourceTree = "<group>"; };
+		AA60B690216FADF3002F5EE3 /* NSString+Extended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extended.h"; sourceTree = "<group>"; };
+		AA60B691216FADF3002F5EE3 /* NSString+Extended.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extended.m"; sourceTree = "<group>"; };
 		AA7E2A5E20AB0B0700013B17 /* NSURLSession+VSSExtended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+VSSExtended.h"; sourceTree = "<group>"; };
 		AA7E2A5F20AB0B0700013B17 /* NSURLSession+VSSExtended.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+VSSExtended.m"; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +224,9 @@
 				AA04F0FF20A1FC910062AA05 /* VSSSettingsController.h */,
 				AA04F10020A1FC910062AA05 /* VSSSettingsController.m */,
 				AA04F10120A1FC910062AA05 /* VSSSettingsController.xib */,
+				AA60B68A216FAA75002F5EE3 /* VSSHelpViewController.h */,
+				AA60B68B216FAA75002F5EE3 /* VSSHelpViewController.m */,
+				AA60B68C216FAA75002F5EE3 /* VSSHelpViewController.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -365,6 +378,8 @@
 				AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */,
 				AABDF50420A17EDF00789BEB /* NSObject+Extended.h */,
 				AABDF50520A17EDF00789BEB /* NSObject+Extended.m */,
+				AA60B690216FADF3002F5EE3 /* NSString+Extended.h */,
+				AA60B691216FADF3002F5EE3 /* NSString+Extended.m */,
 				AA7E2A5E20AB0B0700013B17 /* NSURLSession+VSSExtended.h */,
 				AA7E2A5F20AB0B0700013B17 /* NSURLSession+VSSExtended.m */,
 				AA60B5C5216553CC002F5EE3 /* NSURLComponents+Extended.h */,
@@ -381,10 +396,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AABDF4F320A0B5FB00789BEB /* VSSVideoPlayerController.h in Headers */,
+				AA60B692216FADF3002F5EE3 /* NSString+Extended.h in Headers */,
 				AA04F0FD20A1F6530062AA05 /* VSSVimeoProvider.h in Headers */,
 				AABDF50620A17EDF00789BEB /* NSObject+Extended.h in Headers */,
 				AA60B688216D1C7B002F5EE3 /* VSSAppleTVProvider.h in Headers */,
 				AABDF4F720A0B66B00789BEB /* VSSURLItem.h in Headers */,
+				AA60B68D216FAA75002F5EE3 /* VSSHelpViewController.h in Headers */,
 				AA7E2A6020AB0B0700013B17 /* NSURLSession+VSSExtended.h in Headers */,
 				AABDF4FD20A0C01800789BEB /* NSArray+Extended.h in Headers */,
 				AA60B5C7216553CC002F5EE3 /* NSURLComponents+Extended.h in Headers */,
@@ -552,6 +569,7 @@
 			files = (
 				AA04F12920A2357F0062AA05 /* wistia.js in Resources */,
 				AA04F11A20A21E7B0062AA05 /* thumbnail@2x.png in Resources */,
+				AA60B68F216FAA75002F5EE3 /* VSSHelpViewController.xib in Resources */,
 				AA04F10420A1FC910062AA05 /* VSSSettingsController.xib in Resources */,
 				AA04F11C20A21E910062AA05 /* youtube.js in Resources */,
 				AA04F11920A21E7A0062AA05 /* thumbnail.png in Resources */,
@@ -602,6 +620,7 @@
 				AA04F10C20A2060B0062AA05 /* VSSUserDefaultsSettings.m in Sources */,
 				AA7E2A6120AB0B0700013B17 /* NSURLSession+VSSExtended.m in Sources */,
 				AA04F11220A213D10062AA05 /* VSSYouTubeProvider.m in Sources */,
+				AA60B693216FADF3002F5EE3 /* NSString+Extended.m in Sources */,
 				AA60B5C421654B4A002F5EE3 /* VSSAppleItem.m in Sources */,
 				AABDF4F820A0B66B00789BEB /* VSSURLItem.m in Sources */,
 				AA04F10320A1FC910062AA05 /* VSSSettingsController.m in Sources */,
@@ -614,6 +633,7 @@
 				AABDF50720A17EDF00789BEB /* NSObject+Extended.m in Sources */,
 				AA04F12120A22F680062AA05 /* VSSWistiaProvider.m in Sources */,
 				AABDF4FE20A0C01800789BEB /* NSArray+Extended.m in Sources */,
+				AA60B68E216FAA75002F5EE3 /* VSSHelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

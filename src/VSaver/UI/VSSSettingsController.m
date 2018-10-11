@@ -9,6 +9,9 @@
 #import "VSSSettingsController.h"
 #import "NSArray+Extended.h"
 #import "NSObject+Extended.h"
+#import "NSString+Extended.h"
+#import "VSSHelpViewController.h"
+#import "VSaverView.h"
 
 @interface VSSSettingsController () <NSTableViewDataSource, NSWindowDelegate>
 @property (nonnull, nonatomic, strong) IBOutlet NSTableView *tableView;
@@ -16,6 +19,7 @@
 @property (nonnull, nonatomic, strong) IBOutlet NSButton *sourceCheckbox;
 @property (nonnull, nonatomic, strong) IBOutlet NSButton *sameVideoCheckbox;
 @property (nonnull, nonatomic, strong) IBOutlet NSSegmentedControl *playModeSelector;
+@property (nonnull, nonatomic, strong) IBOutlet NSPopUpButton *qualityPreferenceButton;
 @property (nonnull, nonatomic, strong) NSMutableArray<NSString *> *urls;
 @end
 
@@ -50,6 +54,18 @@
             break;
     }
     
+    switch (self.settings.qualityPreference) {
+        case VSSQualityPreferenceAdjust:
+            [self.qualityPreferenceButton selectItemAtIndex:0];
+            break;
+        case VSSQualityPreference1080p:
+            [self.qualityPreferenceButton selectItemAtIndex:1];
+            break;
+        case VSSQualityPreference4K:
+            [self.qualityPreferenceButton selectItemAtIndex:2];
+            break;
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -74,6 +90,21 @@
             break;
         default:
             NSAssert(false, @"");
+            break;
+    }
+    
+    switch (self.qualityPreferenceButton.indexOfSelectedItem) {
+        case 0:
+            self.settings.qualityPreference = VSSQualityPreferenceAdjust;
+            break;
+        case 1:
+            self.settings.qualityPreference = VSSQualityPreference1080p;
+            break;
+        case 2:
+            self.settings.qualityPreference = VSSQualityPreference4K;
+            break;
+        default:
+            assert(false);
             break;
     }
     
@@ -137,6 +168,19 @@
     } else {
         [sender editColumn:0 row:rowIndex withEvent:nil select:YES];
     }
+}
+
+- (IBAction)qualityHelpClicked:(NSButton *)sender {
+    NSPopover *popover = [[NSPopover alloc] init];
+    [popover setAnimates:YES];
+    [popover setBehavior:NSPopoverBehaviorTransient];
+    VSSHelpViewController *helpViewController = [[VSSHelpViewController alloc] initWithNibName:nil bundle:[NSBundle bundleForClass:[VSaverView class]]];
+    helpViewController.message = [@"Depending on the source of the movie and availability selected movie quality will be chosen.\n\
+                                  \"Depending on screen(s)\" will choose the highest quality based on the screen it's being played on.\n\
+                                  If same video is being played on all screens, the best quality for the highest resolution display will be selected.\n\
+                                  Some sources allow overriding this value, playing quality selected in that URL." stringByTrimmingEachLine];
+    [popover setContentViewController:helpViewController];
+    [popover showRelativeToRect:sender.bounds ofView:sender preferredEdge:NSMinYEdge];
 }
 
 #pragma mark - Private
