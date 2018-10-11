@@ -15,15 +15,17 @@
 @property (nonnull, nonatomic, copy) NSString *url;
 @property (nonnull, nonatomic, copy) NSString *quality;
 @property (nonnull, nonatomic, strong) NSNumber *width;
+@property (nonnull, nonatomic, strong) NSNumber *height;
 @end
 
 @implementation VSSVimeoStream
-- (instancetype)initWithUrl:(NSString *)url quality:(NSString *)quality width:(NSNumber *)width {
+- (instancetype)initWithUrl:(NSString *)url quality:(NSString *)quality height:(NSNumber *)height width:(NSNumber *)width {
     self = [super init];
     if (self) {
         self.url = url;
         self.quality = quality;
         self.width = width;
+        self.height = height;
     }
     return self;
 }
@@ -64,15 +66,18 @@
         
         NSArray *streams = VSSAS(files[@"progressive"], NSArray);
         if (streams) {
-            NSArray<VSSVimeoStream *> *urls = [[streams vss_flatMap:^id _Nullable(NSDictionary * _Nonnull dic) {
+            NSArray<VSSVimeoStream *> *urls = [[[streams vss_flatMap:^id _Nullable(NSDictionary * _Nonnull dic) {
                 NSString *url = VSSAS(dic[@"url"], NSString);
                 NSString *quality = VSSAS(dic[@"quality"], NSString);
                 NSNumber *width = VSSAS(dic[@"width"], NSNumber);
+                NSNumber *height = VSSAS(dic[@"height"], NSNumber);
                 NSString *mime = VSSAS(dic[@"mime"], NSString);
                 if (![mime containsString:@"mp4"] || url.length == 0 || quality.length == 0 || !width) {
                     return nil;
                 }
-                return [[VSSVimeoStream alloc] initWithUrl:url quality:quality width:width];
+                return [[VSSVimeoStream alloc] initWithUrl:url quality:quality height:height width:width];
+            }] vss_filter:^BOOL(VSSVimeoStream *stream) {
+                return self.shouldUse4K || stream.height.intValue <= 1080;
             }] sortedArrayUsingComparator:^NSComparisonResult(VSSVimeoStream *_Nonnull left, VSSVimeoStream * _Nonnull right) {
                 return [left.width compare:right.width];
             }];

@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "VSSProvider.h"
 
-@interface VSSVimeoProvider : NSObject <VSSProvider>
-
+@interface VSSVimeoProvider : NSObject <VSSProvider, VSSSupports4KQuality>
+@property (nonatomic) BOOL shouldUse4K;
 @end

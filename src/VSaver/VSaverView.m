@@ -115,10 +115,10 @@
     VSSVideoPlayerController *videoController;
     if (self.settings.sameOnAllScreens) {
         videoController = [VSSVideoPlayerController sharedPlayerController];
-        videoController.use4KVideoIfAvailable = qualityPreference == VSSQualityPreference4K || (qualityPreference && containsSup1080Screen([NSScreen screens]));
+        videoController.use4KVideoIfAvailable = qualityPreference == VSSQualityPreference4K || (qualityPreference == VSSQualityPreferenceAdjust && containsSup1080Screen([NSScreen screens]));
     } else {
         videoController = [[VSSVideoPlayerController alloc] initWithCommonProviders];
-        videoController.use4KVideoIfAvailable = qualityPreference == VSSQualityPreference4K || (qualityPreference && containsSup1080Screen(@[self.window.screen]));
+        videoController.use4KVideoIfAvailable = qualityPreference == VSSQualityPreference4K || (qualityPreference == VSSQualityPreferenceAdjust && containsSup1080Screen(@[self.window.screen]));
     }
     [videoController addPlayer:self.playerLayer.player];
     [videoController addDelegate:self];
