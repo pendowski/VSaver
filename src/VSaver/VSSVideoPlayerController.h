@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, VSSMode) {
 
 @interface VSSVideoPlayerController : NSObject <VSScreenVideoController>
 @property (nonatomic) VSSMode mode;
+@property (nonatomic) BOOL use4KVideoIfAvailable;
 
 + (instancetype)sharedPlayerController;
 

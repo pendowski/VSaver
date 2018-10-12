@@ -58,7 +58,7 @@
         CIFilter *brightFilter = [CIFilter filterWithName:@"CIColorControls"];
         [brightFilter setDefaults];
         [brightFilter setValue:@1 forKey:@"inputBrightness"];
-        
+
         if (brightFilter) {
             activityIndicator.contentFilters = @[brightFilter];
         }
@@ -93,24 +93,41 @@
         
         self.sourceLabel = label;
         
-        VSSVideoPlayerController *videoController;
-        if (self.settings.sameOnAllScreens) {
-            videoController = [VSSVideoPlayerController sharedPlayerController];
-        } else {
-            videoController = [[VSSVideoPlayerController alloc] initWithCommonProviders];
-        }
-        [videoController addPlayer:player];
-        [videoController addDelegate:self];
-        
         VSSSettingsController *settingsController = [[VSSSettingsController alloc] initWithWindowNibName:@"VSSSettingsController"];
         settingsController.settings = self.settings;
         self.settingsController = settingsController;
-        
-        self.videoController = videoController;
-        
-        [self reloadAndPlay];
     }
     return self;
+}
+
+- (void)viewDidMoveToWindow {
+    [super viewDidMoveToWindow];
+    
+    if (self.window == nil) { return; }
+    VSSQualityPreference qualityPreference = self.settings.qualityPreference;
+    
+    BOOL (^containsSup1080Screen)(NSArray<NSScreen *> *) = ^BOOL(NSArray<NSScreen *> * screens) {
+        return [screens vss_filter:^BOOL(NSScreen *screen) {
+            return screen.frame.size.height * screen.backingScaleFactor > 1080;
+        }].count > 0;
+    };
+    
+    VSSVideoPlayerController *videoController;
+    if (self.settings.sameOnAllScreens) {
+        videoController = [VSSVideoPlayerController sharedPlayerController];
+        videoController.use4KVideoIfAvailable = qualityPreference == VSSQualityPreference4K || (qualityPreference == VSSQualityPreferenceAdjust && containsSup1080Screen([NSScreen screens]));
+    } else {
+        videoController = [[VSSVideoPlayerController alloc] initWithCommonProviders];
+        videoController.use4KVideoIfAvailable = qualityPreference == VSSQualityPreference4K || (qualityPreference == VSSQualityPreferenceAdjust && containsSup1080Screen(@[self.window.screen]));
+    }
+    [videoController addPlayer:self.playerLayer.player];
+    [videoController addDelegate:self];
+    
+    self.videoController = videoController;
+    
+    [self.sourceLabel setHidden:!self.settings.showLabel];
+    
+    [self reloadAndPlay];
 }
 
 - (void)startAnimation
@@ -147,7 +164,8 @@
 
 - (void)videoPlayerController: (VSSVideoPlayerController *)controller willLoadVideoWithURL: (NSURL *)url {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.loadingIndicator setHidden:NO];
+//        [self.loadingIndicator setHidden:NO];
+        [self addSubview:self.loadingIndicator];
         [self.loadingIndicator startAnimation:nil];
     });
 }
@@ -155,7 +173,8 @@
 - (void)videoPlayerController: (VSSVideoPlayerController *)controller didLoadVideoItem: (VSSURLItem *)url {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.loadingIndicator stopAnimation:nil];
-        [self.loadingIndicator setHidden:YES];
+//        [self.loadingIndicator setHidden:YES];
+        [self.loadingIndicator removeFromSuperview];
         
         self.sourceLabel.stringValue = url.title != nil ? url.title : @"";
     });
