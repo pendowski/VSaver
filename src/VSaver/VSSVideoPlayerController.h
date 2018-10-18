@@ -11,7 +11,7 @@
 #import "VSSProvider.h"
 #import "VSSScreenSaver.h"
 
-typedef NS_ENUM(NSInteger, VSSMode) {
+typedef NS_ENUM (NSInteger, VSSMode) {
     VSSModeRandom,
     VSSModeSequence
 };
@@ -19,8 +19,8 @@ typedef NS_ENUM(NSInteger, VSSMode) {
 @class VSSVideoPlayerController;
 
 @protocol VSSVideoPlayerControllerDelegate <NSObject>
-- (void)videoPlayerController: (VSSVideoPlayerController *)controller willLoadVideoWithURL: (NSURL *)url;
-- (void)videoPlayerController: (VSSVideoPlayerController *)controller didLoadVideoItem: (VSSURLItem *)url;
+- (void)videoPlayerController:(VSSVideoPlayerController *)controller willLoadVideoWithURL:(NSURL *)url;
+- (void)videoPlayerController:(VSSVideoPlayerController *)controller didLoadVideoItem:(VSSURLItem *)url;
 @end
 
 @interface VSSVideoPlayerController : NSObject <VSScreenVideoController>
@@ -29,13 +29,13 @@ typedef NS_ENUM(NSInteger, VSSMode) {
 
 + (instancetype)sharedPlayerController;
 
-- (instancetype)initWithProviders: (NSArray<id<VSSProvider>> *)providers;
+- (instancetype)initWithProviders:(NSArray<id<VSSProvider> > *)providers;
 - (instancetype)initWithCommonProviders;
 
-- (void)setQueue: (NSArray<NSURL *> *)urls;
-- (void)addPlayer: (AVPlayer *)player;
-- (void)addDelegate: (id<VSSVideoPlayerControllerDelegate>)delegate;
-- (void)setVolume: (CGFloat)volume;
+- (void)setQueue:(NSArray<NSURL *> *)urls;
+- (void)registerPlayerLayer:(AVPlayerLayer *)playerLayer;
+- (void)addDelegate:(id<VSSVideoPlayerControllerDelegate>)delegate;
+- (void)setVolume:(CGFloat)volume;
 - (void)playNext;
 
 @end

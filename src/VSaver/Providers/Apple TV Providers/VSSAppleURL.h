@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, VSSAppleQuality) {
+typedef NS_ENUM (NSUInteger, VSSAppleQuality) {
     VSSAppleQuality1080H264 = 0,
     VSSAppleQuality1080SDR,
     VSSAppleQuality1080HDR,
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, VSSAppleQuality) {
     VSSAppleQuality4KHDR
 };
 
-NSString *VSSAppleQualityNameForQuality(VSSAppleQuality quality);
+NSString * VSSAppleQualityNameForQuality(VSSAppleQuality quality);
 
 NS_ASSUME_NONNULL_BEGIN
 

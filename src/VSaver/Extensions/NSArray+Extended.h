@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface NSArray (Extended)
-    
-    - (void)vss_forEach: (void (^_Nonnull)(id _Nonnull obj))block;
-    - (NSArray *_Nonnull)vss_map: (id _Nullable (^_Nonnull)(id _Nonnull obj))block;
-    - (NSArray *_Nonnull)vss_flatMap:(id _Nullable (^_Nonnull)(id _Nonnull obj))block;
-    - (NSArray *_Nonnull)vss_filter: (BOOL (^_Nonnull)(id _Nonnull obj))block;
-    
+
+- (void)vss_forEach:(void (^_Nonnull)(id _Nonnull obj))block;
+- (NSArray *_Nonnull)vss_map:(id _Nullable (^_Nonnull)(id _Nonnull obj))block;
+- (NSArray *_Nonnull)vss_flatMap:(id _Nullable (^_Nonnull)(id _Nonnull obj))block;
+- (NSArray *_Nonnull)vss_filter:(BOOL (^_Nonnull)(id _Nonnull obj))block;
+
 @end

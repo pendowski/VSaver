@@ -10,11 +10,12 @@
 
 @implementation NSURLSession (VSSExtended)
 
-- (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url mainQueueCompletionHandler:(void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
-    return [self dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+- (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url mainQueueCompletionHandler:(void (^)(NSData *_Nullable, NSURLResponse *_Nullable, NSError *_Nullable))completionHandler
+{
+    return [self dataTaskWithURL:url completionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            completionHandler(data, response, error);
-        });
+                       completionHandler(data, response, error);
+                   });
     }];
 }
 

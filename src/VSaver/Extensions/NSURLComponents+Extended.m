@@ -10,7 +10,8 @@
 
 @implementation NSURLComponents (Extended)
 
-- (NSString *)queryValueWithKey:(NSString *)key {
+- (NSString *)queryValueWithKey:(NSString *)key
+{
     for (NSURLQueryItem *item in self.queryItems) {
         if ([item.name isEqualToString:key]) {
             return item.value;

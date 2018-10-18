@@ -9,9 +9,10 @@
 #import "NSObject+Extended.h"
 
 @implementation NSObject (Extended)
-    
-    - (id)vss_as:(Class)class {
-        return [self isKindOfClass:class] ? self : nil;
-    }
+
+- (id)vss_as:(Class)class
+{
+    return [self isKindOfClass:class] ? self : nil;
+}
 
 @end

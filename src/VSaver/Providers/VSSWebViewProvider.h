@@ -16,7 +16,7 @@
 
 - (instancetype)initWithScriptName:(NSString *)scriptName;
 
-- (void)callCompletion:(VSSURLItem * _Nullable)item;
+- (void)callCompletion:(VSSURLItem *_Nullable)item;
 - (void)handleLoadedPage:(WebFrame *)mainFrame;
 
 @end

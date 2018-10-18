@@ -14,5 +14,5 @@
 @protocol VSSScreenSaver <NSObject>
 @property (nonatomic, strong, readonly) id<VSScreenVideoController> videoController;
 - (nullable instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)preview;
-- (NSWindow*)configureSheet;
+- (NSWindow *)configureSheet;
 @end

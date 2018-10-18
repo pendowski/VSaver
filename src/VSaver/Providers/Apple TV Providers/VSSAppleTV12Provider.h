@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VSSAppleTV12Provider : NSObject
 
-- (void)getVideoAtIndex:(VSSAppleIndex)index quality:(VSSAppleQuality)quality completion:(void (^)(VSSURLItem * _Nullable))completion;
+- (void)getVideoAtIndex:(VSSAppleIndex)index quality:(VSSAppleQuality)quality completion:(void (^)(VSSURLItem *_Nullable))completion;
 
 @end
 

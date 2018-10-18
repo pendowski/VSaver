@@ -12,28 +12,32 @@
 
 @implementation VSSYouTubeProvider
 
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super initWithScriptName:@"youtube"];
     return self;
 }
 
-- (NSString *)name {
+- (NSString *)name
+{
     return @"YouTube";
 }
 
-- (BOOL)isValidURL:(NSURL *)url {
+- (BOOL)isValidURL:(NSURL *)url
+{
     return [url.host containsString:@"youtube.com"] || [url.host containsString:@"youtu.be"];
 }
 
-- (void)handleLoadedPage:(WebFrame *)frame {
+- (void)handleLoadedPage:(WebFrame *)frame
+{
     JSValue *urlValue = [frame.javaScriptContext evaluateScript:@"vsaverGetURL();"];
     JSValue *titleValue = [frame.javaScriptContext evaluateScript:@"vsaverGetTitle();"];
-    
+
     if (!urlValue.isString) {
         [self callCompletion:nil];
         return;
     }
-    
+
     NSString *title = titleValue.isString ? [@[[titleValue toString], self.loadingURL.absoluteString] componentsJoinedByString:@" 📽"] : self.loadingURL.absoluteString;
     [self callCompletion:[[VSSURLItem alloc] initWithTitle:title url:[NSURL URLWithString:[urlValue toString]]]];
 }

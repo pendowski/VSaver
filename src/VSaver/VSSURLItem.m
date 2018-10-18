@@ -10,7 +10,8 @@
 
 @implementation VSSURLItem
 
-- (instancetype)initWithTitle: (NSString *)title url: (NSURL *)url {
+- (instancetype)initWithTitle:(NSString *)title url:(NSURL *)url
+{
     self = [super init];
     if (self) {
         self.title = title;
