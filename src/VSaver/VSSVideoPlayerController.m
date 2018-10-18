@@ -15,7 +15,8 @@
 
 @interface VSSVideoPlayerController ()
 @property (nonnull, nonatomic, strong) NSArray<id<VSSProvider>> *providers;
-@property (nonnull, nonatomic, strong) NSMutableArray<AVPlayer *> *players;
+@property (nonnull, nonatomic, strong) NSMutableArray<AVPlayerLayer *> *layers;
+@property (nonnull, nonatomic, strong) AVPlayer *player;
 @property (nonnull, nonatomic, strong) NSArray<NSURL *> *urls;
 @property (nonatomic) NSInteger urlIndex;
 @property (nonnull, nonatomic, strong) NSHashTable<id<VSSVideoPlayerControllerDelegate>> *delegates;
@@ -29,11 +30,12 @@
     
     if (self) {
         self.providers = providers;
-        self.players = [@[] mutableCopy];
+        self.layers = [@[] mutableCopy];
         self.urls = @[];
         self.mode = VSSModeRandom;
         self.delegates = [NSHashTable hashTableWithOptions:NSHashTableWeakMemory];
         self.urlIndex = -1;
+        self.player = [[AVPlayer alloc] init];
         
         [self setup4KProvidersProviders];
         
@@ -77,9 +79,7 @@
 #pragma mark - Public
 
 - (void)setQueue: (NSArray<NSURL *> *)urls {
-    [self.players vss_forEach:^(AVPlayer *player) {
-        [player pause];
-    }];
+    [self.player pause];
     
     self.urlIndex = -1;
     self.urls = urls;
@@ -87,9 +87,9 @@
     [self playNext];
 }
 
-- (void)addPlayer: (AVPlayer *)player {
-    [self.players addObject:player];
-    player.volume = self.volumes;
+- (void)registerPlayerLayer:(AVPlayerLayer *)playerLayer {
+    [self.layers addObject:playerLayer];
+    playerLayer.player = self.player;
 }
 
 - (void)addDelegate: (id<VSSVideoPlayerControllerDelegate>)delegate {
@@ -97,10 +97,7 @@
 }
 
 - (void)setVolume: (CGFloat)volume {
-    self.volumes = volume;
-    [self.players vss_forEach:^(AVPlayer *player) {
-        player.volume = volume;
-    }];
+    self.player.volume = volume;
 }
 
 - (void)playNext {
@@ -145,13 +142,10 @@
             [delegate videoPlayerController:strongSelf didLoadVideoItem:item];
         }
         
-        for (AVPlayer *player in strongSelf.players) {
-            AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:item.url];
-            [player replaceCurrentItemWithPlayerItem:playerItem];
-            player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-            
-            [player play];
-        }
+        AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:item.url];
+        [strongSelf.player replaceCurrentItemWithPlayerItem:playerItem];
+        strongSelf.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+        [strongSelf.player play];
     }];
 }
 

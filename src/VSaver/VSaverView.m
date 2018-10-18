@@ -40,8 +40,7 @@
         self.layer.backgroundColor = [NSColor blackColor].CGColor;
         self.layer.frame = self.bounds;
         
-        AVPlayer *player = [[AVPlayer alloc] init];
-        AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+        AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:nil];
         playerLayer.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         playerLayer.frame = self.bounds;
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
@@ -120,7 +119,7 @@
         videoController = [[VSSVideoPlayerController alloc] initWithCommonProviders];
         videoController.use4KVideoIfAvailable = qualityPreference == VSSQualityPreference4K || (qualityPreference == VSSQualityPreferenceAdjust && containsSup1080Screen(@[self.window.screen]));
     }
-    [videoController addPlayer:self.playerLayer.player];
+    [videoController registerPlayerLayer:self.playerLayer];
     [videoController addDelegate:self];
     
     self.videoController = videoController;
@@ -164,7 +163,6 @@
 
 - (void)videoPlayerController: (VSSVideoPlayerController *)controller willLoadVideoWithURL: (NSURL *)url {
     dispatch_async(dispatch_get_main_queue(), ^{
-//        [self.loadingIndicator setHidden:NO];
         [self addSubview:self.loadingIndicator];
         [self.loadingIndicator startAnimation:nil];
     });
@@ -173,7 +171,6 @@
 - (void)videoPlayerController: (VSSVideoPlayerController *)controller didLoadVideoItem: (VSSURLItem *)url {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.loadingIndicator stopAnimation:nil];
-//        [self.loadingIndicator setHidden:YES];
         [self.loadingIndicator removeFromSuperview];
         
         self.sourceLabel.stringValue = url.title != nil ? url.title : @"";

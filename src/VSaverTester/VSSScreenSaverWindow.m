@@ -28,9 +28,9 @@
         [self setReleasedWhenClosed:NO];
         self.screenSaverfactory = factory;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeScreen:) name:NSWindowDidChangeScreenNotification object:self];
-        
         [self reloadScreenSaver];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeScreen:) name:NSWindowDidChangeScreenNotification object:self];
     }
     return self;
 }
@@ -60,11 +60,11 @@
 
 - (void)reloadScreenSaver {
     [self.screenSaverView removeFromSuperview];
-    
+
     NSView<VSSScreenSaver> *saverView = self.screenSaverfactory(self.contentView.bounds);
     saverView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
     [self.contentView addSubview:saverView];
-    
+
     self.screenSaverView = saverView;
 }
 

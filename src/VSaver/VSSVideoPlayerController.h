@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, VSSMode) {
 - (instancetype)initWithCommonProviders;
 
 - (void)setQueue: (NSArray<NSURL *> *)urls;
-- (void)addPlayer: (AVPlayer *)player;
+- (void)registerPlayerLayer: (AVPlayerLayer *)playerLayer;
 - (void)addDelegate: (id<VSSVideoPlayerControllerDelegate>)delegate;
 - (void)setVolume: (CGFloat)volume;
 - (void)playNext;

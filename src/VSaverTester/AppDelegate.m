@@ -45,7 +45,9 @@
 }
     
 -(BOOL)applicationOpenUntitledFile:(NSApplication *)sender {
-    [self createNewWindow];
+    if (self.windows.count == 0) {
+        [self createNewWindow];
+    }
     return YES;
 }
     
