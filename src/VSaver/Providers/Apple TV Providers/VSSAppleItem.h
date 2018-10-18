@@ -11,13 +11,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VSSAppleItem: NSObject
+@interface VSSAppleItem : NSObject
 @property (nonatomic) NSInteger index;
 @property (nonnull, nonatomic, copy) NSString *label;
 
 - (instancetype)initWithIndex:(NSInteger)index label:(NSString *)label;
 - (void)setURL:(NSURL *)url forQuality:(VSSAppleQuality)quality;
-- (VSSAppleURL * _Nullable)urlForQuality:(VSSAppleQuality)quality;
+- (VSSAppleURL *_Nullable)urlForQuality:(VSSAppleQuality)quality;
 
 @end
 

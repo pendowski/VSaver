@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSURLComponents (Extended)
-- (NSString * _Nullable)queryValueWithKey:(NSString *)key;
+- (NSString *_Nullable)queryValueWithKey:(NSString *)key;
 @end
 
 NS_ASSUME_NONNULL_END

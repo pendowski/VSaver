@@ -11,9 +11,10 @@
 
 @implementation NSString (Extended)
 
-- (NSString *)stringByTrimmingEachLine {
+- (NSString *)stringByTrimmingEachLine
+{
     NSArray<NSString *> *lines = [self componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    return [[lines vss_map:^id _Nullable(NSString *line) {
+    return [[lines vss_map:^id _Nullable (NSString *line) {
         return [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     }] componentsJoinedByString:@"\n"];
 }

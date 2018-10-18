@@ -15,18 +15,20 @@
 
 @implementation VSSAppleURL
 
-- (instancetype)initWithURL:(NSURL *)url quality:(VSSAppleQuality)quality {
+- (instancetype)initWithURL:(NSURL *)url quality:(VSSAppleQuality)quality
+{
     self = [super init];
-    
+
     self.quality = quality;
     self.url = url;
-    
+
     return self;
 }
 
 @end
 
-NSString *VSSAppleQualityNameForQuality(VSSAppleQuality quality) {
+NSString * VSSAppleQualityNameForQuality(VSSAppleQuality quality)
+{
     switch (quality) {
         case VSSAppleQuality1080H264:
             return @"1080p264";

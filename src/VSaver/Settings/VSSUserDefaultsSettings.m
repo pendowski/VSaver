@@ -9,12 +9,12 @@
 #import "VSSUserDefaultsSettings.h"
 @import ScreenSaver;
 
-#define MuteKey @"mute"
-#define URLsKey @"urls"
-#define PlayModeKey @"playMode"
-#define ShowLabelKey @"showSource"
+#define MuteKey             @"mute"
+#define URLsKey             @"urls"
+#define PlayModeKey         @"playMode"
+#define ShowLabelKey        @"showSource"
 #define SameOnAllScreensKey @"sameOnAllScreens"
-#define QualityPreference @"qualityPreference"
+#define QualityPreference   @"qualityPreference"
 
 @interface VSSUserDefaultsSettings ()
 @property (nonnull, nonatomic, strong) NSUserDefaults *defaults;
@@ -22,7 +22,8 @@
 
 @implementation VSSUserDefaultsSettings
 
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
     if (self) {
         self.defaults = [ScreenSaverDefaults defaultsForModuleWithName:@"com.pendowski.VSaver"];
@@ -32,56 +33,68 @@
 
 #pragma mark - VSSSettings
 
-- (BOOL)muteVideos {
+- (BOOL)muteVideos
+{
     return [self.defaults boolForKey:MuteKey];
 }
 
-- (void)setMuteVideos:(BOOL)muteVideos {
+- (void)setMuteVideos:(BOOL)muteVideos
+{
     [self.defaults setBool:muteVideos forKey:MuteKey];
     [self.defaults synchronize];
 }
 
-- (BOOL)showLabel {
+- (BOOL)showLabel
+{
     return [self.defaults boolForKey:ShowLabelKey];
 }
 
-- (void)setShowLabel:(BOOL)showLabel {
+- (void)setShowLabel:(BOOL)showLabel
+{
     [self.defaults setBool:showLabel forKey:ShowLabelKey];
     [self.defaults synchronize];
 }
 
-- (VSSPlayMode)playMode {
+- (VSSPlayMode)playMode
+{
     return [self.defaults integerForKey:PlayModeKey];
 }
 
-- (void)setPlayMode:(VSSPlayMode)playMode {
+- (void)setPlayMode:(VSSPlayMode)playMode
+{
     [self.defaults setInteger:playMode forKey:PlayModeKey];
     [self.defaults synchronize];
 }
 
-- (NSArray<NSString *> *)urls {
-    return [self.defaults objectForKey:URLsKey] ?: @[];
+- (NSArray<NSString *> *)urls
+{
+    return [self.defaults objectForKey:URLsKey] ? : @[];
 }
 
-- (void)setUrls:(NSArray<NSString *> *)urls {
+- (void)setUrls:(NSArray<NSString *> *)urls
+{
     [self.defaults setObject:urls forKey:URLsKey];
     [self.defaults synchronize];
 }
 
-- (BOOL)sameOnAllScreens {
+- (BOOL)sameOnAllScreens
+{
     return [self.defaults objectForKey:SameOnAllScreensKey] ? [self.defaults boolForKey:SameOnAllScreensKey] : YES;
 }
 
-- (void)setSameOnAllScreens:(BOOL)sameOnAllScreens {
+- (void)setSameOnAllScreens:(BOOL)sameOnAllScreens
+{
     [self.defaults setBool:sameOnAllScreens forKey:SameOnAllScreensKey];
     [self.defaults synchronize];
 }
 
-- (VSSQualityPreference)qualityPreference {
+- (VSSQualityPreference)qualityPreference
+{
     return [self.defaults integerForKey:QualityPreference];
 }
 
-- (void)setQualityPreference:(VSSQualityPreference)qualityPreference {
+- (void)setQualityPreference:(VSSQualityPreference)qualityPreference
+{
     [self.defaults setInteger:qualityPreference forKey:QualityPreference];
     [self.defaults synchronize];
 }

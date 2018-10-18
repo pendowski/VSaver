@@ -12,6 +12,6 @@
 
 @interface VSSAppleTVClassicProvider : NSObject
 
-- (void)getVideoAtIndex:(VSSAppleIndex)index completion:(void (^)(VSSURLItem * _Nullable))completion;
+- (void)getVideoAtIndex:(VSSAppleIndex)index completion:(void (^)(VSSURLItem *_Nullable))completion;
 
 @end

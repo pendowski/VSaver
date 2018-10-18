@@ -16,15 +16,18 @@
 
 #pragma mark - Actions
 
-- (IBAction)closeTapped:(id)sender {
+- (IBAction)closeTapped:(id)sender
+{
     [self.delegate wallpaperOptionsControllerDidChooseClose:self];
 }
 
-- (IBAction)settingsTapped:(id)sender {
+- (IBAction)settingsTapped:(id)sender
+{
     [self.delegate wallpaperOptionsControllerDidChooseSettings:self];
 }
 
-- (IBAction)reloadTapped:(id)sender {
+- (IBAction)reloadTapped:(id)sender
+{
     [self.delegate wallpaperOptionsControllerDidChooseReload:self];
 }
 

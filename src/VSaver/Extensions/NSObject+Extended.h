@@ -12,6 +12,6 @@
 
 @interface NSObject (Extended)
 
-    - (id _Nullable)vss_as: (Class _Nonnull)class;
-    
+- (id _Nullable)vss_as:(Class _Nonnull)class;
+
 @end

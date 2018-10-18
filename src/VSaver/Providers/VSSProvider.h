@@ -11,8 +11,8 @@
 @protocol VSSProvider <NSObject>
 @property (nonnull, nonatomic, readonly, copy) NSString *name;
 
-- (BOOL)isValidURL: (NSURL *_Nonnull)url;
-- (void)getVideoFromURL: (NSURL *_Nonnull)url completion: (void (^_Nonnull)(VSSURLItem * _Nullable))completion;
+- (BOOL)isValidURL:(NSURL *_Nonnull)url;
+- (void)getVideoFromURL:(NSURL *_Nonnull)url completion:(void (^_Nonnull)(VSSURLItem *_Nullable))completion;
 @end
 
 @protocol VSSSupports4KQuality

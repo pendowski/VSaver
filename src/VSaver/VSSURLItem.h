@@ -11,6 +11,6 @@
 @interface VSSURLItem : NSObject
 @property (nonnull, nonatomic, copy) NSString *title;
 @property (nonnull, nonatomic, copy) NSURL *url;
-    
-- (instancetype _Nonnull )initWithTitle: (NSString *_Nonnull)title url: (NSURL *_Nonnull)url;
+
+- (instancetype _Nonnull)initWithTitle:(NSString *_Nonnull)title url:(NSURL *_Nonnull)url;
 @end

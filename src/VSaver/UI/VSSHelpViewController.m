@@ -14,17 +14,19 @@
 
 @implementation VSSHelpViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
+
     self.messageLabel.stringValue = self.message;
 }
 
 #pragma mark - Properties
 
-- (void)setMessage:(NSString *)message {
+- (void)setMessage:(NSString *)message
+{
     _message = message;
-    
+
     self.messageLabel.stringValue = message;
 }
 

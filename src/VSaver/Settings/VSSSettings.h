@@ -6,15 +6,15 @@
 //  Copyright © 2018 Jarek Pendowski. All rights reserved.
 //
 
-typedef NS_ENUM(NSInteger, VSSPlayMode) {
+typedef NS_ENUM (NSInteger, VSSPlayMode) {
     VSSPlayModeSequence = 0,
-    VSSPlayModeRandom = 1
+    VSSPlayModeRandom   = 1
 };
 
-typedef NS_ENUM(NSInteger, VSSQualityPreference) {
+typedef NS_ENUM (NSInteger, VSSQualityPreference) {
     VSSQualityPreferenceAdjust = 0,
-    VSSQualityPreference1080p = 1,
-    VSSQualityPreference4K = 2
+    VSSQualityPreference1080p  = 1,
+    VSSQualityPreference4K     = 2
 };
 
 @protocol VSSSettings <NSObject>

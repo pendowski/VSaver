@@ -15,11 +15,13 @@
 
 @implementation VSSScreenSaverWindow
 
-- (instancetype)initWithScreenSaverViewFactory:(VSSScreenSaverFactory)factory {
+- (instancetype)initWithScreenSaverViewFactory:(VSSScreenSaverFactory)factory
+{
     return [self initWithScreenSaverViewFactory:factory styleMask:(NSWindowStyleMaskResizable | NSWindowStyleMaskTitled | NSWindowStyleMaskClosable) screen:[NSScreen mainScreen] coverFullScreen:NO];
 }
-    
-- (instancetype)initWithScreenSaverViewFactory:(VSSScreenSaverFactory)factory styleMask:(NSWindowStyleMask)styleMask screen:(NSScreen *)screen coverFullScreen:(BOOL)fullScreen {
+
+- (instancetype)initWithScreenSaverViewFactory:(VSSScreenSaverFactory)factory styleMask:(NSWindowStyleMask)styleMask screen:(NSScreen *)screen coverFullScreen:(BOOL)fullScreen
+{
     CGSize screenSize = fullScreen ? [screen frame].size : [screen visibleFrame].size;
     CGRect frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
     self = [super initWithContentRect:frame styleMask:styleMask backing:NSBackingStoreBuffered defer:YES screen:screen];
@@ -27,22 +29,24 @@
         self.hidesOnDeactivate = NO;
         [self setReleasedWhenClosed:NO];
         self.screenSaverfactory = factory;
-        
+
         [self reloadScreenSaver];
-        
+
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeScreen:) name:NSWindowDidChangeScreenNotification object:self];
     }
     return self;
 }
 
-- (BOOL)canBecomeKeyWindow {
+- (BOOL)canBecomeKeyWindow
+{
     return YES;
 }
 
-- (void)keyDown:(NSEvent *)event {
+- (void)keyDown:(NSEvent *)event
+{
     const unsigned short spaceKey = 49;
     const unsigned short rightKey = 124;
-    
+
     if (event.keyCode == spaceKey || event.keyCode == rightKey) {
         [self.screenSaverView.videoController playNext];
     } else {
@@ -52,13 +56,15 @@
 
 #pragma mark - Notifications
 
-- (void)didChangeScreen:(NSNotification *)notification {
+- (void)didChangeScreen:(NSNotification *)notification
+{
     [self reloadScreenSaver];
 }
 
 #pragma mark - Private
 
-- (void)reloadScreenSaver {
+- (void)reloadScreenSaver
+{
     [self.screenSaverView removeFromSuperview];
 
     NSView<VSSScreenSaver> *saverView = self.screenSaverfactory(self.contentView.bounds);
