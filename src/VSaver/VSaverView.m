@@ -122,6 +122,7 @@
         videoController = [[VSSVideoPlayerController alloc] initWithCommonProviders];
         videoController.use4KVideoIfAvailable = qualityPreference == VSSQualityPreference4K || (qualityPreference == VSSQualityPreferenceAdjust && containsSup1080Screen(@[self.window.screen]));
     }
+    [videoController setVolume:self.settings.muteVideos ? 0 : 1];
     [videoController registerPlayerLayer:self.playerLayer];
     [videoController addDelegate:self];
 
