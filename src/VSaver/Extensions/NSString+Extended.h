@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)stringByTrimmingEachLine;
 
+- (NSComparisonResult)vss_compareWithVersion:(NSString *)version;
+
 @end
 
 NS_ASSUME_NONNULL_END

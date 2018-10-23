@@ -20,4 +20,9 @@
     return nil;
 }
 
+- (NSArray<NSString *> *)pathComponents
+{
+    return [self.path componentsSeparatedByString:@"/"];
+}
+
 @end

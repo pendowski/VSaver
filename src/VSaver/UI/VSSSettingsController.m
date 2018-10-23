@@ -12,6 +12,7 @@
 #import "NSString+Extended.h"
 #import "VSSHelpViewController.h"
 #import "VSaverView.h"
+#import "VSSUpdateChecker.h"
 
 @interface VSSSettingsController () <NSTableViewDataSource, NSWindowDelegate>
 @property (nonnull, nonatomic, strong) IBOutlet NSTableView *tableView;
@@ -20,7 +21,10 @@
 @property (nonnull, nonatomic, strong) IBOutlet NSButton *sameVideoCheckbox;
 @property (nonnull, nonatomic, strong) IBOutlet NSSegmentedControl *playModeSelector;
 @property (nonnull, nonatomic, strong) IBOutlet NSPopUpButton *qualityPreferenceButton;
+@property (nullable, nonatomic, weak) IBOutlet NSButton *updateButton;
+
 @property (nonnull, nonatomic, strong) NSMutableArray<NSString *> *urls;
+@property (nonnull, nonatomic, strong) VSSUpdateChecker *updateChecker;
 @end
 
 @implementation VSSSettingsController
@@ -28,6 +32,19 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    
+    [self.updateButton setHidden:YES];
+    self.updateChecker = [[VSSUpdateChecker alloc] initWithVersionSource:^NSString * _Nullable{
+        return VSSAS([[NSBundle bundleForClass:[VSaverView class]] infoDictionary][@"CFBundleShortVersionString"], NSString);
+    }];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.updateChecker checkForUpdates:^(BOOL updatesAvailable, NSString * _Nullable version) {
+        [weakSelf.updateButton setHidden:!updatesAvailable];
+        if (version) {
+            [weakSelf.updateButton setTitle:[NSString stringWithFormat:@"⚠️ New version available (%@)", version]];
+        }
+    }];
 
     self.urls = [@[] mutableCopy];
 
@@ -191,6 +208,11 @@
                                   Some sources allow overriding this value, playing quality selected in that URL." stringByTrimmingEachLine];
     [popover setContentViewController:helpViewController];
     [popover showRelativeToRect:sender.bounds ofView:sender preferredEdge:NSMinYEdge];
+}
+
+- (IBAction)updatedClicked:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/pendowski/VSaver/releases/latest"]];
 }
 
 #pragma mark - Private

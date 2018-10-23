@@ -19,4 +19,34 @@
     }] componentsJoinedByString:@"\n"];
 }
 
+- (NSComparisonResult)vss_compareWithVersion:(NSString *)version
+{
+    if (self.length == 0 && version.length == 0) {
+        return NSOrderedSame;
+    }
+    
+    NSMutableArray<NSString *> *originalComponents = [[self componentsSeparatedByString:@"."] mutableCopy];
+    NSMutableArray<NSString *> *compareComponents = [[version componentsSeparatedByString:@"."] mutableCopy];
+    
+    while (originalComponents.count < compareComponents.count) {
+        [originalComponents addObject:@"0"];
+    }
+    while (compareComponents.count < originalComponents.count) {
+        [compareComponents addObject:@"0"];
+    }
+    
+    for (NSInteger i = 0; i < originalComponents.count; i++) {
+        NSInteger original = [originalComponents[i] integerValue];
+        NSInteger compare = [compareComponents[i] integerValue];
+        
+        if (original < compare) {
+            return NSOrderedAscending;
+        } else if (original > compare) {
+            return NSOrderedDescending;
+        }
+    }
+    
+    return NSOrderedSame;
+}
+
 @end

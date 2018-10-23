@@ -16,14 +16,17 @@
 #import "VSSUserDefaultsSettings.h"
 #import "NSArray+Extended.h"
 #import "NSObject+Extended.h"
+#import "VSSUpdateChecker.h"
 
 @interface VSaverView () <VSSVideoPlayerControllerDelegate>
 @property (nullable, nonatomic, weak) NSProgressIndicator *loadingIndicator;
 @property (nullable, nonatomic, weak) NSTextField *sourceLabel;
+@property (nullable, nonatomic, weak) NSTextField *updateLabel;
 @property (nullable, nonatomic, weak) AVPlayerLayer *playerLayer;
 
 @property (nonnull, nonatomic, strong) id<VSSSettings> settings;
 @property (nullable, nonatomic, strong) NSWindowController *settingsController;
+@property (nonnull, nonatomic, strong) VSSUpdateChecker *updateChecker;
 @end
 
 @implementation VSaverView
@@ -72,25 +75,9 @@
         [self addSubview:activityIndicator];
         self.loadingIndicator = activityIndicator;
 
-        NSTextField *label = [NSTextField labelWithString:@"VSaver"];
-        label.textColor = [NSColor whiteColor];
-        label.alphaValue = 0.3;
-        [label sizeToFit];
-        label.translatesAutoresizingMaskIntoConstraints = NO;
-
-        [self addSubview:label];
-
-        CGFloat labelMargin = 20;
-        CGFloat labelHeight = label.bounds.size.height;
-        NSDictionary *layoutViews = @{ @"label": label };
-        NSMutableArray<NSLayoutConstraint *> *labelConstraints = [NSMutableArray array];
-        [labelConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"H:|-%0.0f-[label]-%0.0f-|", labelMargin, labelMargin] options:0 metrics:nil views:layoutViews]];
-        [labelConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|-(>=%0.0f)-[label(%0.0f)]-|", labelMargin, labelHeight] options:0 metrics:nil views:layoutViews]];
-        label.lineBreakMode = NSLineBreakByTruncatingTail;
-        [label setContentCompressionResistancePriority:NSLayoutPriorityDefaultLow forOrientation:NSLayoutConstraintOrientationHorizontal];
-        [NSLayoutConstraint activateConstraints:labelConstraints];
-
-        self.sourceLabel = label;
+        [self setupSourceLabel];
+        
+        [self setupUpdateLabelWhileInPreview:isPreview];
 
         VSSSettingsController *settingsController = [[VSSSettingsController alloc] initWithWindowNibName:@"VSSSettingsController"];
         settingsController.settings = self.settings;
@@ -191,6 +178,77 @@
         return [NSURL URLWithString:url];
     }];
     [self.videoController setQueue:urls];
+}
+
+- (void)setupSourceLabel
+{
+    NSTextField *label = [NSTextField labelWithString:@"VSaver"];
+    label.textColor = [NSColor whiteColor];
+    label.alphaValue = 0.3;
+    [label sizeToFit];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self addSubview:label];
+    
+    CGFloat labelMargin = 20;
+    CGFloat labelHeight = label.bounds.size.height;
+    NSDictionary *layoutViews = @{ @"label": label };
+    NSMutableArray<NSLayoutConstraint *> *labelConstraints = [NSMutableArray array];
+    [labelConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"H:|-%0.0f-[label]-(>=%0.0f)-|", labelMargin, labelMargin] options:0 metrics:nil views:layoutViews]];
+    [labelConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|-(>=%0.0f)-[label(%0.0f)]-|", labelMargin, labelHeight] options:0 metrics:nil views:layoutViews]];
+    label.lineBreakMode = NSLineBreakByTruncatingTail;
+    [label setContentCompressionResistancePriority:NSLayoutPriorityDefaultLow forOrientation:NSLayoutConstraintOrientationHorizontal];
+    [NSLayoutConstraint activateConstraints:labelConstraints];
+    
+    self.sourceLabel = label;
+}
+
+- (void)setupUpdateLabelWhileInPreview:(BOOL)isPreview
+{
+    if (isPreview) {
+        return;
+    }
+
+    self.updateChecker = [[VSSUpdateChecker alloc] initWithVersionSource:^NSString * _Nullable{
+        return VSSAS([[NSBundle bundleForClass:[VSaverView class]] infoDictionary][@"CFBundleShortVersionString"], NSString);
+    }];
+    
+    NSTextField *label = [NSTextField labelWithString:@"VSaver"];
+    label.textColor = [NSColor whiteColor];
+    label.alphaValue = 0.9;
+    [label sizeToFit];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self addSubview:label];
+    
+    CGFloat labelMargin = 20;
+    CGFloat labelHeight = label.bounds.size.height;
+    NSDictionary *layoutViews = @{ @"label": label };
+    NSMutableArray<NSLayoutConstraint *> *labelConstraints = [NSMutableArray array];
+    [labelConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"H:|-(>=%0.0f)-[label]-%0.0f-|", labelMargin, labelMargin] options:0 metrics:nil views:layoutViews]];
+    [labelConstraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|-(>=%0.0f)-[label(%0.0f)]-|", labelMargin, labelHeight] options:0 metrics:nil views:layoutViews]];
+    label.lineBreakMode = NSLineBreakByTruncatingTail;
+    label.alignment = NSTextAlignmentRight;
+    label.drawsBackground = YES;
+    label.backgroundColor = [NSColor.blackColor colorWithAlphaComponent:0.5];
+    [label setContentCompressionResistancePriority:NSLayoutPriorityDefaultLow forOrientation:NSLayoutConstraintOrientationHorizontal];
+    [NSLayoutConstraint activateConstraints:labelConstraints];
+    
+    self.updateLabel = label;
+
+    label.alphaValue = 0;
+    [self.updateChecker checkForUpdates:^(BOOL updateAvailable, NSString *version) {
+        if (!updateAvailable) { return; }
+        label.stringValue = [NSString stringWithFormat:@"⚠️ Update available (%@)", version];
+        label.alphaValue = updateAvailable ? 1 : 0;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+                context.duration = 1;
+                label.animator.alphaValue = 0;
+            }];
+        });
+    }];
 }
 
 @end
