@@ -159,14 +159,18 @@
 
 #pragma mark - Notifications
 
-- (void)videoDidEnd:(NSNotification *)notifications
+- (void)videoDidEnd:(NSNotification *)notification
 {
-    [self playNext];
+    if (notification.object == self.player.currentItem) {
+        [self playNext];
+    }
 }
 
-- (void)videoDidFail:(NSNotification *)notifications
+- (void)videoDidFail:(NSNotification *)notification
 {
-    [self playNext];
+    if (notification.object == self.player.currentItem) {
+        [self playNext];
+    }
 }
 
 #pragma mark - Private
