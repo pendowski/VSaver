@@ -13,6 +13,8 @@
 #import "VSSYouTubeProvider.h"
 #import "VSSWistiaProvider.h"
 
+#define MinimalTransitionTime 3.0
+
 @interface VSSVideoPlayerController ()
 @property (nonnull, nonatomic, strong) NSArray<id<VSSProvider> > *providers;
 @property (nonnull, nonatomic, strong) NSMutableArray<AVPlayerLayer *> *layers;
@@ -143,11 +145,15 @@
     }] firstObject];
 
     self.urlIndex = index;
+    [self.player pause];
+    [self.player replaceCurrentItemWithPlayerItem:nil];
 
     for (id<VSSVideoPlayerControllerDelegate> delegate in self.delegates) {
         [delegate videoPlayerController:self willLoadVideoWithURL:url];
     }
 
+    CFAbsoluteTime beginTime = CFAbsoluteTimeGetCurrent();
+    
     __weak typeof(self)weakSelf = self;
     [provider getVideoFromURL:url completion:^(VSSURLItem *_Nullable item) {
         __strong typeof(self) strongSelf = weakSelf;
@@ -156,15 +162,23 @@
             weakSelf.isPlaying = NO;
             return;
         }
-
-        for (id<VSSVideoPlayerControllerDelegate> delegate in strongSelf.delegates) {
-            [delegate videoPlayerController:strongSelf didLoadVideoItem:item];
-        }
-
-        AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:item.url];
-        [strongSelf.player replaceCurrentItemWithPlayerItem:playerItem];
-        strongSelf.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-        [strongSelf.player play];
+        
+        // Load and start playing as soon as possible
+        dispatch_async(dispatch_get_main_queue(), ^{
+            AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:item.url];
+            [strongSelf.player replaceCurrentItemWithPlayerItem:playerItem];
+            strongSelf.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+            [strongSelf.player play];
+        });
+        
+        // But if the internet is super quick we'll compensate here for more pleasing transition between videos
+        CFAbsoluteTime finishTime = CFAbsoluteTimeGetCurrent();
+        CFAbsoluteTime delay = MAX(MIN(MinimalTransitionTime - (finishTime - beginTime), MinimalTransitionTime), 0);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            for (id<VSSVideoPlayerControllerDelegate> delegate in strongSelf.delegates) {
+                [delegate videoPlayerController:strongSelf didLoadVideoItem:item];
+            }
+        });
     }];
 }
 
