@@ -17,7 +17,7 @@
 
 @interface VSSVideoPlayerController ()
 @property (nonnull, nonatomic, strong) NSArray<id<VSSProvider> > *providers;
-@property (nonnull, nonatomic, strong) NSMutableArray<AVPlayerLayer *> *layers;
+@property (nonnull, nonatomic, strong) NSMutableSet<AVPlayerLayer *> *layers;
 @property (nonnull, nonatomic, strong) AVPlayer *player;
 @property (nonnull, nonatomic, strong) NSArray<NSURL *> *urls;
 @property (nonatomic) NSInteger urlIndex;
@@ -34,7 +34,7 @@
 
     if (self) {
         self.providers = providers;
-        self.layers = [@[] mutableCopy];
+        self.layers = [NSMutableSet set];
         self.urls = @[];
         self.mode = VSSModeRandom;
         self.delegates = [NSHashTable hashTableWithOptions:NSHashTableWeakMemory];
@@ -106,6 +106,15 @@
     playerLayer.player = self.player;
     
     [self playIfNeeded];
+}
+
+- (void)unregisterPlayerLayer:(AVPlayerLayer *)playerLayer
+{
+    [self.layers removeObject:playerLayer];
+    if (self.layers.count == 0) {
+        [self.player pause];
+        self.isPlaying = NO;
+    }
 }
 
 - (void)addDelegate:(id<VSSVideoPlayerControllerDelegate>)delegate
@@ -211,7 +220,7 @@
 
 - (void)playIfNeeded
 {
-    if (!self.isPlaying) {
+    if (!self.isPlaying && self.layers.count > 0 && self.urls.count > 0) {
         [self playNext];
     }
 }

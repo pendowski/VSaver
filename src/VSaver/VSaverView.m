@@ -70,6 +70,7 @@
     [super viewDidMoveToWindow];
 
     if (self.window == nil) {
+        [self.videoController unregisterPlayerLayer:self.playerLayer];
         return;
     }
     
@@ -251,7 +252,9 @@
 
 - (void)showLoadingIndicator
 {
-    assert(!self.loadingIndicator);
+    if (self.loadingIndicator) {
+        return;
+    }
     
     NSRect frame = self.bounds;
     
