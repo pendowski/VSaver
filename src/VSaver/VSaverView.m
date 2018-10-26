@@ -109,15 +109,16 @@
         videoController = [[VSSVideoPlayerController alloc] initWithCommonProviders];
         videoController.use4KVideoIfAvailable = qualityPreference == VSSQualityPreference4K || (qualityPreference == VSSQualityPreferenceAdjust && containsSup1080Screen(@[self.window.screen]));
     }
+    
+    [self updateQueueIn:videoController];
     [videoController setVolume:self.settings.muteVideos ? 0 : 1];
     [videoController registerPlayerLayer:self.playerLayer];
     [videoController addDelegate:self];
+    [videoController playIfNeeded];
 
     self.videoController = videoController;
 
     [self.sourceLabel setHidden:!self.settings.showLabel];
-
-    [self reloadAndPlay];
 }
 
 - (void)startAnimation
@@ -172,12 +173,12 @@
 
 #pragma mark - Private
 
-- (void)reloadAndPlay
+- (void)updateQueueIn:(VSSVideoPlayerController *)controller
 {
     NSArray<NSURL *> *urls = [self.settings.urls vss_map:^id _Nullable (NSString *_Nonnull url) {
         return [NSURL URLWithString:url];
     }];
-    [self.videoController setQueue:urls];
+    [controller setQueue:urls];
 }
 
 - (void)setupSourceLabel

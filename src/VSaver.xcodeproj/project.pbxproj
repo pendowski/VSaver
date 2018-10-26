@@ -704,6 +704,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaverWallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -721,6 +722,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaverWallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -861,6 +863,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
@@ -875,6 +878,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
@@ -890,6 +894,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaverTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -904,6 +909,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaverTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

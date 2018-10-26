@@ -21,6 +21,7 @@
 @property (nonatomic) NSInteger urlIndex;
 @property (nonnull, nonatomic, strong) NSHashTable<id<VSSVideoPlayerControllerDelegate> > *delegates;
 @property (nonatomic) CGFloat volumes;
+@property (nonatomic) BOOL isPlaying;
 @end
 
 @implementation VSSVideoPlayerController
@@ -84,18 +85,25 @@
 
 - (void)setQueue:(NSArray<NSURL *> *)urls
 {
+    if ([self.urls isEqualToArray:urls]) {
+        return [self playIfNeeded];
+    }
+    
+    self.isPlaying = NO;
     [self.player pause];
 
     self.urlIndex = -1;
     self.urls = urls;
 
-    [self playNext];
+    [self playIfNeeded];
 }
 
 - (void)registerPlayerLayer:(AVPlayerLayer *)playerLayer
 {
     [self.layers addObject:playerLayer];
     playerLayer.player = self.player;
+    
+    [self playIfNeeded];
 }
 
 - (void)addDelegate:(id<VSSVideoPlayerControllerDelegate>)delegate
@@ -110,9 +118,11 @@
 
 - (void)playNext
 {
-    if (self.urls.count == 0) {
+    if (self.urls.count == 0 || self.layers.count == 0) {
         return;
     }
+    
+    self.isPlaying = YES;
 
     NSInteger index = self.urlIndex;
     NSInteger total = self.urls.count;
@@ -143,6 +153,7 @@
         __strong typeof(self) strongSelf = weakSelf;
 
         if (!strongSelf || !item) {
+            weakSelf.isPlaying = NO;
             return;
         }
 
@@ -182,6 +193,13 @@
     }] vss_forEach:^(id<VSSSupports4KQuality> _Nonnull obj) {
         obj.shouldUse4K = self.use4KVideoIfAvailable;
     }];
+}
+
+- (void)playIfNeeded
+{
+    if (!self.isPlaying) {
+        [self playNext];
+    }
 }
 
 @end
