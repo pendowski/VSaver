@@ -804,6 +804,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SHARED_BUILD_NUMBER = 100;
+				SHARED_VERSION_NUMBER = 1.3;
 			};
 			name = Debug;
 		};
@@ -852,6 +854,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SHARED_BUILD_NUMBER = 100;
+				SHARED_VERSION_NUMBER = 1.3;
 			};
 			name = Release;
 		};

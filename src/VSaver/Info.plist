@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>${SHARED_VERSION_NUMBER}</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>${SHARED_BUILD_NUMBER}</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2018 Jarek Pendowski. All rights reserved.</string>
 	<key>NSPrincipalClass</key>

@@ -15,6 +15,7 @@
 #define ShowLabelKey        @"showSource"
 #define SameOnAllScreensKey @"sameOnAllScreens"
 #define QualityPreference   @"qualityPreference"
+#define LastVersion         @"lastVersion"
 
 @interface VSSUserDefaultsSettings ()
 @property (nonnull, nonatomic, strong) NSUserDefaults *defaults;
@@ -97,6 +98,16 @@
 {
     [self.defaults setInteger:qualityPreference forKey:QualityPreference];
     [self.defaults synchronize];
+}
+
+- (NSString *)lastVersion
+{
+    return [self.defaults stringForKey:LastVersion];
+}
+
+- (void)setLastVersion:(NSString *)lastVersion
+{
+    [self.defaults setObject:lastVersion forKey:lastVersion];
 }
 
 @end

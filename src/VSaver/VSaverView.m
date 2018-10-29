@@ -41,6 +41,12 @@
         self.wantsLayer = YES;
 
         self.settings = [[VSSUserDefaultsSettings alloc] init];
+        
+        if (self.settings.urls.count == 0 && self.settings.lastVersion == nil) {
+            self.settings.urls = @[ @"appletv://", @"appletv://tvos12", @"https://www.youtube.com/watch?v=dQw4w9WgXcQ" ];
+        }
+        
+        self.settings.lastVersion = [VSaverView CurrentScreenSaverVersion] ?: @"1.0"; // default since we'r checking for first install based on the version number
 
         self.layer.backgroundColor = [NSColor blackColor].CGColor;
         self.layer.frame = self.bounds;
@@ -209,7 +215,7 @@
     }
 
     self.updateChecker = [[VSSUpdateChecker alloc] initWithVersionSource:^NSString * _Nullable{
-        return VSSAS([[NSBundle bundleForClass:[VSaverView class]] infoDictionary][@"CFBundleShortVersionString"], NSString);
+        return [VSaverView CurrentScreenSaverVersion];
     }];
     
     NSTextField *label = [NSTextField labelWithString:@"VSaver"];
@@ -283,6 +289,13 @@
     [self addSubview:activityIndicator];
     self.loadingIndicator = activityIndicator;
     [activityIndicator startAnimation:nil];
+}
+
+#pragma mark - Static
+
++ (NSString * _Nullable)CurrentScreenSaverVersion
+{
+    return VSSAS([[NSBundle bundleForClass:[VSaverView class]] infoDictionary][@"CFBundleShortVersionString"], NSString);
 }
 
 @end

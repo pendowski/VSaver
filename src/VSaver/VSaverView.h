@@ -12,4 +12,5 @@
 
 @interface VSaverView : ScreenSaverView <VSSScreenSaver>
 @property (nonnull, nonatomic, strong) VSSVideoPlayerController *videoController;
+@property (class, nullable, nonatomic, strong, readonly) NSString *CurrentScreenSaverVersion;
 @end

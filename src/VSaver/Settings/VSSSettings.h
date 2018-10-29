@@ -24,4 +24,6 @@ typedef NS_ENUM (NSInteger, VSSQualityPreference) {
 @property (nonatomic) VSSPlayMode playMode;
 @property (nonatomic) BOOL sameOnAllScreens;
 @property (nonatomic) VSSQualityPreference qualityPreference;
+
+@property (nullable, nonatomic, copy) NSString *lastVersion;
 @end
