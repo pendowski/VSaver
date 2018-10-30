@@ -13,14 +13,17 @@
 #import "VSSYouTubeProvider.h"
 #import "VSSWistiaProvider.h"
 
+#define MinimalTransitionTime 3.0
+
 @interface VSSVideoPlayerController ()
 @property (nonnull, nonatomic, strong) NSArray<id<VSSProvider> > *providers;
-@property (nonnull, nonatomic, strong) NSMutableArray<AVPlayerLayer *> *layers;
+@property (nonnull, nonatomic, strong) NSMutableSet<AVPlayerLayer *> *layers;
 @property (nonnull, nonatomic, strong) AVPlayer *player;
 @property (nonnull, nonatomic, strong) NSArray<NSURL *> *urls;
 @property (nonatomic) NSInteger urlIndex;
 @property (nonnull, nonatomic, strong) NSHashTable<id<VSSVideoPlayerControllerDelegate> > *delegates;
 @property (nonatomic) CGFloat volumes;
+@property (nonatomic) BOOL isPlaying;
 @end
 
 @implementation VSSVideoPlayerController
@@ -31,7 +34,7 @@
 
     if (self) {
         self.providers = providers;
-        self.layers = [@[] mutableCopy];
+        self.layers = [NSMutableSet set];
         self.urls = @[];
         self.mode = VSSModeRandom;
         self.delegates = [NSHashTable hashTableWithOptions:NSHashTableWeakMemory];
@@ -84,18 +87,34 @@
 
 - (void)setQueue:(NSArray<NSURL *> *)urls
 {
+    if ([self.urls isEqualToArray:urls]) {
+        return [self playIfNeeded];
+    }
+    
+    self.isPlaying = NO;
     [self.player pause];
 
     self.urlIndex = -1;
     self.urls = urls;
 
-    [self playNext];
+    [self playIfNeeded];
 }
 
 - (void)registerPlayerLayer:(AVPlayerLayer *)playerLayer
 {
     [self.layers addObject:playerLayer];
     playerLayer.player = self.player;
+    
+    [self playIfNeeded];
+}
+
+- (void)unregisterPlayerLayer:(AVPlayerLayer *)playerLayer
+{
+    [self.layers removeObject:playerLayer];
+    if (self.layers.count == 0) {
+        [self.player pause];
+        self.isPlaying = NO;
+    }
 }
 
 - (void)addDelegate:(id<VSSVideoPlayerControllerDelegate>)delegate
@@ -110,9 +129,11 @@
 
 - (void)playNext
 {
-    if (self.urls.count == 0) {
+    if (self.urls.count == 0 || self.layers.count == 0) {
         return;
     }
+    
+    self.isPlaying = YES;
 
     NSInteger index = self.urlIndex;
     NSInteger total = self.urls.count;
@@ -133,40 +154,57 @@
     }] firstObject];
 
     self.urlIndex = index;
+    [self.player pause];
+    [self.player replaceCurrentItemWithPlayerItem:nil];
 
     for (id<VSSVideoPlayerControllerDelegate> delegate in self.delegates) {
         [delegate videoPlayerController:self willLoadVideoWithURL:url];
     }
 
+    CFAbsoluteTime beginTime = CFAbsoluteTimeGetCurrent();
+    
     __weak typeof(self)weakSelf = self;
     [provider getVideoFromURL:url completion:^(VSSURLItem *_Nullable item) {
         __strong typeof(self) strongSelf = weakSelf;
 
         if (!strongSelf || !item) {
+            weakSelf.isPlaying = NO;
             return;
         }
-
-        for (id<VSSVideoPlayerControllerDelegate> delegate in strongSelf.delegates) {
-            [delegate videoPlayerController:strongSelf didLoadVideoItem:item];
-        }
-
-        AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:item.url];
-        [strongSelf.player replaceCurrentItemWithPlayerItem:playerItem];
-        strongSelf.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-        [strongSelf.player play];
+        
+        // Load and start playing as soon as possible
+        dispatch_async(dispatch_get_main_queue(), ^{
+            AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:item.url];
+            [strongSelf.player replaceCurrentItemWithPlayerItem:playerItem];
+            strongSelf.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+            [strongSelf.player play];
+        });
+        
+        // But if the internet is super quick we'll compensate here for more pleasing transition between videos
+        CFAbsoluteTime finishTime = CFAbsoluteTimeGetCurrent();
+        CFAbsoluteTime delay = MAX(MIN(MinimalTransitionTime - (finishTime - beginTime), MinimalTransitionTime), 0);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            for (id<VSSVideoPlayerControllerDelegate> delegate in strongSelf.delegates) {
+                [delegate videoPlayerController:strongSelf didLoadVideoItem:item];
+            }
+        });
     }];
 }
 
 #pragma mark - Notifications
 
-- (void)videoDidEnd:(NSNotification *)notifications
+- (void)videoDidEnd:(NSNotification *)notification
 {
-    [self playNext];
+    if (notification.object == self.player.currentItem) {
+        [self playNext];
+    }
 }
 
-- (void)videoDidFail:(NSNotification *)notifications
+- (void)videoDidFail:(NSNotification *)notification
 {
-    [self playNext];
+    if (notification.object == self.player.currentItem) {
+        [self playNext];
+    }
 }
 
 #pragma mark - Private
@@ -178,6 +216,13 @@
     }] vss_forEach:^(id<VSSSupports4KQuality> _Nonnull obj) {
         obj.shouldUse4K = self.use4KVideoIfAvailable;
     }];
+}
+
+- (void)playIfNeeded
+{
+    if (!self.isPlaying && self.layers.count > 0 && self.urls.count > 0) {
+        [self playNext];
+    }
 }
 
 @end

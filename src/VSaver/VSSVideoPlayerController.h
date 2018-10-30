@@ -34,6 +34,9 @@ typedef NS_ENUM (NSInteger, VSSMode) {
 
 - (void)setQueue:(NSArray<NSURL *> *)urls;
 - (void)registerPlayerLayer:(AVPlayerLayer *)playerLayer;
+- (void)unregisterPlayerLayer:(AVPlayerLayer *)playerLayer;
+- (void)playIfNeeded;
+
 - (void)addDelegate:(id<VSSVideoPlayerControllerDelegate>)delegate;
 - (void)setVolume:(CGFloat)volume;
 - (void)playNext;

@@ -14,6 +14,7 @@
                 <outlet property="sameVideoCheckbox" destination="Jd6-v0-iEa" id="HD6-GG-f7d"/>
                 <outlet property="sourceCheckbox" destination="llH-mf-aXd" id="hun-9Z-lrB"/>
                 <outlet property="tableView" destination="OtA-QO-naS" id="6As-8o-rMS"/>
+                <outlet property="updateButton" destination="4mL-rO-IGs" id="R5I-nV-gFs"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -23,7 +24,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="550" height="457"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="550" height="457"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +135,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tyv-CH-Whn">
-                                                <rect key="frame" x="109" y="-3" width="194" height="26"/>
+                                                <rect key="frame" x="109" y="-3" width="194" height="25"/>
                                                 <popUpButtonCell key="cell" type="push" title="Depending on screen(s)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rob-Ev-FKy" id="flL-Iy-JsX">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
@@ -148,7 +149,7 @@
                                                 </popUpButtonCell>
                                             </popUpButton>
                                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dLz-av-ojq">
-                                                <rect key="frame" x="306" y="-3" width="25" height="25"/>
+                                                <rect key="frame" x="306" y="-4" width="25" height="25"/>
                                                 <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LkW-As-fdp">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -184,7 +185,7 @@
                                 </customSpacing>
                             </stackView>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6hs-aG-xRi">
-                                <rect key="frame" x="153" y="101" width="204" height="20"/>
+                                <rect key="frame" x="153" y="102" width="205" height="20"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="324-u8-uuu">
                                     <font key="font" metaFont="cellTitle"/>
                                     <segments>
@@ -226,14 +227,27 @@
                             <action selector="closeWindowClicked:" target="-2" id="SFo-jh-33h"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4mL-rO-IGs">
+                        <rect key="frame" x="14" y="13" width="163" height="32"/>
+                        <buttonCell key="cell" type="push" title="⚠️ Update available" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lol-s6-owG">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="updatedClicked:" target="-2" id="cdN-yp-k1k"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ch9-6T-SYM" firstAttribute="top" secondItem="9P0-h5-cJy" secondAttribute="bottom" id="3c6-po-GTL"/>
                     <constraint firstItem="Ch9-6T-SYM" firstAttribute="top" secondItem="9P0-h5-cJy" secondAttribute="bottom" id="6mc-IG-igS"/>
                     <constraint firstItem="tbM-o7-Bze" firstAttribute="top" secondItem="Ch9-6T-SYM" secondAttribute="bottom" constant="20" id="KyK-xd-s3d"/>
                     <constraint firstAttribute="bottom" secondItem="tbM-o7-Bze" secondAttribute="bottom" constant="20" id="LxD-n1-v3w"/>
+                    <constraint firstItem="4mL-rO-IGs" firstAttribute="top" secondItem="Ch9-6T-SYM" secondAttribute="bottom" constant="20" id="NHO-ze-j7Q"/>
                     <constraint firstItem="9P0-h5-cJy" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="Rn3-mw-0oc"/>
                     <constraint firstAttribute="trailing" secondItem="Ch9-6T-SYM" secondAttribute="trailing" constant="20" id="VjI-iY-Y28"/>
+                    <constraint firstItem="4mL-rO-IGs" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Y9a-33-Ypq"/>
+                    <constraint firstAttribute="bottom" secondItem="4mL-rO-IGs" secondAttribute="bottom" constant="20" id="byb-7a-blf"/>
                     <constraint firstAttribute="trailing" secondItem="9P0-h5-cJy" secondAttribute="trailing" constant="20" id="cxt-7i-7na"/>
                     <constraint firstAttribute="trailing" secondItem="tbM-o7-Bze" secondAttribute="trailing" constant="20" id="fki-wU-jPk"/>
                     <constraint firstItem="9P0-h5-cJy" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="l22-Co-eUF"/>

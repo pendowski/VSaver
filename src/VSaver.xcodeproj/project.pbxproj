@@ -74,6 +74,8 @@
 		AABDF52420A1879700789BEB /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4FC20A0C01800789BEB /* NSArray+Extended.m */; };
 		AABDF52520A1879700789BEB /* NSObject+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF50520A17EDF00789BEB /* NSObject+Extended.m */; };
 		AABDF52820A1889800789BEB /* VSSScreenSaverWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF52720A1889800789BEB /* VSSScreenSaverWindow.m */; };
+		AAFD25E1217E31BD00432F2B /* VSSUpdateChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = AAFD25DF217E31BD00432F2B /* VSSUpdateChecker.h */; };
+		AAFD25E2217E31BD00432F2B /* VSSUpdateChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFD25E0217E31BD00432F2B /* VSSUpdateChecker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +184,8 @@
 		AABDF51920A1868E00789BEB /* VSaverTester.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VSaverTester.entitlements; sourceTree = "<group>"; };
 		AABDF52620A1889800789BEB /* VSSScreenSaverWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSScreenSaverWindow.h; sourceTree = "<group>"; };
 		AABDF52720A1889800789BEB /* VSSScreenSaverWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSScreenSaverWindow.m; sourceTree = "<group>"; };
+		AAFD25DF217E31BD00432F2B /* VSSUpdateChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSUpdateChecker.h; sourceTree = "<group>"; };
+		AAFD25E0217E31BD00432F2B /* VSSUpdateChecker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSUpdateChecker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +320,8 @@
 				AABDF4F220A0B5FB00789BEB /* VSSVideoPlayerController.m */,
 				AABDF4F520A0B66B00789BEB /* VSSURLItem.h */,
 				AABDF4F620A0B66B00789BEB /* VSSURLItem.m */,
+				AAFD25DF217E31BD00432F2B /* VSSUpdateChecker.h */,
+				AAFD25E0217E31BD00432F2B /* VSSUpdateChecker.m */,
 				AA04F10D20A206100062AA05 /* Settings */,
 				AA04F10520A1FC960062AA05 /* UI */,
 				AABDF4FF20A0D10A00789BEB /* Providers */,
@@ -403,6 +409,7 @@
 				AABDF4F720A0B66B00789BEB /* VSSURLItem.h in Headers */,
 				AA60B68D216FAA75002F5EE3 /* VSSHelpViewController.h in Headers */,
 				AA7E2A6020AB0B0700013B17 /* NSURLSession+VSSExtended.h in Headers */,
+				AAFD25E1217E31BD00432F2B /* VSSUpdateChecker.h in Headers */,
 				AABDF4FD20A0C01800789BEB /* NSArray+Extended.h in Headers */,
 				AA60B5C7216553CC002F5EE3 /* NSURLComponents+Extended.h in Headers */,
 				AA60B5E721666393002F5EE3 /* VSSAppleURL.h in Headers */,
@@ -616,6 +623,7 @@
 			files = (
 				AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */,
 				AABDF4F420A0B5FB00789BEB /* VSSVideoPlayerController.m in Sources */,
+				AAFD25E2217E31BD00432F2B /* VSSUpdateChecker.m in Sources */,
 				AA60B5E821666393002F5EE3 /* VSSAppleURL.m in Sources */,
 				AA04F10C20A2060B0062AA05 /* VSSUserDefaultsSettings.m in Sources */,
 				AA7E2A6120AB0B0700013B17 /* NSURLSession+VSSExtended.m in Sources */,
@@ -696,6 +704,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaverWallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -713,6 +722,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaverWallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverWallpaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -794,6 +804,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SHARED_BUILD_NUMBER = 100;
+				SHARED_VERSION_NUMBER = 1.3;
 			};
 			name = Debug;
 		};
@@ -842,6 +854,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SHARED_BUILD_NUMBER = 100;
+				SHARED_VERSION_NUMBER = 1.3;
 			};
 			name = Release;
 		};
@@ -853,6 +867,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
@@ -867,6 +882,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = saver;
@@ -882,6 +898,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaverTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -896,6 +913,7 @@
 				DEVELOPMENT_TEAM = 883TJ9L9GP;
 				INFOPLIST_FILE = VSaverTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pendowski.VSaverTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
