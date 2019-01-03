@@ -37,7 +37,7 @@
         self.providers = providers;
         self.layers = [NSMutableSet set];
         self.urls = @[];
-        self.mode = VSSModeRandom;
+        self.mode = VSSPlayModeRandom;
         self.delegates = [NSHashTable hashTableWithOptions:NSHashTableWeakMemory];
         self.urlIndex = -1;
         self.player = [[AVPlayer alloc] init];
@@ -142,10 +142,10 @@
     NSInteger random = arc4random();
 
     switch (self.mode) {
-        case VSSModeRandom:
+        case VSSPlayModeRandom:
             index = random % total;
             break;
-        case VSSModeSequence:
+        case VSSPlayModeSequence:
             index = (index + 1) % total;
             break;
     }
