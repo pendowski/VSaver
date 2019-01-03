@@ -12,6 +12,7 @@
 #import "VSSVimeoProvider.h"
 #import "VSSYouTubeProvider.h"
 #import "VSSWistiaProvider.h"
+#import "VSSUStreamProvider.h"
 
 #define MinimalTransitionTime 3.0
 
@@ -58,7 +59,8 @@
                 [[VSSAppleTVProvider alloc] init],
                 [[VSSYouTubeProvider alloc] init],
                 [[VSSVimeoProvider alloc] init],
-                [[VSSWistiaProvider alloc] init]
+                [[VSSWistiaProvider alloc] init],
+                [[VSSUstreamProvider alloc] init]
     ]];
 }
 
