@@ -189,7 +189,7 @@
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="324-u8-uuu">
                                     <font key="font" metaFont="cellTitle"/>
                                     <segments>
-                                        <segment label="Loop" width="100"/>
+                                        <segment label="In Order" width="100"/>
                                         <segment label="Random" width="100" selected="YES" tag="1"/>
                                     </segments>
                                 </segmentedCell>
