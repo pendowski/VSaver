@@ -10,6 +10,7 @@
 #import "NSObject+Extended.h"
 #import "NSArray+Extended.h"
 #import "NSURLSession+VSSExtended.h"
+#import "NSURLComponents+Extended.h"
 
 @interface VSSVimeoStream : NSObject
 @property (nonnull, nonatomic, copy) NSString *url;
@@ -54,6 +55,7 @@
         return;
     }
 
+    NSUInteger beginTime = [self timeFromURL:url];
     NSURL *configURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://player.vimeo.com/video/%@/config", videoID]];
 
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
@@ -89,7 +91,9 @@
 
             NSString *video = urls.firstObject.url;
             if (video) {
-                completion([[VSSURLItem alloc] initWithTitle:title url:[NSURL URLWithString:video]]);
+                VSSURLItem *item = [[VSSURLItem alloc] initWithTitle:title url:[NSURL URLWithString:video]];
+                item.beginTime = beginTime;
+                completion(item);
                 return;
             }
         }
@@ -97,12 +101,32 @@
         NSDictionary *hls = VSSAS(files[@"hls"], NSDictionary);
         NSString *hlsUrl = VSSAS(hls[@"url"], NSString);
         if (hlsUrl.length > 0) {
-            completion([[VSSURLItem alloc] initWithTitle:title url:[NSURL URLWithString:hlsUrl]]);
+            VSSURLItem *item = [[VSSURLItem alloc] initWithTitle:title url:[NSURL URLWithString:hlsUrl]];
+            item.beginTime = beginTime;
+            completion(item);
             return;
         }
 
         completion(nil);
     }] resume];
+}
+
+- (NSUInteger)timeFromURL:(NSURL *)url {
+    NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
+    NSURLQueryItem *timeItem = [components.fragmentItems vss_filter:^BOOL(NSURLQueryItem *_Nonnull obj) {
+        return [obj.name isEqualToString:@"t"];
+    }].firstObject;
+    
+    if (!timeItem || timeItem.value.length == 0) {
+        return 0;
+    }
+    
+    NSScanner *scanner = [[NSScanner alloc] initWithString:timeItem.value];
+    NSInteger time = 0;
+    if (![scanner scanInteger:&time]) {
+        return 0;
+    }
+    return time;
 }
 
 @end

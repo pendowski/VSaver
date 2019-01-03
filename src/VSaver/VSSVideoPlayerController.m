@@ -41,6 +41,7 @@
         self.delegates = [NSHashTable hashTableWithOptions:NSHashTableWeakMemory];
         self.urlIndex = -1;
         self.player = [[AVPlayer alloc] init];
+        self.player.allowsExternalPlayback = NO;
 
         [self setup4KProvidersProviders];
 
@@ -180,6 +181,9 @@
             [strongSelf.player replaceCurrentItemWithPlayerItem:playerItem];
             strongSelf.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
             [strongSelf.player play];
+            if (item.beginTime > 0) {
+                [strongSelf.player seekToTime:CMTimeMakeWithSeconds(item.beginTime, 1) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero ];
+            }
         });
         
         // But if the internet is super quick we'll compensate here for more pleasing transition between videos

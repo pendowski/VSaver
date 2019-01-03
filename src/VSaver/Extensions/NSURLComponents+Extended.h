@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSURLComponents (Extended)
 @property (nonnull, nonatomic, copy, readonly) NSArray<NSString *> *pathComponents;
+@property (nonnull, nonatomic, copy, readonly) NSArray<NSURLQueryItem *> *fragmentItems;
 
 - (NSString *_Nullable)queryValueWithKey:(NSString *)key;
 @end

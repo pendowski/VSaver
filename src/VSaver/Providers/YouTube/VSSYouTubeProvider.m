@@ -7,6 +7,7 @@
 //
 
 #import "VSSYouTubeProvider.h"
+#import "NSArray+Extended.h"
 @import WebKit;
 @import JavaScriptCore;
 
@@ -39,7 +40,27 @@
     }
 
     NSString *title = titleValue.isString ? [@[[titleValue toString], self.loadingURL.absoluteString] componentsJoinedByString:@" 📽"] : self.loadingURL.absoluteString;
-    [self callCompletion:[[VSSURLItem alloc] initWithTitle:title url:[NSURL URLWithString:[urlValue toString]]]];
+    VSSURLItem *item = [[VSSURLItem alloc] initWithTitle:title url:[NSURL URLWithString:[urlValue toString]]];
+    item.beginTime = [self timeFromURL];
+    [self callCompletion:item];
+}
+
+- (NSUInteger)timeFromURL {
+    NSURLComponents *components = [[NSURLComponents alloc] initWithURL:self.loadingURL resolvingAgainstBaseURL:NO];
+    NSURLQueryItem *timeItem = [components.queryItems vss_filter:^BOOL(NSURLQueryItem *_Nonnull obj) {
+        return [obj.name isEqualToString:@"t"];
+    }].firstObject;
+    
+    if (!timeItem || timeItem.value.length == 0) {
+        return 0;
+    }
+    
+    NSScanner *scanner = [[NSScanner alloc] initWithString:timeItem.value];
+    NSInteger time = 0;
+    if (![scanner scanInteger:&time]) {
+        return 0;
+    }
+    return time;
 }
 
 @end
