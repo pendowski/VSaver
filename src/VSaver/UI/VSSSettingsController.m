@@ -34,7 +34,7 @@
     [super windowDidLoad];
     
     [self.updateButton setHidden:YES];
-    self.updateChecker = [[VSSUpdateChecker alloc] initWithVersionSource:^NSString * _Nullable{
+    self.updateChecker = [[VSSUpdateChecker alloc] initWithVersionSource:^NSString * _Nullable {
         return [VSaverView CurrentScreenSaverVersion];
     }];
     
@@ -51,6 +51,7 @@
     self.tableView.dataSource = self;
     self.tableView.target = self;
     [self.tableView setDoubleAction:@selector(rowDoubleClicked:)];
+    [self.tableView registerForDraggedTypes:@[NSPasteboardTypeURL]];
 }
 
 #pragma mark - NSWindowDelegate
@@ -152,6 +153,55 @@
             self.urls[row] = url;
         }
     }
+}
+
+#pragma mark - Drag & Drop
+
+- (id<NSPasteboardWriting>)tableView:(NSTableView *)tableView pasteboardWriterForRow:(NSInteger)row
+{
+    NSPasteboardItem *item = [NSPasteboardItem new];
+    [item setString:[NSString stringWithFormat:@"vssrow://%ld", row] forType:NSPasteboardTypeURL];
+    return item;
+}
+
+- (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
+{
+    if (dropOperation == NSTableViewDropAbove) {
+        return NSDragOperationMove;
+    }
+    return NSDragOperationNone;
+}
+
+-(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
+{
+    NSString *draggableItem = [info.draggingPasteboard stringForType:NSPasteboardTypeURL];
+    NSURL *draggableURL = [NSURL URLWithString:draggableItem];
+    if (!draggableURL) {
+        return NO;
+    }
+    
+    if ([draggableURL.scheme isEqualToString:@"vssrow"]) {
+        NSInteger from = [draggableURL.host integerValue];
+        NSString *url = self.urls[from];
+        [self.urls removeObjectAtIndex:from];
+        if (row < self.urls.count) {
+            [self.urls insertObject:url atIndex:row];
+        } else {
+            [self.urls addObject:url];
+        }
+        
+        return YES;
+    } else {
+        NSString *url = draggableURL.absoluteString;
+        if (row < self.urls.count) {
+            [self.urls insertObject:url atIndex:row];
+        } else {
+            [self.urls addObject:url];
+        }
+        return YES;
+    }
+    
+    return NO;
 }
 
 #pragma mark - Actions

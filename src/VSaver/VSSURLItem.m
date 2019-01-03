@@ -10,10 +10,16 @@
 
 @implementation VSSURLItem
 
-- (instancetype)initWithTitle:(NSString *)title url:(NSURL *)url
+- (instancetype _Nonnull)initWithTitle:(NSString *_Nonnull)title url:(NSURL *_Nonnull)url
+{
+    return [self initWithTitle:title url:url beginTime:0];
+}
+
+- (instancetype)initWithTitle:(NSString *)title url:(NSURL *)url beginTime:(NSUInteger)seconds
 {
     self = [super init];
     if (self) {
+        self.beginTime = seconds;
         self.title = title;
         self.url = url;
     }

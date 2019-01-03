@@ -10,11 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "VSSProvider.h"
 #import "VSSScreenSaver.h"
-
-typedef NS_ENUM (NSInteger, VSSMode) {
-    VSSModeRandom,
-    VSSModeSequence
-};
+#import "VSSSettings.h"
 
 @class VSSVideoPlayerController;
 
@@ -24,7 +20,7 @@ typedef NS_ENUM (NSInteger, VSSMode) {
 @end
 
 @interface VSSVideoPlayerController : NSObject <VSScreenVideoController>
-@property (nonatomic) VSSMode mode;
+@property (nonatomic) VSSPlayMode mode;
 @property (nonatomic) BOOL use4KVideoIfAvailable;
 
 + (instancetype)sharedPlayerController;

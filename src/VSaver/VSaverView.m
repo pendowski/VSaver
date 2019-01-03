@@ -99,6 +99,7 @@
     
     [self updateQueueIn:videoController];
     [videoController setVolume:self.settings.muteVideos ? 0 : 1];
+    [videoController setMode:self.settings.playMode];
     [videoController registerPlayerLayer:self.playerLayer];
     [videoController addDelegate:self];
     [videoController playIfNeeded];

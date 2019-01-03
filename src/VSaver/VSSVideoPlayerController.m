@@ -12,6 +12,7 @@
 #import "VSSVimeoProvider.h"
 #import "VSSYouTubeProvider.h"
 #import "VSSWistiaProvider.h"
+#import "VSSUStreamProvider.h"
 
 #define MinimalTransitionTime 3.0
 
@@ -36,10 +37,11 @@
         self.providers = providers;
         self.layers = [NSMutableSet set];
         self.urls = @[];
-        self.mode = VSSModeRandom;
+        self.mode = VSSPlayModeRandom;
         self.delegates = [NSHashTable hashTableWithOptions:NSHashTableWeakMemory];
         self.urlIndex = -1;
         self.player = [[AVPlayer alloc] init];
+        self.player.allowsExternalPlayback = NO;
 
         [self setup4KProvidersProviders];
 
@@ -58,7 +60,8 @@
                 [[VSSAppleTVProvider alloc] init],
                 [[VSSYouTubeProvider alloc] init],
                 [[VSSVimeoProvider alloc] init],
-                [[VSSWistiaProvider alloc] init]
+                [[VSSWistiaProvider alloc] init],
+                [[VSSUstreamProvider alloc] init]
     ]];
 }
 
@@ -140,10 +143,10 @@
     NSInteger random = arc4random();
 
     switch (self.mode) {
-        case VSSModeRandom:
+        case VSSPlayModeRandom:
             index = random % total;
             break;
-        case VSSModeSequence:
+        case VSSPlayModeSequence:
             index = (index + 1) % total;
             break;
     }
@@ -178,6 +181,9 @@
             [strongSelf.player replaceCurrentItemWithPlayerItem:playerItem];
             strongSelf.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
             [strongSelf.player play];
+            if (item.beginTime > 0) {
+                [strongSelf.player seekToTime:CMTimeMakeWithSeconds(item.beginTime, 1) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero ];
+            }
         });
         
         // But if the internet is super quick we'll compensate here for more pleasing transition between videos

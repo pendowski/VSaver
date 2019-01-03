@@ -25,4 +25,9 @@
     return [self.path componentsSeparatedByString:@"/"];
 }
 
+- (NSArray *)fragmentItems {
+    NSURLComponents *fakeComponents = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"http://localhost/?%@", self.fragment]];
+    return fakeComponents.queryItems;
+}
+
 @end

@@ -58,7 +58,7 @@
 
     self.completion = completion;
     self.loadingURL = url;
-
+    
     [self.webView.mainFrame loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
@@ -81,6 +81,9 @@
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)aFrame
 {
     WebFrame *mainFrame = sender.mainFrame;
+    if (aFrame != mainFrame) {
+        return;
+    }
 
     if (!mainFrame || !self.loadingURL || !self.script) {
         [self callCompletion:nil];
@@ -95,6 +98,10 @@
 
 - (void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WebFrame *)frame
 {
+    if (frame != sender.mainFrame) {
+        return;
+    }
+    
     if (self.loadingURL != nil) {
         [self callCompletion:nil];
     }
