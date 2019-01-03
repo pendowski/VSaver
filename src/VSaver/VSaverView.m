@@ -17,6 +17,7 @@
 #import "NSArray+Extended.h"
 #import "NSObject+Extended.h"
 #import "VSSUpdateChecker.h"
+#import "VSSLogger.h"
 
 #define SOURCELABELMAXALPHA 0.3
 
@@ -37,6 +38,8 @@
 {
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
+        VSSLog(@"Screen saver started %@: %@", NSStringFromRect(frame), isPreview ? @"Preview" : @"ScreenSaver");
+        
         [self setAnimationTimeInterval:1 / 30.0];
         self.wantsLayer = YES;
 

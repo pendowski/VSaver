@@ -99,7 +99,7 @@
             return nil;
         }
 
-        NSView<VSSScreenSaver> *saverView = [principalObject initWithFrame:CGRectZero isPreview:NO];
+        NSView<VSSScreenSaver> *saverView = [principalObject initWithFrame:frame isPreview:NO];
         saverView.frame = frame;
         return saverView;
     }];
