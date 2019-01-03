@@ -42,7 +42,6 @@
 - (void)setMuteVideos:(BOOL)muteVideos
 {
     [self.defaults setBool:muteVideos forKey:MuteKey];
-    [self.defaults synchronize];
 }
 
 - (BOOL)showLabel
@@ -53,7 +52,6 @@
 - (void)setShowLabel:(BOOL)showLabel
 {
     [self.defaults setBool:showLabel forKey:ShowLabelKey];
-    [self.defaults synchronize];
 }
 
 - (VSSPlayMode)playMode
@@ -64,7 +62,6 @@
 - (void)setPlayMode:(VSSPlayMode)playMode
 {
     [self.defaults setInteger:playMode forKey:PlayModeKey];
-    [self.defaults synchronize];
 }
 
 - (NSArray<NSString *> *)urls
@@ -75,7 +72,6 @@
 - (void)setUrls:(NSArray<NSString *> *)urls
 {
     [self.defaults setObject:urls forKey:URLsKey];
-    [self.defaults synchronize];
 }
 
 - (BOOL)sameOnAllScreens
@@ -86,7 +82,6 @@
 - (void)setSameOnAllScreens:(BOOL)sameOnAllScreens
 {
     [self.defaults setBool:sameOnAllScreens forKey:SameOnAllScreensKey];
-    [self.defaults synchronize];
 }
 
 - (VSSQualityPreference)qualityPreference
@@ -97,7 +92,6 @@
 - (void)setQualityPreference:(VSSQualityPreference)qualityPreference
 {
     [self.defaults setInteger:qualityPreference forKey:QualityPreference];
-    [self.defaults synchronize];
 }
 
 - (NSString *)lastVersion
@@ -107,7 +101,25 @@
 
 - (void)setLastVersion:(NSString *)lastVersion
 {
-    [self.defaults setObject:lastVersion forKey:lastVersion];
+    [self.defaults setObject:lastVersion forKey:LastVersion];
+}
+
+@end
+
+@implementation VSSLogger (VSSUserDefaultsSettings)
+
+- (void)logSettings:(VSSUserDefaultsSettings *)settings
+{
+    if (!settings) { return; }
+    NSDictionary *dictionary = @{
+                                 MuteKey: @(settings.muteVideos),
+                                 PlayModeKey: @(settings.playMode),
+                                 ShowLabelKey: @(settings.showLabel),
+                                 SameOnAllScreensKey: @(settings.sameOnAllScreens),
+                                 QualityPreference: @(settings.qualityPreference),
+                                 LastVersion: settings.lastVersion ?: @"-"
+                                 };
+    [self log:@"Settings: %@", dictionary];
 }
 
 @end

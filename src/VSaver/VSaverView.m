@@ -38,12 +38,13 @@
 {
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
-        VSSLog(@"Screen saver started %@: %@", NSStringFromRect(frame), isPreview ? @"Preview" : @"ScreenSaver");
+        VSSLog(@"Screen Saver (%@) started %@: %@", [VSaverView CurrentScreenSaverVersion], NSStringFromRect(frame), isPreview ? @"Preview" : @"ScreenSaver");
         
         [self setAnimationTimeInterval:1 / 30.0];
         self.wantsLayer = YES;
 
         self.settings = [[VSSUserDefaultsSettings alloc] init];
+        [[VSSLogger sharedInstance] logSettings:self.settings];
         
         if (self.settings.urls.count == 0 && self.settings.lastVersion == nil) {
             self.settings.urls = @[ @"appletv://", @"appletv://tvos12", @"https://www.youtube.com/watch?v=dQw4w9WgXcQ" ];

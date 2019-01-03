@@ -13,6 +13,7 @@
 #import "VSSYouTubeProvider.h"
 #import "VSSWistiaProvider.h"
 #import "VSSUStreamProvider.h"
+#import "VSSLogger.h"
 
 #define MinimalTransitionTime 3.0
 
@@ -155,6 +156,7 @@
     id<VSSProvider> provider = [[self.providers vss_filter:^BOOL (id<VSSProvider> _Nonnull provider) {
         return [provider isValidURL:url];
     }] firstObject];
+    VSSLog(@"Will play %@ (%@)", url, provider.name);
 
     self.urlIndex = index;
     [self.player pause];
@@ -177,12 +179,14 @@
         
         // Load and start playing as soon as possible
         dispatch_async(dispatch_get_main_queue(), ^{
+            VSSLog(@"Video URL decoded: %@ -> %@", url, item.loggingValue);
+            
             AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:item.url];
             [strongSelf.player replaceCurrentItemWithPlayerItem:playerItem];
             strongSelf.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
             [strongSelf.player play];
             if (item.beginTime > 0) {
-                [strongSelf.player seekToTime:CMTimeMakeWithSeconds(item.beginTime, 1) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero ];
+                [strongSelf.player seekToTime:CMTimeMakeWithSeconds(item.beginTime, 1) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
             }
         });
         
@@ -201,6 +205,7 @@
 
 - (void)videoDidEnd:(NSNotification *)notification
 {
+    VSSLog(@"Video did end: %@", notification.userInfo);
     if (notification.object == self.player.currentItem) {
         [self playNext];
     }
@@ -208,6 +213,7 @@
 
 - (void)videoDidFail:(NSNotification *)notification
 {
+    VSSLog(@"Video did fail: %@", notification.userInfo);
     if (notification.object == self.player.currentItem) {
         [self playNext];
     }

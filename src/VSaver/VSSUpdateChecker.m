@@ -10,6 +10,7 @@
 #import "NSObject+Extended.h"
 #import "NSURLComponents+Extended.h"
 #import "NSString+Extended.h"
+#import "VSSLogger.h"
 
 @interface VSSUpdateChecker ()
 @property (nullable, nonatomic, copy) NSString *currentVersion;
@@ -28,6 +29,8 @@
 
 - (void)checkForUpdates:(void (^)(BOOL, NSString *))updates
 {
+    VSSLog(@"Checking for updates for version %@", self.currentVersion);
+    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     [[session dataTaskWithURL:[NSURL URLWithString:@"https://github.com/pendowski/VSaver/releases/latest"] completionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
@@ -46,6 +49,7 @@
                     NSString *version = [versionComponent substringWithRange:versionRange];
                     if ([self.currentVersion vss_compareWithVersion:version] == NSOrderedAscending) {
                         dispatch_async(dispatch_get_main_queue(), ^{
+                            VSSLog(@"Updates found! New version %@ available", version);
                             updates(YES, version);
                         });
                         return;
@@ -55,6 +59,7 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            VSSLog(@"No updates");
             updates(NO, nil);
         });
     }] resume];

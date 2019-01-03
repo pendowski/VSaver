@@ -26,4 +26,9 @@
     return self;
 }
 
+- (NSString *)loggingValue
+{
+    return [NSString stringWithFormat:@"%@ (at %lds) - `%@`", self.url, self.beginTime, self.title];
+}
+
 @end

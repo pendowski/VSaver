@@ -13,6 +13,8 @@
 @property (nonnull, nonatomic, copy) NSURL *url;
 @property (nonatomic) NSUInteger beginTime;
 
+@property (nonnull, nonatomic, copy, readonly) NSString *loggingValue;
+
 - (instancetype _Nonnull)initWithTitle:(NSString *_Nonnull)title url:(NSURL *_Nonnull)url;
 - (instancetype _Nonnull)initWithTitle:(NSString *_Nonnull)title url:(NSURL *_Nonnull)url beginTime:(NSUInteger)seconds;
 @end
