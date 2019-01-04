@@ -11,7 +11,7 @@
 
 @implementation NSString (Extended)
 
-- (NSString *)stringByTrimmingEachLine
+- (NSString *)vss_stringByTrimmingEachLine
 {
     NSArray<NSString *> *lines = [self componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     return [[lines vss_map:^id _Nullable (NSString *line) {
@@ -47,6 +47,17 @@
     }
     
     return NSOrderedSame;
+}
+
+- (NSString *)vss_reversedString
+{
+    NSMutableString *reversedString = [NSMutableString string];
+    [self enumerateSubstringsInRange:NSMakeRange(0, self.length)
+                             options:(NSStringEnumerationReverse | NSStringEnumerationByComposedCharacterSequences)
+                          usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+                              [reversedString appendString:substring];
+                          }];
+    return reversedString;
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "NSArray+Extended.h"
 #import "NSURLSession+VSSExtended.h"
 #import "NSURLComponents+Extended.h"
+#import "VSSLogger.h"
 
 @interface VSSVimeoStream : NSObject
 @property (nonnull, nonatomic, copy) NSString *url;
@@ -62,6 +63,7 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     [[session dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
         if (error || !data) {
+            VSSLog(@"Vimeo - failed to load data: %@", error);
             completion(nil);
             return;
         }
@@ -106,6 +108,8 @@
             completion(item);
             return;
         }
+        
+        VSSLog(@"Vimeo - failed loading info. Response: %@. JSON dump: %@", response, VSSLogFile(@"Vimeo.json", data));
 
         completion(nil);
     }] resume];

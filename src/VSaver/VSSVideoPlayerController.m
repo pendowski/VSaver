@@ -14,8 +14,10 @@
 #import "VSSWistiaProvider.h"
 #import "VSSUStreamProvider.h"
 #import "VSSLogger.h"
+#import "NSThread+VSSExtended.h"
 
 #define MinimalTransitionTime 3.0
+static void * const KVOContext = (void*)&KVOContext;
 
 @interface VSSVideoPlayerController ()
 @property (nonnull, nonatomic, strong) NSArray<id<VSSProvider> > *providers;
@@ -43,11 +45,26 @@
         self.urlIndex = -1;
         self.player = [[AVPlayer alloc] init];
         self.player.allowsExternalPlayback = NO;
+        
+        [self.player addObserver:self forKeyPath:@"rate" options:0 context:KVOContext];
 
         [self setup4KProvidersProviders];
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoDidFail:) name:AVPlayerItemFailedToPlayToEndTimeNotification object:nil];
+        
+        VSSLog(@"Created a player: %@", self.player);
+        
+        NSArray *notificationsForLogging = @[AVPlayerItemTimeJumpedNotification,
+                                             AVPlayerItemDidPlayToEndTimeNotification,
+                                             AVPlayerItemFailedToPlayToEndTimeNotification,
+                                             AVPlayerItemPlaybackStalledNotification,
+                                             AVPlayerItemNewAccessLogEntryNotification,
+                                             AVPlayerItemNewErrorLogEntryNotification,
+                                             AVPlayerItemFailedToPlayToEndTimeErrorKey];
+        for (NSString *name in notificationsForLogging) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logNotification:) name:name object:nil];
+        }
     }
 
     return self;
@@ -64,6 +81,19 @@
                 [[VSSWistiaProvider alloc] init],
                 [[VSSUstreamProvider alloc] init]
     ]];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if (context != KVOContext) {
+        return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+    
+    if ([keyPath isEqualToString:@"rate"]) {
+        VSSLog(@"Player - rate changed: %f, %@, %f, %f", self.player.rate, self.isPlaying ? @"playing" : @"stopped", CMTimeGetSeconds(self.player.currentItem.currentTime), CMTimeGetSeconds(self.player.currentItem.duration));
+    } else if ([keyPath isEqualToString:@"status"]) {
+        VSSLog(@"Player - status changed: %ld, %ld", self.player.currentItem.status, self.player.status);
+    }
 }
 
 #pragma mark - Static
@@ -133,6 +163,7 @@
 
 - (void)playNext
 {
+    VSSLog(@"Player - (%@) playing next: %@", self.player, [NSThread vss_simpleCallStackWithLimit:4]);
     if (self.urls.count == 0 || self.layers.count == 0) {
         return;
     }
@@ -156,7 +187,7 @@
     id<VSSProvider> provider = [[self.providers vss_filter:^BOOL (id<VSSProvider> _Nonnull provider) {
         return [provider isValidURL:url];
     }] firstObject];
-    VSSLog(@"Will play %@ (%@)", url, provider.name);
+    VSSLog(@"Player - (%@) will play: `%@` (%@)", self.player, url, provider.name);
 
     self.urlIndex = index;
     [self.player pause];
@@ -179,14 +210,19 @@
         
         // Load and start playing as soon as possible
         dispatch_async(dispatch_get_main_queue(), ^{
-            VSSLog(@"Video URL decoded: %@ -> %@", url, item.loggingValue);
+            VSSLog(@"Player - (%@) video URL decoded: `%@` -> %@", strongSelf.player, url, item.loggingValue);
             
             AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:item.url];
+            
+            [strongSelf.player.currentItem removeObserver:strongSelf forKeyPath:@"status" context:KVOContext];
+            [playerItem addObserver:strongSelf forKeyPath:@"status" options:0 context:KVOContext];
+            
             [strongSelf.player replaceCurrentItemWithPlayerItem:playerItem];
             strongSelf.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
             [strongSelf.player play];
             if (item.beginTime > 0) {
                 [strongSelf.player seekToTime:CMTimeMakeWithSeconds(item.beginTime, 1) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+                VSSLog(@"Player - (%@) starting video from %lu -> %f", strongSelf.player, item.beginTime, CMTimeGetSeconds(strongSelf.player.currentTime));
             }
         });
         
@@ -205,7 +241,7 @@
 
 - (void)videoDidEnd:(NSNotification *)notification
 {
-    VSSLog(@"Video did end: %@", notification.userInfo);
+    VSSLog(@"Player - (%@) video did end: %@", notification.object, notification.userInfo);
     if (notification.object == self.player.currentItem) {
         [self playNext];
     }
@@ -213,10 +249,15 @@
 
 - (void)videoDidFail:(NSNotification *)notification
 {
-    VSSLog(@"Video did fail: %@", notification.userInfo);
+    VSSLog(@"Player - (%@) video did fail: %@", notification.object, notification.userInfo);
     if (notification.object == self.player.currentItem) {
         [self playNext];
     }
+}
+
+- (void)logNotification:(NSNotification *)notification
+{
+    VSSLog(@"Player - (%@) notification: %@ -> %@", notification.object, notification.name, notification.userInfo);
 }
 
 #pragma mark - Private
@@ -232,6 +273,7 @@
 
 - (void)playIfNeeded
 {
+    VSSLog(@"Player - (%@) play: %@", self.player, [NSThread vss_simpleCallStackWithLimit:4]);
     if (!self.isPlaying && self.layers.count > 0 && self.urls.count > 0) {
         [self playNext];
     }

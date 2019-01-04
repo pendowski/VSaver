@@ -8,6 +8,7 @@
 
 #import "VSSYouTubeProvider.h"
 #import "NSArray+Extended.h"
+#import "VSSLogger.h"
 @import WebKit;
 @import JavaScriptCore;
 
@@ -35,6 +36,9 @@
     JSValue *titleValue = [frame.javaScriptContext evaluateScript:@"vsaverGetTitle();"];
 
     if (!urlValue.isString) {
+        NSString *htmlDump = [self htmlInFrame:frame];
+        VSSLog(@"YouTube - failed to load info. Dumping: %@", VSSLogFile(@"YouTube.html", [htmlDump dataUsingEncoding:NSUTF8StringEncoding]));
+        
         [self callCompletion:nil];
         return;
     }

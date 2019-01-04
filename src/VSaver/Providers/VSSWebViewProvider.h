@@ -19,4 +19,6 @@
 - (void)callCompletion:(VSSURLItem *_Nullable)item;
 - (void)handleLoadedPage:(WebFrame *)mainFrame;
 
+- (NSString *)htmlInFrame:(WebFrame * _Nullable)frame;
+
 @end

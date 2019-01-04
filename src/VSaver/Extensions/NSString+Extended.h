@@ -12,9 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (Extended)
 
-- (NSString *)stringByTrimmingEachLine;
+- (NSString *)vss_stringByTrimmingEachLine;
 
 - (NSComparisonResult)vss_compareWithVersion:(NSString *)version;
+- (NSString *)vss_reversedString;
 
 @end
 

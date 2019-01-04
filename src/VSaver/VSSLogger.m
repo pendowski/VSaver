@@ -7,6 +7,7 @@
 //
 
 #import "VSSLogger.h"
+#import "NSString+Extended.h"
 #import <AppKit/AppKit.h>
 
 @interface VSSLogger ()
@@ -71,6 +72,20 @@
         [self.fileHandle writeData:[line dataUsingEncoding:NSUTF8StringEncoding]];
         va_end(args);
     }
+}
+
+- (NSString *)logFile:(NSString *)filename data:(NSData *)data
+{
+    NSString *nowString = [self.dateFormatter stringFromDate:[NSDate date]];
+    NSString *fullFilename = [NSString stringWithFormat:@"%@_%@", filename, nowString];
+    if ([filename containsString:@"."]) {
+        NSString *reversed = [filename vss_reversedString];
+        NSRange dotRange = [reversed rangeOfString:@"."];
+        NSString *reversedReplacement = [@"." stringByAppendingString:[nowString vss_reversedString]];
+        fullFilename = [[reversed stringByReplacingCharactersInRange:dotRange withString:reversedReplacement] vss_reversedString];
+    }
+    [data writeToFile:[self.basePath stringByAppendingPathComponent:fullFilename] atomically:YES];
+    return fullFilename;
 }
 
 - (void)registerForSystemEvents
