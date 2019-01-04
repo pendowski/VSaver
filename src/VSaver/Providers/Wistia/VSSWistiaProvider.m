@@ -59,7 +59,7 @@
 
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    [[session dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
+    [[session vss_dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
         if (error || !data) {
             [self logHTMLDumpFromFrame:mainFrame cause:@"Error downloading data"];
             [self callCompletion:nil];

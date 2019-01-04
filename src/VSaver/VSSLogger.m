@@ -70,6 +70,7 @@
         NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
         NSString *line = [NSString stringWithFormat:@"[%@] %@\r\n", [self.dateFormatter stringFromDate:[NSDate date]], message];
         [self.fileHandle writeData:[line dataUsingEncoding:NSUTF8StringEncoding]];
+        [self.fileHandle synchronizeFile];
         va_end(args);
     }
 }

@@ -45,7 +45,7 @@
     __weak typeof(self)weakSelf = self;
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    [[session dataTaskWithURL:JSONURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
+    [[session vss_dataTaskWithURL:JSONURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (!data || error) {
             VSSLog(@"AppleTV Classic - failed to download data: %@", error);

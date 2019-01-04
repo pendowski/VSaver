@@ -34,7 +34,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     [[session dataTaskWithURL:[NSURL URLWithString:@"https://github.com/pendowski/VSaver/releases/latest"] completionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
-        NSArray<NSString *> *pathComponents = [NSURLComponents componentsWithURL:response.URL resolvingAgainstBaseURL:NO].pathComponents;
+        NSArray<NSString *> *pathComponents = [NSURLComponents componentsWithURL:response.URL resolvingAgainstBaseURL:NO].vss_pathComponents;
         
         if ([pathComponents containsObject:@"tag"]) {
             NSUInteger tagIndex = [pathComponents indexOfObject:@"tag"];

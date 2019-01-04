@@ -11,10 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSURLComponents (Extended)
-@property (nonnull, nonatomic, copy, readonly) NSArray<NSString *> *pathComponents;
-@property (nonnull, nonatomic, copy, readonly) NSArray<NSURLQueryItem *> *fragmentItems;
+@property (nonnull, nonatomic, copy, readonly) NSArray<NSString *> *vss_pathComponents;
+@property (nonnull, nonatomic, copy, readonly) NSArray<NSURLQueryItem *> *vss_fragmentItems;
 
-- (NSString *_Nullable)queryValueWithKey:(NSString *)key;
+- (NSString *_Nullable)vss_queryValueWithKey:(NSString *)key;
 @end
 
 NS_ASSUME_NONNULL_END

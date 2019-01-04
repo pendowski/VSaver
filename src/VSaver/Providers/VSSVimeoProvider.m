@@ -61,7 +61,7 @@
 
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    [[session dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
+    [[session vss_dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
         if (error || !data) {
             VSSLog(@"Vimeo - failed to load data: %@", error);
             completion(nil);
@@ -117,7 +117,7 @@
 
 - (NSUInteger)timeFromURL:(NSURL *)url {
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
-    NSURLQueryItem *timeItem = [components.fragmentItems vss_filter:^BOOL(NSURLQueryItem *_Nonnull obj) {
+    NSURLQueryItem *timeItem = [components.vss_fragmentItems vss_filter:^BOOL(NSURLQueryItem *_Nonnull obj) {
         return [obj.name isEqualToString:@"t"];
     }].firstObject;
     
