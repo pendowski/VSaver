@@ -18,11 +18,12 @@
 #import "NSObject+Extended.h"
 #import "VSSUpdateChecker.h"
 #import "VSSLogger.h"
+#import "VSSActivityIndicator.h"
 
 #define SOURCELABELMAXALPHA 0.3
 
 @interface VSaverView () <VSSVideoPlayerControllerDelegate>
-@property (nullable, nonatomic, weak) NSProgressIndicator *loadingIndicator;
+@property (nullable, nonatomic, weak) VSSActivityIndicator *loadingIndicator;
 @property (nullable, nonatomic, weak) NSTextField *sourceLabel;
 @property (nullable, nonatomic, weak) NSTextField *updateLabel;
 @property (nullable, nonatomic, weak) AVPlayerLayer *playerLayer;
@@ -164,9 +165,7 @@
         context.duration = 1;
         context.allowsImplicitAnimation = YES;
         
-        [self.loadingIndicator stopAnimation:nil];
-        [self.loadingIndicator removeFromSuperview];
-        self.loadingIndicator = nil;
+        [self.loadingIndicator stopAnimation];
         
         self.sourceLabel.stringValue = url.title != nil ? url.title : @"";
         
@@ -264,26 +263,14 @@
 - (void)showLoadingIndicator
 {
     if (self.loadingIndicator) {
+        [self.loadingIndicator startAnimation];
         return;
     }
     
     NSRect frame = self.bounds;
     
-    NSProgressIndicator *activityIndicator = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(0, 0, 32, 32)];
-    [activityIndicator setDisplayedWhenStopped:NO];
-    activityIndicator.style = NSProgressIndicatorSpinningStyle;
-    activityIndicator.controlSize = NSControlSizeRegular;
-    [activityIndicator sizeToFit];
-    [activityIndicator setUsesThreadedAnimation:YES];
-    
-    CIFilter *brightFilter = [CIFilter filterWithName:@"CIColorControls"];
-    [brightFilter setDefaults];
-    [brightFilter setValue:@1 forKey:@"inputBrightness"];
-    
-    if (brightFilter) {
-        activityIndicator.contentFilters = @[brightFilter];
-    }
-    
+    VSSActivityIndicator *activityIndicator = [[VSSActivityIndicator alloc] initWithFrame:NSMakeRect(0, 0, 64, 64)];
+    activityIndicator.lineWidth = 6;
     CGRect activityFrame = CGRectMake(frame.size.width / 2 - activityIndicator.frame.size.width / 2,
                                       frame.size.height / 2 - activityIndicator.frame.size.height / 2,
                                       activityIndicator.frame.size.width,
@@ -293,7 +280,7 @@
     
     [self addSubview:activityIndicator];
     self.loadingIndicator = activityIndicator;
-    [activityIndicator startAnimation:nil];
+    [activityIndicator startAnimation];
 }
 
 #pragma mark - Static

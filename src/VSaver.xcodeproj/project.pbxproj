@@ -62,6 +62,8 @@
 		AAB0662621DE6BE9003C3438 /* VSSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB0662421DE6BE9003C3438 /* VSSLogger.m */; };
 		AAB0662921DF5B13003C3438 /* NSThread+VSSExtended.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB0662721DF5B13003C3438 /* NSThread+VSSExtended.h */; };
 		AAB0662A21DF5B13003C3438 /* NSThread+VSSExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB0662821DF5B13003C3438 /* NSThread+VSSExtended.m */; };
+		AAB0662D21DF9DE5003C3438 /* VSSActivityIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB0662B21DF9DE5003C3438 /* VSSActivityIndicator.h */; };
+		AAB0663021DFA312003C3438 /* VSSActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB0662F21DFA312003C3438 /* VSSActivityIndicator.m */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
 		AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
 		AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */; };
@@ -174,6 +176,8 @@
 		AAB0662421DE6BE9003C3438 /* VSSLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSSLogger.m; sourceTree = "<group>"; };
 		AAB0662721DF5B13003C3438 /* NSThread+VSSExtended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSThread+VSSExtended.h"; sourceTree = "<group>"; };
 		AAB0662821DF5B13003C3438 /* NSThread+VSSExtended.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSThread+VSSExtended.m"; sourceTree = "<group>"; };
+		AAB0662B21DF9DE5003C3438 /* VSSActivityIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSActivityIndicator.h; sourceTree = "<group>"; };
+		AAB0662F21DFA312003C3438 /* VSSActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSSActivityIndicator.m; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDF4E220A0B47900789BEB /* VSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSaverView.h; sourceTree = "<group>"; };
 		AABDF4E420A0B47900789BEB /* VSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSaverView.m; sourceTree = "<group>"; };
@@ -249,6 +253,8 @@
 				AA60B68A216FAA75002F5EE3 /* VSSHelpViewController.h */,
 				AA60B68B216FAA75002F5EE3 /* VSSHelpViewController.m */,
 				AA60B68C216FAA75002F5EE3 /* VSSHelpViewController.xib */,
+				AAB0662B21DF9DE5003C3438 /* VSSActivityIndicator.h */,
+				AAB0662F21DFA312003C3438 /* VSSActivityIndicator.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 				AAB0662521DE6BE9003C3438 /* VSSLogger.h in Headers */,
 				AA04F11120A213D10062AA05 /* VSSYouTubeProvider.h in Headers */,
 				AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */,
+				AAB0662D21DF9DE5003C3438 /* VSSActivityIndicator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +701,7 @@
 				AA60B689216D1C7B002F5EE3 /* VSSAppleTVProvider.m in Sources */,
 				AABDF50320A0D12900789BEB /* VSSAppleTVClassicProvider.m in Sources */,
 				AA04F12620A22FE90062AA05 /* VSSWebViewProvider.m in Sources */,
+				AAB0663021DFA312003C3438 /* VSSActivityIndicator.m in Sources */,
 				AA60B5C8216553CC002F5EE3 /* NSURLComponents+Extended.m in Sources */,
 				AA04F0FE20A1F6530062AA05 /* VSSVimeoProvider.m in Sources */,
 				AAB0662621DE6BE9003C3438 /* VSSLogger.m in Sources */,
