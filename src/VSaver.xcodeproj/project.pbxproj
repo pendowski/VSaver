@@ -64,6 +64,8 @@
 		AAB0662A21DF5B13003C3438 /* NSThread+VSSExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB0662821DF5B13003C3438 /* NSThread+VSSExtended.m */; };
 		AAB0662D21DF9DE5003C3438 /* VSSActivityIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB0662B21DF9DE5003C3438 /* VSSActivityIndicator.h */; };
 		AAB0663021DFA312003C3438 /* VSSActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB0662F21DFA312003C3438 /* VSSActivityIndicator.m */; };
+		AAB0663321DFE54D003C3438 /* NSDate+VSSExtended.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB0663121DFE54D003C3438 /* NSDate+VSSExtended.h */; };
+		AAB0663421DFE54D003C3438 /* NSDate+VSSExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB0663221DFE54D003C3438 /* NSDate+VSSExtended.m */; };
 		AABDF4E320A0B47900789BEB /* VSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = AABDF4E220A0B47900789BEB /* VSaverView.h */; };
 		AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABDF4E420A0B47900789BEB /* VSaverView.m */; };
 		AABDF4EE20A0B4D100789BEB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AABDF4ED20A0B4D100789BEB /* AVFoundation.framework */; };
@@ -178,6 +180,8 @@
 		AAB0662821DF5B13003C3438 /* NSThread+VSSExtended.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSThread+VSSExtended.m"; sourceTree = "<group>"; };
 		AAB0662B21DF9DE5003C3438 /* VSSActivityIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSSActivityIndicator.h; sourceTree = "<group>"; };
 		AAB0662F21DFA312003C3438 /* VSSActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSSActivityIndicator.m; sourceTree = "<group>"; };
+		AAB0663121DFE54D003C3438 /* NSDate+VSSExtended.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+VSSExtended.h"; sourceTree = "<group>"; };
+		AAB0663221DFE54D003C3438 /* NSDate+VSSExtended.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+VSSExtended.m"; sourceTree = "<group>"; };
 		AABDF4DF20A0B47900789BEB /* VSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABDF4E220A0B47900789BEB /* VSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSaverView.h; sourceTree = "<group>"; };
 		AABDF4E420A0B47900789BEB /* VSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSaverView.m; sourceTree = "<group>"; };
@@ -447,6 +451,8 @@
 				AA60B5C6216553CC002F5EE3 /* NSURLComponents+Extended.m */,
 				AAB0662721DF5B13003C3438 /* NSThread+VSSExtended.h */,
 				AAB0662821DF5B13003C3438 /* NSThread+VSSExtended.m */,
+				AAB0663121DFE54D003C3438 /* NSDate+VSSExtended.h */,
+				AAB0663221DFE54D003C3438 /* NSDate+VSSExtended.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 				AAB0662921DF5B13003C3438 /* NSThread+VSSExtended.h in Headers */,
 				AA60B692216FADF3002F5EE3 /* NSString+Extended.h in Headers */,
 				AA04F0FD20A1F6530062AA05 /* VSSVimeoProvider.h in Headers */,
+				AAB0663321DFE54D003C3438 /* NSDate+VSSExtended.h in Headers */,
 				AA87145021B71B260000F551 /* VSSDelayedOperation.h in Headers */,
 				AABDF50620A17EDF00789BEB /* NSObject+Extended.h in Headers */,
 				AA60B688216D1C7B002F5EE3 /* VSSAppleTVProvider.h in Headers */,
@@ -687,6 +694,7 @@
 				AA87145121B71B260000F551 /* VSSDelayedOperation.m in Sources */,
 				AABDF4E520A0B47900789BEB /* VSaverView.m in Sources */,
 				AAB0662A21DF5B13003C3438 /* NSThread+VSSExtended.m in Sources */,
+				AAB0663421DFE54D003C3438 /* NSDate+VSSExtended.m in Sources */,
 				AABDF4F420A0B5FB00789BEB /* VSSVideoPlayerController.m in Sources */,
 				AAFD25E2217E31BD00432F2B /* VSSUpdateChecker.m in Sources */,
 				AA60B5E821666393002F5EE3 /* VSSAppleURL.m in Sources */,

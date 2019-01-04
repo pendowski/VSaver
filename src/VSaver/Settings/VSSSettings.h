@@ -26,4 +26,5 @@ typedef NS_ENUM (NSInteger, VSSQualityPreference) {
 @property (nonatomic) VSSQualityPreference qualityPreference;
 
 @property (nullable, nonatomic, copy) NSString *lastVersion;
+@property (nullable, nonatomic, strong) NSDate *lastUpdateCheckedAt;
 @end
