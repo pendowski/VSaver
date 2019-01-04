@@ -255,7 +255,7 @@
     helpViewController.message = [@"Depending on the source of the movie and availability selected movie quality will be chosen.\n\
                                   \"Depending on screen(s)\" will choose the highest quality based on the screen it's being played on.\n\
                                   If same video is being played on all screens, the best quality for the highest resolution display will be selected.\n\
-                                  Some sources allow overriding this value, playing quality selected in that URL." stringByTrimmingEachLine];
+                                  Some sources allow overriding this value, playing quality selected in that URL." vss_stringByTrimmingEachLine];
     [popover setContentViewController:helpViewController];
     [popover showRelativeToRect:sender.bounds ofView:sender preferredEdge:NSMinYEdge];
 }

@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "VSSSettings.h"
+#import "VSSLogger.h"
 
 @interface VSSUserDefaultsSettings : NSObject <VSSSettings>
+
+@end
+
+@interface VSSLogger (VSSUserDefaultsSettings)
+
+- (void)logSettings:(VSSUserDefaultsSettings *)settings;
 
 @end

@@ -10,6 +10,7 @@
 #import "VSSAppleItem.h"
 #import "NSObject+Extended.h"
 #import "NSArray+Extended.h"
+#import "VSSLogger.h"
 
 #define TARURL [NSURL URLWithString:@"https://sylvan.apple.com/Aerials/resources.tar"]
 
@@ -104,6 +105,8 @@
 
     [task launch];
     [task waitUntilExit];
+    
+    VSSLog(@"AppleTV12 - unpacking tar file: %ld", task.terminationReason);
 
     return task.terminationReason == NSTaskTerminationReasonExit;
 }
@@ -112,6 +115,7 @@
 {
     NSData *data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[cacheURL.path stringByAppendingPathComponent:@"entries.json"]]];
     if (!data) {
+        VSSLog(@"AppleTV12 - failed to find JSON");
         return completion(nil);
     }
 
@@ -120,6 +124,7 @@
     NSArray<NSDictionary *> *assets = VSSAS(jsonDictionaries[@"assets"], NSArray);
 
     if (!assets || jsonError) {
+        VSSLog(@"AppleTV12 - no assets found: %@. JSON dump: %@", jsonError, VSSLogFile(@"AppleTV12.json", data));
         completion(nil);
         return;
     }
@@ -157,6 +162,7 @@
     }
 
     if (self.cache.count == 0) {
+        VSSLog(@"AppleTV12 - no items in cache");
         return completion(nil);
     }
 

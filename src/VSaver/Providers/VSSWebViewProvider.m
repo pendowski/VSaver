@@ -76,6 +76,14 @@
     // NOOP - should be implemented in the subclass
 }
 
+- (NSString *)htmlInFrame:(WebFrame *)frame
+{
+    if (!frame) {
+        return @"";
+    }
+    return [frame.javaScriptContext evaluateScript:@"document.documentElement.outerHTML"].toString ?: @"";
+}
+
 #pragma mark - WebFrameLoadDelegate
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)aFrame

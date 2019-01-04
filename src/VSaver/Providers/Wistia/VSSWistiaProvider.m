@@ -8,6 +8,7 @@
 
 #import "VSSWistiaProvider.h"
 #import "NSURLSession+VSSExtended.h"
+#import "VSSLogger.h"
 @import JavaScriptCore;
 
 @interface VSSWistiaProvider ()
@@ -40,12 +41,14 @@
     NSString *videoID = [self getIDFromURL:self.loadingURL];
 
     if (videoID.length == 0) {
+        [self logHTMLDumpFromFrame:mainFrame cause:@"VideoID"];
         [self callCompletion:nil];
         return;
     }
 
     JSValue *configurationUrl = [mainFrame.javaScriptContext evaluateScript:[NSString stringWithFormat:@"getConfigurationURLWithID('%@')", videoID]];
     if (!configurationUrl.isString) {
+        [self logHTMLDumpFromFrame:mainFrame cause:@"Configuration URL"];
         [self callCompletion:nil];
         return;
     }
@@ -56,14 +59,16 @@
 
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    [[session dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
+    [[session vss_dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
         if (error || !data) {
+            [self logHTMLDumpFromFrame:mainFrame cause:@"Error downloading data"];
             [self callCompletion:nil];
             return;
         }
 
         NSString *jsonp = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         if (jsonp.length == 0) {
+            [self logHTMLDumpFromFrame:mainFrame cause:@"Empty JSONP"];
             [self callCompletion:nil];
             return;
         }
@@ -79,6 +84,7 @@
         JSValue *urlValue = [self.jsContext evaluateScript:@"vsaverGetURL()"];
 
         if (!urlValue.isString) {
+            [self logHTMLDumpFromFrame:mainFrame cause:@"Failed GetURL"];
             [self callCompletion:nil];
             return;
         }
@@ -101,6 +107,12 @@
     }
 
     return pathComponents[mediasIndex + 1];
+}
+
+- (void)logHTMLDumpFromFrame:(WebFrame *)frame cause:(NSString *)cause
+{
+    NSString *htmlDump = [self htmlInFrame:frame];
+    VSSLog(@"Wistia - failed to load info: %@. Dumping: %@", cause, VSSLogFile(@"Wistia.html", [htmlDump dataUsingEncoding:NSUTF8StringEncoding]));
 }
 
 @end

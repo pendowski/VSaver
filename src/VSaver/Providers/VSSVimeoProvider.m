@@ -11,6 +11,7 @@
 #import "NSArray+Extended.h"
 #import "NSURLSession+VSSExtended.h"
 #import "NSURLComponents+Extended.h"
+#import "VSSLogger.h"
 
 @interface VSSVimeoStream : NSObject
 @property (nonnull, nonatomic, copy) NSString *url;
@@ -60,8 +61,9 @@
 
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    [[session dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
+    [[session vss_dataTaskWithURL:configURL mainQueueCompletionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
         if (error || !data) {
+            VSSLog(@"Vimeo - failed to load data: %@", error);
             completion(nil);
             return;
         }
@@ -106,6 +108,8 @@
             completion(item);
             return;
         }
+        
+        VSSLog(@"Vimeo - failed loading info. Response: %@. JSON dump: %@", response, VSSLogFile(@"Vimeo.json", data));
 
         completion(nil);
     }] resume];
@@ -113,7 +117,7 @@
 
 - (NSUInteger)timeFromURL:(NSURL *)url {
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
-    NSURLQueryItem *timeItem = [components.fragmentItems vss_filter:^BOOL(NSURLQueryItem *_Nonnull obj) {
+    NSURLQueryItem *timeItem = [components.vss_fragmentItems vss_filter:^BOOL(NSURLQueryItem *_Nonnull obj) {
         return [obj.name isEqualToString:@"t"];
     }].firstObject;
     

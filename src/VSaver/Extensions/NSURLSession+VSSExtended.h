@@ -10,6 +10,6 @@
 
 @interface NSURLSession (VSSExtended)
 
-- (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url mainQueueCompletionHandler:(void (^)(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error))completionHandler;
+- (NSURLSessionDataTask *)vss_dataTaskWithURL:(NSURL *)url mainQueueCompletionHandler:(void (^)(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error))completionHandler;
 
 @end

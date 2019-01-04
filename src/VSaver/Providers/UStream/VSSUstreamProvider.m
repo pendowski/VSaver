@@ -8,6 +8,7 @@
 
 #import "VSSUstreamProvider.h"
 #import "VSSDelayedOperation.h"
+#import "VSSLogger.h"
 @import WebKit;
 @import JavaScriptCore;
 
@@ -35,21 +36,25 @@
 {
     __weak typeof(self) weakSelf = self;
     VSSDelayedOperation *timeout = [[VSSDelayedOperation alloc] initWithDelay:30 block:^{
-        [weakSelf completeWithURL:nil title:nil];
+        VSSLog(@"UStream - timeout for %@", weakSelf.loadingURL);
+        [weakSelf completeWithURL:nil title:nil frame:frame];
     }];
     
+    __weak typeof(frame) weakFrame = frame;
     frame.javaScriptContext[@"vsaverCompletion"] = ^(JSValue *urlValue, JSValue *titleValue) {
         [timeout cancel];
-        [weakSelf completeWithURL:urlValue title:titleValue];
+        [weakSelf completeWithURL:urlValue title:titleValue frame:weakFrame];
     };
     [frame.javaScriptContext evaluateScript:@"vsaverMain()"];
 }
 
 #pragma mark - Private
 
-- (void)completeWithURL:(JSValue * _Nullable )urlValue title:(JSValue  * _Nullable )titleValue
+- (void)completeWithURL:(JSValue * _Nullable )urlValue title:(JSValue  * _Nullable )titleValue frame:(WebFrame *)frame
 {
     if (!urlValue.isString) {
+        NSString *htmlDump = [self htmlInFrame:frame];
+        VSSLog(@"UStream - failed to load info. Dumping: %@", VSSLogFile(@"UStream.html", [htmlDump dataUsingEncoding:NSUTF8StringEncoding]));
         return [self callCompletion:nil];
     }
     

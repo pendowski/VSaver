@@ -10,7 +10,7 @@
 
 @implementation NSURLComponents (Extended)
 
-- (NSString *)queryValueWithKey:(NSString *)key
+- (NSString *)vss_queryValueWithKey:(NSString *)key
 {
     for (NSURLQueryItem *item in self.queryItems) {
         if ([item.name isEqualToString:key]) {
@@ -20,12 +20,12 @@
     return nil;
 }
 
-- (NSArray<NSString *> *)pathComponents
+- (NSArray<NSString *> *)vss_pathComponents
 {
     return [self.path componentsSeparatedByString:@"/"];
 }
 
-- (NSArray *)fragmentItems {
+- (NSArray *)vss_fragmentItems {
     NSURLComponents *fakeComponents = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"http://localhost/?%@", self.fragment]];
     return fakeComponents.queryItems;
 }
