@@ -220,7 +220,7 @@
 
     self.updateChecker = [[VSSUpdateChecker alloc] initWithVersionSource:^NSString * _Nullable{
         return [VSaverView CurrentScreenSaverVersion];
-    }];
+    } settings:self.settings];
     
     NSTextField *label = [NSTextField labelWithString:@"VSaver"];
     label.textColor = [NSColor whiteColor];

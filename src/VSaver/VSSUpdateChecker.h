@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VSSSettings.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface VSSUpdateChecker : NSObject
 
-- (instancetype)initWithVersionSource:(NSString * _Nullable (^_Nullable)(void))source;
+- (instancetype)initWithVersionSource:(NSString * _Nullable (^_Nullable)(void))source settings:(id<VSSSettings>)settings;
 
 - (void)checkForUpdates:(void (^)(BOOL, NSString * _Nullable))updates;
 

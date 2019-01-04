@@ -36,7 +36,7 @@
     [self.updateButton setHidden:YES];
     self.updateChecker = [[VSSUpdateChecker alloc] initWithVersionSource:^NSString * _Nullable {
         return [VSaverView CurrentScreenSaverVersion];
-    }];
+    } settings:self.settings];
     
     __weak typeof(self) weakSelf = self;
     [self.updateChecker checkForUpdates:^(BOOL updatesAvailable, NSString * _Nullable version) {

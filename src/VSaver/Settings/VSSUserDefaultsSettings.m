@@ -9,13 +9,14 @@
 #import "VSSUserDefaultsSettings.h"
 @import ScreenSaver;
 
-#define MuteKey             @"mute"
-#define URLsKey             @"urls"
-#define PlayModeKey         @"playMode"
-#define ShowLabelKey        @"showSource"
-#define SameOnAllScreensKey @"sameOnAllScreens"
-#define QualityPreference   @"qualityPreference"
-#define LastVersion         @"lastVersion"
+#define MuteKey                 @"mute"
+#define URLsKey                 @"urls"
+#define PlayModeKey             @"playMode"
+#define ShowLabelKey            @"showSource"
+#define SameOnAllScreensKey     @"sameOnAllScreens"
+#define QualityPreferenceKey    @"qualityPreference"
+#define LastVersionKey          @"lastVersion"
+#define LastUpdateKey           @"lastUpdateCheck"
 
 @interface VSSUserDefaultsSettings ()
 @property (nonnull, nonatomic, strong) NSUserDefaults *defaults;
@@ -86,22 +87,32 @@
 
 - (VSSQualityPreference)qualityPreference
 {
-    return [self.defaults integerForKey:QualityPreference];
+    return [self.defaults integerForKey:QualityPreferenceKey];
 }
 
 - (void)setQualityPreference:(VSSQualityPreference)qualityPreference
 {
-    [self.defaults setInteger:qualityPreference forKey:QualityPreference];
+    [self.defaults setInteger:qualityPreference forKey:QualityPreferenceKey];
 }
 
 - (NSString *)lastVersion
 {
-    return [self.defaults stringForKey:LastVersion];
+    return [self.defaults stringForKey:LastVersionKey];
 }
 
 - (void)setLastVersion:(NSString *)lastVersion
 {
-    [self.defaults setObject:lastVersion forKey:LastVersion];
+    [self.defaults setObject:lastVersion forKey:LastVersionKey];
+}
+
+- (NSDate *)lastUpdateCheckedAt
+{
+    return [self.defaults objectForKey:LastUpdateKey];
+}
+
+- (void)setLastUpdateCheckedAt:(NSDate *)lastUpdateCheckedAt
+{
+    [self.defaults setObject:lastUpdateCheckedAt forKey:LastUpdateKey];
 }
 
 @end
@@ -116,8 +127,9 @@
                                  PlayModeKey: @(settings.playMode),
                                  ShowLabelKey: @(settings.showLabel),
                                  SameOnAllScreensKey: @(settings.sameOnAllScreens),
-                                 QualityPreference: @(settings.qualityPreference),
-                                 LastVersion: settings.lastVersion ?: @"-"
+                                 QualityPreferenceKey: @(settings.qualityPreference),
+                                 LastVersionKey: settings.lastVersion ?: @"-",
+                                 LastUpdateKey: settings.lastUpdateCheckedAt ?: @"never"
                                  };
     [self log:@"Settings: %@", dictionary];
 }

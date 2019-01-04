@@ -10,25 +10,33 @@
 #import "NSObject+Extended.h"
 #import "NSURLComponents+Extended.h"
 #import "NSString+Extended.h"
+#import "NSDate+VSSExtended.h"
 #import "VSSLogger.h"
 
 @interface VSSUpdateChecker ()
 @property (nullable, nonatomic, copy) NSString *currentVersion;
+@property (nonnull, nonatomic, strong) id<VSSSettings> settings;
 @end
 
 @implementation VSSUpdateChecker
 
-- (instancetype)initWithVersionSource:(NSString *_Nullable (^_Nullable)(void))source
+- (instancetype)initWithVersionSource:(NSString *_Nullable (^_Nullable)(void))source settings:(nonnull id<VSSSettings>)settings
 {
     self = [super init];
 
     self.currentVersion = source ? source() : [self defaultCurrentVersion];
+    self.settings = settings;
 
     return self;
 }
 
 - (void)checkForUpdates:(void (^)(BOOL, NSString *))updates
 {
+    NSDate *lastUpdateCheckedAt = self.settings.lastUpdateCheckedAt;
+    NSDate *now = [NSDate date];
+    if ([lastUpdateCheckedAt vss_isTheSameDayAs:now]) {
+        return;
+    }
     VSSLog(@"Checking for updates for version %@", self.currentVersion);
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -47,6 +55,8 @@
                 
                 if (versionRange.length > 0) {
                     NSString *version = [versionComponent substringWithRange:versionRange];
+                    self.settings.lastUpdateCheckedAt = now;
+                    
                     if ([self.currentVersion vss_compareWithVersion:version] == NSOrderedAscending) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             VSSLog(@"Updates found! New version %@ available", version);
