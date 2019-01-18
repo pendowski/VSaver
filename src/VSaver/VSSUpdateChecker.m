@@ -55,7 +55,6 @@
                 
                 if (versionRange.length > 0) {
                     NSString *version = [versionComponent substringWithRange:versionRange];
-                    self.settings.lastUpdateCheckedAt = now;
                     
                     if ([self.currentVersion vss_compareWithVersion:version] == NSOrderedAscending) {
                         dispatch_async(dispatch_get_main_queue(), ^{
@@ -70,6 +69,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             VSSLog(@"No updates");
+            self.settings.lastUpdateCheckedAt = now;
             updates(NO, nil);
         });
     }] resume];
