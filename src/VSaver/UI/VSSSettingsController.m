@@ -128,6 +128,8 @@
             assert(false);
             break;
     }
+    
+    [self.settings save];
 }
 
 #pragma mark - NSTableViewDataSource

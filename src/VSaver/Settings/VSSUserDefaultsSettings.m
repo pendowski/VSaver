@@ -115,6 +115,15 @@
     [self.defaults setObject:lastUpdateCheckedAt forKey:LastUpdateKey];
 }
 
+- (void)save
+{
+    /*
+     Has to be executed manually. When user closes System Preferences after changing some settings those changes are lost.
+     Most probable cause is that `ApplicationWillTerminate` notification isn't sent (that's what the manager listens for to make `synchronize` calls on all cached UserDefaults). Bug filled.
+     */
+    [self.defaults synchronize];
+}
+
 @end
 
 @implementation VSSLogger (VSSUserDefaultsSettings)
