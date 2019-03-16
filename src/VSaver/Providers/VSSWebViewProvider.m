@@ -7,10 +7,12 @@
 //
 
 #import "VSSWebViewProvider.h"
+#import "VSSScriptUpdater.h"
 @import JavaScriptCore;
 
 @interface VSSWebViewProvider () <WebFrameLoadDelegate>
 @property (nonnull, nonatomic, strong) WebView *webView;
+@property (nonnull, nonatomic, copy) NSString *scriptName;
 @property (nullable, nonatomic, copy) NSString *script;
 @property (nullable, nonatomic, strong) NSURL *loadingURL;
 @property (nullable, nonatomic, copy) void (^ completion)(VSSURLItem *);
@@ -26,18 +28,9 @@
         self.webView = [[WebView alloc] init];
         self.webView.customUserAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.2 Safari/605.1.15";
         [self.webView.preferences setPlugInsEnabled:NO];
-
-        if (scriptName.length > 0) {
-            NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-            NSString *path = [bundle pathForResource:scriptName ofType:@"js"];
-            NSError *error;
-            NSString *script = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-            self.script = script;
-
-            NSAssert(!error && script.length > 0, @"Script not loaded");
-        }
-
         self.webView.frameLoadDelegate = self;
+
+        self.scriptName = [scriptName stringByAppendingPathExtension:@"js"];
     }
     return self;
 }
@@ -59,7 +52,7 @@
     self.completion = completion;
     self.loadingURL = url;
     
-    [self.webView.mainFrame loadRequest:[NSURLRequest requestWithURL:url]];
+    [self refreshScriptIfNeededAndLoadURL:url];
 }
 
 - (void)callCompletion:(VSSURLItem *_Nullable)item
@@ -114,6 +107,16 @@
         [self callCompletion:nil];
     }
     self.loadingURL = nil;
+}
+
+- (void)refreshScriptIfNeededAndLoadURL:(NSURL *)url
+{
+    [[VSSScriptUpdater sharedInstance] scriptWithPath:self.scriptName completion:^(NSString * _Nonnull script) {
+        if (script) {
+            self.script = script;
+        }
+        [self.webView.mainFrame loadRequest:[NSURLRequest requestWithURL:url]];
+    }];
 }
 
 @end

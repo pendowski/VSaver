@@ -1,3 +1,5 @@
+/* min version: 1.4.2 */
+
 function vsaverGetURL() {
     let videoUrls = {};
     

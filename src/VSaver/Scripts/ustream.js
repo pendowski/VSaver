@@ -1,3 +1,5 @@
+/* min version: 1.4.2 */
+
 function vsaverMain() {
     const playButton = document.querySelector('.playScreen') || document.querySelector('#play')
     if (playButton) {
