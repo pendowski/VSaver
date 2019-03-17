@@ -1,3 +1,5 @@
+/* min version: 1.4.2 */
+
 function vsaverGetURL() {
     let jsonp = vsaver.json;
     let assets = jsonp.media.assets

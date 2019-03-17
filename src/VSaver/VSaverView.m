@@ -19,6 +19,7 @@
 #import "VSSUpdateChecker.h"
 #import "VSSLogger.h"
 #import "VSSActivityIndicator.h"
+#import "VSSScriptUpdater.h"
 
 #define SOURCELABELMAXALPHA 0.3
 
@@ -39,6 +40,10 @@
 {
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
+        NSURL *scriptsCacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask].firstObject URLByAppendingPathComponent:@"VSaver"];
+        NSURL *scriptsBaseURL = [NSURL URLWithString:@"https://raw.githubusercontent.com/pendowski/VSaver/develop/src/VSaver/Scripts/"];
+        [VSSScriptUpdater configureSharedInstanceWithCacheURL:scriptsCacheURL baseURL:scriptsBaseURL bundle:[NSBundle bundleForClass:self.class]];
+        
         VSSLog(@"Screen Saver (%@) started %@: %@", [VSaverView CurrentScreenSaverVersion], NSStringFromRect(frame), isPreview ? @"Preview" : @"ScreenSaver");
         
         [self setAnimationTimeInterval:1 / 30.0];

@@ -33,7 +33,7 @@
     self = [super init];
     if (self) {
         self.dateFormatter = [[NSDateFormatter alloc] init];
-        self.dateFormatter.dateFormat = @"Y-MM-DD HH:mm:ss";
+        self.dateFormatter.dateFormat = @"Y-MM-dd HH-mm-ss";
         
         NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
         self.basePath = [[libraryPath stringByAppendingPathComponent:@"Logs"] stringByAppendingPathComponent:@"VSaver"];
@@ -75,9 +75,12 @@
     }
 }
 
-- (NSString *)logFile:(NSString *)filename data:(NSData *)data
+- (NSString *)logFile:(NSString *)filename onePerDay:(BOOL)onePerDay data:(NSData *)data
 {
     NSString *nowString = [self.dateFormatter stringFromDate:[NSDate date]];
+    if (onePerDay) {
+        nowString = [nowString componentsSeparatedByString:@" "].firstObject;
+    }
     NSString *fullFilename = [NSString stringWithFormat:@"%@_%@", filename, nowString];
     if ([filename containsString:@"."]) {
         NSString *reversed = [filename vss_reversedString];
